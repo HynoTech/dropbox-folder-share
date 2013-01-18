@@ -23,6 +23,7 @@ Con este Plugin podras:
 Leer **[Mas > Descripcion](http://www.hyno.ok.pe/wp-plugins/dropbox-folder-share/)**
 
 == Installation ==
+
 1. Descomprimir el plugin a la carpeta `wp-content\plugins\`.
 2. Activarlo entrando a "administracion de Plugins" (AdminPanel/Plugins).
 3. Podras usar el Plugin con el ShortCode o con el boton en editor de Wordpress:
@@ -32,11 +33,14 @@ PD. Habilitar la extension **php_openssl.dll** en **php.ini**.
 Leer **[Mas > Instalacion](http://www.hyno.ok.pe/wp-plugins/dropbox-folder-share/)**
 
 == Changelog ==
+
 = 1.0 =
 * Version inicial.
 
 == Frequently Asked Questions ==
-**¿Error con el plugin?**
+
+=¿Error con el plugin?=
+
 Reportalo en la pagina del autor.
 
 ** Si tiene alguna pregunta sobre este plugin, estaremos encantados de resolverlo **
@@ -45,10 +49,12 @@ Puede visitar nuestra pagina para saber mas respecto a este plugin.
 Leer **[Mas > Preguntas y Respuestas](http://www.hyno.ok.pe/wp-plugins/dropbox-folder-share/)**
 
 == Upgrade Notice ==
+
 = 1.0 =
-Iniciando proyecto.
+* Iniciando proyecto.
 
 == Screenshots ==
+
 1. Boton en el editor
 2. Contenido publicado en modo **lista**
 3. Contenido publicado en modo **iconos**
