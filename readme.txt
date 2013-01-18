@@ -12,7 +12,6 @@ Permite incluir nuestra carpeta compartida de Dropbox en nuestras publicaciones.
 Allow to include our dropbox shared folders in content.
 
 == Description ==
-
 Muchas veces es necesario poder compartir contenido de nuestra carpeta en la nube con nuestros lectores, y por la necesidad de esto es que nacio este plugin.
 
 Con este Plugin podras:
@@ -24,7 +23,6 @@ Con este Plugin podras:
 Leer **[Mas > Descripcion](http://www.hyno.ok.pe/wp-plugins/dropbox-folder-share/)**
 
 == Installation ==
-
 1. Descomprimir el plugin a la carpeta `wp-content\plugins\`.
 2. Activarlo entrando a "administracion de Plugins" (AdminPanel/Plugins).
 3. Podras usar el Plugin con el ShortCode o con el boton en editor de Wordpress:
@@ -48,7 +46,6 @@ Leer **[Mas > Preguntas y Respuestas](http://www.hyno.ok.pe/wp-plugins/dropbox-f
 Iniciando proyecto.
 
 == Screenshots ==
-
 1. Boton en el editor.
 2. Contenido publicado en modo lista.
 3. Contenido publicado en modo iconos.
