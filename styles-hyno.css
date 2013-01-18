@@ -1,0 +1,203 @@
+/*BiblePost Style*/
+@import url('icons.css');
+
+
+#Hyno_ContenFolder{
+    height: 300px;
+    width: 98%;
+    overflow: auto;
+    margin:auto;
+}
+#Hyno_ContenFolder #icon_folder{
+    
+    background-image: url(img/logo.png);
+    background-repeat: no-repeat;
+    position: relative;
+    float: left;
+    width: 30px;
+    height: 27px;
+}
+#Hyno_ContenFolder .header_1{
+    font-size: 16px;
+    font-weight: bold;
+}
+#Hyno_ContenFolder .iconos{
+    width: 100px;
+    padding: 0 0 15px;
+    display: inline-block;
+    text-align: center;
+    line-height: 100%;
+    border:none;
+}
+.nav-header {
+    height: 30px;
+    /*position: fixed;*/
+    top: 0px;
+    right: 0px;
+    left: 0px;
+    background-color: #FFF;
+    z-index: 10;
+    border-bottom: 1px solid #AECEEF;
+    box-shadow: 0px 0px 4px #CCC;
+    vertical-align: middle;
+}
+div {
+    display: block;
+}
+body, input, textarea, select, button, .normal {
+    font-family: "Open Sans", "lucida grande", "Segoe UI", arial, verdana, "lucida sans unicode", tahoma, sans-serif;
+    font-size: 13px;
+    color: #444;
+    font-weight: normal;
+}
+#list-view-container {
+    margin: 13px 0;
+    padding-right: 16px;
+}
+.gallery-view-section {
+    background-color: #fff;
+    border: 1px solid #ccdbeb;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    padding-top: 16px;
+    padding-left: 16px;
+}
+#list-view-container #list-view-header {
+    color: #777;
+    margin: 4px 0 10px;
+}
+html[xmlns] .clearfix {
+    display: block;
+}
+.clearfix::after {
+    content: ".";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    line-height: 0;
+    height: 0;
+}
+.list-view-cols .filename-col {
+    width: 70%;
+}
+.list-view-cols div {
+    float: left;
+    display: block;
+}
+.list-view-cols .filesize-col {
+    width: 15%;
+}
+.list-view-cols .modified-col {
+    width: 15%;
+    float: left;
+}
+body.shmodel-body #page-content ol.browse-files {
+    -webkit-padding-start: 0px;
+    padding-left: 0;
+    margin-left: 0;
+}
+ol.browse-files {
+    padding: 0 0 9px;
+}
+.gallery-list-view {
+    margin: 0;
+}
+ol {
+    display: block;
+    list-style-type: decimal;
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+}
+#list-view-container .browse-file:first-child {
+    padding-top: 7px;
+}
+#list-view-container .browse-files .browse-file {
+    border-width: 1px 0 0 0;
+}
+.gallery-list-view .browse-file {
+    text-align: left;
+    padding: 7px 0;
+    margin: 0 0px;
+    line-height: 32px;
+    color: #555;
+    border-width: 1px 0 0 0;
+}
+li.browse-file, li.browse-new-folder {
+    list-style: none;
+    position: relative;
+    border: 1px solid #edf1f5;
+    font-size: 13px;
+    zoom: 1;
+}
+li {
+    display: list-item;
+}
+.gallery-list-view .browse-file div {
+    display: block;
+    cursor: default;
+}
+.list-view-cols .filename-col {
+    width: 70%;
+}
+.list-view-cols div {
+    float: left;
+}
+a {
+    color: #1f8ce6;
+    text-decoration: none;
+}
+a, a * {
+    cursor: pointer;
+    outline: none;
+}
+.gallery-list-view .browse-file {
+    text-align: left;
+    line-height: 32px;
+}
+li.browse-file, li.browse-new-folder {
+    list-style: none;
+    font-size: 13px;
+}
+.gallery-list-view .browse-file div {
+    display: block;
+    cursor: default;
+}
+.list-view-cols div {
+    float: left;
+}
+.gallery-list-view .browse-file img.icon {
+    float: left;
+    width: 32px;
+    height: 32px;
+    margin-right: 8px;
+    display: block;
+    overflow: hidden;
+    background-color: transparent;
+    vertical-align: bottom;
+    border: 1px solid transparent;
+    cursor: pointer;
+}
+.s_web_page_white_cup_32 {
+    background-position: left -6487px;
+}
+.sprite_web {
+    background-image: url(img/web_sprites-vfl0GXWGe.png);
+    background-repeat: no-repeat;
+}
+.gallery-list-view .browse-file div {
+    display: block;
+    cursor: default;
+}
+.list-view-cols .filesize-col {
+    width: 15%;
+}
+.gallery-list-view .browse-file div {
+    display: block;
+    cursor: default;
+}
+.list-view-cols .modified-col {
+    width: 15%;
+    float: left;
+}
