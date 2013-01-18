@@ -1,7 +1,7 @@
 === Dropbox Folder Share ===
 Contributors: Hyno, antony_salas
 Tags: Dropbox, Folder,Cloud, Folder Sahre, post, content, contenido, nube
-Requires at least: 3.3
+Requires at least: 3.4
 Tested up to: 3.4.2
 Stable tag: trunk
 License: GPLv2
@@ -27,7 +27,7 @@ Leer **[Mas > Descripcion](http://www.hyno.ok.pe/wp-plugins/dropbox-folder-share
 2. Activarlo entrando a "administracion de Plugins" (AdminPanel/Plugins).
 3. Podras usar el Plugin con el ShortCode o con el boton en editor de Wordpress:
 
-PD. Habilitar la extension php_openssl.dll en php.ini.
+PD. Habilitar la extension **php_openssl.dll** en **php.ini**.
 
 Leer **[Mas > Instalacion](http://www.hyno.ok.pe/wp-plugins/dropbox-folder-share/)**
 
@@ -36,6 +36,9 @@ Leer **[Mas > Instalacion](http://www.hyno.ok.pe/wp-plugins/dropbox-folder-share
 * Version inicial.
 
 == Frequently Asked Questions ==
+**¿Error con el plugin?**
+Reportalo en la pagina del autor.
+
 ** Si tiene alguna pregunta sobre este plugin, estaremos encantados de resolverlo **
 Puede visitar nuestra pagina para saber mas respecto a este plugin.
 
@@ -46,7 +49,7 @@ Leer **[Mas > Preguntas y Respuestas](http://www.hyno.ok.pe/wp-plugins/dropbox-f
 Iniciando proyecto.
 
 == Screenshots ==
-1. Boton en el editor.
-2. Contenido publicado en modo lista.
-3. Contenido publicado en modo iconos.
-4. Popup de insercion de contenido.
+1. Boton en el editor
+2. Contenido publicado en modo **lista**
+3. Contenido publicado en modo **iconos**
+4. Popup de insercion de contenido en editor
