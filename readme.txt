@@ -1,4 +1,4 @@
-=== Bible Post ===
+=== Dropbox Folder Share ===
 Contributors: Hyno, antony_salas
 Tags: Dropbox, Folder,Cloud, Folder Sahre, post, content, contenido, nube
 Requires at least: 3.3
