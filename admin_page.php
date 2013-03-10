@@ -32,27 +32,27 @@ $txt_mostrar_actualizacion = $mostrar_actualizacion == "1" ? 'value="on" checked
             <div class="metabox-holder columns-2" id="post-body">
                 <div id="post-body-content">
                     <div class="stuffbox" id="instrucciones_hyno">
-                        <h3><?php _e('Instrucciones de Uso', 'dropbox-foldershare'); ?></h3>
+                        <h3><?php _e('Instrucciones de Uso', 'dropbox-folder-share'); ?></h3>
                         <div class="inside">
                             <ol>
-                                <!--<li><?php _e('Usar el widget para compartir una carpeta', 'dropbox-foldershare'); ?></li>-->
-                                <li><?php _e('Usa la etiqueta [dropbox-foldershare-hyno] para compartir una carpeta en tus post:', 'dropbox-foldershare'); ?><br />
+                                <!--<li><?php _e('Usar el widget para compartir una carpeta', 'dropbox-folder-share'); ?></li>-->
+                                <li><?php _e('Usa la etiqueta [dropbox-foldershare-hyno] para compartir una carpeta en tus post:', 'dropbox-folder-share'); ?><br />
                                     [dropbox-foldershare-hyno link="LNK_FOLDER" ver_como='lista'] (Parametros abajo)</li>
                             </ol>
                         </div>
                     </div>
                     <div class="stuffbox" id="version_defecto">
                         <h3>
-                            <?php _e('Valores Predeterminados', 'dropbox-foldershare'); ?>
+                            <?php _e('Valores Predeterminados', 'dropbox-folder-share'); ?>
                         </h3>
                         <div class="inside">
                             <table cellpadding="0" class="links-table">
                                 <tbody>
                                     <tr>
-                                        <th scope="row"><label for="db_fs_hyno_vista"><?php _e('Modo de Visualizacion', 'dropbox-foldershare'); ?></label></th>
+                                        <th scope="row"><label for="db_fs_hyno_vista"><?php _e('Modo de Visualizacion', 'dropbox-folder-share'); ?></label></th>
                                         <td>
                                             <input type="radio" name="db_fs_hyno_vista" id="h_show_as" value="lista" <?php echo $show_as_list; ?> />
-                                            <?php _e('Lista', 'dropbox-foldershare'); ?>
+                                            <?php _e('Lista', 'dropbox-folder-share'); ?>
                                             <script type="text/javascript">
                                                 jQuery(document).ready( function() {
                                                     jQuery('input:radio[name=db_fs_hyno_vista]').click(function(){
@@ -72,9 +72,9 @@ $txt_mostrar_actualizacion = $mostrar_actualizacion == "1" ? 'value="on" checked
                                             }
                                             ?>
                                             <div id="txt_id_pag" <?php echo $contenido_mostrar; ?>>
-                                                <input type="checkbox" name="chk_show_icons" <?php echo $txt_mostrar_iconos; ?>/><?php _e('Mostrar Iconos', 'dropbox-foldershare'); ?><br/>
-                                                <input type="checkbox" name="chk_show_size" <?php echo $txt_mostrar_size; ?>/><?php _e('Mostrar Tamaño', 'dropbox-foldershare'); ?><br/>
-                                                <input type="checkbox" name="chk_show_changed" <?php echo $txt_mostrar_actualizacion; ?>/><?php _e('Mostrar Fecha de Moficacion', 'dropbox-foldershare'); ?><br/>
+                                                <input type="checkbox" name="chk_show_icons" <?php echo $txt_mostrar_iconos; ?>/><?php _e('Mostrar Iconos', 'dropbox-folder-share'); ?><br/>
+                                                <input type="checkbox" name="chk_show_size" <?php echo $txt_mostrar_size; ?>/><?php _e('Mostrar Tamaño', 'dropbox-folder-share'); ?><br/>
+                                                <input type="checkbox" name="chk_show_changed" <?php echo $txt_mostrar_actualizacion; ?>/><?php _e('Mostrar Fecha de Moficacion', 'dropbox-folder-share'); ?><br/>
                                             </div>
                                             <input type="radio" name="db_fs_hyno_vista" value="iconos" <?php echo $show_as_icons; ?> />
                                             <?php _e('Iconos', 'bible-post'); ?>
@@ -86,10 +86,10 @@ $txt_mostrar_actualizacion = $mostrar_actualizacion == "1" ? 'value="on" checked
                     </div>
                     <div class="stuffbox" id="modo_insercion">
                         <h3>
-                            <?php _e('Configuracion de Conexion', 'dropbox-foldershare'); ?>
+                            <?php _e('Configuracion de Conexion', 'dropbox-folder-share'); ?>
                         </h3>
                         <div class="inside">
-                            <em><p> <?php _e('Seleccione el modo de conexion que mas le convenga.', 'dropbox-foldershare'); ?></p></em>
+                            <em><p> <?php _e('Seleccione el modo de conexion que mas le convenga.', 'dropbox-folder-share'); ?></p></em>
                             <input type="radio" name="db_fs_hyno_conexion" value="fopen" <?php echo $fopen_sel; ?> />
                             fopen<br />
                             <input type="radio" name="db_fs_hyno_conexion" disabled="disabled" value="curl" <?php echo $curl_sel; ?> />
@@ -102,13 +102,13 @@ $txt_mostrar_actualizacion = $mostrar_actualizacion == "1" ? 'value="on" checked
                     <div class="meta-box-sortables ui-sortable" id="side-sortables">
                         <div class="postbox " id="linksubmitdiv">
                             <h3 class="hndle"><span>
-                                    <?php _e('Guardar Configuracion', 'dropbox-foldershare'); ?>
+                                    <?php _e('Guardar Configuracion', 'dropbox-folder-share'); ?>
                                 </span></h3>
                             <div class="inside">
                                 <div id="submitlink" class="submitbox">
                                     <div id="minor-publishing">
                                         <div id="misc-publishing-actions">
-                                            <p class="popular-tags"><?php _e('Hola, espero que disfruten de mi plugin. Me llevó un montón de horas para hacerlo. Una gran cantidad de galletas y jugo de uva que se derramó sobre el teclado en la creación de este plugin. Si te gusta, me podrías ayudar invitandome un café recién hecho.', 'dropbox-foldershare'); ?> </p>
+                                            <p class="popular-tags"><?php _e('Hola, espero que disfruten de mi plugin. Me llevó un montón de horas para hacerlo. Una gran cantidad de galletas y jugo de uva que se derramó sobre el teclado en la creación de este plugin. Si te gusta, me podrías ayudar invitandome un café recién hecho.', 'dropbox-folder-share'); ?> </p>
                                             <div class="misc-pub-section center">
                                                 <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
                                                     <input type="hidden" name="cmd" value="_s-xclick">
@@ -123,7 +123,7 @@ $txt_mostrar_actualizacion = $mostrar_actualizacion == "1" ? 'value="on" checked
                                     <div id="major-publishing-actions">
                                         <div id="delete-action"> <a href="http://www.hyno.ok.pe" target="_blank">HynoTech Web</a> </div>
                                         <div id="publishing-action">
-                                            <input type="submit" value="<?php _e('Guardar', 'dropbox-foldershare'); ?>" tabindex="4" id="publish" class="button-primary" name="bp_hyno_update" />
+                                            <input type="submit" value="<?php _e('Guardar', 'dropbox-folder-share'); ?>" tabindex="4" id="publish" class="button-primary" name="bp_hyno_update" />
                                         </div>
                                         <div class="clear"></div>
                                     </div>
@@ -138,7 +138,7 @@ $txt_mostrar_actualizacion = $mostrar_actualizacion == "1" ? 'value="on" checked
                         <hr />
                         <div class="stuffbox" id="modo_insercion">
                             <h3>
-                                <?php _e('Parametros de Shortcode', 'dropbox-foldershare'); ?>
+                                <?php _e('Parametros de Shortcode', 'dropbox-folder-share'); ?>
                             </h3>
                             <div class="inside">
                                 <p class="popular-tags"><em>[dropbox-foldershare-hyno link="LNK_FOLDER" ver_como='iconos']</em></p>
@@ -146,11 +146,11 @@ $txt_mostrar_actualizacion = $mostrar_actualizacion == "1" ? 'value="on" checked
                                     <tbody>
                                         <tr>
                                             <th scope="row">link</th>
-                                            <td><?php _e('URL de la carpeta compartida de DropBox.', 'dropbox-foldershare'); ?></td>
+                                            <td><?php _e('URL de la carpeta compartida de DropBox.', 'dropbox-folder-share'); ?></td>
                                         </tr>
                                         <tr>
                                             <th scope="row">ver_como</th>
-                                            <td><?php _e('Como se mostrara la carpeta (<b>iconos</b> o <b>lista</b>).', 'dropbox-foldershare'); ?></td>
+                                            <td><?php _e('Como se mostrara la carpeta (<b>iconos</b> o <b>lista</b>).', 'dropbox-folder-share'); ?></td>
                                         </tr>
                                     </tbody>
                                 </table>

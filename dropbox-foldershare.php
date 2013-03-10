@@ -2,9 +2,9 @@
 
 /**
  * Plugin Name: DropBox Folder Share
- * Plugin URI: http://www.hyno.ok.pe/seccion/wp-plugins/dropbox-foldershare/
+ * Plugin URI: http://www.hyno.ok.pe/wp-plugins/dropbox-folder-share/
  * Description: Plugin que permitira incluir carpetas de DropBox en nuestras entradas de blog.
- * Version: 1.0
+ * Version: 1.1
  * Author: Antonio Salas (Hyno)
  * Author URI: http://www.hyno.ok.pe
  * License:     GNU General Public License
@@ -21,7 +21,7 @@ if (!class_exists("DropBoxFolderShare")) {
         }
 
         public function load_plugin_textdomain() {
-            load_plugin_textdomain('dropbox-foldershare', FALSE, dirname(plugin_basename(__FILE__)) . '/languages/');
+            load_plugin_textdomain('dropbox-folder-share', FALSE, dirname(plugin_basename(__FILE__)) . '/languages/');
         }
 
         function activate() {
@@ -81,7 +81,7 @@ if (!class_exists("DropBoxFolderShare")) {
 
                 // updated message
                 echo "<div id=\"message\" class=\"updated fade\"><p><strong>";
-                _e('Opciones de "DropBox Folder Share" Actualizados.', 'dropbox-foldershare');
+                _e('Opciones de "DropBox Folder Share" Actualizados.', 'dropbox-folder-share');
                 echo "</strong></p></div>";
             }
             require_once ('admin_page.php');
@@ -103,19 +103,19 @@ if (!class_exists("DropBoxFolderShare")) {
             $widget_ops = array('classname' => 'db_fs_hyno', 'description' => __('Widget DropBox Folder Share'));
             $control_ops = array('id_base' => 'db_fs_hyno-widget');
 
-            $this->WP_Widget('db_fs_hyno-widget', __('Widget DropBox Folder Share', 'dropbox-foldershare'), $widget_ops, $control_ops);
+            $this->WP_Widget('db_fs_hyno-widget', __('Widget DropBox Folder Share', 'dropbox-folder-share'), $widget_ops, $control_ops);
         }
 
         function replace_shortcode($atts) {
             // set defaults 
             extract(shortcode_atts(array(
-                        'link' => get_option('db_fs_hyno_link'),
-                        'ver_como' => get_option('db_fs_hyno_show')/* ,
+                'link' => get_option('db_fs_hyno_link'),
+                'ver_como' => get_option('db_fs_hyno_show')/* ,
                               'icons' => get_option('db_fs_hyno_icons'),
                               'changet' => get_option('db_fs_hyno_changed'),
                               'size' => get_option('db_fs_hyno_size') */
                             ), $atts));
-            return $this->get_folder($link,$ver_como);
+            return $this->get_folder($link, $ver_como);
         }
 
         function formatFileNames($name) {
@@ -143,7 +143,7 @@ if (!class_exists("DropBoxFolderShare")) {
             return $retorno;
         }
 
-        function get_folder($link,$ver_como='') {
+        function get_folder($link, $ver_como = '') {
             $url = $link;
             $content = $this->fetch_url($url);
             if ($content != "") {
@@ -161,101 +161,118 @@ if (!class_exists("DropBoxFolderShare")) {
                     $fin = strpos($script_nombres, 'window.c2d_tabs', $inicio);
                     $cadena = substr($script_nombres, $inicio, $fin - $inicio);
                     $data_lineas = explode('.escapeHTML();', $cadena);
-                    $file_data = array();
+                    if (count($data_lineas) > 1) {
 
-                    foreach ($data_lineas as $links) {
-                        //'$('emsnippet-321be91d24995cbc').innerHTML = 'E01'.em_snippet(50, 0.750)'
-                        $links = trim($links);
-                        $data_link = explode('=', $links);
-                        // - Id de Archivo - //
-                        if ($data_link[0] != "") {
-                            $num_car = strlen($data_link[0]);
-                            $inicio_id_archivo = '$(';
-                            $fin_id_archivo = ').';
-                            $total = strpos($data_link[0], $inicio_id_archivo) + 3;
-                            $total2 = strpos($data_link[0], $fin_id_archivo);
-                            $total3 = ($num_car - $total2 + 1);
-                            $id_archivo = substr($data_link[0], $total, -$total3);
-                            // - Nombre de Archivo - //
-                            $num_car = strlen($data_link[1]);
-                            $inicio_nombre_archivo = "'";
-                            $fin_nombre_archivo = "'.";
-                            $total = strpos($data_link[1], $inicio_nombre_archivo) + 1;
-                            $total2 = strpos($data_link[1], $fin_nombre_archivo);
-                            $total3 = ($num_car - $total2 );
-                            $nombre_archivo = substr($data_link[1], $total, -$total3);
+                        $file_data = array();
 
-                            $tam_nombre = strlen($this->formatFileNames($nombre_archivo));
-                            if ($tam_nombre > 16) {
-                                $nnnn = substr($this->formatFileNames($nombre_archivo), 0, 16) . '...';
-                            } else {
-                                $nnnn = $this->formatFileNames($nombre_archivo);
-                            }
+                        foreach ($data_lineas as $links) {
+                            //'$('emsnippet-321be91d24995cbc').innerHTML = 'E01'.em_snippet(50, 0.750)'
+                            $links = trim($links);
+                            $data_link = explode('=', $links);
+                            // - Id de Archivo - //
+                            $es_carpeta = 1;
+                            if ($data_link[0] != "") {
+                                $num_car = strlen($data_link[0]);
+                                /* id data */
+                                $inicio_id_archivo = 'on(';
+                                $fin_id_archivo = ').';
 
+                                //echo strpos($data_link[0], $inicio_id_archivo).'<br>';
+                                //echo strpos($data_link[0], $fin_id_archivo).'<br>';
 
-                            $file_data['id'][] = $id_archivo;
-                            $file_data['nombre'][] = $nnnn;
-                        }
-                    }
-                    //echo var_dump($file_data);
-                    //echo "<textarea cols=80 rows=10>".$ver_como."</textarea>";
-                    //echo "<pre>".  print_r($data_lineas)."</pre>";
-                    //echo "<textarea cols=80 rows=10>". var_dump($file_data)."</textarea>";
-                    //echo "<textarea cols=80 rows=10>".$cadena."</textarea>";
-                    foreach ($div_contenedor->find('script') as $scripts) {
-                        $scripts->outertext = '';
-                    }
-                    $data_all_files = array();
-                    foreach ($div_contenedor->find('div[class=nav-header] span[id=shmodel-status] img') as $nombre_carpeta) {
-                        $nombre_carpeta = $nombre_carpeta->class;
-                    }
-                    //echo $nombre_carpeta;
-                    foreach ($div_contenedor->find('li[class=browse-file]') as $archivos) {
-                        foreach ($archivos->find('div[class=filename] span') as $file_names) {
-                            foreach ($file_data['id'] as $key => $value) {
-                                if ($file_names->id === $value) {
-                                    $file_names->innertext = $file_data['nombre'][$key];
+                                $total = strpos($data_link[0], $inicio_id_archivo) + 4;
+                                $total2 = strpos($data_link[0], $fin_id_archivo);
+                                $total3 = ($num_car - $total2 + 2);
+                                $id_archivo = substr($data_link[0], $total + 1, -$total3);
+                                $id_archivo = eregi_replace('\"', '', $this->formatFileNames($id_archivo));
+                                // - Nombre de Archivo - //
+                                $num_car = strlen($data_link[1]);
+                                $inicio_nombre_archivo = "'";
+                                $fin_nombre_archivo = "')";
+                                $total = strpos($data_link[1], $inicio_nombre_archivo) + 1;
+                                $total2 = strpos($data_link[1], $fin_nombre_archivo);
+                                $total3 = ($num_car - $total2 );
+                                $nombre_archivo = substr($data_link[1], $total, -$total3);
+
+                                $tam_nombre = strlen($this->formatFileNames($nombre_archivo));
+                                if ($tam_nombre > 16) {
+                                    $nnnn = substr($this->formatFileNames($nombre_archivo), 0, 16) . '...';
+                                } else {
+                                    $nnnn = $this->formatFileNames($nombre_archivo);
                                 }
+                                if ($es_carpeta > 0) {
+                                    $nnnn = $this->formatFileNames($nombre_archivo);
+                                    $es_carpeta = 0;
+                                }
+
+
+                                $file_data['id'][] = $this->formatFileNames($id_archivo);
+                                $file_data['nombre'][] = $nnnn;
                             }
                         }
-                        foreach ($archivos->find('div[class=filename] a') as $datos) {
-                            $data_all_files['link'][] = $datos->href;
-                        }
-                        foreach ($archivos->find('a img') as $datos) {
-                            $data_all_files['icon_class'][] = $datos->class;
-                        }
-                        foreach ($archivos->find('div[class=filename] span') as $datos) {
-                            $data_all_files['id'][] = $datos->id;
-                        }
-                        foreach ($archivos->find('div[class=filename] span') as $datos) {
-                            $data_all_files['nombre'][] = $datos->innertext;
-                        }
-                        foreach ($archivos->find('div[class=filesize-col] span') as $datos) {
-                            $data_all_files['peso'][] = $datos->innertext;
-                        }
-                        foreach ($archivos->find('div[class=modified-col] span[!class]') as $datos) {
-                            $data_all_files['modificado'][] = $datos->innertext;
+                        //echo var_dump($file_data['id']);
+                        //echo "<textarea cols=80 rows=10>".$ver_como."</textarea>";
+                        //echo "<pre>".  print_r($data_lineas)."</pre>";
+                        //echo "<textarea cols=80 rows=10>". var_dump($file_data)."</textarea>";
+                        //echo "<textarea cols=80 rows=10>".$cadena."</textarea>";
+
+                        foreach ($div_contenedor->find('script') as $scripts) {
+                            $scripts->outertext = '';
                         }
 
-                    }
-                    $print_first = '<div id="Hyno_ContenFolder"><div class="nav-header">
+                        $data_all_files = array();
+                        foreach ($div_contenedor->find('li[class=browse-file]') as $archivos) {
+
+                            foreach ($archivos->find('div[class=filename] span') as $file_names) {
+                                foreach ($file_data['id'] as $key => $value) {
+                                    //echo $key.'->>>'.$value.'<br>';
+                                    //echo $file_names->id.'<br>';
+                                    if ($file_names->id == $value) {
+                                        $file_names->innertext = $file_data['nombre'][$key];
+                                    }
+                                }
+                            }//echo "<textarea cols=80 rows=10>".$file_names."</textarea>";
+                            foreach ($archivos->find('div[class=filename] a') as $datos) {
+                                $data_all_files['link'][] = $datos->href;
+                            }
+                            foreach ($archivos->find('a img') as $datos) {
+                                $data_all_files['icon_class'][] = $datos->class;
+                            }
+                            foreach ($archivos->find('div[class=filename] span') as $datos) {
+                                $id_nombre = $datos->id;
+                                $data_all_files['id'][] = $datos->id;
+                            }
+                            foreach ($archivos->find('span[id=' . $id_nombre . ']') as $datos) {
+                                $data_all_files['nombre'][] = eregi_replace('\"', '', $datos->innertext);
+                                //$id_archivo = eregi_replace('\"','',$this->formatFileNames($id_archivo));
+                                //echo $datos->innertext;
+                            }
+                            foreach ($archivos->find('div[class=filesize-col] span') as $datos) {
+                                $data_all_files['peso'][] = $datos->innertext;
+                            }
+                            foreach ($archivos->find('div[class=modified-col] span[!class]') as $datos) {
+                                $data_all_files['modificado'][] = $datos->innertext;
+                            }
+                        }
+                        //echo var_dump($data_all_files);
+                        $print_first = '<div id="Hyno_ContenFolder"><div class="nav-header">
                         <div id="icon_folder"></div>
-                        <span id="folder-title" class="shmodel-filename header_1">Dropbox://<span id="' . $file_data['id'][0] . '">' . $file_data['nombre'][0] . '</span></span>
+                        <span id="folder-title" class="shmodel-filename header_1">Dropbox://<span id="' . $file_data['id'][0] . '">' . eregi_replace('\"', '', $file_data['nombre'][0]) . '</span></span>
                         </div>
 <div style="" id="list-view-container" class="gallery-view-section">
 ';
-                    $print_list = '
+                        $print_list = '
   <div id="list-view-header" class="list-view-cols clearfix">
     <div class="filename-col">Nombre</div>
     <div class="filesize-col">Tamaño</div>
     <div class="modified-col">Modificado</div>
   </div>
   <ol class="browse-files gallery-list-view">';
-                    foreach ($data_all_files['link'] as $key => $value) {
-                        $print_list .= '
+                        foreach ($data_all_files['link'] as $key => $value) {
+                            $print_list .= '
     <li class="browse-file list-view-cols">
       <div class="filename-col"><a href="' . $value . '" target="_blank" class="thumb-link" onclick="" rel="nofollow">
-          <img src="' . plugins_url("dropbox-foldershare") . '/img/icon_spacer.gif" style="" class="' . $data_all_files['icon_class'][$key] . '" alt=""></a>
+          <img src="' . plugins_url("dropbox-folder-share") . '/img/icon_spacer.gif" style="" class="' . $data_all_files['icon_class'][$key] . '" alt=""></a>
         <div class="filename"><a href="' . $value . '" target="_blank" class="filename-link" onclick="" rel="nofollow">
             <span id="' . $data_all_files['id'][$key] . '">' . $data_all_files['nombre'][$key] . '</span></a></div>
       </div>
@@ -263,36 +280,43 @@ if (!class_exists("DropBoxFolderShare")) {
       <div class="modified-col"><span><span class="modified-time">' . $data_all_files['modificado'][$key] . '</span></span></div>
       <br class="clear">
     </li>';
-                    }
-                    $print_list .= '</ol>';
-                    $print_last = '
+                        }
+                        $print_list .= '</ol>';
+                        $print_last = '
 
   
 </div></div>';
 
-                    $print_icons = '';
-                    foreach ($data_all_files['link'] as $key => $value) {
-                        $print_icons .= '
+                        $print_icons = '';
+                        foreach ($data_all_files['link'] as $key => $value) {
+                            $print_icons .= '
 <div class="filename-col iconos"><a href="' . $value . '" target="_blank" class="thumb-link" onclick="" rel="nofollow">
-    <img src="' . plugins_url("dropbox-foldershare") . '/img/icon_spacer.gif" style="" class="' . $data_all_files['icon_class'][$key] . '" alt=""></a>
+    <img src="' . plugins_url("dropbox-folder-share") . '/img/icon_spacer.gif" style="" class="' . $data_all_files['icon_class'][$key] . '" alt=""></a>
     <div class="filename"><a href="' . $value . '" target="_blank" class="filename-link" onclick="" rel="nofollow">
         <span id="' . $data_all_files['id'][$key] . '">' . $data_all_files['nombre'][$key] . '</span></a>
             </div>
 </div>
                     ';
-                    }
-                    //get_option('db_fs_hyno_show')
-                    if ($ver_como == 'lista') {
-                        $retorno = $print_first . $print_list . $print_last;
+                        }
+                        //get_option('db_fs_hyno_show')
+                        if ($ver_como == 'lista') {
+                            $retorno = $print_first . $print_list . $print_last;
+                        } else {
+                            $retorno = $print_first . $print_icons . $print_last;
+                        }
                     } else {
-                        $retorno = $print_first . $print_icons . $print_last;
+                        $retorno = '<div id="Hyno_ContenFolder"><div class="nav-header">
+                        <div id="icon_folder"></div>
+                        <span id="folder-title" class="shmodel-filename header_1"><span style="color: red;font-weight: black;">Error</span>://<span id="ERROR"><span style="color: red;font-style: italic; font-weight: lighter;">'._e('No se puede leer carpeta compartida', 'dropbox-folder-share').'</span></span></span>
+                        </div>
+						</div>';
                     }
                     return $retorno;
                 } else {
-                    $verse = __("No podemos Revisar ", 'dropbox-foldershare') . urldecode($lookup) . " ($url).";
+                    $verse = __("No podemos Revisar ", 'dropbox-folder-share') . urldecode($lookup) . " ($url).";
                 }
             } else {
-                $verse = __("Versiculo no encontrado.", 'dropbox-foldershare');
+                $verse = __("No encontrado", 'dropbox-folder-share');
             }
         }
 
@@ -386,7 +410,7 @@ if (!function_exists('dropbox_foldershare_styles_and_scripts')) {
         if ($shortcode_found) {
             // enqueue
             wp_enqueue_script('jquery');
-            wp_enqueue_style('bible-post-style', plugins_url("dropbox-foldershare/") . 'styles-hyno.css'); //la ruta de nuestro css
+            wp_enqueue_style('bible-post-style', plugins_url("dropbox-folder-share/") . 'styles-hyno.css'); //la ruta de nuestro css
             wp_enqueue_script('bible-post-script', plugins_url('scripts-hyno.js', __FILE__)); //en caso de necesitar la ruta de nuestro script js
         }
 
@@ -401,7 +425,8 @@ function dropboxfoldershare_add_button($buttons) {
 }
 
 function dropboxfoldershare_register_button($plugin_array) {
-    $url_biblepost = WP_PLUGIN_URL . "/dropbox-foldershare/script/DropBoxFolderShare.js";
+    //$url_biblepost = WP_PLUGIN_URL . "/dropbox-folder-share/script/DropBoxFolderShare.js";
+    $url_biblepost = plugins_url('/script/DropBoxFolderShare.js', __FILE__);
     $plugin_array['DropBoxFolderShare'] = $url_biblepost;
     return $plugin_array;
 }

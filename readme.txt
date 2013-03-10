@@ -2,7 +2,7 @@
 Contributors: Hyno, antony_salas
 Tags: Dropbox, Folder,Cloud, Folder Share, post, content, contenido, nube
 Requires at least: 3.4
-Tested up to: 3.4.2
+Tested up to: 3.5.1
 Stable tag: trunk
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -56,7 +56,14 @@ Leer **[Mas > Preguntas y Respuestas](http://www.hyno.ok.pe/wp-plugins/dropbox-f
 = 1.0 =
 * Version inicial.
 
+= 1.1 =
+* Solucion a Bugs reportados.
+
 == Upgrade Notice ==
 
 = 1.0 =
 * Iniciando proyecto.
+
+= 1.1 =
+* Gracias a su colaboracion al reportar bugs en el plugin, se pudo solucionar muchos de ellos.
+* Ahora cuando se publica un URL de Dropbox inexistente, no es Agregado.
