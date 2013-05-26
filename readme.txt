@@ -1,7 +1,7 @@
 === Dropbox Folder Share ===
 Contributors: Hyno, antony_salas
 Tags: Dropbox, Folder,Cloud, Folder Share, post, content, contenido, nube
-Requires at least: 3.4
+Requires at least: 3.0
 Tested up to: 3.5.1
 Stable tag: trunk
 License: GPLv2
@@ -59,6 +59,9 @@ Leer **[Mas > Preguntas y Respuestas](http://www.hyno.ok.pe/wp-plugins/dropbox-f
 = 1.1 =
 * Solucion a Bugs reportados.
 
+= 1.2 =
+* Cambio de Fuente de Dropbox.
+
 == Upgrade Notice ==
 
 = 1.0 =
@@ -67,3 +70,6 @@ Leer **[Mas > Preguntas y Respuestas](http://www.hyno.ok.pe/wp-plugins/dropbox-f
 = 1.1 =
 * Gracias a su colaboracion al reportar bugs en el plugin, se pudo solucionar muchos de ellos.
 * Ahora cuando se publica un URL de Dropbox inexistente, no es Agregado.
+
+= 1.2 =
+* Dropbox Cambio forma de acceso a los archivos y esto provocaba que no se mostraran los nombres de archivos (Solucionado).

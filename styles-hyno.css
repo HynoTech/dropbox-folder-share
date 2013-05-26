@@ -185,6 +185,7 @@ li.browse-file, li.browse-new-folder {
 .sprite_web {
     background-image: url(img/web_sprites-vfl0GXWGe.png);
     background-repeat: no-repeat;
+    box-shadow: none !important;
 }
 .gallery-list-view .browse-file div {
     display: block;

@@ -4,7 +4,7 @@
  * Plugin Name: DropBox Folder Share
  * Plugin URI: http://www.hyno.ok.pe/wp-plugins/dropbox-folder-share/
  * Description: Plugin que permitira incluir carpetas de DropBox en nuestras entradas de blog.
- * Version: 1.1
+ * Version: 1.2
  * Author: Antonio Salas (Hyno)
  * Author URI: http://www.hyno.ok.pe
  * License:     GNU General Public License
@@ -164,15 +164,18 @@ if (!class_exists("DropBoxFolderShare")) {
                     if (count($data_lineas) > 1) {
 
                         $file_data = array();
-
+                        //echo "<textarea cols=80 rows=10>";
                         foreach ($data_lineas as $links) {
                             //'$('emsnippet-321be91d24995cbc').innerHTML = 'E01'.em_snippet(50, 0.750)'
                             $links = trim($links);
+                            //echo $links."<br />";
                             $data_link = explode('=', $links);
+                            //echo var_dump($data_link);
                             // - Id de Archivo - //
                             $es_carpeta = 1;
                             if ($data_link[0] != "") {
                                 $num_car = strlen($data_link[0]);
+                                
                                 /* id data */
                                 $inicio_id_archivo = 'on(';
                                 $fin_id_archivo = ').';
@@ -185,15 +188,18 @@ if (!class_exists("DropBoxFolderShare")) {
                                 $total3 = ($num_car - $total2 + 2);
                                 $id_archivo = substr($data_link[0], $total + 1, -$total3);
                                 $id_archivo = eregi_replace('\"', '', $this->formatFileNames($id_archivo));
+                                //echo $id_archivo."<br />";
+                                
                                 // - Nombre de Archivo - //
                                 $num_car = strlen($data_link[1]);
-                                $inicio_nombre_archivo = "'";
-                                $fin_nombre_archivo = "')";
-                                $total = strpos($data_link[1], $inicio_nombre_archivo) + 1;
+                                $inicio_nombre_archivo = "on(";
+                                $fin_nombre_archivo = ").";
+                                $total = strpos($data_link[1], $inicio_nombre_archivo) + 6;
                                 $total2 = strpos($data_link[1], $fin_nombre_archivo);
-                                $total3 = ($num_car - $total2 );
+                                //echo $total2."<br />";
+                                $total3 = ($num_car - $total2 +3 );
                                 $nombre_archivo = substr($data_link[1], $total, -$total3);
-
+                                //echo $nombre_archivo."<br />";
                                 $tam_nombre = strlen($this->formatFileNames($nombre_archivo));
                                 if ($tam_nombre > 16) {
                                     $nnnn = substr($this->formatFileNames($nombre_archivo), 0, 16) . '...';
@@ -210,7 +216,9 @@ if (!class_exists("DropBoxFolderShare")) {
                                 $file_data['nombre'][] = $nnnn;
                             }
                         }
-                        //echo var_dump($file_data['id']);
+                        //echo "</textarea>";
+                        //echo var_dump($data_lineas);
+                        //echo var_dump($file_data['nombre']);
                         //echo "<textarea cols=80 rows=10>".$ver_como."</textarea>";
                         //echo "<pre>".  print_r($data_lineas)."</pre>";
                         //echo "<textarea cols=80 rows=10>". var_dump($file_data)."</textarea>";
@@ -307,7 +315,7 @@ if (!class_exists("DropBoxFolderShare")) {
                     } else {
                         $retorno = '<div id="Hyno_ContenFolder"><div class="nav-header">
                         <div id="icon_folder"></div>
-                        <span id="folder-title" class="shmodel-filename header_1"><span style="color: red;font-weight: black;">Error</span>://<span id="ERROR"><span style="color: red;font-style: italic; font-weight: lighter;">'._e('No se puede leer carpeta compartida', 'dropbox-folder-share').'</span></span></span>
+                        <span id="folder-title" class="shmodel-filename header_1"><span style="color: red;font-weight: black;">Error</span>://<span id="ERROR"><span style="color: red;font-style: italic; font-weight: lighter;">' . _e('No se puede leer carpeta compartida', 'dropbox-folder-share') . '</span></span></span>
                         </div>
 						</div>';
                     }
