@@ -1,0 +1,112 @@
+# Copyright (C) 2013 
+# This file is distributed under the same license as the  package.
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/dropbox-folder-share\n"
+"POT-Creation-Date: 2013-03-10 05:58:29+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2013-03-10 01:23-0500\n"
+"Last-Translator: Antonio Salas <antony.salas@gmail.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"X-Generator: Poedit 1.5.5\n"
+
+#: admin_page.php:35
+msgid "Instrucciones de Uso"
+msgstr ""
+
+#: admin_page.php:38
+msgid "Usar el widget para compartir una carpeta"
+msgstr ""
+
+#: admin_page.php:39
+msgid ""
+"Usa la etiqueta [dropbox-foldershare-hyno] para compartir una carpeta en tus "
+"post:"
+msgstr ""
+
+#: admin_page.php:46
+msgid "Valores Predeterminados"
+msgstr ""
+
+#: admin_page.php:52
+msgid "Modo de Visualizacion"
+msgstr ""
+
+#: admin_page.php:55
+msgid "Lista"
+msgstr ""
+
+#: admin_page.php:75
+msgid "Mostrar Iconos"
+msgstr ""
+
+#: admin_page.php:76
+msgid "Mostrar Tamaño"
+msgstr ""
+
+#: admin_page.php:77
+msgid "Mostrar Fecha de Moficacion"
+msgstr ""
+
+#: admin_page.php:80
+msgid "Iconos"
+msgstr ""
+
+#: admin_page.php:89
+msgid "Configuracion de Conexion"
+msgstr ""
+
+#: admin_page.php:92
+msgid "Seleccione el modo de conexion que mas le convenga."
+msgstr ""
+
+#: admin_page.php:105
+msgid "Guardar Configuracion"
+msgstr ""
+
+#: admin_page.php:111
+msgid ""
+"Hola, espero que disfruten de mi plugin. Me llevó un montón de horas para "
+"hacerlo. Una gran cantidad de galletas y jugo de uva que se derramó sobre el "
+"teclado en la creación de este plugin. Si te gusta, me podrías ayudar "
+"invitandome un café recién hecho."
+msgstr ""
+
+#: admin_page.php:126
+msgid "Guardar"
+msgstr ""
+
+#: admin_page.php:141
+msgid "Parametros de Shortcode"
+msgstr ""
+
+#: admin_page.php:149
+msgid "URL de la carpeta compartida de DropBox."
+msgstr ""
+
+#: admin_page.php:153
+msgid "Como se mostrara la carpeta (<b>iconos</b> o <b>lista</b>)."
+msgstr ""
+
+#: dropbox-foldershare.php:84
+msgid "Opciones de \"DropBox Folder Share\" Actualizados."
+msgstr ""
+
+#: dropbox-foldershare.php:103 dropbox-foldershare.php:106
+msgid "Widget DropBox Folder Share"
+msgstr ""
+
+#: dropbox-foldershare.php:310
+msgid "No se puede leer carpeta compartida"
+msgstr ""
+
+#: dropbox-foldershare.php:316
+msgid "No podemos Revisar "
+msgstr ""
+
+#: dropbox-foldershare.php:319
+msgid "No encontrado"
+msgstr ""

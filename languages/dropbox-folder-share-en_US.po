@@ -1,0 +1,115 @@
+# Copyright (C) 2013 
+# This file is distributed under the same license as the  package.
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/dropbox-folder-share\n"
+"POT-Creation-Date: 2013-03-10 05:58:29+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2013-03-10 01:22-0500\n"
+"Last-Translator: Antonio Salas <antony.salas@gmail.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"X-Generator: Poedit 1.5.5\n"
+
+#: admin_page.php:35
+msgid "Instrucciones de Uso"
+msgstr "Instructions"
+
+#: admin_page.php:38
+msgid "Usar el widget para compartir una carpeta"
+msgstr "Use the widget to share a folder"
+
+#: admin_page.php:39
+msgid ""
+"Usa la etiqueta [dropbox-foldershare-hyno] para compartir una carpeta en tus "
+"post:"
+msgstr "Use tag [dropbox-foldershare-hyno] to share a folder in your posts."
+
+#: admin_page.php:46
+msgid "Valores Predeterminados"
+msgstr "Defaults"
+
+#: admin_page.php:52
+msgid "Modo de Visualizacion"
+msgstr "View Mode"
+
+#: admin_page.php:55
+msgid "Lista"
+msgstr "List"
+
+#: admin_page.php:75
+msgid "Mostrar Iconos"
+msgstr "Show Icons"
+
+#: admin_page.php:76
+msgid "Mostrar Tamaño"
+msgstr "Show Size"
+
+#: admin_page.php:77
+msgid "Mostrar Fecha de Moficacion"
+msgstr "Show Date Change"
+
+#: admin_page.php:80
+msgid "Iconos"
+msgstr "Icons"
+
+#: admin_page.php:89
+msgid "Configuracion de Conexion"
+msgstr "Connection Settings"
+
+#: admin_page.php:92
+msgid "Seleccione el modo de conexion que mas le convenga."
+msgstr "Select the connection mode that suits you."
+
+#: admin_page.php:105
+msgid "Guardar Configuracion"
+msgstr "Save Settings"
+
+#: admin_page.php:111
+msgid ""
+"Hola, espero que disfruten de mi plugin. Me llevó un montón de horas para "
+"hacerlo. Una gran cantidad de galletas y jugo de uva que se derramó sobre el "
+"teclado en la creación de este plugin. Si te gusta, me podrías ayudar "
+"invitandome un café recién hecho."
+msgstr ""
+"Hello, I hope you enjoy my plugin.It took a lot of hours to do. A lot of "
+"crackers and grape juice spilled on the creation of this plugin. If you "
+"like, you could help me inviting me fresh coffee."
+
+#: admin_page.php:126
+msgid "Guardar"
+msgstr "Save"
+
+#: admin_page.php:141
+msgid "Parametros de Shortcode"
+msgstr "Shortcode Parameters"
+
+#: admin_page.php:149
+msgid "URL de la carpeta compartida de DropBox."
+msgstr "URL of the shared folder of DropBox."
+
+#: admin_page.php:153
+msgid "Como se mostrara la carpeta (<b>iconos</b> o <b>lista</b>)."
+msgstr "As will be shown the folder (<b>icons</b> or <b>list</b>)."
+
+#: dropbox-foldershare.php:84
+msgid "Opciones de \"DropBox Folder Share\" Actualizados."
+msgstr "\"DropBox Folder Share\" Options Updated."
+
+#: dropbox-foldershare.php:103 dropbox-foldershare.php:106
+msgid "Widget DropBox Folder Share"
+msgstr "Widget DropBox Folder Share"
+
+#: dropbox-foldershare.php:310
+msgid "No se puede leer carpeta compartida"
+msgstr "Unable to read shared folder"
+
+#: dropbox-foldershare.php:316
+msgid "No podemos Revisar "
+msgstr "We can not review"
+
+#: dropbox-foldershare.php:319
+msgid "No encontrado"
+msgstr "Not Found"
