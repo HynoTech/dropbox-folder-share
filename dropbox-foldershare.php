@@ -16,12 +16,38 @@ if (!class_exists("DropBoxFolderShare")) {
 
     class DropBoxFolderShare {
 
+        const VERSION = "1.2";
+        const VERSION_ADMIN = "1.2";
+        const VERSION_CSS = "1.2";
+        const VERSION_JS = "1.2";
+        const PARENT_PAGE = 'options-general.php';
+
+        public static $basename;
+        public static $name;
+        public static $ver_como;
+        var $lista;
+        var $conection_type;
+        var $folder_url;
+
         function __construct() {
-            //add_action('init', array($this, 'load_plugin_textdomain'));
+            load_plugin_textdomain(self::$name, false, self::$name . '/languages/');
+            $this->default_settings();
         }
 
-        public function load_plugin_textdomain() {
-            load_plugin_textdomain('dropbox-folder-share', FALSE, dirname(plugin_basename(__FILE__)) . '/languages/');
+        public static function init_data() {
+            self::$basename = plugin_basename(__FILE__);
+            self::$name = dirname(self::$basename);
+        }
+
+        function default_settings() {
+            $this->lista = array(
+                "estado" => false,
+                "showIcons" => true,
+                "showSize" => true,
+                "showChange" => true
+            );
+            $this->conection_type = "fopen";
+            $this->folder_url = "#";
         }
 
         function activate() {
@@ -30,7 +56,7 @@ if (!class_exists("DropBoxFolderShare")) {
             add_option("db_fs_hyno_icons", '1');
             add_option("db_fs_hyno_size", '1');
             add_option("db_fs_hyno_changed", '0');
-            add_option("db_fs_hyno_conexion", 'fopen');
+            add_option("db_fs_hyno_conexion", 'curl');
             add_option("db_fs_hyno_link", '#');
         }
 
@@ -45,7 +71,7 @@ if (!class_exists("DropBoxFolderShare")) {
         }
 
         function add_admin_page() {
-            add_submenu_page('options-general.php', '(Hyno)DropBox Folder Share', 'DropBox Folder Share', 10, __file__, array(&$this, 'admin_page'));
+            add_submenu_page(self::PARENT_PAGE, 'DropBox Folder Share by HynoTech', 'DropBox Folder Share', 10, __file__, array(&$this, 'admin_page'));
         }
 
         function admin_page() {
@@ -85,25 +111,6 @@ if (!class_exists("DropBoxFolderShare")) {
                 echo "</strong></p></div>";
             }
             require_once ('admin_page.php');
-        }
-
-        /*
-          function widget_init() {
-          if (!function_exists('register_sidebar_widget') || !function_exists('register_widget_control'))
-          return;
-          register_widget('DropBoxFolderShareWidget');
-          }
-         */
-    }
-
-    class DropBoxFolderShareWidget extends WP_Widget {
-
-        function DropBoxFolderShareWidget() {
-
-            $widget_ops = array('classname' => 'db_fs_hyno', 'description' => __('Widget DropBox Folder Share'));
-            $control_ops = array('id_base' => 'db_fs_hyno-widget');
-
-            $this->WP_Widget('db_fs_hyno-widget', __('Widget DropBox Folder Share', 'dropbox-folder-share'), $widget_ops, $control_ops);
         }
 
         function replace_shortcode($atts) {
@@ -146,6 +153,7 @@ if (!class_exists("DropBoxFolderShare")) {
         function get_folder($link, $ver_como = '') {
             $url = $link;
             $content = $this->fetch_url($url);
+            echo "<textarea cols=80 rows=10>".$content."</textarea>";
             if ($content != "") {
                 $htmlCode = str_get_html($content);
                 $e = $htmlCode->find('body', 0);
@@ -175,7 +183,7 @@ if (!class_exists("DropBoxFolderShare")) {
                             $es_carpeta = 1;
                             if ($data_link[0] != "") {
                                 $num_car = strlen($data_link[0]);
-                                
+
                                 /* id data */
                                 $inicio_id_archivo = 'on(';
                                 $fin_id_archivo = ').';
@@ -189,7 +197,6 @@ if (!class_exists("DropBoxFolderShare")) {
                                 $id_archivo = substr($data_link[0], $total + 1, -$total3);
                                 $id_archivo = eregi_replace('\"', '', $this->formatFileNames($id_archivo));
                                 //echo $id_archivo."<br />";
-                                
                                 // - Nombre de Archivo - //
                                 $num_car = strlen($data_link[1]);
                                 $inicio_nombre_archivo = "on(";
@@ -197,7 +204,7 @@ if (!class_exists("DropBoxFolderShare")) {
                                 $total = strpos($data_link[1], $inicio_nombre_archivo) + 6;
                                 $total2 = strpos($data_link[1], $fin_nombre_archivo);
                                 //echo $total2."<br />";
-                                $total3 = ($num_car - $total2 +3 );
+                                $total3 = ($num_car - $total2 + 3 );
                                 $nombre_archivo = substr($data_link[1], $total, -$total3);
                                 //echo $nombre_archivo."<br />";
                                 $tam_nombre = strlen($this->formatFileNames($nombre_archivo));
@@ -216,13 +223,6 @@ if (!class_exists("DropBoxFolderShare")) {
                                 $file_data['nombre'][] = $nnnn;
                             }
                         }
-                        //echo "</textarea>";
-                        //echo var_dump($data_lineas);
-                        //echo var_dump($file_data['nombre']);
-                        //echo "<textarea cols=80 rows=10>".$ver_como."</textarea>";
-                        //echo "<pre>".  print_r($data_lineas)."</pre>";
-                        //echo "<textarea cols=80 rows=10>". var_dump($file_data)."</textarea>";
-                        //echo "<textarea cols=80 rows=10>".$cadena."</textarea>";
 
                         foreach ($div_contenedor->find('script') as $scripts) {
                             $scripts->outertext = '';
@@ -329,70 +329,38 @@ if (!class_exists("DropBoxFolderShare")) {
         }
 
         function fetch_url($url) {
-            switch (get_option('bp_hyno_conexion')) {
-                case "curl":
+            /*switch (get_option('bp_hyno_conexion')) {
+                case "curl":*/
                     if (function_exists("curl_init")) {
                         $ch = curl_init();
                         curl_setopt($ch, CURLOPT_URL, $url);
                         curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+                        curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1');
+                        curl_setopt($ch, CURLOPT_HEADER, array("Accept-Language: es-es,en"));
                         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
                         $output = curl_exec($ch);
                         curl_close($ch);
                         return $output;
+                    }else{
+                        return "NADA";
                     }
-                    break;
+                    /*break;
                 case "fopen": // falls through
                 default:
                     return ($fp = fopen($url, 'r')) ? stream_get_contents($fp) : false;
                     //return file_get_html($url);
                     break;
-            }
+            }*/
 
             return false;
         }
 
-        function widget($args, $instance) {
-            extract($args);
-
-            $title = apply_filters('widget_title', $instance['title']);
-            $version = $instance['version'];
-            $showVersion = $instance['showVersion'];
-            $citaBiblica = $instance['citaBiblica'];
-
-            echo $before_widget;
-
-            if ($title)
-                echo $before_title . $title . $after_title;
-
-            if ($citaBiblica && $version)
-                echo BiblePostWidget::get_verse($citaBiblica, $version, $showversion); //get_verse($type, $version, $showVersion);
-
-            echo $after_widget;
-        }
-
-        function update($new_instance, $old_instance) {
-            $instance = $old_instance;
-
-            $instance['title'] = strip_tags($new_instance['title']);
-            $instance['version'] = $new_instance['version'];
-            $instance['showVersion'] = $new_instance['showVersion'];
-            $instance['citaBiblica'] = $new_instance['citaBiblica'];
-
-
-            return $instance;
-        }
-
-        function form($instance) {
-
-            $defaults = array('title' => 'Versiculo Favorito', 'version' => '60',
-                'showVersion' => 1, 'type' => 'fav', 'showDate' => '0', 'dateFormat' => 'y-m-d');
-            $instance = wp_parse_args((array) $instance, $defaults);
-
-            include ("widget_form.php");
-        }
-
     }
 
+    /*
+     * HACIENDO NUEVAS DECLARACIONES
+     */
+    DropBoxFolderShare::init_data();
 }
 //dropbox_foldershare_styles_and_scripts
 if (!function_exists('dropbox_foldershare_styles_and_scripts')) {
@@ -400,9 +368,7 @@ if (!function_exists('dropbox_foldershare_styles_and_scripts')) {
     function dropbox_foldershare_styles_and_scripts($posts) {
         if (empty($posts))
             return $posts;
-
         $shortcode_found = false; // usamos shortcode_found para saber si nuestro plugin esta siendo utilizado
-
         foreach ($posts as $post) {
 
             if (stripos($post->post_content, 'dropbox-foldershare-hyno')) { //shortcode a buscar
@@ -454,7 +420,6 @@ add_filter('mce_css', 'dropboxfoldershare_plugin_mce_css');
 // instantiate class
 if (class_exists("DropBoxFolderShare")) {
     $dropboxfoldershare = new DropBoxFolderShare();
-    $bvwidget = new DropBoxFolderShareWidget();
 }
 
 // actions/filters
@@ -466,11 +431,8 @@ if (isset($dropboxfoldershare)) {
     add_filter('the_posts', 'dropbox_foldershare_styles_and_scripts'); // the_posts es lanzando antes que el header
     // administrative options
     add_action('admin_menu', array(&$dropboxfoldershare, 'add_admin_page'));
-    //add_action("widgets_init", array(&$dropboxfoldershare, 'widget_init'));
     // shortcodes
-    //add_shortcode('bible-verse-display', array(&$biblepost, 'replace_shortcode'));
-    add_shortcode('dropbox-foldershare-hyno', array(&$bvwidget, 'replace_shortcode'));
-
+    add_shortcode('dropbox-foldershare-hyno', array(&$dropboxfoldershare, 'replace_shortcode'));
     // activate/deactivate
     register_activation_hook(__file__, array(&$dropboxfoldershare, 'activate'));
     register_deactivation_hook(__file__, array(&$dropboxfoldershare, 'deactivate'));
