@@ -9,6 +9,83 @@
  * Author URI: http://www.hyno.ok.pe
  * License:     GNU General Public License
  */
+if (!class_exists("DropboxFolderShare2")) {
+
+    Class DropboxFolderShare2 {
+
+        const V_GENERAL = "1.2";
+        const VERSION_ADMIN = "1.2";
+        const VERSION_CSS = "1.2";
+        const VERSION_JS = "1.2";
+        const PARENT_PAGE = 'options-general.php';
+        const SETTINGS_OPTION = 'dropbox_folder_share_options';
+
+        public static $basename; //Indica el directorio hasta el archivo actual "dropbox-folder-share/DropboxFolderShare.php"
+        public static $nombre; //Nombre de la carpeta "dropbox-folder-share"
+        public static $url; //URL completa dela carpeta actual "http://localhost:8080/wp/wp-content/plugins/dropbox-folder-share/"
+        var $opcDefault;
+
+        function default_settings() {
+            $this->opcDefault = array(
+                "estado" => true,
+                "showIcons" => false,
+                "showSize" => TRUE,
+                "showChange" => TRUE,
+                "allowDownload" => FALSE,
+                "link2Folder" => TRUE,
+                "tipoConexion" => 'fopen'
+            );
+        }
+
+        public function __construct() {
+            load_plugin_textdomain(self::$nombre, false, self::$nombre . '/languages/');
+            $this->default_settings();
+            $this->getAdminOptions();
+            $this->init_plugin();
+        }
+        
+        function init_plugin(){
+            if(get_option('db_fs_hyno_show')){
+                
+            }
+            $funcHyno = get_option('db_fs_hyno_show');
+            echo '<pre>';
+            echo $funcHyno;
+            echo '</pre>';
+        }
+
+        public function asignar_variables_estaticas() {
+            self::$basename = plugin_basename(__FILE__);
+            self::$nombre = dirname(self::$basename);
+            self::$url = plugin_dir_url(__FILE__);
+        }
+
+        /* 
+         * Regresa un ARRAY de las opciones del Plugin
+         * Si no esta establecido, asigna por defecto
+         */
+        function getAdminOptions() {
+            $opcAdministrador = $this->opcDefault;
+            $devOptions = get_option(self::SETTINGS_OPTION);
+            if (!empty($devOptions)) {
+                foreach ($devOptions as $key => $option)
+                    $opcAdministrador[$key] = $option;
+            }
+            update_option(self::SETTINGS_OPTION, $opcAdministrador);
+            return $opcAdministrador;
+        }
+
+    }
+
+}
+
+
+
+
+
+
+
+
 if (!function_exists("file_get_html")) {
     include_once('simple_html_dom.php');
 }
@@ -153,7 +230,7 @@ if (!class_exists("DropBoxFolderShare")) {
         function get_folder($link, $ver_como = '') {
             $url = $link;
             $content = $this->fetch_url($url);
-            echo "<textarea cols=80 rows=10>".$content."</textarea>";
+            echo "<textarea cols=80 rows=10>" . $content . "</textarea>";
             if ($content != "") {
                 $htmlCode = str_get_html($content);
                 $e = $htmlCode->find('body', 0);
@@ -329,28 +406,28 @@ if (!class_exists("DropBoxFolderShare")) {
         }
 
         function fetch_url($url) {
-            /*switch (get_option('bp_hyno_conexion')) {
-                case "curl":*/
-                    if (function_exists("curl_init")) {
-                        $ch = curl_init();
-                        curl_setopt($ch, CURLOPT_URL, $url);
-                        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
-                        curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1');
-                        curl_setopt($ch, CURLOPT_HEADER, array("Accept-Language: es-es,en"));
-                        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-                        $output = curl_exec($ch);
-                        curl_close($ch);
-                        return $output;
-                    }else{
-                        return "NADA";
-                    }
-                    /*break;
-                case "fopen": // falls through
-                default:
-                    return ($fp = fopen($url, 'r')) ? stream_get_contents($fp) : false;
-                    //return file_get_html($url);
-                    break;
-            }*/
+            /* switch (get_option('bp_hyno_conexion')) {
+              case "curl": */
+            if (function_exists("curl_init")) {
+                $ch = curl_init();
+                curl_setopt($ch, CURLOPT_URL, $url);
+                curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+                curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1');
+                curl_setopt($ch, CURLOPT_HEADER, array("Accept-Language: es-es,en"));
+                curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+                $output = curl_exec($ch);
+                curl_close($ch);
+                return $output;
+            } else {
+                return "NADA";
+            }
+            /* break;
+              case "fopen": // falls through
+              default:
+              return ($fp = fopen($url, 'r')) ? stream_get_contents($fp) : false;
+              //return file_get_html($url);
+              break;
+              } */
 
             return false;
         }
@@ -420,6 +497,7 @@ add_filter('mce_css', 'dropboxfoldershare_plugin_mce_css');
 // instantiate class
 if (class_exists("DropBoxFolderShare")) {
     $dropboxfoldershare = new DropBoxFolderShare();
+    $dropboxfoldershare2 = new DropBoxFolderShare2();
 }
 
 // actions/filters
