@@ -40,18 +40,40 @@ if (!class_exists("DropboxFolderShare2")) {
         public function __construct() {
             load_plugin_textdomain(self::$nombre, false, self::$nombre . '/languages/');
             $this->default_settings();
-            $this->getAdminOptions();
             $this->init_plugin();
+            $this->getAdminOptions();
+            
         }
-        
-        function init_plugin(){
-            if(get_option('db_fs_hyno_show')){
+
+        function actualizarOpcAntiguas() {
+            if (get_option('db_fs_hyno_show')) {
+                $estado = (get_option('db_fs_hyno_show') != 'lista')?TRUE:FALSE;
+                $showIcons = (get_option('db_fs_hyno_icons') == '1')?TRUE:FALSE;
+                $showSize = (get_option('db_fs_hyno_size') == '1')?TRUE:FALSE;
+                $showChange = (get_option('db_fs_hyno_changed') == '1')?TRUE:FALSE;
+                $tipoConexion = get_option('db_fs_hyno_conexion');
                 
+                $this->opcDefault = array(
+                    "estado" => $estado,
+                    "showIcons" => $showIcons,
+                    "showSize" => $showSize,
+                    "showChange" => $showChange,
+                    "allowDownload" => FALSE,
+                    "link2Folder" => TRUE,
+                    "tipoConexion" => $tipoConexion
+                );
+
+                delete_option("db_fs_hyno_show");
+                delete_option("db_fs_hyno_icons");
+                delete_option("db_fs_hyno_size");
+                delete_option("db_fs_hyno_changed");
+                delete_option("db_fs_hyno_conexion");
+                delete_option("db_fs_hyno_link");
             }
-            $funcHyno = get_option('db_fs_hyno_show');
-            echo '<pre>';
-            echo $funcHyno;
-            echo '</pre>';
+        }
+
+        function init_plugin() {
+            $this->actualizarOpcAntiguas();
         }
 
         public function asignar_variables_estaticas() {
@@ -60,10 +82,11 @@ if (!class_exists("DropboxFolderShare2")) {
             self::$url = plugin_dir_url(__FILE__);
         }
 
-        /* 
+        /*
          * Regresa un ARRAY de las opciones del Plugin
          * Si no esta establecido, asigna por defecto
          */
+
         function getAdminOptions() {
             $opcAdministrador = $this->opcDefault;
             $devOptions = get_option(self::SETTINGS_OPTION);
