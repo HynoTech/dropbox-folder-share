@@ -42,17 +42,16 @@ if (!class_exists("DropboxFolderShare2")) {
             $this->default_settings();
             $this->init_plugin();
             $this->getAdminOptions();
-            
         }
 
         function actualizarOpcAntiguas() {
             if (get_option('db_fs_hyno_show')) {
-                $estado = (get_option('db_fs_hyno_show') != 'lista')?TRUE:FALSE;
-                $showIcons = (get_option('db_fs_hyno_icons') == '1')?TRUE:FALSE;
-                $showSize = (get_option('db_fs_hyno_size') == '1')?TRUE:FALSE;
-                $showChange = (get_option('db_fs_hyno_changed') == '1')?TRUE:FALSE;
+                $estado = (get_option('db_fs_hyno_show') != 'lista') ? TRUE : FALSE;
+                $showIcons = (get_option('db_fs_hyno_icons') == '1') ? TRUE : FALSE;
+                $showSize = (get_option('db_fs_hyno_size') == '1') ? TRUE : FALSE;
+                $showChange = (get_option('db_fs_hyno_changed') == '1') ? TRUE : FALSE;
                 $tipoConexion = get_option('db_fs_hyno_conexion');
-                
+
                 $this->opcDefault = array(
                     "estado" => $estado,
                     "showIcons" => $showIcons,
@@ -82,6 +81,19 @@ if (!class_exists("DropboxFolderShare2")) {
             self::$url = plugin_dir_url(__FILE__);
         }
 
+        function set_get_options($opc = '') {
+            if ($opc == '') {
+                $devOptions = get_option(self::SETTINGS_OPTION);
+                if (!empty($devOptions)) {
+                    foreach ($devOptions as $key => $option)
+                        $opcAdministrador[$key] = $option;
+                }
+                update_option(self::SETTINGS_OPTION, $opcAdministrador);
+            } else {
+                
+            }
+        }
+
         /*
          * Regresa un ARRAY de las opciones del Plugin
          * Si no esta establecido, asigna por defecto
@@ -96,6 +108,49 @@ if (!class_exists("DropboxFolderShare2")) {
             }
             update_option(self::SETTINGS_OPTION, $opcAdministrador);
             return $opcAdministrador;
+        }
+
+        function add_admin_page() {
+            add_submenu_page(self::PARENT_PAGE, '[HT]DropBox Folder Share', '[HT]DropBox Folder Share', 10, __file__, array(&$this, 'admin_page'));
+        }
+
+        function admin_page() {
+            // update settings
+            if (isset($_POST['bp_hyno_update'])) {
+
+                // posted data
+                $mostrar_como = $_POST['db_fs_hyno_vista'];
+
+                $mostrar_iconos = 0;
+                if (isset($_POST['chk_show_icons']) && $_POST['chk_show_icons'] == 'on') {
+                    $mostrar_iconos = 1;
+                }
+                $mostrar_tamanio = 0;
+                if (isset($_POST['chk_show_size']) && $_POST['chk_show_size'] == 'on') {
+                    $mostrar_tamanio = 1;
+                }
+                $mostrar_modificacion = 0;
+                if (isset($_POST['chk_show_changed']) && $_POST['chk_show_changed'] == 'on') {
+                    $mostrar_modificacion = 1;
+                }
+
+                $cxn = $_POST['db_fs_hyno_conexion'];
+
+
+                // update data in database
+                update_option("db_fs_hyno_show", $mostrar_como);
+                update_option("db_fs_hyno_icons", $mostrar_iconos);
+                update_option("db_fs_hyno_changed", $mostrar_modificacion);
+                update_option("db_fs_hyno_size", $mostrar_tamanio);
+
+                update_option("db_fs_hyno_conexion", $cxn);
+
+                // updated message
+                echo "<div id=\"message\" class=\"updated fade\"><p><strong>";
+                _e('Opciones de "DropBox Folder Share" Actualizados.', 'dropbox-folder-share');
+                echo "</strong></p></div>";
+            }
+            require_once ('admin_page.php');
         }
 
     }
