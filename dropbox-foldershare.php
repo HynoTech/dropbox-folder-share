@@ -19,29 +19,159 @@ if (!class_exists("DropboxFolderShare2")) {
         const VERSION_JS = "1.2";
         const PARENT_PAGE = 'options-general.php';
         const SETTINGS_OPTION = 'dropbox_folder_share_options';
+        const PERMISOS_REQUERIDOS = 'manage_options';
 
         public static $basename; //Indica el directorio hasta el archivo actual "dropbox-folder-share/DropboxFolderShare.php"
         public static $nombre; //Nombre de la carpeta "dropbox-folder-share"
         public static $url; //URL completa dela carpeta actual "http://localhost:8080/wp/wp-content/plugins/dropbox-folder-share/"
-        var $opcDefault;
-
-        function default_settings() {
-            $this->opcDefault = array(
-                "estado" => true,
-                "showIcons" => false,
-                "showSize" => TRUE,
-                "showChange" => TRUE,
-                "allowDownload" => FALSE,
-                "link2Folder" => TRUE,
-                "tipoConexion" => 'fopen'
-            );
-        }
+        
+        var $formSections = array();
+        var $settings = array(); //Almacena los opciones actuales del Plugin
+        
+        var $opcDefault = array(
+            "estado" => TRUE,
+            "showIcons" => FALSE,
+            "showSize" => TRUE,
+            "showChange" => TRUE,
+            "allowDownload" => FALSE,
+            "link2Folder" => TRUE,
+            "tipoConexion" => 'fopen'
+        );
 
         public function __construct() {
+            $this->asignar_variables_estaticas();
             load_plugin_textdomain(self::$nombre, false, self::$nombre . '/languages/');
-            $this->default_settings();
+            $this->set_properties();
             $this->init_plugin();
-            $this->getAdminOptions();
+            $this->_get_set_settings();
+            
+            //add_action('init', array(&$this, 'init'));
+            //add_action('admin_menu', array(&$this, 'init'));
+            add_action('admin_menu', array(&$this, 'plugin_admin_add_page'));
+            add_action('admin_init', array(&$this, 'admin_init'));
+        }
+        function set_properties() {
+
+			$this->formSections = array(
+				'general'	=> __( 'Configuraciones Generales', self::$nombre ),
+				'conexion'	=> __( 'Modo de Conexion', self::$nombre ),
+			);
+		}
+        
+        function admin_init(){
+            if(false === current_user_can(self::PERMISOS_REQUERIDOS)){
+                return;
+            }
+            register_setting(
+                    self::$nombre.'-group',
+                    self::$nombre,
+                    array(&$this,'validar_opciones')
+                    );
+			foreach( $this->formSections as $section => $title ) {
+
+				add_settings_section(
+					'mtli-' . $section . '-settings', // id
+					$title, // title
+					array( &$this, 'do_settings_section_' . $section ), // callback for this section
+					self::$nombre // page menu_slug
+				);
+			}
+        }
+function do_settings_section_general() {
+
+			echo '
+			<fieldset class="options" name="general">
+				<table cellspacing="2" cellpadding="5" class="editform form-table">
+					<tr>
+						<th nowrap valign="top" width="33%">
+							<label for="image_size">' . esc_html__( 'Image Size', self::$name ) . '</label>
+						</th>
+						<td>
+							<select name="' . esc_attr( self::SETTINGS_OPTION . '[image_size]' ) . '" id="image_size">';
+
+			foreach( $this->sizes as $v ) {
+				echo '
+								<option value="' . esc_attr( $v ) . '" ' . selected( $this->settings['image_size'], $v, false ) . '>' . esc_html( $v . 'x' . $v ) . '</option>';
+			}
+			unset( $v );
+
+			echo '
+							</select>
+						</td>
+					</tr>
+					<tr>' /* @todo maybe change this to radio buttons ? if so, remove th label */ . '
+						<th nowrap valign="top" width="33%">
+							<label for="image_type">' . esc_html__( 'Image Type', self::$name ) . '</label>
+						</th>
+						<td>
+							<select name="' . esc_attr( self::SETTINGS_OPTION . '[image_type]' ) . '" id="image_type">';
+
+			foreach( $this->image_types as $v ) {
+				echo '
+									<option value="' . esc_attr( $v ) . '" ' . selected( $this->settings['image_type'], $v, false ) . '>' . esc_html( $v ) . '</option>';
+			}
+			unset( $v );
+
+			echo '
+							</select>
+						</td>
+					</tr>
+					<tr>' /* @todo maybe change this to radio buttons ? if so, remove th label */ . '
+						<th nowrap valign="top" width="33%">
+							<label for="leftorright">' . esc_html__( 'Display images on left or right', self::$name ) . '</label>
+						</th>
+						<td>
+							<select name="' . esc_attr( self::SETTINGS_OPTION . '[leftorright]' ) . '" id="leftorright">';
+
+			foreach( $this->alignments as $k => $v ) {
+				echo '
+									<option value="' . esc_attr( $k ) . '" ' . selected( $this->settings['leftorright'], $k, false ) . '>' . esc_html( $v ) . '</option>';
+			}
+			unset( $k, $v );
+
+			echo '
+							</select>
+						</td>
+					</tr>
+				</table>
+			</fieldset>';
+		}
+        function plugin_admin_add_page() {
+            add_options_page(
+                    '[HT]DropBox Folder Share', /*Titulo Pagina*/
+                    '[HT]DropBox Folder Share', /*Titulo Menu*/
+                    self::PERMISOS_REQUERIDOS, 
+                    self::$nombre, 
+                    array(&$this,'pagina_de_opciones')
+                    );
+        }
+        function pagina_de_opciones() {
+            ?>
+<div>
+<h2>My custom plugin</h2>
+Options relating to the Custom Plugin.
+<form action="options.php" method="post">
+<?php settings_fields(self::$nombre.'-group'); ?>
+<?php do_settings_sections('plugin'); ?>
+ 
+<input name="Submit" type="submit" value="<?php esc_attr_e('Save Changes'); ?>" />
+</form></div>
+            <?php
+
+        }
+
+        public function init() {
+            //add_options_page("HOLA", "ICONOS HOLA", 10, self::$nombre);
+            add_options_page(
+				__( 'Mime____Type Link Icons', self::$nombre ), /* page title */
+				__( 'Mime____Type Icons', self::$nombre ), /* menu title */
+				10, /* capability */
+				self::$nombre, /* menu slug */
+				array( &$this, 'display_options_page' ) /* function for subpanel */
+			);
+        }
+        function display_options_page(){
+            echo '<h1>HOL</h1>';
         }
 
         function actualizarOpcAntiguas() {
@@ -111,7 +241,7 @@ if (!class_exists("DropboxFolderShare2")) {
         }
 
         function add_admin_page() {
-            add_submenu_page(self::PARENT_PAGE, '[HT]DropBox Folder Share', '[HT]DropBox Folder Share', 10, __file__, array(&$this, 'admin_page'));
+            add_submenu_page(self::PARENT_PAGE, '[HT]DropBox Folder Share__', '[HT]DropBox Folder Share___', 10, __file__, array(&$this, 'admin_page'));
         }
 
         function admin_page() {
@@ -151,6 +281,50 @@ if (!class_exists("DropboxFolderShare2")) {
                 echo "</strong></p></div>";
             }
             require_once ('admin_page.php');
+        }
+
+        /**
+         * Intelligently set/get the plugin settings
+         *
+         * @since 3.0
+         *
+         * @static        bool|array        $original_settings        remember originally retrieved settings array for reference
+         * @param        array|null        $update                                New settings to save to db - make sure the
+         *                                                                                        new array is validated first!
+         * @return        void|bool        if an update took place: whether it worked
+         */
+        function _get_set_settings($update = null) {
+            static $original_settings = false;
+            $updated = null;
+
+            /* Do we have something to update ? */
+            if (!is_null($update)) {
+                if ($update !== $original_settings) {
+                    $updated = update_option(self::SETTINGS_OPTION, $update);
+                    $this->settings = $original_settings = $update;
+                } else {
+                    $updated = true; // no update necessary
+                }
+                return $updated;
+            }
+
+            /* No update received or update failed -> get the option from db */
+            if (( is_null($this->settings) || false === $this->settings ) || ( false === is_array($this->settings) || 0 === count($this->settings) )) {
+                // returns either the option array or false if option not found
+                $option = get_option(self::SETTINGS_OPTION);
+
+                if ($option === false) {
+                    // Option was not found, set settings to the defaults
+                    $option = $this->opcDefault;
+                } else {
+                    // Otherwise merge with the defaults array to ensure all options are always set
+                    $option = wp_parse_args($option, $this->opcDefault);
+                }
+                $this->settings = $original_settings = $option;
+                unset($option);
+            }
+
+            return;
         }
 
     }
