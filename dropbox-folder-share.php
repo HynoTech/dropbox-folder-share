@@ -8,7 +8,7 @@
  * Author URI: http://www.hyno.ok.pe
  * License:     GNU General Public License
  */
-if (!class_exists("DropboxFolderSharePrincipal")) {
+if (!\class_exists("DropboxFolderSharePrincipal")) {
     Class DropboxFolderSharePrincipal {
 
         const _VERSION_GENERAL_ = "1.2";
@@ -43,6 +43,7 @@ if (!class_exists("DropboxFolderSharePrincipal")) {
             
             $objDFS_Admin = new DFS_Admin;
             add_action('admin_menu', array(&$objDFS_Admin,'pagAdmin'));
+            add_action('admin_init',array(&$objDFS_Admin,'plugin_admin_init'));
         }
 
         public function asignar_variables_estaticas() {
