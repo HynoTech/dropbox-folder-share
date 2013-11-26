@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Plugin Name: DropBox Folder Share Nuevo
  * Plugin URI: http://www.hyno.ok.pe/wp-plugins/dropbox-folder-share/
@@ -9,6 +10,7 @@
  * License:     GNU General Public License
  */
 if (!\class_exists("DropboxFolderSharePrincipal")) {
+
     Class DropboxFolderSharePrincipal {
 
         const _VERSION_GENERAL_ = "1.2";
@@ -40,10 +42,11 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
             $this->asignar_variables_estaticas();
             load_plugin_textdomain(self::$nombre, false, self::$nombre . '/languages/');
 
-            
             $objDFS_Admin = new DFS_Admin;
-            add_action('admin_menu', array(&$objDFS_Admin,'pagAdmin'));
-            add_action('admin_init',array(&$objDFS_Admin,'plugin_admin_init'));
+            add_action('admin_menu', array(&$objDFS_Admin, 'pagAdmin'));
+            add_action('admin_init', array(&$objDFS_Admin, 'plugin_admin_init'));
+            
+            $this->actualizarOpcAntiguas();
         }
 
         public function asignar_variables_estaticas() {
@@ -53,71 +56,34 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
             self::$url_path = plugin_dir_path(__FILE__);
         }
 
+        function actualizarOpcAntiguas() {
+            if (get_option('db_fs_hyno_show')) {
+                $estado = (get_option('db_fs_hyno_show') != 'lista') ? TRUE : FALSE;
+                $showIcons = (get_option('db_fs_hyno_icons') == '1') ? TRUE : FALSE;
+                $showSize = (get_option('db_fs_hyno_size') == '1') ? TRUE : FALSE;
+                $showChange = (get_option('db_fs_hyno_changed') == '1') ? TRUE : FALSE;
+                $tipoConexion = get_option('db_fs_hyno_conexion');
+
+                $this->opcDefault = array(
+                    "estado" => $estado,
+                    "showIcons" => $showIcons,
+                    "showSize" => $showSize,
+                    "showChange" => $showChange,
+                    "allowDownload" => FALSE,
+                    "link2Folder" => TRUE,
+                    "tipoConexion" => $tipoConexion
+                );
+
+                delete_option("db_fs_hyno_show");
+                delete_option("db_fs_hyno_icons");
+                delete_option("db_fs_hyno_size");
+                delete_option("db_fs_hyno_changed");
+                delete_option("db_fs_hyno_conexion");
+                delete_option("db_fs_hyno_link");
+            }
+        }
+
     }
 
     $objDropboxFolderSharePrincipal = new DropboxFolderSharePrincipal;
-    
-    
-}
-
-add_action('admin_menu', 'plugin_admin_add_page');
-
-function plugin_admin_add_page() {
-    add_options_page('Custom Plugin Page', 'Custom Plugin Menu', 'manage_options', 'plugin', 'plugin_options_page');
-}
-
-function plugin_options_page() {
-    ?>
-    <div>
-        <h2>My custom plugin</h2>
-        Options relating to the Custom Plugin.
-        <form action="options.php" method="post">
-    <?php settings_fields('plugin_options'); ?>
-            <?php do_settings_sections('plugin'); ?>
-
-            <input name="Submit" type="submit" value="<?php esc_attr_e('Save Changes'); ?>" />
-        </form></div>
-
-    <?php
-}
-
-add_action('admin_init', 'plugin_admin_init');
-
-function plugin_admin_init() {
-    register_setting('plugin_options', 'plugin_options', 'plugin_options_validate');
-    add_settings_section('plugin_main', 'Main Settings', 'plugin_section_text', 'plugin');
-    add_settings_section('plugin_conexion', 'Tipo de Conexion', 'HTML_seccionTipoConexion', 'plugin');
-    add_settings_field('plugin_text_string', 'Plugin Text Input', 'plugin_setting_string', 'plugin', 'plugin_main');
-    add_settings_field('id_tipo_conexion', 'Tipo de Conexion a usar :D', 'tipoConexionHTML', 'plugin', 'plugin_conexion');
-}
-
-function plugin_section_text() {
-    echo '<p>Main description of this section here.</p>';
-}
-
-function HTML_seccionTipoConexion() {
-    echo '<i>Descripcoon de seccion</i>';
-}
-
-function plugin_setting_string() {
-    $options = get_option('plugin_options');
-    echo "<input id='plugin_text_string' name='plugin_options[text_string]' size='40' type='text' value='{$options['text_string']}' />";
-}
-
-function tipoConexionHTML() {
-    $options = get_option('plugin_options');
-    echo '<pre>';
-    print_r($options);
-    echo '</pre>';
-    echo "<input id='id_tipo_conexion' name='plugin_options[conexionID]' size='40' type='text' value='{$options['conexionID']}' />";
-}
-
-function plugin_options_validate($input) {
-    $options = get_option('plugin_options');
-    $options['text_string'] = trim($input['text_string']);
-    $options['conexionID'] = trim($input['conexionID']);
-    /* if (!preg_match('/^[a-z0-9]{32}$/i', $options['text_string'])) {
-      $options['text_string'] = '';
-      } */
-    return $options;
 }
