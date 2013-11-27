@@ -149,7 +149,7 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
 
             return false;
         }
-function get_folder($url, $ver_como = '') {
+function get_folder_2($url, $ver_como = '') {
 
 
                     $content = $this->fetch_url($url);
@@ -176,7 +176,9 @@ function get_folder($url, $ver_como = '') {
                 return $respuesta;
             }
         }
-        function get_folder_2($link, $ver_como = '') {
+        function get_folder($link, $ver_como = '') {
+            $opcion = get_option(self::_OPT_SEETINGS_);
+            
             $url = $link;
             $content = $this->fetch_url($url);
             
@@ -249,9 +251,31 @@ function get_folder($url, $ver_como = '') {
                             }
                         }
 
-                        foreach ($div_contenedor->find('script') as $scripts) {
-                            $scripts->outertext = '';
-                        }
+                        foreach ($div_contenedor->find('
+                            script,
+                            div.buttons,
+                            div#top-bar,
+                            noscript,
+                            a.content-flag,
+                            ol#gallery-view-media,
+                            ol#gallery-view-folders,
+                            div#c2d-modal,
+                            div#file-preview-modal,
+                            div#db-modal-locale-selector-modal,
+                            div[style^=display:none],
+                            div[id^=sharing-],
+                    #modal-progress-content, 
+                    #twitter-login, 
+                    #facebook-auth, 
+                    #twitter-posting, 
+                    #facebook-posting, 
+                    #disable-token-modal,
+                    #album-disable-token-modal') as $txt_version) {
+                    $txt_version->outertext = '';
+                }
+                foreach ($div_contenedor->find('div#outer-frame') as $txt_version){
+                    $div_contenedor = str_get_html($txt_version->outertext);
+                }
 
                         $data_all_files = array();
                         foreach ($div_contenedor->find('li[class=browse-file]') as $archivos) {
@@ -266,7 +290,11 @@ function get_folder($url, $ver_como = '') {
                                 }
                             }//echo "<textarea cols=80 rows=10>".$file_names."</textarea>";
                             foreach ($archivos->find('div[class=filename] a') as $datos) {
-                                $data_all_files['link'][] = $datos->href;
+                                if ($opcion['allowDownload'] == "1"){
+                                    $data_all_files['link'][] = str_replace("https://www", "https://dl", $datos->href);
+                                } else {
+                                    $data_all_files['link'][] = $datos->href;
+                                }
                             }
                             foreach ($archivos->find('a img') as $datos) {
                                 $data_all_files['icon_class'][] = $datos->class;
@@ -287,8 +315,11 @@ function get_folder($url, $ver_como = '') {
                                 $data_all_files['modificado'][] = $datos->innertext;
                             }
                         }
-                        echo "<textarea cols=80 rows=10>" . $div_contenedor . "</textarea>";
+
+                        //echo "<textarea cols=80 rows=10>" . $div_contenedor . "</textarea>";
                         //echo var_dump($data_all_files);
+
+                        
                         $print_first = '<div id="Hyno_ContenFolder"><div class="nav-header">
                         <div id="icon_folder"></div>
                         <span id="folder-title" class="shmodel-filename header_1">Dropbox://<span id="' . $file_data['id'][0] . '">' . eregi_replace('\"', '', $file_data['nombre'][0]) . '</span></span>
