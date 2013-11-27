@@ -119,12 +119,12 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
 
             return $retorno;
         }
+        
         function fetch_url($url) {
             $opcion = get_option(self::_OPT_SEETINGS_);
-            /*switch ($opcion['tipoConexion']) {
+            switch ($opcion['tipoConexion']) {
                 case "curl":
-                    echo '<h1>HHHHHHHHH'.$opcion['tipoConexion'].'HHHHHHHHHH</h1>';
-                    if (function_exists("curl_init")) {*/
+                    if (function_exists("curl_init")) {
                         if (!class_exists("Curl")) {
                             include "class/Curl.class.php";
                             
@@ -136,7 +136,7 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
                             $curl->get($url);
                         }
                         return $curl->response;
-                    /*} else {
+                    } else {
                         return "NADA";
                     }
                     break;
@@ -145,20 +145,44 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
                     return ($fp = fopen($url, 'r')) ? stream_get_contents($fp) : false;
                     break;
                 
-            }*/
+            }
 
             return false;
         }
+function get_folder($url, $ver_como = '') {
 
-        function get_folder($link, $ver_como = '') {
+
+                    $content = $this->fetch_url($url);
+                    if ($content != "") {
+
+                        $htmlCode = str_get_html($content);
+                        
+                        $objReadDrives = new ReadDrives($url, $htmlCode, 'Nombre');
+
+                                $respuesta = "<div id='CFS_ContenFolder' class='flip-contents flip-list-view'>";
+                                $respuesta .= $objReadDrives->Dropbox();
+                                $respuesta .= "</div>";
+
+
+                        //echo "<textarea cols=80 rows=10>";
+                        //echo $respuesta;
+                        //echo "</textarea>";
+                    } else {
+                        $error = true;
+                    }
+
+
+            if (!$error) {
+                return $respuesta;
+            }
+        }
+        function get_folder_2($link, $ver_como = '') {
             $url = $link;
             $content = $this->fetch_url($url);
-            echo "<textarea cols=80 rows=10>" . $content . "</textarea>";
-            //echo get_locale();
+            
             if ($content != "") {
                 $htmlCode = str_get_html($content);
                 $e = $htmlCode->find('body', 0);
-//div[id=list-view-container]
                 if ($e) {
                     $div_contenedor = str_get_html($e->innertext);
                     foreach ($div_contenedor->find('textarea') as $tag_div_footnotes) {
@@ -263,6 +287,7 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
                                 $data_all_files['modificado'][] = $datos->innertext;
                             }
                         }
+                        echo "<textarea cols=80 rows=10>" . $div_contenedor . "</textarea>";
                         //echo var_dump($data_all_files);
                         $print_first = '<div id="Hyno_ContenFolder"><div class="nav-header">
                         <div id="icon_folder"></div>
@@ -328,11 +353,13 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
                 $verse = __("No encontrado", 'dropbox-folder-share');
             }
         }
+        
     }
 
     
     
     $objDropboxFolderSharePrincipal = new DropboxFolderSharePrincipal;
+    include_once 'class/drives.class.php';
     
 if (!function_exists("file_get_html")) {
     include_once('class/simple_html_dom.php');
