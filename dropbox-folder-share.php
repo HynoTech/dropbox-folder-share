@@ -127,14 +127,14 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
                     if (function_exists("curl_init")) {
                         if (!class_exists("Curl")) {
                             include "class/Curl.class.php";
-                            
+                        }
                     $txtLocale = str_replace("_", "-", get_locale());
                             $curl = new Curl();
                             $curl->setopt(CURLOPT_RETURNTRANSFER, TRUE);
                             $curl->setopt(CURLOPT_SSL_VERIFYPEER, FALSE);
                             $curl->setHeader('Accept-Language', $txtLocale);
                             $curl->get($url);
-                        }
+                        
                         return $curl->response;
                     } else {
                         return "NADA";
@@ -149,33 +149,7 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
 
             return false;
         }
-function get_folder_2($url, $ver_como = '') {
 
-
-                    $content = $this->fetch_url($url);
-                    if ($content != "") {
-
-                        $htmlCode = str_get_html($content);
-                        
-                        $objReadDrives = new ReadDrives($url, $htmlCode, 'Nombre');
-
-                                $respuesta = "<div id='CFS_ContenFolder' class='flip-contents flip-list-view'>";
-                                $respuesta .= $objReadDrives->Dropbox();
-                                $respuesta .= "</div>";
-
-
-                        //echo "<textarea cols=80 rows=10>";
-                        //echo $respuesta;
-                        //echo "</textarea>";
-                    } else {
-                        $error = true;
-                    }
-
-
-            if (!$error) {
-                return $respuesta;
-            }
-        }
         function get_folder($link, $ver_como = '') {
             $opcion = get_option(self::_OPT_SEETINGS_);
             
@@ -315,60 +289,77 @@ function get_folder_2($url, $ver_como = '') {
                                 $data_all_files['modificado'][] = $datos->innertext;
                             }
                         }
-
-                        //echo "<textarea cols=80 rows=10>" . $div_contenedor . "</textarea>";
-                        //echo var_dump($data_all_files);
+                        
+                        $headersCarpeta = $div_contenedor->find('div#list-view-header',0)->outertext;
+                        
+                        $txtCarpeta = '<span id="folder-title" class="shmodel-filename header_1">';
+                        if($opcion['link2Folder'] === '1'){
+                            $txtCarpeta .= '<a href="'.$link.'" target="_blank">';
+                            $txtCarpeta .= 'Dropbox://<span id="' . $file_data['id'][0] . '">' . eregi_replace('\"', '', $file_data['nombre'][0]) . '</span>';
+                            $txtCarpeta .= '</a>';
+                        } else {
+                            $txtCarpeta .= 'Dropbox://<span id="' . $file_data['id'][0] . '">' . eregi_replace('\"', '', $file_data['nombre'][0]) . '</span>';
+                        }
+                        $txtCarpeta .= '</span>';
+                        //echo "<textarea cols=80 rows=10>" . $headersCarpeta . "</textarea>";
 
                         
-                        $print_first = '<div id="Hyno_ContenFolder"><div class="nav-header">
-                        <div id="icon_folder"></div>
-                        <span id="folder-title" class="shmodel-filename header_1">Dropbox://<span id="' . $file_data['id'][0] . '">' . eregi_replace('\"', '', $file_data['nombre'][0]) . '</span></span>
-                        </div>
-<div style="" id="list-view-container" class="gallery-view-section">
-';
-                        $print_list = '
-  <div id="list-view-header" class="list-view-cols clearfix">
-    <div class="filename-col">Nombre</div>
-    <div class="filesize-col">Tamaño</div>
-    <div class="modified-col">Modificado</div>
-  </div>
-  <ol class="browse-files gallery-list-view">';
-                        foreach ($data_all_files['link'] as $key => $value) {
-                            $print_list .= '
-    <li class="browse-file list-view-cols">
-      <div class="filename-col"><a href="' . $value . '" target="_blank" class="thumb-link" onclick="" rel="nofollow">
-          <img src="' . plugins_url("dropbox-folder-share") . '/img/icon_spacer.gif" style="" class="' . $data_all_files['icon_class'][$key] . '" alt=""></a>
-        <div class="filename"><a href="' . $value . '" target="_blank" class="filename-link" onclick="" rel="nofollow">
-            <span id="' . $data_all_files['id'][$key] . '">' . $data_all_files['nombre'][$key] . '</span></a></div>
-      </div>
-      <div class="filesize-col"><span class="size">' . $data_all_files['peso'][$key] . '</span></div>
-      <div class="modified-col"><span><span class="modified-time">' . $data_all_files['modificado'][$key] . '</span></span></div>
-      <br class="clear">
-    </li>';
-                        }
-                        $print_list .= '</ol>';
-                        $print_last = '
+                        //echo var_dump($data_all_files);
+                        $txtContenedor[0] = '<div id="Hyno_ContenFolder">';
+                        $txtContenedor[0] .= '<div class="nav-header"><div id="icon_folder"></div>';
+                        $txtContenedor[0] .= $txtCarpeta;
+                        $txtContenedor[0] .= '</div>';
+                        $txtContenedor[0] .= '<div style="" id="list-view-container" class="gallery-view-section">';
 
-  
-</div></div>';
-
-                        $print_icons = '';
+                        $txtContenedor[1] = '</div>';
+                        $txtContenedor[1] .= '</div>';
+                        
+                        $txtLista[0] = $headersCarpeta.'<ol class="browse-files gallery-list-view">';
+                        $txtLista[1] = '</ol>';
+                        $txtIconos[0] = '';
+                        $txtIconos[1] = '';
                         foreach ($data_all_files['link'] as $key => $value) {
-                            $print_icons .= '
-<div class="filename-col iconos"><a href="' . $value . '" target="_blank" class="thumb-link" onclick="" rel="nofollow">
-    <img src="' . plugins_url("dropbox-folder-share") . '/img/icon_spacer.gif" style="" class="' . $data_all_files['icon_class'][$key] . '" alt=""></a>
-    <div class="filename"><a href="' . $value . '" target="_blank" class="filename-link" onclick="" rel="nofollow">
-        <span id="' . $data_all_files['id'][$key] . '">' . $data_all_files['nombre'][$key] . '</span></a>
-            </div>
-</div>
-                    ';
+                            $txtLista[0] .= '<li class="browse-file list-view-cols" '.(($opcion['showIcons'] === '1')? '':'style="line-height: 19px !important;" ').'>';
+                            if($opcion['showIcons'] === '1'){
+                                $txtLista[0] .= '<div class="filename-col">';
+                            $txtLista[0] .= '<a href="' . $value . '" target="_blank" class="thumb-link" onclick="" rel="nofollow">';
+                            $txtLista[0] .= '<img src="' . plugins_url("dropbox-folder-share") . '/img/icon_spacer.gif" style="" class="' . $data_all_files['icon_class'][$key] . '" alt="">';
+                            $txtLista[0] .= '</a>';
+                            }else{
+                                $txtLista[0] .= '<div class="filename-col">';
+                            }
+                            $txtLista[0] .= '<div class="filename"><a href="' . $value . '" target="_blank" class="filename-link" onclick="" rel="nofollow">';
+                            $txtLista[0] .= '<span id="' . $data_all_files['id'][$key] . '">' . $data_all_files['nombre'][$key] . '</span></a></div>';
+                            $txtLista[0] .= '</div>';
+                            if($opcion['showSize'] === '1'){
+                                $txtLista[0] .= '<div class="filesize-col"><span class="size">' . $data_all_files['peso'][$key] . '</span></div>';
+                            }else{
+                                $txtLista[0] .= '<div class="filesize-col"><span class="size"> -- </span></div>';
+                            }
+                            if($opcion['showChange'] === '1'){
+                                $txtLista[0] .= '<div class="modified-col"><span><span class="modified-time">' . $data_all_files['modificado'][$key] . '</span></span></div>';
+                            }else{
+                                $txtLista[0] .= '<div class="modified-col"><span><span class="modified-time"> -- </span></span></div>';
+                            }
+                            
+                            $txtLista[0] .= '<br class="clear">';
+                            $txtLista[0] .= '</li>';
+
+                            $txtIconos[0] .= '<div class="filename-col iconos"><a href="' . $value . '" target="_blank" class="thumb-link" title="ESTAMOS" rel="nofollow">';
+                            $txtIconos[0] .= '<img src="' . plugins_url("dropbox-folder-share") . '/img/icon_spacer.gif" style="" class="' . $data_all_files['icon_class'][$key] . '" alt=""></a>';
+                            $txtIconos[0] .= '<div class="filename"><a href="' . $value . '" target="_blank" class="filename-link" onclick="" rel="nofollow">';
+                            $txtIconos[0] .= '<span id="' . $data_all_files['id'][$key] . '">' . $data_all_files['nombre'][$key] . '</span></a>';
+                            $txtIconos[0] .= '</div>';
+                            $txtIconos[0] .= '</div>';
                         }
-                        //get_option('db_fs_hyno_show')
-                        if ($ver_como == 'lista') {
-                            $retorno = $print_first . $print_list . $print_last;
+                        $ver_como = ($ver_como == '')?$opcion['SeeAs']:$ver_como;
+                        if($ver_como === 'lista'){
+                            //$retorno = $txtContenedor[0].$txtLista[0].$txtLista[1].$txtContenedor[1];
+                            $retorno = $txtContenedor[0] . $txtLista[0].$txtLista[1] . $txtContenedor[1];
                         } else {
-                            $retorno = $print_first . $print_icons . $print_last;
+                            $retorno = $txtContenedor[0].$txtIconos[0].$txtIconos[1].$txtContenedor[1];
                         }
+
                     } else {
                         $retorno = '<div id="Hyno_ContenFolder"><div class="nav-header">
                         <div id="icon_folder"></div>
@@ -437,8 +428,11 @@ if (!function_exists('dropbox_foldershare_styles_and_scripts')) {
         if ($shortcode_found) {
             // enqueue
             wp_enqueue_script('jquery');
+            wp_enqueue_script('jquery-ui-tooltip');
+            wp_enqueue_script('DFS-Script',plugins_url('scripts-hyno.js', __FILE__),array( 'jquery' ));
+            
             wp_enqueue_style('bible-post-style', plugins_url("dropbox-folder-share/") . 'styles-hyno.css'); //la ruta de nuestro css
-            wp_enqueue_script('bible-post-script', plugins_url('scripts-hyno.js', __FILE__)); //en caso de necesitar la ruta de nuestro script js
+            //wp_enqueue_script('bible-post-script', plugins_url('scripts-hyno.js', __FILE__)); //en caso de necesitar la ruta de nuestro script js
         }
 
         return $posts;
