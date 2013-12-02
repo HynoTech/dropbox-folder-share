@@ -2,6 +2,7 @@
 @import url('icons.css');
 
 #Hyno_ContenFolder{
+    background-color: white;
     color: #007ee5;
     width: 98%;
     margin:auto;
@@ -13,7 +14,7 @@
 #Hyno_ContenFolder #folder-title a{
     color: #555;
     text-decoration: none;
-    font-weight: bolder;
+    font-weight: 600;
 }
 
 #Hyno_ContenFolder .gallery-view-section{
