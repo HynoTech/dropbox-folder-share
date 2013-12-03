@@ -104,7 +104,7 @@ class Curl {
             else {
                 // Fix "Notice: Array to string conversion" when $value in
                 // curl_setopt($ch, CURLOPT_POSTFIELDS, $value) is an array
-                // that contains an empty array.
+                // that contains an empty array. 
                 foreach ($data as &$value) {
                     if (is_array($value) && empty($value)) {
                         $value = '';
