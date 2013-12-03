@@ -1,22 +1,22 @@
 <?php
 
 /**
- * Plugin Name: DropBox Folder Share Nuevo
- * Plugin URI: http://www.hyno.ok.pe/wp-plugins/dropbox-folder-share/
+ * Plugin Name: DropBox Folder Share
+ * Plugin URI: http://www.hynotech.com/wp-plugins/dropbox-folder-share/
  * Description: Plugin que permitira incluir carpetas de DropBox en nuestras entradas de blog.
- * Version: 1.2
+ * Version: 1.3
  * Author: Antonio Salas (Hyno)
- * Author URI: http://www.hyno.ok.pe
+ * Author URI: http://www.hynotech.com/
  * License:     GNU General Public License
  */
 if (!\class_exists("DropboxFolderSharePrincipal")) {
 
     Class DropboxFolderSharePrincipal {
 
-        const _VERSION_GENERAL_ = "1.2";
-        const _VERSION_JS_ = "1.2";
-        const _VERSION_CSS_ = "1.2";
-        const _VERSION_ADMIN_ = "1.2";
+        const _VERSION_GENERAL_ = "1.3";
+        const _VERSION_JS_ = "1.3";
+        const _VERSION_CSS_ = "1.3";
+        const _VERSION_ADMIN_ = "1.3";
         const _PARENT_PAGE_ = "options-general.php";
         const _OPT_SEETINGS_ = "dropbox-folder-share-options";
         const _PERMISOS_REQUERIDOS_ = 'manage_options';
@@ -46,8 +46,8 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
             add_action('admin_menu', array(&$objDFS_Admin, 'pagAdmin'));
             add_action('admin_init', array(&$objDFS_Admin, 'plugin_admin_init'));
 
-            add_filter( 'plugin_action_links_' . self::$basename , array( &$this, 'add_settings_link' ), 10, 2 );
-            
+            add_filter('plugin_action_links_' . self::$basename, array(&$this, 'add_settings_link'), 10, 2);
+
             $this->actualizarOpcAntiguas();
         }
 
@@ -335,8 +335,10 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
                             $txtLista[0] .= '</div>';
                             if ($opcion['showSize'] === '1') {
                                 $txtLista[0] .= '<div class="filesize-col"><span class="size">' . $data_all_files['peso'][$key] . '</span></div>';
+                                $SizeIcon = $data_all_files['peso'][$key];
                             } else {
                                 $txtLista[0] .= '<div class="filesize-col"><span class="size"> -- </span></div>';
+                                $SizeIcon = '';
                             }
                             if ($opcion['showChange'] === '1') {
                                 $txtLista[0] .= '<div class="modified-col"><span><span class="modified-time">' . $data_all_files['modificado'][$key] . '</span></span></div>';
@@ -346,8 +348,8 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
 
                             $txtLista[0] .= '<br class="clear">';
                             $txtLista[0] .= '</li>';
-
-                            $txtIconos[0] .= '<div class="filename-col iconos"><a href="' . $value . '" target="_blank" class="thumb-link" title="ESTAMOS" rel="nofollow">';
+                            $txtIconos[0] .= '<div class="filename-col iconos">'
+                                    . '<a href="' . $value . '" target="_blank" class="thumb-link" title="' . $SizeIcon . '" rel="nofollow">';
                             $txtIconos[0] .= '<img src="' . self::$url . '/img/icon_spacer.gif" style="" class="' . $data_all_files['icon_class'][$key] . '" alt=""></a>';
                             $txtIconos[0] .= '<div class="filename"><a href="' . $value . '" target="_blank" class="filename-link" onclick="" rel="nofollow">';
                             $txtIconos[0] .= '<span id="' . $data_all_files['id'][$key] . '">' . $data_all_files['nombre'][$key] . '</span></a>';
@@ -364,16 +366,16 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
                     } else {
                         $retorno = '<div id="Hyno_ContenFolder"><div class="nav-header">
                         <div id="icon_folder"></div>
-                        <span id="folder-title" class="shmodel-filename header_1"><span style="color: red;font-weight: black;">Error</span>://<span id="ERROR"><span style="color: red;font-style: italic; font-weight: lighter;">' . _e('No se puede leer carpeta compartida', 'dropbox-folder-share') . '</span></span></span>
+                        <span id="folder-title" class="shmodel-filename header_1"><span style="color: red;font-weight: black;">Error</span>://<span id="ERROR"><span style="color: red;font-style: italic; font-weight: lighter;">' . _e('No se puede leer carpeta compartida', self::$nombre) . '</span></span></span>
                         </div>
 						</div>';
                     }
                     return $retorno;
                 } else {
-                    $verse = __("No podemos Revisar ", 'dropbox-folder-share') . urldecode($lookup) . " ($url).";
+                    $verse = __("No podemos Revisar ", self::$nombre) . urldecode($lookup) . " ($url).";
                 }
             } else {
-                $verse = __("No encontrado", 'dropbox-folder-share');
+                $verse = __("No encontrado", self::$nombre);
             }
         }
 
@@ -394,14 +396,13 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
     if (!function_exists("file_get_html")) {
         include_once('class/simple_html_dom.php');
     }
-    if(!class_exists("DFS_TinyMCE")){
+    if (!class_exists("DFS_TinyMCE")) {
         include_once 'class/tinymce.class.php';
         $objDFS_TinyMCE = new DFS_TinyMCE();
-        add_filter("mce_css", array(&$objDFS_TinyMCE,"dropboxfoldershare_plugin_mce_css"));
+        add_filter("mce_css", array(&$objDFS_TinyMCE, "dropboxfoldershare_plugin_mce_css"));
         add_filter("mce_external_plugins", array(&$objDFS_TinyMCE, "dropboxfoldershare_register_button"));
-        add_filter("mce_buttons", array(&$objDFS_TinyMCE, "dropboxfoldershare_add_button"),0);
+        add_filter("mce_buttons", array(&$objDFS_TinyMCE, "dropboxfoldershare_add_button"), 0);
         add_filter("the_posts", array(&$objDFS_TinyMCE, "dropbox_foldershare_styles_and_scripts"));
-
     }
     add_shortcode('dropbox-foldershare-hyno', array(&$objDropboxFolderSharePrincipal, 'replace_shortcode'));
     add_shortcode('DFS', array(&$objDropboxFolderSharePrincipal, 'replace_shortcode'));

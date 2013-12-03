@@ -12,8 +12,8 @@
                 ?>
                 <div id="post-body-content">
                     <h2 class="nav-tab-wrapper">
-                    <a href="?page=dropbox-folder-share&tab=configuraciones" class="nav-tab <?php echo $active_tab == 'configuraciones' ? 'nav-tab-active' : ''; ?>">Configuraciones</a>
-                    <a href="?page=dropbox-folder-share&tab=parametros" class="nav-tab <?php echo $active_tab == 'parametros' ? 'nav-tab-active' : ''; ?>">Parametros de Shorcode</a>
+                    <a href="?page=dropbox-folder-share&tab=configuraciones" class="nav-tab <?php echo $active_tab == 'configuraciones' ? 'nav-tab-active' : ''; ?>"><?php _e("Configuraciones",parent::$nombre); ?></a>
+                    <a href="?page=dropbox-folder-share&tab=parametros" class="nav-tab <?php echo $active_tab == 'parametros' ? 'nav-tab-active' : ''; ?>"><?php _e("Parametros de Shorcode",parent::$nombre); ?></a>
                 </h2>
                     <form action="options.php" method="post">
                     <div class="stuffbox" id="version_defecto">
@@ -22,19 +22,19 @@
 ?>
 
                             <h3>
-                                <?php _e('Parametros de Shortcode', 'dropbox-folder-share'); ?>
+                                <?php _e('Parametros de Shortcode', parent::$nombre); ?>
                             </h3>
                             <div class="inside">
-                                <p class="popular-tags"><em>[dropbox-foldershare-hyno link="LNK_FOLDER" ver_como='iconos']</em></p>
+                                <p class="popular-tags"><em>[DFS link="LNK_FOLDER" ver_como='iconos']</em></p>
                                 <table cellpadding="0" class="links-table">
                                     <tbody>
                                         <tr>
                                             <th scope="row">link</th>
-                                            <td><?php _e('URL de la carpeta compartida de DropBox.', 'dropbox-folder-share'); ?></td>
+                                            <td><?php _e('URL de la carpeta compartida de DropBox.', parent::$nombre); ?></td>
                                         </tr>
                                         <tr>
                                             <th scope="row">ver_como</th>
-                                            <td><?php _e('Como se mostrara la carpeta (<b>iconos</b> o <b>lista</b>).', 'dropbox-folder-share'); ?></td>
+                                            <td><?php _e('Como se mostrara la carpeta (<b>iconos</b> o <b>lista</b>).', parent::$nombre); ?></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -72,13 +72,13 @@
                     <div class="meta-box-sortables ui-sortable" id="side-sortables">
                         <div class="postbox " id="linksubmitdiv">
                             <h3 class="hndle"><span>
-                                    <?php _e('Guardar Configuracion', 'dropbox-folder-share'); ?>
+                                    <?php _e('Guardar Configuracion', parent::$nombre); ?>
                                 </span></h3>
                             <div class="inside">
                                 <div id="submitlink" class="submitbox">
                                     <div id="minor-publishing">
                                         <div id="misc-publishing-actions">
-                                            <p class="popular-tags"><?php _e('Hola, espero que disfruten de mi plugin. Me llevó un montón de horas para hacerlo. Una gran cantidad de galletas y jugo de uva que se derramó sobre el teclado en la creación de este plugin. Si te gusta, me podrías ayudar invitandome un café recién hecho.', 'dropbox-folder-share'); ?> </p>
+                                            <p class="popular-tags"><?php _e('Hola, espero que disfruten de mi plugin. Me llevó un montón de horas para hacerlo. Una gran cantidad de galletas y jugo de uva que se derramó sobre el teclado en la creación de este plugin. Si te gusta, me podrías ayudar invitandome un café recién hecho.', parent::$nombre); ?> </p>
                                             <div class="misc-pub-section center">
                                                 <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
                                                     <input type="hidden" name="cmd" value="_s-xclick">
@@ -91,7 +91,7 @@
                                         </div>
                                     </div>
                                     <div id="major-publishing-actions">
-                                        <div id="delete-action"> <a href="http://www.hyno.ok.pe" target="_blank">HynoTech Web</a> </div>
+                                        <div id="delete-action"> <a href="http://www.hynotech.com/" target="_blank">HynoTech Web</a> </div>
                                         <div class="clear"></div>
                                     </div>
                                     <div class="clear"></div>
@@ -105,10 +105,9 @@
                         <hr />
                         <div class="stuffbox" id="modo_insercion">
                             <div class="inside">
-                                <em>Gracias por Utilizar este plugin. Me gustaria leer sugerencias u opiniones para que juntos mejoremos esta herramienta,
-                                cualquier sugerencia para mejorar el plugin o reportar algun error nos ayuda muchisimo, no duden en hacernoslo saber. </em>
+                                <em><?php _e('Gracias por Utilizar este plugin. Me gustaria leer sugerencias u opiniones para que juntos mejoremos esta herramienta, cualquier sugerencia para mejorar el plugin o reportar algun error nos ayuda muchisimo, no duden en hacernoslo saber. ',parent::$nombre); ?></em>
                                 <br />
-                                <em>Pueden hacernos lleguar sus sugerencias, opiniones y/o criticas a travez del formulario de contactos de <a href="http://www.hynotech.com"> HynoTech.com</a></em>
+                                <em><?php _e('Pueden hacernos lleguar sus sugerencias, opiniones y/o criticas a travez del formulario de contactos de', parent::$nombre) ?> <a href="http://www.hynotech.com"> HynoTech.com</a></em>
                             </div>
                         </div>
                     </div>

@@ -29,25 +29,25 @@ class DFS_Admin extends DropboxFolderSharePrincipal {
         
         $secciones = array(
             "visualizacion" => array(
-                'titulo' => "Visualizacion",
+                'titulo' => __("Visualizacion",  parent::$nombre),
                 'campos' => array(
-                    'SeeAs' => 'Modo de Visualizacion',
-                    'ShowIcons' => 'Mostrar Iconos',
-                    'ShowSize' => 'Mostrar Tamaño de Archivo',
-                    'ShowChange' => 'Mostrar Fecha de Modificacion'
+                    'SeeAs' => __('Modo de Visualizacion',  parent::$nombre),
+                    'ShowIcons' => __('Mostrar Iconos',  parent::$nombre),
+                    'ShowSize' => __('Mostrar Tamaño de Archivo',  parent::$nombre),
+                    'ShowChange' => __('Mostrar Fecha de Modificacion',  parent::$nombre)
                 )
             ),
             "vinculacion" => array(
-                'titulo' =>  "Vinculacion",
+                'titulo' =>  __("Vinculacion",  parent::$nombre),
                 'campos' => array(
-                    'allowDownload' => 'Permitir Descarga de Archivos',
-                    'link2Folder' => 'Dejar Link de Carpeta Compartida'
+                    'allowDownload' => __('Permitir Descarga de Archivos',  parent::$nombre),
+                    'link2Folder' => __('Dejar Link de Carpeta Compartida',  parent::$nombre)
                 )
             ),
             "conexion" => array(
-                'titulo' =>  "Conexion",
+                'titulo' =>  __("Conexion",  parent::$nombre),
                 'campos' => array(
-                    'tipoConexion' => 'Tipo de Conexion a Usar'
+                    'tipoConexion' => __('Tipo de Conexion a Usar',  parent::$nombre)
                 )
             )
         );
@@ -84,8 +84,8 @@ class DFS_Admin extends DropboxFolderSharePrincipal {
         ?>
 
                         <select id="id_visualizacion_SeeAs" name="<?php echo parent::_OPT_SEETINGS_; ?>[SeeAs]">
-                            <option value="lista" <?php echo selected($options['SeeAs'], "lista", false); ?>>Lista</option>
-                            <option value="iconos" <?php echo selected($options['SeeAs'], "iconos", false); ?>>Iconos</option>
+                            <option value="lista" <?php echo selected($options['SeeAs'], "lista", false); ?>><?php _e('Lista',parent::$nombre) ?></option>
+                            <option value="iconos" <?php echo selected($options['SeeAs'], "iconos", false); ?>><?php _e('Iconos',parent::$nombre) ?></option>
                         </select>
         <?php
     }

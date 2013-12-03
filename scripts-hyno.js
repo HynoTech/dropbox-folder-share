@@ -19,6 +19,8 @@ jQuery(document).ready(function($) {
         'visibility': 'visible',
         'display': 'none'
     });
+
+    /*
     $(document).tooltip({
         items: ".iconos a",
         track: true,
@@ -30,4 +32,5 @@ jQuery(document).ready(function($) {
             }
         }
     });
+    */
 });

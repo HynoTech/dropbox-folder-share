@@ -9,6 +9,14 @@
 }
 #Hyno_ContenFolder a{
     color: #007ee5;
+    text-decoration: none !important;
+}
+#Hyno_ContenFolder a:hover{
+    color: #007ee5;
+    text-decoration: underline !important;
+}
+#Hyno_ContenFolder img{
+    display: inline !important;
 }
 
 #Hyno_ContenFolder #folder-title a{
@@ -207,4 +215,3 @@ li.browse-file, li.browse-new-folder {
     width: 15%;
     float: left;
 }
-
