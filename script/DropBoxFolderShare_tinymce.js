@@ -1,6 +1,6 @@
 tinyMCEPopup.requireLangPack();
 function insertarShortCode(txt_link,ver_como){
-    data = '[dropbox-foldershare-hyno link="' + txt_link + '" ver_como="' + ver_como + '"]';
+    data = '[DFS link="' + txt_link + '" ver_como="' + ver_como + '"]';
     tinyMCEPopup.execCommand('mceInsertContent', false, data);
     // Refocus in window
     if (tinyMCEPopup.isWindow)

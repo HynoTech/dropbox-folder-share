@@ -2,7 +2,7 @@
 Contributors: Hyno, antony_salas
 Tags: Dropbox, Folder,Cloud, Folder Share, post, content, contenido, nube
 Requires at least: 3.0
-Tested up to: 3.5.1
+Tested up to: 3.7.1
 Stable tag: trunk
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -21,7 +21,7 @@ Con este Plugin podras:
 *   Usar modos de vista de nuestros archivos.
 *   ShortCode y boton en el editor
 
-Leer **[Mas > Descripcion](http://www.hyno.ok.pe/wp-plugins/dropbox-folder-share/ "Dropbox Folder Share")**
+Leer **[Mas > Descripcion](http://www.hynotech.com/wp-plugins/dropbox-folder-share/ "Dropbox Folder Share")**
 
 == Installation ==
 
@@ -31,7 +31,7 @@ Leer **[Mas > Descripcion](http://www.hyno.ok.pe/wp-plugins/dropbox-folder-share
 
 PD. Habilitar la extension **php_openssl.dll** en **php.ini**.
 
-Leer **[Mas > Instalacion](http://www.hyno.ok.pe/wp-plugins/dropbox-folder-share/)**
+Leer **[Mas > Instalacion](http://www.hynotech.com/wp-plugins/dropbox-folder-share/)**
 
 == Frequently Asked Questions ==
 
@@ -42,7 +42,7 @@ Reportalo en la pagina del autor.
 ** Si tiene alguna pregunta sobre este plugin, estaremos encantados de resolverlo **
 Puede visitar nuestra pagina para saber mas respecto a este plugin.
 
-Leer **[Mas > Preguntas y Respuestas](http://www.hyno.ok.pe/wp-plugins/dropbox-folder-share/)**
+Leer **[Mas > Preguntas y Respuestas](http://www.hynotech.com/wp-plugins/dropbox-folder-share/)**
 
 == Screenshots ==
 
@@ -50,6 +50,7 @@ Leer **[Mas > Preguntas y Respuestas](http://www.hyno.ok.pe/wp-plugins/dropbox-f
 2. Contenido publicado en modo **lista**
 3. Contenido publicado en modo **iconos**
 4. Popup de insercion de contenido en editor
+5. Configuracion general
 
 == Changelog ==
 
@@ -62,6 +63,12 @@ Leer **[Mas > Preguntas y Respuestas](http://www.hyno.ok.pe/wp-plugins/dropbox-f
 = 1.2 =
 * Cambio de Fuente de Dropbox.
 
+= 1.3 =
+* Implementado de cURL.
+* Soporte multiidioma (solo en cURL)
+* Descarga de archivos.
+* Link a Carpeta Dropbox.
+
 == Upgrade Notice ==
 
 = 1.0 =
@@ -73,3 +80,11 @@ Leer **[Mas > Preguntas y Respuestas](http://www.hyno.ok.pe/wp-plugins/dropbox-f
 
 = 1.2 =
 * Dropbox Cambio forma de acceso a los archivos y esto provocaba que no se mostraran los nombres de archivos (Solucionado).
+
+= 1.3 =
+* No funcionaba la importacion de contenido mediante cURL (Solucionado).
+* Cambio de Shortchode (antes: [dropbox-foldershare-hyno ...]   ahora: [DFS ....]) - El anterior no deja de funcionar.
+* Agregado el soporte para internacionalizacion (solo mediante cURL)
+* Habilitado el soporte para descarga de archivos.
+* Habilitado Link a carpeta en dropbox.
+* Modificacion en codigo interno.
