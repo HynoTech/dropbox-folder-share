@@ -4,7 +4,7 @@
  * Plugin Name: DropBox Folder Share
  * Plugin URI: http://www.hynotech.com/wp-plugins/dropbox-folder-share/
  * Description: Plugin que permitira incluir carpetas de DropBox en nuestras entradas de blog.
- * Version: 1.3
+ * Version: 1.3.1
  * Author: Antonio Salas (Hyno)
  * Author URI: http://www.hynotech.com/
  * License:     GNU General Public License
@@ -13,7 +13,7 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
 
     Class DropboxFolderSharePrincipal {
 
-        const _VERSION_GENERAL_ = "1.3";
+        const _VERSION_GENERAL_ = "1.3.1";
         const _VERSION_JS_ = "1.3";
         const _VERSION_CSS_ = "1.3";
         const _VERSION_ADMIN_ = "1.3";
@@ -187,44 +187,32 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
                                 $num_car = strlen($data_link[0]);
 
                                 /* id data */
-                                $inicio_id_archivo = 'on(';
+                                $inicio_id_archivo = 'parse(';
                                 $fin_id_archivo = ').';
-
-                                //echo strpos($data_link[0], $inicio_id_archivo).'<br>';
-                                //echo strpos($data_link[0], $fin_id_archivo).'<br>';
-
-                                $total = strpos($data_link[0], $inicio_id_archivo) + 4;
-                                $total2 = strpos($data_link[0], $fin_id_archivo);
-                                $total3 = ($num_car - $total2 + 2);
-                                $id_archivo = substr($data_link[0], $total + 1, -$total3);
-                                $id_archivo = eregi_replace('\"', '', $this->formatFileNames($id_archivo));
-                                //echo $id_archivo."<br />";
-                                // - Nombre de Archivo - //
-                                $num_car = strlen($data_link[1]);
-                                $inicio_nombre_archivo = "on(";
-                                $fin_nombre_archivo = ").";
-                                $total = strpos($data_link[1], $inicio_nombre_archivo) + 6;
-                                $total2 = strpos($data_link[1], $fin_nombre_archivo);
-                                //echo $total2."<br />";
-                                $total3 = ($num_car - $total2 + 3 );
-                                $nombre_archivo = substr($data_link[1], $total, -$total3);
-                                //echo $nombre_archivo."<br />";
-                                $tam_nombre = strlen($this->formatFileNames($nombre_archivo));
+                                //$(JSON.parse("\"emsnippet-429621644f00fe1d\"")).innerHTML = JSON.parse("\"Menus\"").em_snippet(50, 0.750000)
+                                $patron_id = '|\\\"(.*?)\\\"|is';
+                                $patron_nombre = $patron_id;
+                                preg_match($patron_id, $data_link[0], $idArchivo);
+                                preg_match($patron_id, $data_link[1], $nombreArchivo);
+                                $idArchivo=$idArchivo[0];
+                                $nombreArchivo=$nombreArchivo[0];
+                                $tam_nombre = strlen($this->formatFileNames($nombreArchivo));
                                 if ($tam_nombre > 16) {
-                                    $nnnn = substr($this->formatFileNames($nombre_archivo), 0, 16) . '...';
+                                    $nnnn = substr($this->formatFileNames($nombreArchivo), 0, 16) . '...';
                                 } else {
-                                    $nnnn = $this->formatFileNames($nombre_archivo);
+                                    $nnnn = $this->formatFileNames($nombreArchivo);
                                 }
                                 if ($es_carpeta > 0) {
-                                    $nnnn = $this->formatFileNames($nombre_archivo);
+                                    $nnnn = $this->formatFileNames($nombreArchivo);
                                     $es_carpeta = 0;
                                 }
 
 
-                                $file_data['id'][] = $this->formatFileNames($id_archivo);
+                                $file_data['id'][] = $this->formatFileNames($idArchivo);
                                 $file_data['nombre'][] = $nnnn;
                             }
                         }
+                        //echo '</textarea>';
 
                         foreach ($div_contenedor->find('
                             script,
@@ -259,11 +247,11 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
                                 foreach ($file_data['id'] as $key => $value) {
                                     //echo $key.'->>>'.$value.'<br>';
                                     //echo $file_names->id.'<br>';
-                                    if ($file_names->id == $value) {
+                                    if (strpos($value, $file_names->id)){
                                         $file_names->innertext = $file_data['nombre'][$key];
                                     }
                                 }
-                            }//echo "<textarea cols=80 rows=10>".$file_names."</textarea>";
+                            }//echo "<textarea cols=80 rows=10>".$archivos."</textarea>";
                             foreach ($archivos->find('div[class=filename] a') as $datos) {
                                 if ($opcion['allowDownload'] == "1") {
                                     $data_all_files['link'][] = str_replace("https://www", "https://dl", $datos->href);
@@ -302,6 +290,9 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
                             $txtCarpeta .= 'Dropbox://<span id="' . $file_data['id'][0] . '">' . eregi_replace('\"', '', $file_data['nombre'][0]) . '</span>';
                         }
                         $txtCarpeta .= '</span>';
+                        //echo '<pre>';
+                        //print_r ($data_all_files);
+                        //echo '</pre>';
                         //echo "<textarea cols=80 rows=10>" . $headersCarpeta . "</textarea>";
                         //echo var_dump($data_all_files);
                         $txtContenedor[0] = '<div id="Hyno_ContenFolder">';
@@ -404,6 +395,7 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
         add_filter("mce_buttons", array(&$objDFS_TinyMCE, "dropboxfoldershare_add_button"), 0);
         add_filter("the_posts", array(&$objDFS_TinyMCE, "dropbox_foldershare_styles_and_scripts"));
     }
+        
     add_shortcode('dropbox-foldershare-hyno', array(&$objDropboxFolderSharePrincipal, 'replace_shortcode'));
     add_shortcode('DFS', array(&$objDropboxFolderSharePrincipal, 'replace_shortcode'));
 }
