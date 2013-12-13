@@ -6,7 +6,7 @@ Tested up to: 3.7.1
 Stable tag: trunk
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Donate link:  https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=B7W3NF2LGERBW&lc=PE&item_name=BiblePost%20Wordpress%20Plugin&item_number=wpBiblePost&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted
+Donate link:  http://goo.gl/EeMhVd
 
 Permite incluir nuestra carpeta compartida de Dropbox en nuestras publicaciones.
 Allow to include our dropbox shared folders in content.
