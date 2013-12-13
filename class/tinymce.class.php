@@ -36,6 +36,10 @@ class DFS_TinyMCE extends DropboxFolderSharePrincipal {
                 $shortcode_found = true; // bingo!
                 break;
             }
+            if (stripos($post->post_content, 'DFS')) { //shortcode a buscar
+                $shortcode_found = true; // bingo!
+                break;
+            }
 
             if (stripos($post->post_content, 'hyno_learn_more')) { //cambiamos testiy por cualquier shortcode
                 $shortcode_found = true; // bingo!
