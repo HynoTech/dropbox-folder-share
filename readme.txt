@@ -2,11 +2,11 @@
 Contributors: Hyno, antony_salas
 Tags: Dropbox, Folder,Cloud, Folder Share, post, content, contenido, nube
 Requires at least: 3.0
-Tested up to: 3.7.1
+Tested up to: 3.8
 Stable tag: trunk
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Donate link:  https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=B7W3NF2LGERBW&lc=PE&item_name=BiblePost%20Wordpress%20Plugin&item_number=wpBiblePost&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted
+Donate link:  http://goo.gl/EeMhVd
 
 Permite incluir nuestra carpeta compartida de Dropbox en nuestras publicaciones.
 Allow to include our dropbox shared folders in content.
@@ -69,6 +69,12 @@ Leer **[Mas > Preguntas y Respuestas](http://www.hynotech.com/wp-plugins/dropbox
 * Descarga de archivos.
 * Link a Carpeta Dropbox.
 
+= 1.3.1 =
+* Correccion de errores de fuente
+
+= 1.3.2 =
+* Correccion de errores de fuente Dropbox
+
 == Upgrade Notice ==
 
 = 1.0 =
@@ -88,3 +94,9 @@ Leer **[Mas > Preguntas y Respuestas](http://www.hynotech.com/wp-plugins/dropbox
 * Habilitado el soporte para descarga de archivos.
 * Habilitado Link a carpeta en dropbox.
 * Modificacion en codigo interno.
+
+= 1.3.1 =
+* Correccion de errores por cambio de codigo en Dropbox.com
+
+= 1.3.2 =
+* Correccion de errores por cambio de codigo en Dropbox.com

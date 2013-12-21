@@ -4,7 +4,7 @@
  * Plugin Name: DropBox Folder Share
  * Plugin URI: http://www.hynotech.com/wp-plugins/dropbox-folder-share/
  * Description: Plugin que permitira incluir carpetas de DropBox en nuestras entradas de blog.
- * Version: 1.3
+ * Version: 1.3.2
  * Author: Antonio Salas (Hyno)
  * Author URI: http://www.hynotech.com/
  * License:     GNU General Public License
@@ -13,10 +13,12 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
 
     Class DropboxFolderSharePrincipal {
 
-        const _VERSION_GENERAL_ = "1.3";
+        const _VERSION_GENERAL_ = "1.3.2";
         const _VERSION_JS_ = "1.3";
         const _VERSION_CSS_ = "1.3";
         const _VERSION_ADMIN_ = "1.3";
+        const _VERSION_CSS_DROPBOX_ = "1.0";
+        
         const _PARENT_PAGE_ = "options-general.php";
         const _OPT_SEETINGS_ = "dropbox-folder-share-options";
         const _PERMISOS_REQUERIDOS_ = 'manage_options';
@@ -99,6 +101,7 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
         }
 
         function formatFileNames($name) {
+            //"Lista de Precio - Convenio Marco Diciembre.pdf"
             $delimitador = '\\';
             $n_partes = substr_count($name, $delimitador);
 
@@ -156,6 +159,8 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
 
             $url = $link;
             $content = $this->fetch_url($url);
+            
+            $ver_como = ($ver_como == '') ? $opcion['SeeAs'] : $ver_como;
 
             if ($content != "") {
                 $htmlCode = str_get_html($content);
@@ -170,10 +175,10 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
                     $inicio = strpos($script_nombres, '$(');
                     $fin = strpos($script_nombres, 'window.c2d_tabs', $inicio);
                     $cadena = substr($script_nombres, $inicio, $fin - $inicio);
+                    //echo '<textarea>'.$cadena."</textarea>";
                     $data_lineas = explode('.escapeHTML();', $cadena);
                     if (count($data_lineas) > 1) {
 
-                        $file_data = array();
                         //echo "<textarea cols=80 rows=10>";
                         foreach ($data_lineas as $links) {
                             //'$('emsnippet-321be91d24995cbc').innerHTML = 'E01'.em_snippet(50, 0.750)'
@@ -187,44 +192,36 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
                                 $num_car = strlen($data_link[0]);
 
                                 /* id data */
-                                $inicio_id_archivo = 'on(';
-                                $fin_id_archivo = ').';
-
-                                //echo strpos($data_link[0], $inicio_id_archivo).'<br>';
-                                //echo strpos($data_link[0], $fin_id_archivo).'<br>';
-
-                                $total = strpos($data_link[0], $inicio_id_archivo) + 4;
-                                $total2 = strpos($data_link[0], $fin_id_archivo);
-                                $total3 = ($num_car - $total2 + 2);
-                                $id_archivo = substr($data_link[0], $total + 1, -$total3);
-                                $id_archivo = eregi_replace('\"', '', $this->formatFileNames($id_archivo));
-                                //echo $id_archivo."<br />";
-                                // - Nombre de Archivo - //
-                                $num_car = strlen($data_link[1]);
-                                $inicio_nombre_archivo = "on(";
-                                $fin_nombre_archivo = ").";
-                                $total = strpos($data_link[1], $inicio_nombre_archivo) + 6;
-                                $total2 = strpos($data_link[1], $fin_nombre_archivo);
-                                //echo $total2."<br />";
-                                $total3 = ($num_car - $total2 + 3 );
-                                $nombre_archivo = substr($data_link[1], $total, -$total3);
-                                //echo $nombre_archivo."<br />";
-                                $tam_nombre = strlen($this->formatFileNames($nombre_archivo));
-                                if ($tam_nombre > 16) {
-                                    $nnnn = substr($this->formatFileNames($nombre_archivo), 0, 16) . '...';
-                                } else {
-                                    $nnnn = $this->formatFileNames($nombre_archivo);
-                                }
-                                if ($es_carpeta > 0) {
-                                    $nnnn = $this->formatFileNames($nombre_archivo);
-                                    $es_carpeta = 0;
-                                }
-
-
-                                $file_data['id'][] = $this->formatFileNames($id_archivo);
-                                $file_data['nombre'][] = $nnnn;
+                                //$(JSON.parse("\"emsnippet-429621644f00fe1d\"")).innerHTML = JSON.parse("\"Menus\"").em_snippet(50, 0.750000)
+                                //$("emsnippet-9a640cc1d4125c83").innerHTML = "readme.html".em_snippet(40, 0.750000)
+                                $patron_id = '|\"(.*?)\"|is';
+                                $patron_nombre = '|\"(.*?)\"|is';
+                                preg_match($patron_id, $data_link[0], $idArchivo);
+                                //print_r($idArchivo[0]);//."\n";
+                                preg_match($patron_nombre, $data_link[1], $nombreArchivo);
+                                //print_r($nombreArchivo[0]);//."\n";
+                                
+                                $idArchivo = str_replace('"', '', $idArchivo[0]);
+                                $nombreArchivo =  str_replace('"', '', $nombreArchivo[0]);
+                                $file_data_A[$idArchivo] = $nombreArchivo;
                             }
                         }
+                        $file_data_A = array_unique($file_data_A);
+                        /*
+                        foreach ($file_data_A as $idxNombre => $valNombre) {
+                            //echo $idxNombre . '=>'.$valNombre.'<br />';
+                                    $tam_nombre = strlen($this->formatFileNames($valNombre));
+                                    if ($tam_nombre > 16) {
+                                        $nnnn = substr($this->formatFileNames($valNombre), 0, 16) . '...';
+                                    } else {
+                                        $nnnn = $this->formatFileNames($valNombre);
+                                    }
+                                    $file_data_A[$idxNombre] = $nnnn;
+                        }
+                        foreach ($file_data_A as $idxNombre => $valNombre) {
+                            echo $idxNombre . '=>'.$valNombre.'<br />';
+                        }
+                        */
 
                         foreach ($div_contenedor->find('
                             script,
@@ -245,7 +242,9 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
                     #twitter-posting, 
                     #facebook-posting, 
                     #disable-token-modal,
-                    #album-disable-token-modal') as $txt_version) {
+                    #album-disable-token-modal,
+                    #gallery-view-container
+                    ') as $txt_version) {
                             $txt_version->outertext = '';
                         }
                         foreach ($div_contenedor->find('div#outer-frame') as $txt_version) {
@@ -253,17 +252,24 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
                         }
 
                         $data_all_files = array();
+                        //echo "<textarea cols=80 rows=10>".$div_contenedor."</textarea>";
                         foreach ($div_contenedor->find('li[class=browse-file]') as $archivos) {
 
                             foreach ($archivos->find('div[class=filename] span') as $file_names) {
-                                foreach ($file_data['id'] as $key => $value) {
+                                foreach ($file_data_A as $key => $value) {
                                     //echo $key.'->>>'.$value.'<br>';
                                     //echo $file_names->id.'<br>';
-                                    if ($file_names->id == $value) {
-                                        $file_names->innertext = $file_data['nombre'][$key];
+                                    if ($key == $file_names->id) {
+                                        $tam_nombre = strlen($this->formatFileNames($value));
+                                        if ($tam_nombre > 20) {
+                                            $nnnn = ($ver_como != 'lista')?substr($this->formatFileNames($value), 0, 20) . '...' :$this->formatFileNames($value);
+                                        } else {
+                                            $nnnn = $this->formatFileNames($value);
+                                        }
+                                        $file_names->innertext = $nnnn;
                                     }
                                 }
-                            }//echo "<textarea cols=80 rows=10>".$file_names."</textarea>";
+                            }//echo "<textarea cols=80 rows=10>".$archivos."</textarea>";
                             foreach ($archivos->find('div[class=filename] a') as $datos) {
                                 if ($opcion['allowDownload'] == "1") {
                                     $data_all_files['link'][] = str_replace("https://www", "https://dl", $datos->href);
@@ -294,14 +300,19 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
                         $headersCarpeta = $div_contenedor->find('div#list-view-header', 0)->outertext;
 
                         $txtCarpeta = '<span id="folder-title" class="shmodel-filename header_1">';
+                        reset($file_data_A);
+                        $dataCarpetaPrincipal = each($file_data_A);
                         if ($opcion['link2Folder'] === '1') {
                             $txtCarpeta .= '<a href="' . $link . '" target="_blank">';
-                            $txtCarpeta .= 'Dropbox://<span id="' . $file_data['id'][0] . '">' . eregi_replace('\"', '', $file_data['nombre'][0]) . '</span>';
+                            $txtCarpeta .= 'Dropbox://<span id="' . $dataCarpetaPrincipal[key] . '">' .$dataCarpetaPrincipal[value] . '</span>';
                             $txtCarpeta .= '</a>';
                         } else {
-                            $txtCarpeta .= 'Dropbox://<span id="' . $file_data['id'][0] . '">' . eregi_replace('\"', '', $file_data['nombre'][0]) . '</span>';
+                            $txtCarpeta .= 'Dropbox://<span id="' . $dataCarpetaPrincipal[key] . '">' . $dataCarpetaPrincipal[value] . '</span>';
                         }
                         $txtCarpeta .= '</span>';
+                        //echo '<pre>';
+                        //print_r ($data_all_files);
+                        //echo '</pre>';
                         //echo "<textarea cols=80 rows=10>" . $headersCarpeta . "</textarea>";
                         //echo var_dump($data_all_files);
                         $txtContenedor[0] = '<div id="Hyno_ContenFolder">';
@@ -356,7 +367,7 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
                             $txtIconos[0] .= '</div>';
                             $txtIconos[0] .= '</div>';
                         }
-                        $ver_como = ($ver_como == '') ? $opcion['SeeAs'] : $ver_como;
+                        
                         if ($ver_como === 'lista') {
                             //$retorno = $txtContenedor[0].$txtLista[0].$txtLista[1].$txtContenedor[1];
                             $retorno = $txtContenedor[0] . $txtLista[0] . $txtLista[1] . $txtContenedor[1];
@@ -404,6 +415,7 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
         add_filter("mce_buttons", array(&$objDFS_TinyMCE, "dropboxfoldershare_add_button"), 0);
         add_filter("the_posts", array(&$objDFS_TinyMCE, "dropbox_foldershare_styles_and_scripts"));
     }
+        
     add_shortcode('dropbox-foldershare-hyno', array(&$objDropboxFolderSharePrincipal, 'replace_shortcode'));
     add_shortcode('DFS', array(&$objDropboxFolderSharePrincipal, 'replace_shortcode'));
 }
