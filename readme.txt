@@ -2,7 +2,7 @@
 Contributors: Hyno, antony_salas
 Tags: Dropbox, Folder,Cloud, Folder Share, post, content, contenido, nube
 Requires at least: 3.0
-Tested up to: 3.7.1
+Tested up to: 3.8
 Stable tag: trunk
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -72,6 +72,9 @@ Leer **[Mas > Preguntas y Respuestas](http://www.hynotech.com/wp-plugins/dropbox
 = 1.3.1 =
 * Correccion de errores de fuente
 
+= 1.3.2 =
+* Correccion de errores de fuente Dropbox
+
 == Upgrade Notice ==
 
 = 1.0 =
@@ -93,4 +96,7 @@ Leer **[Mas > Preguntas y Respuestas](http://www.hynotech.com/wp-plugins/dropbox
 * Modificacion en codigo interno.
 
 = 1.3.1 =
+* Correccion de errores por cambio de codigo en Dropbox.com
+
+= 1.3.2 =
 * Correccion de errores por cambio de codigo en Dropbox.com
