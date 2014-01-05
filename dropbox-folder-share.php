@@ -4,7 +4,7 @@
  * Plugin Name: DropBox Folder Share
  * Plugin URI: http://www.hynotech.com/wp-plugins/dropbox-folder-share/
  * Description: Plugin que permitira incluir carpetas de DropBox en nuestras entradas de blog.
- * Version: 1.3.2
+ * Version: 1.3.3
  * Author: Antonio Salas (Hyno)
  * Author URI: http://www.hynotech.com/
  * License:     GNU General Public License
@@ -13,7 +13,7 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
 
     Class DropboxFolderSharePrincipal {
 
-        const _VERSION_GENERAL_ = "1.3.2";
+        const _VERSION_GENERAL_ = "1.3.3";
         const _VERSION_JS_ = "1.3";
         const _VERSION_CSS_ = "1.3";
         const _VERSION_ADMIN_ = "1.3";
@@ -164,28 +164,37 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
 
             if ($content != "") {
                 $htmlCode = str_get_html($content);
+                //echo '<textarea>'.$htmlCode."</textarea>";
                 $e = $htmlCode->find('body', 0);
                 if ($e) {
                     $div_contenedor = str_get_html($e->innertext);
+                    //echo '<textarea>'.$div_contenedor."</textarea>";
                     foreach ($div_contenedor->find('textarea') as $tag_div_footnotes) {
                         $tag_div_footnotes->outertext = '';
                     }
+                    //echo '<textarea>'.$div_contenedor."</textarea>";
                     // - Obtener Datos de cada archivo - //
-                    $script_nombres = $div_contenedor->find('script', -1);
-                    $inicio = strpos($script_nombres, '$(');
-                    $fin = strpos($script_nombres, 'window.c2d_tabs', $inicio);
-                    $cadena = substr($script_nombres, $inicio, $fin - $inicio);
-                    //echo '<textarea>'.$cadena."</textarea>";
-                    $data_lineas = explode('.escapeHTML();', $cadena);
-                    if (count($data_lineas) > 1) {
+                    $script_nombres = trim($div_contenedor->find('script', -1));
+                    
+                    $dataScript[0] = 'WebTimingLogger.init\(\);         \}\);          ';
+                    $dataScript[1] = 'window.c2d_tabs';
+                    $patronScript = '|'.$dataScript[0].'(.*?)'.$dataScript[1].'|is';
+                    
+                    preg_match($patronScript, $script_nombres, $varTemp);
+                    $dataScript[0] = str_replace("\\", "", $dataScript[0]);
+                    $nCadenaArchivos = str_replace($dataScript, "", $varTemp[0]);
+                    $nCadenaArchivos = substr(trim($nCadenaArchivos), 0, -1);
 
-                        //echo "<textarea cols=80 rows=10>";
+                    $lstData = explode(";",$nCadenaArchivos);
+                    $data_lineas = $lstData;
+                    if (count($data_lineas) > 1) {
+                        
                         foreach ($data_lineas as $links) {
-                            //'$('emsnippet-321be91d24995cbc').innerHTML = 'E01'.em_snippet(50, 0.750)'
+                            //$j("#pyxl6693408336318061077").text("Dropbox Folder Share".em_snippet(50, 0.750000))
                             $links = trim($links);
                             //echo $links."<br />";
-                            $data_link = explode('=', $links);
-                            //echo var_dump($data_link);
+                            $data_link = explode('.text', $links);
+                            //echo '<pre>'; print_r($data_link); echo '</pre>';
                             // - Id de Archivo - //
                             $es_carpeta = 1;
                             if ($data_link[0] != "") {
@@ -197,31 +206,16 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
                                 $patron_id = '|\"(.*?)\"|is';
                                 $patron_nombre = '|\"(.*?)\"|is';
                                 preg_match($patron_id, $data_link[0], $idArchivo);
-                                //print_r($idArchivo[0]);//."\n";
                                 preg_match($patron_nombre, $data_link[1], $nombreArchivo);
-                                //print_r($nombreArchivo[0]);//."\n";
                                 
-                                $idArchivo = str_replace('"', '', $idArchivo[0]);
+                                $idArchivo = str_replace(array('"','#'), '', $idArchivo[0]);
                                 $nombreArchivo =  str_replace('"', '', $nombreArchivo[0]);
                                 $file_data_A[$idArchivo] = $nombreArchivo;
                             }
                         }
+                        
                         $file_data_A = array_unique($file_data_A);
-                        /*
-                        foreach ($file_data_A as $idxNombre => $valNombre) {
-                            //echo $idxNombre . '=>'.$valNombre.'<br />';
-                                    $tam_nombre = strlen($this->formatFileNames($valNombre));
-                                    if ($tam_nombre > 16) {
-                                        $nnnn = substr($this->formatFileNames($valNombre), 0, 16) . '...';
-                                    } else {
-                                        $nnnn = $this->formatFileNames($valNombre);
-                                    }
-                                    $file_data_A[$idxNombre] = $nnnn;
-                        }
-                        foreach ($file_data_A as $idxNombre => $valNombre) {
-                            echo $idxNombre . '=>'.$valNombre.'<br />';
-                        }
-                        */
+
 
                         foreach ($div_contenedor->find('
                             script,
@@ -253,8 +247,9 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
 
                         $data_all_files = array();
                         //echo "<textarea cols=80 rows=10>".$div_contenedor."</textarea>";
+                        //echo "<h1> - ".count($div_contenedor->find('li[class=browse-file]'));
                         foreach ($div_contenedor->find('li[class=browse-file]') as $archivos) {
-
+                            //echo "<textarea cols=80 rows=10>".$archivos."</textarea>";
                             foreach ($archivos->find('div[class=filename] span') as $file_names) {
                                 foreach ($file_data_A as $key => $value) {
                                     //echo $key.'->>>'.$value.'<br>';
@@ -269,7 +264,7 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
                                         $file_names->innertext = $nnnn;
                                     }
                                 }
-                            }//echo "<textarea cols=80 rows=10>".$archivos."</textarea>";
+                            }
                             foreach ($archivos->find('div[class=filename] a') as $datos) {
                                 if ($opcion['allowDownload'] == "1") {
                                     $data_all_files['link'][] = str_replace("https://www", "https://dl", $datos->href);
@@ -359,13 +354,15 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
 
                             $txtLista[0] .= '<br class="clear">';
                             $txtLista[0] .= '</li>';
-                            $txtIconos[0] .= '<div class="filename-col iconos">'
-                                    . '<a href="' . $value . '" target="_blank" class="thumb-link" title="' . $SizeIcon . '" rel="nofollow">';
-                            $txtIconos[0] .= '<img src="' . self::$url . '/img/icon_spacer.gif" style="" class="' . $data_all_files['icon_class'][$key] . '" alt=""></a>';
-                            $txtIconos[0] .= '<div class="filename"><a href="' . $value . '" target="_blank" class="filename-link" onclick="" rel="nofollow">';
-                            $txtIconos[0] .= '<span id="' . $data_all_files['id'][$key] . '">' . $data_all_files['nombre'][$key] . '</span></a>';
-                            $txtIconos[0] .= '</div>';
-                            $txtIconos[0] .= '</div>';
+                            $txtIconos[0] .= ''
+                                    . '<div class="filename-col iconos">'
+                                    . '    <a href="' . $value . '" target="_blank" class="thumb-link" title="' . $SizeIcon . '" rel="nofollow">'
+                                    . '        <img src="' . self::$url . '/img/icon_spacer.gif" style="" class="' . $data_all_files['icon_class'][$key] . '" alt="">'
+                                    . '    </a>'
+                                    . '    <div class="filename"><a href="' . $value . '" target="_blank" class="filename-link" onclick="" rel="nofollow">'
+                                    . '        <span id="' . $data_all_files['id'][$key] . '">' . $data_all_files['nombre'][$key] . '</span></a>'
+                                    . '    </div>'
+                                    . '</div>';
                         }
                         
                         if ($ver_como === 'lista') {
