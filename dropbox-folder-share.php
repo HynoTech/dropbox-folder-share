@@ -188,7 +188,7 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
                     $lstData = explode(";",$nCadenaArchivos);
                     $data_lineas = $lstData;
                     if (count($data_lineas) > 1) {
-                        
+                        $file_data_A = array();
                         foreach ($data_lineas as $links) {
                             //$j("#pyxl6693408336318061077").text("Dropbox Folder Share".em_snippet(50, 0.750000))
                             $links = trim($links);
@@ -214,8 +214,7 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
                             }
                         }
                         
-                        $file_data_A = array_unique($file_data_A);
-
+                        $file_data_A = array_filter(array_unique($file_data_A));
 
                         foreach ($div_contenedor->find('
                             script,
@@ -296,7 +295,9 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
 
                         $txtCarpeta = '<span id="folder-title" class="shmodel-filename header_1">';
                         reset($file_data_A);
+
                         $dataCarpetaPrincipal = each($file_data_A);
+
                         if ($opcion['link2Folder'] === '1') {
                             $txtCarpeta .= '<a href="' . $link . '" target="_blank">';
                             $txtCarpeta .= 'Dropbox://<span id="' . $dataCarpetaPrincipal[key] . '">' .$dataCarpetaPrincipal[value] . '</span>';
