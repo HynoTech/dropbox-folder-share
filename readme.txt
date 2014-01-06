@@ -69,11 +69,8 @@ Leer **[Mas > Preguntas y Respuestas](http://www.hynotech.com/wp-plugins/dropbox
 * Descarga de archivos.
 * Link a Carpeta Dropbox.
 
-= 1.3.1 =
+= 1.3.x =
 * Correccion de errores de fuente
-
-= 1.3.2 =
-* Correccion de errores de fuente Dropbox
 
 == Upgrade Notice ==
 
@@ -95,8 +92,5 @@ Leer **[Mas > Preguntas y Respuestas](http://www.hynotech.com/wp-plugins/dropbox
 * Habilitado Link a carpeta en dropbox.
 * Modificacion en codigo interno.
 
-= 1.3.1 =
-* Correccion de errores por cambio de codigo en Dropbox.com
-
-= 1.3.2 =
+= 1.3.x =
 * Correccion de errores por cambio de codigo en Dropbox.com
