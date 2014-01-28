@@ -22,6 +22,8 @@ Con este Plugin podras:
 *   ShortCode y boton en el editor
 
 Leer **[Mas > Descripcion](http://www.hynotech.com/wp-plugins/dropbox-folder-share/ "Dropbox Folder Share")**
+    
+Pueden ver el proyecto en **[GitHub](https://github.com/HynoTech/dropbox-folder-share/ "Dropbox Folder Share en GitHub")** 
 
 == Installation ==
 
@@ -72,6 +74,10 @@ Leer **[Mas > Preguntas y Respuestas](http://www.hynotech.com/wp-plugins/dropbox
 = 1.3.x =
 * Correccion de errores de fuente
 
+= 1.4 =
+* Agregado soporte para caracteres utf-8
+* Agregado traduccion al Aleman (Gracias Michael Koloff)
+
 == Upgrade Notice ==
 
 = 1.0 =
@@ -94,3 +100,7 @@ Leer **[Mas > Preguntas y Respuestas](http://www.hynotech.com/wp-plugins/dropbox
 
 = 1.3.x =
 * Correccion de errores por cambio de codigo en Dropbox.com
+
+= 1.4 =
+* Agregado soporte para caracteres utf-8 (ä/ö/ü)
+* Agregado traduccion al Aleman (Gracias Michael Koloff)

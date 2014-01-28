@@ -4,7 +4,7 @@
  * Plugin Name: DropBox Folder Share
  * Plugin URI: http://www.hynotech.com/wp-plugins/dropbox-folder-share/
  * Description: Plugin que permitira incluir carpetas de DropBox en nuestras entradas de blog.
- * Version: 1.3.4
+ * Version: 1.4
  * Author: Antonio Salas (Hyno)
  * Author URI: http://www.hynotech.com/
  * License:     GNU General Public License
@@ -13,10 +13,10 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
 
     Class DropboxFolderSharePrincipal {
 
-        const _VERSION_GENERAL_ = "1.3.4";
+        const _VERSION_GENERAL_ = "1.4";
         const _VERSION_JS_ = "1.3";
-        const _VERSION_CSS_ = "1.3";
-        const _VERSION_ADMIN_ = "1.3";
+        const _VERSION_CSS_ = "1.3.1";
+        const _VERSION_ADMIN_ = "1.3.1";
         const _VERSION_CSS_DROPBOX_ = "1.0";
         
         const _PARENT_PAGE_ = "options-general.php";
@@ -207,15 +207,18 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
                                 $patron_nombre = '|\"(.*?)\"|is';
                                 preg_match($patron_id, $data_link[0], $idArchivo);
                                 preg_match($patron_nombre, $data_link[1], $nombreArchivo);
-                                
-                                $idArchivo = str_replace(array('"','#'), '', $idArchivo[0]);
-                                $nombreArchivo =  str_replace('"', '', $nombreArchivo[0]);
-                                $file_data_A[$idArchivo] = $nombreArchivo;
+
+                                $idArchivo = str_replace(array('"', '#'), '', $idArchivo[0]);
+                                $nombreArchivo = str_replace('"', '', $nombreArchivo[0]);
+
+                                $nombreArchivo = json_decode('["' . $nombreArchivo . '"]');
+
+                                $file_data_A[$idArchivo] = htmlentities($nombreArchivo[0], ENT_COMPAT, 'UTF-8');
                             }
                         }
-                        
-                        $file_data_A = array_filter(array_unique($file_data_A));
 
+                        $file_data_A = array_filter(array_unique($file_data_A));
+                        //echo '<pre>'; echo var_dump($file_data_A); echo '</pre>';
                         foreach ($div_contenedor->find('
                             script,
                             div.buttons,
@@ -281,7 +284,7 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
                             foreach ($archivos->find('span[id=' . $id_nombre . ']') as $datos) {
                                 $data_all_files['nombre'][] = eregi_replace('\"', '', $datos->innertext);
                                 //$id_archivo = eregi_replace('\"','',$this->formatFileNames($id_archivo));
-                                //echo $datos->innertext;
+                                //echo $datos->innertext."<br >";
                             }
                             foreach ($archivos->find('div[class=filesize-col] span') as $datos) {
                                 $data_all_files['peso'][] = $datos->innertext;

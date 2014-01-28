@@ -1,3 +1,8 @@
+<style type="text/css">
+    #version_defecto .form-table{
+        margin-left: 2em;
+    }
+</style>
 <div class="wrap">
     <img src="<?php echo parent::$url . 'img/logo.png'; ?>" />
     
