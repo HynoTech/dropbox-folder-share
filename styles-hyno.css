@@ -49,6 +49,9 @@
     line-height: 100%;
     border:none;
 }
+#Hyno_ContenFolder ol li{
+    font-size: 95%;
+}
 .nav-header {
     height: 30px;
     /*position: fixed;*/
@@ -106,10 +109,12 @@ html[xmlns] .clearfix {
 }
 .list-view-cols .filesize-col {
     width: 15%;
+    font-size: 85%;
 }
 .list-view-cols .modified-col {
     width: 15%;
     float: left;
+    font-size: 85%;
 }
 body.shmodel-body #page-content ol.browse-files {
     -webkit-padding-start: 0px;
@@ -158,9 +163,6 @@ li {
     display: block;
     cursor: default;
 }
-.list-view-cols .filename-col {
-    width: 70%;
-}
 .list-view-cols div {
     float: left;
 }
@@ -204,14 +206,7 @@ li.browse-file, li.browse-new-folder {
     display: block;
     cursor: default;
 }
-.list-view-cols .filesize-col {
-    width: 15%;
-}
 .gallery-list-view .browse-file div {
     display: block;
     cursor: default;
-}
-.list-view-cols .modified-col {
-    width: 15%;
-    float: left;
 }
