@@ -9,7 +9,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "PO-Revision-Date: 2013-12-02 23:09-0500\n"
-"Last-Translator: Antony Salas <antony@hynotech.com>\n"
+"Last-Translator: Immanuel Sterzik <immist@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "X-Generator: Poedit 1.6beta3\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -57,9 +57,9 @@ msgid ""
 "mejorar el plugin o reportar algun error nos ayuda muchisimo, no duden en "
 "hacernoslo saber. "
 msgstr ""
-"Thank Use this plugin. I like to read suggestions and opinions so that "
-"together we improve this tool, any suggestions to improve the plugin or "
-"report any errors helps us a lot, do not hesitate us know. "
+"Thanks for using this plugin. I would like it to read suggestions and opinions so that "
+"we can improve this tool together, any suggestions to improve the plugin, or "
+"error reports, help us a lot. Please do not hesitate letting us know. "
 
 #: admin/admin_page.php:110
 msgid ""
@@ -91,7 +91,7 @@ msgstr "Show Date Modification"
 
 #: class/admin.class.php:41
 msgid "Vinculacion"
-msgstr "Entailment"
+msgstr "Link"
 
 #: class/admin.class.php:43
 msgid "Permitir Descarga de Archivos"
@@ -149,7 +149,7 @@ msgstr "http://www.hynotech.com/wp-plugins/dropbox-folder-share/"
 msgid ""
 "Plugin que permitira incluir carpetas de DropBox en nuestras entradas de "
 "blog."
-msgstr "Plugin that will allow DropBox folders include in our posts."
+msgstr "Plugin that will allow DropBox folders to be included in blog posts."
 
 #. Author of the plugin/theme
 msgid "Antonio Salas (Hyno)"
