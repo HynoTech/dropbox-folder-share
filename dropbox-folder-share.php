@@ -197,7 +197,7 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
                             //echo '<pre>'; print_r($data_link); echo '</pre>';
                             // - Id de Archivo - //
                             $es_carpeta = 1;
-                            if ($data_link[0] != "") {
+                            if (count($data_link) == 2) {
                                 $num_car = strlen($data_link[0]);
 
                                 /* id data */
@@ -282,7 +282,7 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
                                 $data_all_files['id'][] = $datos->id;
                             }
                             foreach ($archivos->find('span[id=' . $id_nombre . ']') as $datos) {
-                                $data_all_files['nombre'][] = eregi_replace('\"', '', $datos->innertext);
+                                $data_all_files['nombre'][] = preg_replace('/\"/', '', $datos->innertext);
                                 //$id_archivo = eregi_replace('\"','',$this->formatFileNames($id_archivo));
                                 //echo $datos->innertext."<br >";
                             }
@@ -303,10 +303,10 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
 
                         if ($opcion['link2Folder'] === '1') {
                             $txtCarpeta .= '<a href="' . $link . '" target="_blank">';
-                            $txtCarpeta .= 'Dropbox://<span id="' . $dataCarpetaPrincipal[key] . '">' .$dataCarpetaPrincipal[value] . '</span>';
+                            $txtCarpeta .= 'Dropbox://<span id="' . $dataCarpetaPrincipal[0] . '">' .$dataCarpetaPrincipal[1] . '</span>';
                             $txtCarpeta .= '</a>';
                         } else {
-                            $txtCarpeta .= 'Dropbox://<span id="' . $dataCarpetaPrincipal[key] . '">' . $dataCarpetaPrincipal[value] . '</span>';
+                            $txtCarpeta .= 'Dropbox://<span id="' . $dataCarpetaPrincipal[0] . '">' . $dataCarpetaPrincipal[1] . '</span>';
                         }
                         $txtCarpeta .= '</span>';
                         //echo '<pre>';
