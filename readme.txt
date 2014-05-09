@@ -78,6 +78,9 @@ Leer **[Mas > Preguntas y Respuestas](http://www.hynotech.com/wp-plugins/dropbox
 * Agregado soporte para caracteres utf-8
 * Agregado traduccion al Aleman (Gracias Michael Koloff)
 
+= 1.4.x =
+* Correccion de errores de fuente
+
 == Upgrade Notice ==
 
 = 1.0 =
@@ -104,3 +107,6 @@ Leer **[Mas > Preguntas y Respuestas](http://www.hynotech.com/wp-plugins/dropbox
 = 1.4 =
 * Agregado soporte para caracteres utf-8 (ä/ö/ü)
 * Agregado traduccion al Aleman (Gracias Michael Koloff)
+
+= 1.4.x =
+* Correccion de errores por cambio de codigo en Dropbox.com
