@@ -9,7 +9,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "PO-Revision-Date: 2014-01-27 19:22-0500\n"
-"Last-Translator: Antony Salas <antony@hynotech.com>\n"
+"Last-Translator: Immanuel Sterzik <immist@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "X-Generator: Poedit 1.6.3\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -17,7 +17,7 @@ msgstr ""
 
 #: admin/admin_page.php:15
 msgid "Configuraciones"
-msgstr "Konfigurationen"
+msgstr "Einstellungen"
 
 #: admin/admin_page.php:16
 msgid "Parametros de Shorcode"
@@ -29,7 +29,7 @@ msgstr "Shortcode Parameter"
 
 #: admin/admin_page.php:33
 msgid "URL de la carpeta compartida de DropBox."
-msgstr "Dropbox öffentlicher Ordner URL"
+msgstr "URL vom öffentlichen Dropbox Ordner"
 
 #: admin/admin_page.php:37
 msgid "Como se mostrara la carpeta (<b>iconos</b> o <b>lista</b>)."
@@ -47,10 +47,10 @@ msgid ""
 "teclado en la creación de este plugin. Si te gusta, me podrías ayudar "
 "invitandome un café recién hecho."
 msgstr ""
-"Hallo, ich hoffe, Sie genießen meine Plugin. Es dauerte viele Stunden zu "
-"tun. Eine Menge Kekse und Traubensaft verschüttet auf der Tastatur in der "
-"Schaffung dieses Plugin. Wenn Sie möchten, können Sie mir helfen, mich "
-"eingeladen frisch gebrühten Kaffee."
+"Hallo, ich hoffe dass Ihnen dieses Plugin hilfreich ist. Es hat mich viele Stunden gekostet "
+"es fertigzustellen. Bei der Entwicklung dieses Plugins wurden leider auch viele Kekse und Traubensaft"
+"auf meiner Tastatur verschüttet. Wenn Ihnen dieses Plugin gefällt, können Sie mir gerne helfen, "
+"indem Sie mich auf eine Tasse frisch gebrühten Kaffee einladen."
 
 #: admin/admin_page.php:108
 msgid ""
@@ -59,17 +59,17 @@ msgid ""
 "mejorar el plugin o reportar algun error nos ayuda muchisimo, no duden en "
 "hacernoslo saber. "
 msgstr ""
-"Vielen Dank, dass Sie dieses Plugin verwenden. Ich für Anregungen und "
-"Meinungen, so dass wir zusammen gelesen verbessern dieses Tool gerne, "
-"irgendwelche Vorschläge, um das Plugin zu verbessern oder Fehler zu melden "
-"hilft uns sehr, zögern Sie nicht uns wissen."
+"Vielen Dank, dass Sie dieses Plugin verwenden. Ich bin für Anregungen, "
+"Verbesserungsvorschläge und Fehlerberichte sehr dankbar. "
+"Wenn Sie jegliche Anregungen, Verbesserungsvorschläge oder Fehlerberichte haben, "
+"zögern Sie bitte nicht mir diese mitzuteilen. "
 
 #: admin/admin_page.php:110
 msgid ""
 "Pueden hacernos lleguar sus sugerencias, opiniones y/o criticas a travez del "
 "formulario de contactos de"
 msgstr ""
-"Sie können uns Ihre Anregungen, Meinungen und / oder Kritik travez "
+"Sie können uns Ihre Anregungen, Meinungen und / oder Kritik über das "
 "Kontaktformular senden"
 
 #: class/admin.class.php:32
@@ -128,7 +128,7 @@ msgstr "Der öffentliche Ordner kann nicht gelesen werden"
 #: dropbox-folder-share.php:375
 #, fuzzy
 msgid "No podemos Revisar "
-msgstr "Wir können nicht Revise?"
+msgstr "Wir konnten leider nicht nachsehen "
 
 #: dropbox-folder-share.php:378
 msgid "No encontrado"
