@@ -33,4 +33,33 @@ jQuery(document).ready(function($) {
         }
     });
     */
+
+    /*
+    $.ajax({
+        data:  {
+            action: 'getFolderContent',
+            dfs_nonce: objDFS.dfs_nonce
+        },
+        url:   objDFS.ajax_url,
+        type:  'post',
+        beforeSend: function () {
+            console.log(objDFS);
+            alert("Procesando, espere por favor...");
+        },
+        success:  function (response) {
+           alert(response);
+        }
+    });
+    */
+
+/*
+    $.post(
+        objDFS.ajaxurl,
+        {
+            'action': 'getFolderContent2'
+        },
+        function(response){
+            alert('The server responded: ' + response);
+        });
+        */
 });

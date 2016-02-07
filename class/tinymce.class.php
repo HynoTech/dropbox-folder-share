@@ -21,7 +21,7 @@ class DFS_TinyMCE extends DropboxFolderSharePrincipal {
         if (!empty($mce_css))
             $mce_css .= ',';
 
-        $mce_css .= parent::$url . 'styles-hyno.css';
+        $mce_css .= parent::$url . 'css/styles-hyno.css';
 
         return $mce_css;
     }
@@ -49,10 +49,21 @@ class DFS_TinyMCE extends DropboxFolderSharePrincipal {
         if ($shortcode_found) {
             // enqueue
             wp_enqueue_script('jquery');
+            wp_enqueue_script('thickbox');
             wp_enqueue_script('jquery-ui-tooltip');
             wp_enqueue_script('DFS-Script', parent::$url . 'scripts-hyno.js', array('jquery'));
 
-            wp_enqueue_style('DFS-Style', parent::$url . 'styles-hyno.css'); //la ruta de nuestro css
+            wp_localize_script( 'DFS-Script', 'objDFS',
+                array(
+                    'ajax_url' => admin_url( 'admin-ajax.php' ) ,
+                    'dfs_nonce' => wp_create_nonce('dfs_nonce')
+                )
+            );
+
+            wp_enqueue_style('thickbox');
+            wp_enqueue_style('DFS-Style', parent::$url . 'css/styles-hyno.css'); //la ruta de nuestro css
+
+
             //wp_enqueue_script('bible-post-script', plugins_url('scripts-hyno.js', __FILE__)); //en caso de necesitar la ruta de nuestro script js
         }
 
