@@ -88,6 +88,9 @@ Leer **[Mas > Preguntas y Respuestas](http://www.hynotech.com/wp-plugins/dropbox
 * Agregado visualizacion de imagenes
 * Agregado cargar contenido via AJAX
 
+= 1.5.x =
+* Correccion de errores de fuente
+
 == Upgrade Notice ==
 
 = 1.0 =
@@ -124,3 +127,6 @@ Leer **[Mas > Preguntas y Respuestas](http://www.hynotech.com/wp-plugins/dropbox
 * Agregado descarga de Carpeta en ZIP
 * Agregado visualizacion de imagenes
 * Agregado cargar contenido via AJAX
+
+= 1.5.x =
+* Correccion de errores de fuente

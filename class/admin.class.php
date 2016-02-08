@@ -13,8 +13,8 @@ class DFS_Admin extends DropboxFolderSharePrincipal
     function pagAdmin()
     {
         $this->plugin_screen_hook_suffix = add_options_page(
-            '[HT]DropBox Folder Share', //Titulo Pagina
-            '[HT]DropBox Folder Share', // Titulo Menu
+            '[HT]Dropbox Folder Share', //Titulo Pagina
+            '<img width="17px" src="'. parent::$url .'/img/HT-Works.png" alt="" /> Dropbox Folder Share', // Titulo Menu
             parent::_PERMISOS_REQUERIDOS_, //Permisos Necesarios
             parent::$nombre, //id Unico del Menu
             array(&$this, 'pagina_de_opciones') //Que mostrar?
