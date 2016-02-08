@@ -59,6 +59,7 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
 
             add_filter('plugin_action_links_' . self::$basename, array(&$this, 'add_settings_link'), 10, 2);
 
+            $this->actualizarOpcAntiguas();
         }
 
         public function asignar_variables_estaticas()
@@ -67,6 +68,37 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
             self::$nombre = dirname(self::$basename);
             self::$url = plugin_dir_url(__FILE__);
             self::$url_path = plugin_dir_path(__FILE__);
+        }
+
+        function actualizarOpcAntiguas()
+        {
+            if (get_option('db_fs_hyno_show')) {
+                $estado = (get_option('db_fs_hyno_show') != 'lista') ? 'lista' : 'iconos';
+                $showIcons = (get_option('db_fs_hyno_icons') == '1') ? '1' : '';
+                $showSize = (get_option('db_fs_hyno_size') == '1') ? '1' : '';
+                $showChange = (get_option('db_fs_hyno_changed') == '1') ? '1' : '';
+                $tipoConexion = get_option('db_fs_hyno_conexion');
+
+                $this->opcDefault = array(
+                    "SeeAs" => $estado,
+                    "showIcons" => $showIcons,
+                    "showSize" => $showSize,
+                    "showChange" => $showChange,
+                    "allowDownload" => '',
+                    "link2Folder" => '1',
+                    "tipoConexion" => $tipoConexion
+                );
+
+                delete_option("db_fs_hyno_show");
+                delete_option("db_fs_hyno_icons");
+                delete_option("db_fs_hyno_size");
+                delete_option("db_fs_hyno_changed");
+                delete_option("db_fs_hyno_conexion");
+                delete_option("db_fs_hyno_link");
+            }
+            if (get_option(self::_OPT_SEETINGS_) == null) {
+                update_option(self::_OPT_SEETINGS_, $this->opcDefault);
+            }
         }
 
         function ajaxReplaceShortcode($atts){
