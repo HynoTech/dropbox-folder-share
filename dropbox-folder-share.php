@@ -168,7 +168,8 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
                 $dom = new \DOMDocument();
                 libxml_use_internal_errors(true);
                 //$dom->loadHTMLFile($content);
-                $dom->loadHTML(mb_convert_encoding($content, 'HTML-ENTITIES', 'UTF-8'),LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+                //$dom->loadHTML(mb_convert_encoding($content, 'HTML-ENTITIES', 'UTF-8'),LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+                $dom->loadHTML(mb_convert_encoding($content, 'HTML-ENTITIES', 'UTF-8'));
                 libxml_use_internal_errors(false);
                 $dom->preserveWhiteSpace = false;
 
