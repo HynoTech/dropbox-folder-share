@@ -133,7 +133,7 @@
 
     <?php if (!empty($_POST)) { ?>
         <div class="updated settings-error" id="setting-error-settings_updated">
-            <p><strong><?php _e('Configuraciones guardadas.', parent::$nombre); ?></strong></p>
+            <p><strong><?php _e('Configuraciones guardadas.', "dropbox-folder-share"); ?></strong></p>
         </div>
     <?php } ?>
 
@@ -159,7 +159,7 @@
                 </div>
                 <div id="tab-parametros" class="stuff hidden">
                     <h3>
-                        <?php _e('Parametros de Shortcode', parent::$nombre); ?>
+                        <?php _e('Parametros de Shortcode', "dropbox-folder-share"); ?>
                     </h3>
                     <div class="inside">
                         <p class="popular-tags"><em>[DFS link="LNK_FOLDER" ver_como='iconos']</em></p>
@@ -167,11 +167,11 @@
                             <tbody>
                             <tr>
                                 <th scope="row">link</th>
-                                <td><?php _e('URL de la carpeta compartida de DropBox.', parent::$nombre); ?></td>
+                                <td><?php _e('URL de la carpeta compartida de DropBox.', "dropbox-folder-share"); ?></td>
                             </tr>
                             <tr>
                                 <th scope="row">ver_como</th>
-                                <td><?php _e('Como se mostrara la carpeta (<b>iconos</b> o <b>lista</b>).', parent::$nombre); ?></td>
+                                <td><?php _e('Como se mostrara la carpeta (<b>iconos</b> o <b>lista</b>).', "dropbox-folder-share"); ?></td>
                             </tr>
                             </tbody>
                         </table>
@@ -182,9 +182,9 @@
             </div>
             <div id="SugerenciasComments" class="stuffbox">
                 <div class="inside">
-                    <em><?php _e('Gracias por Utilizar este plugin. Me gustaria leer sugerencias u opiniones para que juntos mejoremos esta herramienta, cualquier sugerencia para mejorar el plugin o reportar algun error nos ayuda muchisimo, no duden en hacernoslo saber. ',parent::$nombre); ?></em>
+                    <em><?php _e('Gracias por Utilizar este plugin. Me gustaria leer sugerencias u opiniones para que juntos mejoremos esta herramienta, cualquier sugerencia para mejorar el plugin o reportar algun error nos ayuda muchisimo, no duden en hacernoslo saber. ',"dropbox-folder-share"); ?></em>
                     <br />
-                    <em><?php _e('Pueden hacernos llegar sus sugerencias, opiniones y/o criticas a travez del formulario de contactos de', parent::$nombre) ?> <a href="http://www.hynotech.com"> HynoTech.com</a></em>
+                    <em><?php _e('Pueden hacernos llegar sus sugerencias, opiniones y/o criticas a travez del formulario de contactos de', "dropbox-folder-share") ?> <a href="http://www.hynotech.com"> HynoTech.com</a></em>
                 </div>
             </div>
         </div>

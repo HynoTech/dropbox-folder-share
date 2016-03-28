@@ -36,28 +36,29 @@ class DFS_Admin extends DropboxFolderSharePrincipal
 
         $secciones = array(
             "visualizacion" => array(
-                'titulo' => __("Visualizacion", parent::$nombre),
+                'titulo' => __("Visualizacion", "dropbox-folder-share"),
                 'campos' => array(
-                    'UseAjax' => __('Usar Ajax', parent::$nombre),
-                    'SeeAs' => __('Modo de Visualizacion', parent::$nombre),
-                    'ShowIcons' => __('Mostrar Iconos', parent::$nombre),
-                    'ShowSize' => __('Mostrar Tamaño de Archivo', parent::$nombre),
-                    'ShowChange' => __('Mostrar Fecha de Modificacion', parent::$nombre),
-                    'imagesPopup' => __('Mostrar imagenes usando Lightbox', parent::$nombre)
+                    'UseAjax' => __('Usar Ajax', "dropbox-folder-share"),
+                    'SeeAs' => __('Modo de Visualizacion', "dropbox-folder-share"),
+                    'ShowIcons' => __('Mostrar Iconos', "dropbox-folder-share"),
+                    'ShowSize' => __('Mostrar Tamaño de Archivo', "dropbox-folder-share"),
+                    'ShowChange' => __('Mostrar Fecha de Modificacion', "dropbox-folder-share"),
+                    'imagesPopup' => __('Mostrar imagenes usando Lightbox', "dropbox-folder-share")
                 )
             ),
             "vinculacion" => array(
-                'titulo' => __("Vinculacion", parent::$nombre),
+                'titulo' => __("Vinculacion", "dropbox-folder-share"),
                 'campos' => array(
-                    'allowDownload' => __('Permitir Descarga de Archivos', parent::$nombre),
-                    'allowDownloadFolder' => __('Permitir Descarga de Carpeta (comprimido)', parent::$nombre),
-                    'link2Folder' => __('Dejar Link de Carpeta Compartida', parent::$nombre),
+                    'allowDownload' => __('Permitir Descarga de Archivos', "dropbox-folder-share"),
+                    'allowDownloadFolder' => __('Permitir Descarga de Carpeta (comprimido)', "dropbox-folder-share"),
+                    'allowBrowseFolder' => __('Permitir Navegacion entre Carpetas', "dropbox-folder-share"),
+                    'link2Folder' => __('Dejar Link de Carpeta Compartida', "dropbox-folder-share"),
                 )
             ),
             "conexion" => array(
-                'titulo' => __("Conexion", parent::$nombre),
+                'titulo' => __("Conexion", "dropbox-folder-share"),
                 'campos' => array(
-                    'tipoConexion' => __('Tipo de Conexion a Usar', parent::$nombre)
+                    'tipoConexion' => __('Tipo de Conexion a Usar', "dropbox-folder-share")
                 )
             )
         );
@@ -84,7 +85,7 @@ class DFS_Admin extends DropboxFolderSharePrincipal
         }
     }
 
-    //HTML DE  SECCION VISUALIZACION 
+    //HTML DE  SECCION VISUALIZACION
     function printSeccion_visualizacion()
     {
         echo '';
@@ -113,9 +114,9 @@ class DFS_Admin extends DropboxFolderSharePrincipal
 
         <select id="id_visualizacion_SeeAs" name="<?php echo parent::_OPT_SEETINGS_; ?>[SeeAs]">
             <option
-                value="lista" <?php echo selected($options['SeeAs'], "lista", false); ?>><?php _e('Lista', parent::$nombre) ?></option>
+                value="lista" <?php echo selected($options['SeeAs'], "lista", false); ?>><?php _e('Lista', "dropbox-folder-share") ?></option>
             <option
-                value="iconos" <?php echo selected($options['SeeAs'], "iconos", false); ?>><?php _e('Iconos', parent::$nombre) ?></option>
+                value="iconos" <?php echo selected($options['SeeAs'], "iconos", false); ?>><?php _e('Iconos', "dropbox-folder-share") ?></option>
         </select>
         <?php
     }
@@ -223,6 +224,25 @@ class DFS_Admin extends DropboxFolderSharePrincipal
         <?php
     }
 
+    //Seccion allowBrowseFolder
+    function print_vinculacion_allowBrowseFolderInput()
+    {
+        $options = get_option(parent::_OPT_SEETINGS_);
+        //var_dump($options);
+        //allowDownload
+        $disable =($options['allowDownload'] != '1')?'disabled':'';
+        ?>
+        <input
+            <?php echo $disable; ?>
+            id="id_vinculacion_allowBrowseFolder"
+            type="checkbox"
+            name="<?php echo parent::_OPT_SEETINGS_; ?>[allowBrowseFolder]"
+            value="1"
+            <?php echo checked(1, $options['allowBrowseFolder'], false); ?>
+        />
+        <?php
+    }
+
     //Seccion link2Folder
     function print_vinculacion_link2FolderInput()
     {
@@ -272,6 +292,7 @@ class DFS_Admin extends DropboxFolderSharePrincipal
 
         $options['allowDownload'] = trim($input['allowDownload']);
         $options['allowDownloadFolder'] = trim($input['allowDownloadFolder']);
+        $options['allowBrowseFolder'] = trim($input['allowBrowseFolder']);
         $options['link2Folder'] = trim($input['link2Folder']);
 
         $options['tipoConexion'] = trim($input['tipoConexion']);
@@ -326,4 +347,3 @@ class DFS_Admin extends DropboxFolderSharePrincipal
     }
 }
 
- 

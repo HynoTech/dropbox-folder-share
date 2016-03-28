@@ -53,10 +53,13 @@ class DFS_TinyMCE extends DropboxFolderSharePrincipal {
             wp_enqueue_script('jquery-ui-tooltip');
             wp_enqueue_script('DFS-Script', parent::$url . 'scripts-hyno.js', array('jquery'));
 
+            $url_imgLoader = parent::$url."/img/gears.svg";
+
             wp_localize_script( 'DFS-Script', 'objDFS',
                 array(
                     'ajax_url' => admin_url( 'admin-ajax.php' ) ,
-                    'dfs_nonce' => wp_create_nonce('dfs_nonce')
+                    'dfs_nonce' => wp_create_nonce('dfs_nonce'),
+                    'url_imgLoader' => $url_imgLoader
                 )
             );
 

@@ -9,24 +9,24 @@
 <div id="sidebar" class="wrapper-cell">
 
     <div class="sidebar_box info_box">
-        <h3><?php _e('Informacion del Plugin', parent::$nombre); ?></h3>
+        <h3><?php _e('Informacion del Plugin', "dropbox-folder-share"); ?></h3>
         <div class="inside">
             <img src="<?php echo parent::$url . 'img/HT.svg'; ?>" />
             <?php $plugin_data = self::wpmm_plugin_info(parent::$nombre); ?>
             <ul>
-                <li><?php _e('Nombre', parent::$nombre); ?>:
+                <li><?php _e('Nombre', "dropbox-folder-share"); ?>:
                     <?php
                     echo !empty($plugin_data['Name']) ? $plugin_data['Name'] : '';
                     echo !empty($plugin_data['Version']) ? ' v' . $plugin_data['Version'] : '';
                     ?>
                 </li>
-                <li><?php _e('Autor', parent::$nombre); ?>
+                <li><?php _e('Autor', "dropbox-folder-share"); ?>
                     : <?php echo !empty($plugin_data['AuthorName']) ? $plugin_data['AuthorName'] : ''; ?></li>
-                <li><?php _e('Website', parent::$nombre); ?>
+                <li><?php _e('Website', "dropbox-folder-share"); ?>
                     : <?php echo !empty($plugin_data['PluginURI']) ? '<a href="' . $plugin_data['PluginURI'] . '" target="_blank">' . $plugin_data['AuthorName'] . '</a>' : ''; ?></li>
-                <li><?php _e('Twitter', parent::$nombre); ?>
+                <li><?php _e('Twitter', "dropbox-folder-share"); ?>
                     : <?php echo !empty($plugin_data['Twitter']) ? '<a href="http://twitter.com/' . $plugin_data['Twitter'] . '" target="_blank">@' . $plugin_data['Twitter'] . '</a>' : ''; ?></li>
-                <li><?php _e('GitHub', parent::$nombre); ?>
+                <li><?php _e('GitHub', "dropbox-folder-share"); ?>
                     : <?php echo !empty($plugin_data['GitHub URI']) ? '<a href="' . $plugin_data['GitHub URI'] . '" target="_blank">' . basename($plugin_data['GitHub URI']) . '</a>' : ''; ?></li>
             </ul>
         </div>
@@ -34,7 +34,7 @@
 
     <div class="sidebar_box info_box">
         <div class="inside">
-            <p class="popular-tags"><?php _e('Hola, espero que disfruten de mi plugin. Me llevó un montón de horas para hacerlo. Una gran cantidad de galletas y jugo de uva que se derramó sobre el teclado en la creación de este plugin. Si te gusta, me podrías ayudar invitandome un café recién hecho.', parent::$nombre); ?> </p>
+            <p class="popular-tags"><?php _e('Hola, espero que disfruten de mi plugin. Me llevó un montón de horas para hacerlo. Una gran cantidad de galletas y jugo de uva que se derramó sobre el teclado en la creación de este plugin. Si te gusta, me podrías ayudar invitandome un café recién hecho.', "dropbox-folder-share"); ?> </p>
             <div class="misc-pub-section center">
                 <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
                     <input type="hidden" name="cmd" value="_s-xclick">

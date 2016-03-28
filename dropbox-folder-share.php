@@ -4,12 +4,13 @@
  * Plugin Name: DropBox Folder Share
  * Plugin URI: http://www.hynotech.com/wp-plugins/dropbox-folder-share/
  * Description: Plugin que permitira incluir carpetas de DropBox en nuestras entradas de blog.
- * Version: 1.5.1
+ * Version: 1.6.0
  * Author: Antonio Salas (Hyno)
  * Author URI: http://www.hynotech.com/
  * Twitter: _AntonySalas_
  * GitHub URI: https://github.com/HynoTech/dropbox-folder-share
  * Text Domain: dropbox-folder-share
+ * Domain Path: /languages
  * License: GPL-2.0+
  * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
  */
@@ -18,9 +19,9 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
     Class DropboxFolderSharePrincipal
     {
 
-        const _VERSION_GENERAL_ = "1.5.1";
-        const _VERSION_JS_ = "1.5";
-        const _VERSION_CSS_ = "1.5";
+        const _VERSION_GENERAL_ = "1.6.0";
+        const _VERSION_JS_ = "1.6";
+        const _VERSION_CSS_ = "1.6";
         const _VERSION_ADMIN_ = "2.0.1";
         const _VERSION_CSS_DROPBOX_ = "2.0";
 
@@ -31,7 +32,7 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
         public static $basename; //Indica el directorio hasta el archivo actual "dropbox-folder-share/DropboxFolderShare.php"
         public static $nombre; //Nombre de la carpeta "dropbox-folder-share"
         public static $url; //URL completa dela carpeta actual "http://localhost:8080/wp/wp-content/plugins/dropbox-folder-share/"
-        public static $url_path; //URL completa dela carpeta actual "http://localhost:8080/wp/wp-content/plugins/dropbox-folder-share/"
+        public static $url_path; //URL completa dela carpeta actual "d:\Projects\Hosts\wordpress\wp-content\plugins\dropbox-folder-share/"
         var $formSections = array();
         var $settings = array(); //Almacena los opciones actuales del Plugin
         var $opcDefault = array(
@@ -51,7 +52,7 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
         {
             include_once 'class/admin.class.php';
             $this->asignar_variables_estaticas();
-            load_plugin_textdomain(self::$nombre, false, self::$nombre . '/languages/');
+            load_plugin_textdomain("dropbox-folder-share", false, "dropbox-folder-share" . '/languages/');
 
             $objDFS_Admin = new DFS_Admin;
             add_action('admin_menu', array(&$objDFS_Admin, 'pagAdmin'));
@@ -104,13 +105,10 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
         function ajaxReplaceShortcode($atts){
 
             if (!isset($_POST['dfs_nonce']) || !wp_verify_nonce($_POST['dfs_nonce'],'dfs_nonce'))
-                die(__("Error de seguridad", self::$nombre));
+                die(__("Error de seguridad", "dropbox-folder-share"));
 
             if ( !isset($_POST['link']) || !isset($_POST['ver_como']))
-                die( __("Error de parametros", self::$nombre) );
-
-
-
+                die( __("Error de parametros", "dropbox-folder-share") );
 
             // set defaults
             $opciones = get_option(self::_OPT_SEETINGS_);
@@ -118,38 +116,44 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
                 'link' => $_POST['link'],
                 'ver_como' => $_POST['ver_como']
             ), $atts));
-            //var_dump($atts);
-            echo $this->get_folder($link, $ver_como);
+
+            $idContent = $_POST['idContent'];
+            $titleBar = $_POST["titleBar"];
+
+            echo $this->get_folder($link, $ver_como, $idContent, $titleBar);
             die();
         }
 
-        function scriptAjax($link, $ver_como){
-            $idContent = "DFS".rand(1,99999);
+        function scriptAjax($link, $ver_como,$idContent){
+            //$idContent = "DFS".rand(1,99999);
+            $url_imgLoader = self::$url."/img/gears.svg";
 
             $regresarScript = "<div id='$idContent'>";
-            $regresarScript .= "<div class=\"loader\">Loading...</div>";
+            //$regresarScript .= "<div class=\"loader\">Loading...</div>";
+            $regresarScript .= "<div style='text-align: center'><img src=\"{$url_imgLoader}\"></div>";
             $regresarScript .= "</div>";
             $regresarScript .= "<script>";
-            $regresarScript .= "jQuery.post(objDFS.ajax_url,{ action: 'getFolderContent', dfs_nonce: objDFS.dfs_nonce, link: '$link', ver_como: '$ver_como' },function(response){ jQuery('#$idContent').html(response); });";
+            $regresarScript .= "loadContenDFS('$link', '$ver_como', '$idContent')";
             $regresarScript .= "</script>";
             return $regresarScript;
         }
 
         function replace_shortcode($atts)
         {
+            $idContent = "DFS".rand(1,99999);
             // set defaults
             $opciones = get_option(self::_OPT_SEETINGS_);
             extract(shortcode_atts(array(
                 'link' => 'https://www.dropbox.com/sh/8ifs95x8qgcaf71/1TCmt_bBy1',
                 'ver_como' => $opciones['SeeAs']
             ), $atts));
-            //var_dump($atts);
+
 
             if ($opciones['UseAjax'] === '1'){
-                return $this->scriptAjax($link, $ver_como);
+                return $this->scriptAjax($link, $ver_como, $idContent);
             }
             else{
-                return $this->get_folder($link, $ver_como);
+                return $this->get_folder($link, $ver_como, $idContent);
             }
 
             //
@@ -186,7 +190,7 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
             return false;
         }
 
-        function get_folder($link, $ver_como = '')
+        function get_folder($link, $ver_como = '', $id_content = null, $titleBar = null)
         {
             $opcion = get_option(self::_OPT_SEETINGS_);
 
@@ -248,12 +252,6 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
                             $txtZip = "";
                             if ($opcion['allowDownloadFolder'] === '1') {
 
-                                //$detalleURL = parse_url($link);
-                                //var_dump($detalleURL);
-                                //parte opcional para escribir parametros
-                                //parse_str($detalleURL['query'], $query_params);
-
-
                                 $query_params['dl'] = 1;
                                 $detalleURL['query'] = http_build_query($query_params);
 
@@ -261,22 +259,7 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
                                     $detalleURL,
                                     HTTP_URL_STRIP_AUTH | HTTP_URL_JOIN_PATH | HTTP_URL_JOIN_QUERY | HTTP_URL_STRIP_FRAGMENT
                                 );
-                                //$newUrl = http_build_url($link, array('query'=>'asd=125'), HTTP_URL_STRIP_AUTH | HTTP_URL_JOIN_PATH | HTTP_URL_JOIN_QUERY | HTTP_URL_STRIP_FRAGMENT);
 
-
-                                //var_dump($newUrl);
-
-                                /*
-                                $query_str = parse_url($link, PHP_URL_QUERY);
-                                var_dump($query_str);
-                                parse_str($detalleURL['query'], $query_params);
-                                var_dump($query_params);
-
-                                $query_params['dl'] = 1;
-
-                                echo "<h2>".http_build_query($query_params)."</h2>";
-
-                                */
 
                                 $lnkDescarga = $newUrl;
 
@@ -285,22 +268,88 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
                                 $txtZip .= '</a>';
                             }
 
-                            $txtCarpeta .= '<a href="' . $link . '" target="_blank">';
-                            $txtCarpeta .= '<div id="DropboxIcon">://'.$metaData["og:title"].'<img src="'. self::$url .'/img/ico-external-link.png"></div>';
-                            $txtCarpeta .= '</a>';
+                            if($titleBar != NULL){
+
+                                $titleBar = str_replace("\\","",$titleBar);
+
+
+                                $doc = new \DOMDocument();
+                                $doc->loadHTML(mb_convert_encoding($titleBar, 'HTML-ENTITIES', 'UTF-8'));
+
+
+                                $aElement = $doc->getElementsByTagName('span');
+                                $aData = $doc->getElementsByTagName('div');
+
+
+                                $elementsToDelete = array();
+                                $elimActivado = false;
+                                for ($i = 0; $i < $aElement->length; $i++){
+
+                                    if($elimActivado){
+                                        $elementsToDelete[] = $aElement->item($i);
+                                    }
+                                    $nomVinculo = $aElement->item($i)->childNodes->item(0);
+                                    $icoVinculo = $aElement->item($i)->childNodes->item(1);
+
+                                    if( ( $nomVinculo->nodeValue != "" ) && ( $nomVinculo->nodeValue == $metaData["og:title"] ) && ( $nomVinculo->getAttribute('href') == $link ) ) {
+                                        $elimActivado = true;
+                                    }
+                                }
+
+                                foreach ( $elementsToDelete as $elementToDelete ) {
+                                    $elementToDelete->parentNode->removeChild($elementToDelete);
+                                }
+
+                                if(!$elimActivado){
+                                    $fragInsertHTML = "<span>";
+                                    $fragInsertHTML .= "<a href='{$link}' data-titulo='1' onclick=\"loadContenDFS('{$link}', '{$ver_como}', '{$id_content}'); varTitulo = 1; return false;\">";
+                                    $fragInsertHTML .= $metaData["og:title"];
+                                    $fragInsertHTML .= '</a>';
+                                    $fragInsertHTML .= "<a href='{$link}' target='_blank'>";
+                                    $fragInsertHTML .= '<img src="'. self::$url .'/img/ico-external-link.png" />';
+                                    $fragInsertHTML .= '</a>/';
+                                    $fragInsertHTML .= "</span>";
+
+                                    $frag = $doc->createDocumentFragment();
+                                    $frag->appendXML($fragInsertHTML);
+
+                                    $aData->item(0)->appendChild($frag);
+                                }
+
+
+
+                                $txtCarpeta = $doc->saveHTML($aData->item(0));
+
+                            }
+                            else{
+                                $txtCarpeta .= '<div class="DropboxIcon">://';
+                                $txtCarpeta .= "<span>";
+                                $txtCarpeta .= "<a href='{$link}' data-titulo='1' onclick=\"loadContenDFS('{$link}', '{$ver_como}', '{$id_content}'); varTitulo = 1; return false;\">";
+                                $txtCarpeta .= $metaData["og:title"];
+                                $txtCarpeta .= '</a>';
+                                $txtCarpeta .= "<a href='{$link}' target='_blank'>";
+                                $txtCarpeta .= '<img src="'. self::$url .'/img/ico-external-link.png">';
+                                $txtCarpeta .= '</a>/';
+                                $txtCarpeta .= "</span>";
+                                $txtCarpeta .= '</div>';
+                            }
+
+
                             $txtCarpeta .= $txtZip;
                         } else {
-                            $txtCarpeta .= '<div id="DropboxIcon">://'.$metaData["og:title"].'</div>';
+                            $txtCarpeta .= '<div class="DropboxIcon">://'.$metaData["og:title"].'</div>';
                         }
 
+                        //echo "<textarea>". ($txtCarpeta); echo "</textarea>";
 
 
                         $lista_archivos->removeChild($titulosDentro);
-                        //$parteEsperada = $lista_archivos->ownerDocument->saveHTML();
-                        //echo '<textarea>'.$parteEsperada."</textarea>";
 
-                        $txtContenedor[0] = '<div id="Hyno_ContenFolder">';
-                        $txtContenedor[0] .= '  <div id="Hyno_Header">';
+
+                        $txtContenedor[0] = "";
+                        $txtContenedor[0] = "<div id='$id_content'>";
+                        $txtContenedor[0] .= '<div class="Hyno_ContenFolder">';
+                        $txtContenedor[0] .= "  <div id='Hyno_Header_{$id_content}'>";
                         $txtContenedor[0] .= '      '.$txtCarpeta;
                         $txtContenedor[0] .= '  </div>';
                         if ($ver_como == 'lista'){
@@ -313,6 +362,7 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
 
                         $txtContenedor[0] .= '';
                         $txtContenedor[1] = '</div>';
+                        $txtContenedor[1] .= '</div>';
 
                         //$lista_archivos->childNodes->item(0)->C14N();
                         $txtIconosDt = '';
@@ -328,22 +378,31 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
                                 $this->DOMRemove($lnkIcono);
                                 $this->DOMRemove($lnkFilename);
 
-                                //$element = $dom->createElement('test', 'This is the root element!');
-
-                                //$childNode->childNodes->item(0)->childNodes->item(0)->childNodes->item(0)->parentNode->replaceChild($lnkIconoContent, $element);
-                                //$lnkIconoContent->parentNode->replaceChild($lnkIconoContent, $filename_col->childNodes->item(1)->childNodes->item(0));
-                                //$childNode->childNodes->item(0)->replaceChild($lnkIconoContent->parentNode,$lnkIconoContent);
-                                //echo "CambiandoNODO";
                             }
                             else{
                                 $downloadParam = array("query" => "dl=1");
                                 $downloadFlags = HTTP_URL_STRIP_AUTH | HTTP_URL_JOIN_PATH | HTTP_URL_JOIN_QUERY | HTTP_URL_STRIP_FRAGMENT;
 
                                 $urlArchivo = $lnkIcono->getAttribute("href");
+                                $urlFilename = $lnkFilename->getAttribute("href");
+
+                                //echo "----<pre>"; print_r(pathinfo($urlArchivo)); echo "</pre>---------";
+                                $dataArchivo = pathinfo($urlArchivo);
+                                if ($opcion['allowBrowseFolder'] == '1') {
+                                    if(!isset($dataArchivo['extension'])){
+                                        $lnkIcono->setAttribute("onclick","loadContenDFS('{$urlArchivo}', '{$ver_como}', '{$id_content}'); return false;");
+                                        $urlArchivo = http_build_url('', [], $downloadFlags);
+
+                                        $lnkFilename->setAttribute("onclick","loadContenDFS('{$urlFilename}', '{$ver_como}', '{$id_content}'); return false;");
+                                        $urlFilename = http_build_url('', [], $downloadFlags);
+                                    }
+                                }
+
+
                                 $urlArchivo = http_build_url($urlArchivo, $downloadParam, $downloadFlags);
                                 $lnkIcono->setAttribute("href",$urlArchivo);
 
-                                $urlFilename = $lnkFilename->getAttribute("href");
+                                //$urlFilename = $lnkFilename->getAttribute("href");
                                 $urlFilename = http_build_url($urlFilename, $downloadParam, $downloadFlags);
                                 $lnkFilename->setAttribute("href",$urlFilename);
 
@@ -351,9 +410,6 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
                                     $partUrl = explode("?",$urlFilename);
                                     $fileInfo = explode("/", wp_check_filetype($partUrl[0])['type']);
 
-                                    //echo "<h2>--".wp_mime_type_icon(wp_check_filetype($partUrl[0])['type'])."--</h2>";
-                                    //echo "<img src=". wp_mime_type_icon(wp_check_filetype($partUrl[0])['type']) ." />";
-                                    //echo "<img src=". wp_mime_type_icon('image/jpeg') ." />";
                                     if($fileInfo[0] == 'image'){
                                         $lnkIcono->setAttribute("class",$lnkIcono->getAttribute("class")." thickbox");
                                         $lnkIcono->setAttribute("rel", $codeRel);
@@ -363,23 +419,7 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
                                     }
                                 }
 
-
-                                //echo "<h1> ___SS_".(http_build_url($urlArchivotmp, array(), $downloadFlags))."_ss__</h1>";
-
-                                //var_dump(wp_check_filetype($partUrl[0]));
-                                //var_dump(wp_check_filetype('https://www.dropbox.com/sh/4x9zxo89s6f4u6v/AAAh2eVWRiiqIkvmibHagrkQa/ajedres001.jpg'));
-                                //echo "<h1> ___SS".substr($urlArchivo, 0, - 1)."1ss__</h1>";
-                                //echo "<h1> ___SS_".($urlFilename)."_ss__</h1>";
-                                //echo "<img src=". $this->get_icon_by_file_extension('mp3') ." />";
-
                             }
-
-
-
-                            //$filename_col->childNodes->item(0)->setAttribute("href","http://localhost");
-                            //$filename_col->childNodes->item(1)->childNodes->item(0)->setAttribute("href","http://localhost");
-                            //echo "<h1> ___SS".$filename_col->childNodes->item(0)->nodeName."ss__</h1>";
-                            //setAttribute("href","http://localhost")
 
                             if ($opcion['showIcons'] != '1') {
                                 $childNode->childNodes->item(0)->removeChild($filename_col->childNodes->item(0));
@@ -401,7 +441,10 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
 
                                 $filename_col->setAttribute('style','display: table; width: 100%;');
                                 $lnkIcono->setAttribute('style','display: table-row; width: 100%;');
-                                $lnkFilename->parentNode->setAttribute('style','display: table-row; width: 100%;');
+                                if ($opcion['allowDownload'] == '1') {
+                                    $lnkFilename->parentNode->setAttribute('style','display: table-row; width: 100%;');
+                                }
+
                             }
 
                             //echo "<h1>".$childNode->parentNode->nodeName."</h1>";
@@ -445,18 +488,18 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
                         //echo '<textarea>'.$retorno."</textarea>";
                     }
                     else {
-                        $retorno = '<div id="Hyno_ContenFolder"><div class="nav-header">
+                        $retorno = '<div class="Hyno_ContenFolder"><div class="nav-header">
                         <div id="icon_folder"></div>
-                        <span id="folder-title" class="shmodel-filename header_1"><span style="color: red;font-weight: black;">Error</span>://<span id="ERROR"><span style="color: red;font-style: italic; font-weight: lighter;">' . _e('No se puede leer carpeta compartida', self::$nombre) . '</span></span></span>
+                        <span id="folder-title" class="shmodel-filename header_1"><span style="color: red;font-weight: black;">Error</span>://<span id="ERROR"><span style="color: red;font-style: italic; font-weight: lighter;">' . _e('No se puede leer carpeta compartida', "dropbox-folder-share") . '</span></span></span>
                         </div>
 						</div>';
                     }
 
                 }
                 else {
-                    $retorno = '<div id="Hyno_ContenFolder"><div class="nav-header">
+                    $retorno = '<div class="Hyno_ContenFolder"><div class="nav-header">
                         <div id="icon_folder"></div>
-                        <span id="folder-title" class="shmodel-filename header_1"><span style="color: red;font-weight: black;">Error</span>://<span id="ERROR"><span style="color: red;font-style: italic; font-weight: lighter;">' . _e('No se puede leer carpeta compartida', self::$nombre) . '</span></span></span>
+                        <span id="folder-title" class="shmodel-filename header_1"><span style="color: red;font-weight: black;">Error</span>://<span id="ERROR"><span style="color: red;font-style: italic; font-weight: lighter;">' . _e('No se puede leer carpeta compartida', "dropbox-folder-share") . '</span></span></span>
                         </div>
 						</div>';
                 }
@@ -464,14 +507,14 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
                 return $retorno;
             }
             else {
-                return  __("No encontrado", self::$nombre);
+                return  __("No encontrado", "dropbox-folder-share");
             }
         }
 
         function add_settings_link($links, $file)
         {
             if (self::$basename === $file && current_user_can(self::_PERMISOS_REQUERIDOS_)) {
-                $links[] = '<a href="' . esc_url($this->plugin_options_url()) . '" alt="' . esc_attr__('Dropbox Folder Share - Configuracion', self::$nombre) . '">' . esc_html__('Configurar', self::$nombre) . '</a>';
+                $links[] = '<a href="' . esc_url($this->plugin_options_url()) . '" alt="' . esc_attr__('Dropbox Folder Share - Configuracion', "dropbox-folder-share") . '">' . esc_html__('Configurar', "dropbox-folder-share") . '</a>';
             }
             return $links;
         }

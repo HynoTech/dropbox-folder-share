@@ -19,6 +19,7 @@ Con este Plugin podras:
 
 *   Incluir contenido de una carpeta compartida de Dropbox.
 *   Usar modos de vista de nuestros archivos.
+*   Navegar entre sub carpetas.
 *   ShortCode y boton en el editor
 
 Leer **[Mas > Descripcion](http://www.hynotech.com/wp-plugins/dropbox-folder-share/ "Dropbox Folder Share")**
@@ -28,8 +29,8 @@ Pueden ver el proyecto en **[GitHub](https://github.com/HynoTech/dropbox-folder-
 == Installation ==
 
 1. Descomprimir el plugin a la carpeta `wp-content\plugins\`.
-2. Activarlo entrando a "administracion de Plugins" (AdminPanel/Plugins).
-3. Podras usar el Plugin con el ShortCode o con el boton en editor de Wordpress:
+2. Activarlo entrando a "Plugins Instalados" (AdminPanel/Plugins).
+3. Podras usar el Plugin con el ShortCode (DFS) o con el boton en editor de Wordpress:
 
 PD. Habilitar la extension **php_openssl.dll** en **php.ini**.
 
@@ -51,8 +52,9 @@ Leer **[Mas > Preguntas y Respuestas](http://www.hynotech.com/wp-plugins/dropbox
 1. Boton en el editor
 2. Contenido publicado en modo **lista**
 3. Contenido publicado en modo **iconos**
-4. Popup de insercion de contenido en editor
-5. Configuracion general
+4. Navegacion entre carpetas
+5. Popup de insercion de contenido en editor
+6. Configuracion general
 
 == Changelog ==
 
@@ -90,6 +92,10 @@ Leer **[Mas > Preguntas y Respuestas](http://www.hynotech.com/wp-plugins/dropbox
 
 = 1.5.x =
 * Correccion de errores de fuente
+
+= 1.6.0 =
+* Agregado navegacion entre carpetas
+* Modificado descarga de archivos ( carpetas )
 
 == Upgrade Notice ==
 
@@ -130,3 +136,6 @@ Leer **[Mas > Preguntas y Respuestas](http://www.hynotech.com/wp-plugins/dropbox
 
 = 1.5.x =
 * Correccion de errores de fuente
+
+= 1.6.0 =
+* Agregado navegacion entre carpetas; Ahora puedes navegar en los subdirectorios de tu carpeta compartida (mediante AJAX)
