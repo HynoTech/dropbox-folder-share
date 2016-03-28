@@ -36,10 +36,10 @@ Con este Plugin podras:
 ![screenshot-04](Extras/assets/screenshot-4.png 'screenshot-04')
 > Navegacion entre carpetas
 
-![screenshot-05](Extras/assets/screenshot-4.png 'screenshot-05')
+![screenshot-05](Extras/assets/screenshot-5.png 'screenshot-05')
 > Popup de insercion de contenido en editor
 
-![screenshot-06](Extras/assets/screenshot-4.png 'screenshot-06')
+![screenshot-06](Extras/assets/screenshot-6.png 'screenshot-06')
 > Configuracion general
 
 ## Webs del autor
@@ -47,5 +47,4 @@ Con este Plugin podras:
 - [Pagina del Autor] (http://www.hynotech.com)
 - [Pagina del Plugin] (http://www.hynotech.com/wp-plugins/dropbox-folder-share)
 - [Pagina de Contactos] (http://www.hynotech.com/contactenos/)
-
 - [Pagina del repositorio de Wordpress] (https://wordpress.org/plugins/dropbox-folder-share/)

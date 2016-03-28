@@ -59,13 +59,13 @@
       </file>
       <file leaf-file-name="readme.md" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/readme.md">
-          <provider editor-type-id="text-editor">
-            <state relative-caret-position="429">
-              <caret line="47" column="79" selection-start-line="47" selection-start-column="79" selection-end-line="47" selection-end-column="79" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="395">
+              <caret line="45" column="0" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
               <folding />
             </state>
           </provider>
-          <provider selected="true" editor-type-id="Gfm">
+          <provider editor-type-id="Gfm">
             <state />
           </provider>
         </entry>
@@ -424,12 +424,12 @@
       <workItem from="1459091690742" duration="33370000" />
       <workItem from="1459137916116" duration="1644000" />
       <workItem from="1459144432314" duration="439000" />
-      <workItem from="1459144893079" duration="2438000" />
+      <workItem from="1459144893079" duration="2582000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="70325000" />
+    <option name="totallyTimeSpent" value="70469000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -983,13 +983,13 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/readme.md">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="429">
-          <caret line="47" column="79" selection-start-line="47" selection-start-column="79" selection-end-line="47" selection-end-column="79" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="395">
+          <caret line="45" column="0" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
           <folding />
         </state>
       </provider>
-      <provider selected="true" editor-type-id="Gfm">
+      <provider editor-type-id="Gfm">
         <state />
       </provider>
     </entry>
