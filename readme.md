@@ -26,6 +26,8 @@ Con este Plugin podras:
 
 ![screenshot-01](http://ps.w.org/dropbox-folder-share/assets/screenshot-1.png, 'screenshot-01')
 
+![screenshot-01](master/Extras/assets/screenshot-1.png, 'screenshot-01')
+
 ![screenshot-01](https://raw.githubusercontent.com/HynoTech/dropbox-folder-share/master/Extras/assets/screenshot-1.png, 'screenshot-01')
 
 If you're using Laravel 5, then [use this package instead](https://github.com/laracasts/Laravel-5-Generators-Extended).
