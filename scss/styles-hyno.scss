@@ -1,0 +1,400 @@
+//colors
+$white: #fff;
+$mercury: #e5e5e5;
+$color_tundora_approx: #444;
+$color_silver_approx: #bfbfbf;
+$color_gallery_approx: #eee;
+$color_azure_radiance_approx: #007ee5;
+$color_tapa_approx: #777;
+$color_fuscous_gray_approx: #555;
+$color_spindle_approx: #aeceef;
+$color_botticelli_approx: #ccdbeb;
+$color_athens_gray_approx: #edf1f5;
+$color_curious_blue_approx: #1f8ce6;
+
+//fonts
+$font_0: Open Sans;
+$font_1: lucida grande;
+$font_2: Segoe UI;
+$font_3: arial;
+$font_4: verdana;
+$font_5: lucida sans unicode;
+$font_6: tahoma;
+$font_7: sans-serif;
+
+//urls
+$url_1: url(../img/ico-external-link.png);
+$url_2: url(../img/web_sprites-normal.png);
+$url_3: url(../img/icon_dropbox.png);
+
+//@extend-elements
+//original selectors
+//.nav-header .buttons a.freshbutton-lightblue, .nav-header .buttons a.freshbutton-blue
+%extend_1 {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 8px;
+}
+
+//original selectors
+//body, input, textarea, select, button, .normal
+%extend_2 {
+  font-family: $font_0, $font_1, $font_2, $font_3, $font_4, $font_5, $font_6, $font_7;
+  font-size: 13px;
+  color: $color_tundora_approx;
+  font-weight: normal;
+}
+
+//original selectors
+//li.browse-file, li.browse-new-folder
+%extend_3 {
+  position: relative;
+  border: 1px solid $color_athens_gray_approx;
+  zoom: 1;
+  list-style: none;
+  font-size: 13px;
+}
+
+@import url(../css/icons.css);
+.externalIcon {
+  width: 16px;
+  height: 16px;
+  background-image: $url_1;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+.nav-header {
+  padding: 10px;
+  border-bottom: 1px solid $mercury;
+  height: 30px;
+  top: 0;
+  right: 0;
+  left: 0;
+  background-color: $white;
+  z-index: 10;
+  border-bottom: 1px solid $color_spindle_approx;
+  vertical-align: middle;
+  &:before {
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    zpadding-bottom: 12px;
+    height: 1px;
+    z-index: 10;
+  }
+  .logo {
+    line-height: 30px;
+    display: inline-block;
+    img {
+      max-width: 140px;
+      max-height: 30px;
+      vertical-align: middle;
+      display: inline;
+      &.big {
+        display: none;
+      }
+      &.custom-team-logo {
+        vertical-align: top;
+      }
+    }
+  }
+  .filename {
+    font-size: 14px;
+    color: $color_tundora_approx;
+    margin-left: 10px;
+    line-height: 30px;
+    vertical-align: top;
+  }
+  #shmodel-owner {
+    margin-left: 5px;
+    font-size: 13px;
+  }
+  .nav-close {
+    float: right;
+    position: absolute;
+    right: 9px;
+    top: 15px;
+    cursor: pointer;
+  }
+  .buttons {
+    position: absolute;
+    right: 29px;
+    top: 8px;
+    #account-header {
+      padding-top: 0;
+    }
+    a {
+      &.freshbutton-lightblue {
+        @extend %extend_1;
+      }
+      &.freshbutton-blue {
+        @extend %extend_1;
+      }
+      &.disabled-button {
+        opacity: .4;
+        cursor: default;
+      }
+    }
+    .link-wrapper {
+      display: inline-block;
+      vertical-align: middle;
+      //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+      border-radius: 3px;
+      border: 1px solid $color_silver_approx;
+      top: -2px;
+      position: relative;
+      .copy-icon {
+        height: 18px;
+        padding: 5px;
+        border-right: 1px solid $color_silver_approx;
+        vertical-align: middle;
+        img {
+          vertical-align: -3px;
+          margin-left: 3px;
+        }
+      }
+      .short-link {
+        border-width: 0;
+        width: 120px;
+        text-align: right;
+        padding: 5px;
+        height: 18px;
+        //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+        box-shadow: 0 3px 3px $color_gallery_approx;
+      }
+    }
+  }
+  #account-header {
+    display: inline-block;
+    float: none;
+    vertical-align: top;
+    line-height: 30px;
+    .sub-nav {
+      right: 10px;
+      margin-top: 20px;
+      line-height: normal;
+      &#notification-nav-link {
+        margin-top: 17px;
+        right: 0;
+      }
+    }
+    .bubble-dropdown {
+      line-height: normal;
+    }
+    ul.nav {
+      padding-left: 0;
+      #login-hover-link {
+        padding: 0 !important;
+        margin: 0 0 0 20px;
+      }
+      #login-hover-cont {
+        line-height: normal;
+      }
+      #notification-feed-nav-link .header-nav-link span.freshbubble#new-notification-count {
+        top: 0;
+      }
+      .header-nav-link:not(.sprite-button) {
+        margin: 0;
+      }
+    }
+  }
+  #owner-menu-button {
+    padding: 4px 6px;
+    .sprite {
+      margin-right: 0;
+    }
+  }
+  #non-owner-menu-button {
+    padding: 4px 6px;
+    .sprite {
+      margin-right: 0;
+    }
+  }
+  #owner-menu {
+    width: auto;
+  }
+  #download-menu {
+    width: auto;
+  }
+  .download-menu-team-assume-user-offset {
+    top: 36pt !important;
+    left: -30pt !important;
+    width: 135pt !important;
+  }
+}
+
+.DropboxIcon {
+  height: 20px;
+  background-image: $url_2;
+  background-repeat: no-repeat;
+  background-position: 0 -8772px;
+  display: inline-block;
+  position: relative;
+  padding: 0 30px;
+  font-size: 16px;
+  font-weight: 500;
+  color: $color_tundora_approx;
+}
+
+.Hyno_ContenFolder {
+  background-color: $white;
+  color: $color_azure_radiance_approx;
+  width: 98%;
+  margin: auto;
+  #list-view-header {
+    color: $color_tapa_approx;
+    margin: 4px 0 10px;
+  }
+  a {
+    color: $color_azure_radiance_approx !important;
+    text-decoration: none !important;
+    &:hover {
+      color: $color_azure_radiance_approx;
+      text-decoration: underline !important;
+    }
+  }
+  img {
+    display: inline !important;
+  }
+  .gallery-view-section {
+    height: 280px;
+    overflow: auto;
+  }
+  #icon_folder {
+    background-image: $url_3;
+    background-repeat: no-repeat;
+    position: relative;
+    float: left;
+    width: 30px;
+    height: 27px;
+  }
+  .header_1 {
+    font-size: 16px;
+    font-weight: bold;
+  }
+  .iconos {
+    width: 90px;
+
+    display: inline-block;
+    text-align: center;
+    line-height: 100%;
+    border: none;
+    padding: 6px;
+  }
+  #folder-title a {
+    color: $color_fuscous_gray_approx;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  ol li {
+    /*font-size: small;*/
+  }
+
+  #list-view-container {
+    margin: 13px 0;
+    padding-right: 16px;
+    #list-view-header {
+      color: $color_tapa_approx;
+      margin: 4px 0 10px;
+    }
+    .browse-file:first-child {
+      padding-top: 7px;
+    }
+    .browse-files .browse-file {
+      border-width: 1px 0 0 0;
+    }
+  }
+
+  .gallery-view-section {
+    background-color: $white;
+    border: 1px solid $color_botticelli_approx;
+    //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+    border-radius: 2px;
+    padding-top: 16px;
+    padding-left: 16px;
+  }
+
+  .clearfix::after {
+    content: ".";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    line-height: 0;
+    height: 0;
+  }
+
+  .list-view-cols {
+    .filename-col {
+      width: 70%;
+      font-size: smaller;
+    }
+    div {
+      display: block;
+      float: left;
+    }
+    .filesize-col {
+      width: 15%;
+      font-size: smaller;
+    }
+    .modified-col {
+      width: 15%;
+      float: left;
+      font-size: smaller;
+    }
+  }
+
+  ol {
+    display: block;
+    list-style-type: decimal;
+    &.browse-files {
+      padding: 0 0 9px;
+    }
+  }
+
+  .gallery-list-view {
+    margin: 0;
+    .browse-file {
+      padding: 7px 0;
+      margin: 0;
+      color: $color_fuscous_gray_approx;
+      border-width: 1px 0 0 0;
+      text-align: left;
+      line-height: 32px;
+      div {
+        display: block;
+        cursor: default;
+      }
+      img.icon {
+        float: left;
+        width: 32px;
+        height: 32px;
+        margin-right: 8px;
+        display: block;
+        overflow: hidden;
+        background-color: transparent;
+        vertical-align: bottom;
+        border: 1px solid transparent;
+        cursor: pointer;
+      }
+    }
+  }
+
+  li {
+    display: list-item;
+    &.browse-file {
+      @extend %extend_3;
+    }
+    &.browse-new-folder {
+      @extend %extend_3;
+    }
+  }
+}
+
+div {
+  display: block;
+}
+

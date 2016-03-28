@@ -1,150 +1,189 @@
-# Copyright (C) 2013 DropBox Folder Share
-# This file is distributed under the same license as the DropBox Folder Share package.
 msgid ""
 msgstr ""
-"Project-Id-Version: DropBox Folder Share 1.3\n"
-"Report-Msgid-Bugs-To: http://wordpress.org/tag/dropbox-folder-share\n"
-"POT-Creation-Date: 2013-12-03 03:42:06+00:00\n"
+"Project-Id-Version: DropBox Folder Share\n"
+"POT-Creation-Date: 2016-03-28 00:05-0500\n"
+"PO-Revision-Date: 2016-03-28 00:05-0500\n"
+"Last-Translator: Antonio Salas <antony.salas@gmail.com>\n"
+"Language-Team: Antonio Salas <antony.salas@gmail.com>\n"
+"Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2014-01-27 19:22-0500\n"
-"Last-Translator: Immanuel Sterzik <immist@gmail.com>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"X-Generator: Poedit 1.6.3\n"
+"X-Generator: Poedit 1.8.7\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-WPHeader: dropbox-folder-share.php\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"Language: de\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
 
-#: admin/admin_page.php:15
-msgid "Configuraciones"
-msgstr "Einstellungen"
+#: admin/admin_page.php:136
+msgid "Configuraciones guardadas."
+msgstr "Gspeicherten enstellungen"
 
-#: admin/admin_page.php:16
-msgid "Parametros de Shorcode"
-msgstr "Shortcode Parameter"
-
-#: admin/admin_page.php:25
+#: admin/admin_page.php:162
 msgid "Parametros de Shortcode"
 msgstr "Shortcode Parameter"
 
-#: admin/admin_page.php:33
+#: admin/admin_page.php:170
 msgid "URL de la carpeta compartida de DropBox."
-msgstr "URL vom öffentlichen Dropbox Ordner"
+msgstr "Dropbox öffentlicher Ordner URL"
 
-#: admin/admin_page.php:37
+#: admin/admin_page.php:174
 msgid "Como se mostrara la carpeta (<b>iconos</b> o <b>lista</b>)."
 msgstr ""
 "Wie soll der Ordner angezeigt werden? (<b>Icons</ b> oder <b> Liste </ b>)."
 
-#: admin/admin_page.php:75
-msgid "Guardar Configuracion"
-msgstr "Einstellungen speichern"
-
-#: admin/admin_page.php:81
-msgid ""
-"Hola, espero que disfruten de mi plugin. Me llevó un montón de horas para "
-"hacerlo. Una gran cantidad de galletas y jugo de uva que se derramó sobre el "
-"teclado en la creación de este plugin. Si te gusta, me podrías ayudar "
-"invitandome un café recién hecho."
-msgstr ""
-"Hallo, ich hoffe dass Ihnen dieses Plugin hilfreich ist. Es hat mich viele Stunden gekostet "
-"es fertigzustellen. Bei der Entwicklung dieses Plugins wurden leider auch viele Kekse und Traubensaft"
-"auf meiner Tastatur verschüttet. Wenn Ihnen dieses Plugin gefällt, können Sie mir gerne helfen, "
-"indem Sie mich auf eine Tasse frisch gebrühten Kaffee einladen."
-
-#: admin/admin_page.php:108
+#: admin/admin_page.php:185
 msgid ""
 "Gracias por Utilizar este plugin. Me gustaria leer sugerencias u opiniones "
 "para que juntos mejoremos esta herramienta, cualquier sugerencia para "
 "mejorar el plugin o reportar algun error nos ayuda muchisimo, no duden en "
 "hacernoslo saber. "
 msgstr ""
-"Vielen Dank, dass Sie dieses Plugin verwenden. Ich bin für Anregungen, "
-"Verbesserungsvorschläge und Fehlerberichte sehr dankbar. "
-"Wenn Sie jegliche Anregungen, Verbesserungsvorschläge oder Fehlerberichte haben, "
-"zögern Sie bitte nicht mir diese mitzuteilen. "
+"Vielen Dank, dass Sie dieses Plugin verwenden. Ich für Anregungen und "
+"Meinungen, so dass wir zusammen gelesen verbessern dieses Tool gerne, "
+"irgendwelche Vorschläge, um das Plugin zu verbessern oder Fehler zu melden "
+"hilft uns sehr, zögern Sie nicht uns wissen."
 
-#: admin/admin_page.php:110
+#: admin/admin_page.php:187
 msgid ""
-"Pueden hacernos lleguar sus sugerencias, opiniones y/o criticas a travez del "
+"Pueden hacernos llegar sus sugerencias, opiniones y/o criticas a travez del "
 "formulario de contactos de"
 msgstr ""
-"Sie können uns Ihre Anregungen, Meinungen und / oder Kritik über das "
+"Sie können uns Ihre Anregungen, Meinungen und / oder Kritik travez "
 "Kontaktformular senden"
 
-#: class/admin.class.php:32
+#: admin/sidebar.php:12
+msgid "Informacion del Plugin"
+msgstr "Plugin Informationen"
+
+#: admin/sidebar.php:17
+msgid "Nombre"
+msgstr "Name"
+
+#: admin/sidebar.php:23
+msgid "Autor"
+msgstr "Autor"
+
+#: admin/sidebar.php:25
+msgid "Website"
+msgstr "Webseite"
+
+#: admin/sidebar.php:27
+msgid "Twitter"
+msgstr "Twitter"
+
+#: admin/sidebar.php:29
+msgid "GitHub"
+msgstr "GitHub"
+
+#: admin/sidebar.php:37
+msgid ""
+"Hola, espero que disfruten de mi plugin. Me llevó un montón de horas para "
+"hacerlo. Una gran cantidad de galletas y jugo de uva que se derramó sobre el "
+"teclado en la creación de este plugin. Si te gusta, me podrías ayudar "
+"invitandome un café recién hecho."
+msgstr ""
+"Hallo, ich hoffe, Sie genießen meine Plugin. Es dauerte viele Stunden zu "
+"tun. Eine Menge Kekse und Traubensaft verschüttet auf der Tastatur in der "
+"Schaffung dieses Plugin. Wenn Sie möchten, können Sie mir helfen, mich "
+"eingeladen frisch gebrühten Kaffee."
+
+#: class/admin.class.php:39
 msgid "Visualizacion"
 msgstr "Darstellung"
 
-#: class/admin.class.php:34
+#: class/admin.class.php:41
+msgid "Usar Ajax"
+msgstr "Mit AJAX"
+
+#: class/admin.class.php:42
 msgid "Modo de Visualizacion"
 msgstr "Darstellungsart"
 
-#: class/admin.class.php:35
+#: class/admin.class.php:43
 msgid "Mostrar Iconos"
 msgstr "Icons anzeigen"
 
-#: class/admin.class.php:36
+#: class/admin.class.php:44
 msgid "Mostrar Tamaño de Archivo"
 msgstr "Dateigrösse anzeigen"
 
-#: class/admin.class.php:37
+#: class/admin.class.php:45
 msgid "Mostrar Fecha de Modificacion"
 msgstr "Datum der letzten Modifikation anzeigen"
 
-#: class/admin.class.php:41
-#, fuzzy
+#: class/admin.class.php:46
+msgid "Mostrar imagenes usando Lightbox"
+msgstr "Bilder Lightbox mit"
+
+#: class/admin.class.php:50
 msgid "Vinculacion"
 msgstr "Verknüpfung"
 
-#: class/admin.class.php:43
+#: class/admin.class.php:52
 msgid "Permitir Descarga de Archivos"
 msgstr "Herunterladen der Dateien erlauben"
 
-#: class/admin.class.php:44
+#: class/admin.class.php:53
+msgid "Permitir Descarga de Carpeta (comprimido)"
+msgstr "Herunterladen der Dateien erlauben"
+
+#: class/admin.class.php:54
+msgid "Permitir Navegacion entre Carpetas"
+msgstr "Lassen Sie die Navigation zwischen Ordnern"
+
+#: class/admin.class.php:55
 msgid "Dejar Link de Carpeta Compartida"
 msgstr "Link zum Öffentlich Ordner anzeigen"
 
-#: class/admin.class.php:48
+#: class/admin.class.php:59
 msgid "Conexion"
 msgstr "Verbindung"
 
-#: class/admin.class.php:50
+#: class/admin.class.php:61
 msgid "Tipo de Conexion a Usar"
 msgstr "gewählter Verbindungstyp"
 
-#: class/admin.class.php:87
+#: class/admin.class.php:117
 msgid "Lista"
 msgstr "Liste"
 
-#: class/admin.class.php:88
+#: class/admin.class.php:119
 msgid "Iconos"
 msgstr "Icons"
 
-#: dropbox-folder-share.php:369
+#: dropbox-folder-share.php:108
+msgid "Error de seguridad"
+msgstr "Sicherheitsfehler "
+
+#: dropbox-folder-share.php:111
+msgid "Error de parametros"
+msgstr "Parameterfehler"
+
+#: dropbox-folder-share.php:493 dropbox-folder-share.php:502
 msgid "No se puede leer carpeta compartida"
 msgstr "Der öffentliche Ordner kann nicht gelesen werden"
 
-#: dropbox-folder-share.php:375
-#, fuzzy
-msgid "No podemos Revisar "
-msgstr "Wir konnten leider nicht nachsehen "
-
-#: dropbox-folder-share.php:378
+#: dropbox-folder-share.php:510
 msgid "No encontrado"
 msgstr "Nicht gefunden"
 
-#: dropbox-folder-share.php:384
+#: dropbox-folder-share.php:517
 msgid "Dropbox Folder Share - Configuracion"
 msgstr "Dropbox Folder Share - Einstellungen"
 
-#: dropbox-folder-share.php:384
+#: dropbox-folder-share.php:517
 msgid "Configurar"
 msgstr "Einstellen"
 
 #. Plugin Name of the plugin/theme
 msgid "DropBox Folder Share"
-msgstr "Dropbox Folder Share"
+msgstr "DropBox Folder Share"
 
 #. Plugin URI of the plugin/theme
 msgid "http://www.hynotech.com/wp-plugins/dropbox-folder-share/"

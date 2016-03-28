@@ -2,7 +2,7 @@
 Contributors: Hyno, antony_salas
 Tags: Dropbox, Folder,Cloud, Folder Share, post, content, contenido, nube
 Requires at least: 3.0
-Tested up to: 3.8
+Tested up to: 4.4.2
 Stable tag: trunk
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -19,6 +19,7 @@ Con este Plugin podras:
 
 *   Incluir contenido de una carpeta compartida de Dropbox.
 *   Usar modos de vista de nuestros archivos.
+*   Navegar entre sub carpetas.
 *   ShortCode y boton en el editor
 
 Leer **[Mas > Descripcion](http://www.hynotech.com/wp-plugins/dropbox-folder-share/ "Dropbox Folder Share")**
@@ -28,8 +29,8 @@ Pueden ver el proyecto en **[GitHub](https://github.com/HynoTech/dropbox-folder-
 == Installation ==
 
 1. Descomprimir el plugin a la carpeta `wp-content\plugins\`.
-2. Activarlo entrando a "administracion de Plugins" (AdminPanel/Plugins).
-3. Podras usar el Plugin con el ShortCode o con el boton en editor de Wordpress:
+2. Activarlo entrando a "Plugins Instalados" (AdminPanel/Plugins).
+3. Podras usar el Plugin con el ShortCode (DFS) o con el boton en editor de Wordpress:
 
 PD. Habilitar la extension **php_openssl.dll** en **php.ini**.
 
@@ -51,8 +52,9 @@ Leer **[Mas > Preguntas y Respuestas](http://www.hynotech.com/wp-plugins/dropbox
 1. Boton en el editor
 2. Contenido publicado en modo **lista**
 3. Contenido publicado en modo **iconos**
-4. Popup de insercion de contenido en editor
-5. Configuracion general
+4. Navegacion entre carpetas
+5. Popup de insercion de contenido en editor
+6. Configuracion general
 
 == Changelog ==
 
@@ -80,6 +82,20 @@ Leer **[Mas > Preguntas y Respuestas](http://www.hynotech.com/wp-plugins/dropbox
 
 = 1.4.x =
 * Correccion de errores de fuente
+
+= 1.5.0 =
+* Correccion de errores de fuente
+* Agregado desgarga de archivos
+* Agregado descarga de Carpeta en ZIP
+* Agregado visualizacion de imagenes
+* Agregado cargar contenido via AJAX
+
+= 1.5.x =
+* Correccion de errores de fuente
+
+= 1.6.0 =
+* Agregado navegacion entre carpetas
+* Modificado descarga de archivos ( carpetas )
 
 == Upgrade Notice ==
 
@@ -110,3 +126,16 @@ Leer **[Mas > Preguntas y Respuestas](http://www.hynotech.com/wp-plugins/dropbox
 
 = 1.4.x =
 * Correccion de errores por cambio de codigo en Dropbox.com
+
+= 1.5.0 =
+* Correccion de errores de fuente
+* Agregado desgarga de archivos
+* Agregado descarga de Carpeta en ZIP
+* Agregado visualizacion de imagenes
+* Agregado cargar contenido via AJAX
+
+= 1.5.x =
+* Correccion de errores de fuente
+
+= 1.6.0 =
+* Agregado navegacion entre carpetas; Ahora puedes navegar en los subdirectorios de tu carpeta compartida (mediante AJAX)
