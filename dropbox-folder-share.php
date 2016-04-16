@@ -4,7 +4,7 @@
  * Plugin Name: DropBox Folder Share
  * Plugin URI: http://www.hynotech.com/wp-plugins/dropbox-folder-share/
  * Description: Plugin que permitira incluir carpetas de DropBox en nuestras entradas de blog.
- * Version: 1.6.0
+ * Version: 1.6.1
  * Author: Antonio Salas (Hyno)
  * Author URI: http://www.hynotech.com/
  * Twitter: _AntonySalas_
@@ -19,7 +19,7 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
     Class DropboxFolderSharePrincipal
     {
 
-        const _VERSION_GENERAL_ = "1.6.0";
+        const _VERSION_GENERAL_ = "1.6.1";
         const _VERSION_JS_ = "1.6";
         const _VERSION_CSS_ = "1.6";
         const _VERSION_ADMIN_ = "2.0.1";
@@ -244,7 +244,10 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
                         $arrayPath = explode("/",$detalleURL['path']);
                         $codeRel = end($arrayPath);
 
+                        $txtTitulosIdioma = $dom->saveHTML($lista_archivos->childNodes->item(0));
 
+                        //echo "<textarea>". ($dom->saveHTML($lista_archivos->childNodes->item(0))); echo "</textarea>";
+//die();
 
                         $txtCarpeta ="";
                         if ($opcion['link2Folder'] === '1') {
@@ -340,7 +343,7 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
                             $txtCarpeta .= '<div class="DropboxIcon">://'.$metaData["og:title"].'</div>';
                         }
 
-                        //echo "<textarea>". ($txtCarpeta); echo "</textarea>";
+                        //echo "<textarea>". ($txtCarpeta = $doc->saveHTML($aData->item(0));); echo "</textarea>";
 
 
                         $lista_archivos->removeChild($titulosDentro);
@@ -353,11 +356,7 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
                         $txtContenedor[0] .= '      '.$txtCarpeta;
                         $txtContenedor[0] .= '  </div>';
                         if ($ver_como == 'lista'){
-                            $txtContenedor[0] .= '    <div class="list-view-cols" id="list-view-header">';
-                            $txtContenedor[0] .= '        <div class="filename-col">Nombre</div>';
-                            $txtContenedor[0] .= '        <div class="filesize-col">Tamaño</div>';
-                            $txtContenedor[0] .= '        <div class="modified-col">Modificado</div>';
-                            $txtContenedor[0] .= '    </div>';
+                            $txtContenedor[0] .= $txtTitulosIdioma;
                         }
 
                         $txtContenedor[0] .= '';
