@@ -2,7 +2,7 @@
 Contributors: Hyno, antony_salas
 Tags: Dropbox, Folder,Cloud, Folder Share, post, content, contenido, nube
 Requires at least: 3.0
-Tested up to: 4.4.2
+Tested up to: 4.5
 Stable tag: trunk
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -58,29 +58,15 @@ Leer **[Mas > Preguntas y Respuestas](http://www.hynotech.com/wp-plugins/dropbox
 
 == Changelog ==
 
-= 1.0 =
-* Version inicial.
+= 1.6.x =
+* Correccion de errores de idioma en barra de titulos
+* Agregado Italiano (Gracias René Querin)
 
-= 1.1 =
-* Solucion a Bugs reportados.
+= 1.6.0 =
+* Agregado navegacion entre carpetas
+* Modificado descarga de archivos ( carpetas )
 
-= 1.2 =
-* Cambio de Fuente de Dropbox.
-
-= 1.3 =
-* Implementado de cURL.
-* Soporte multiidioma (solo en cURL)
-* Descarga de archivos.
-* Link a Carpeta Dropbox.
-
-= 1.3.x =
-* Correccion de errores de fuente
-
-= 1.4 =
-* Agregado soporte para caracteres utf-8
-* Agregado traduccion al Aleman (Gracias Michael Koloff)
-
-= 1.4.x =
+= 1.5.x =
 * Correccion de errores de fuente
 
 = 1.5.0 =
@@ -90,24 +76,59 @@ Leer **[Mas > Preguntas y Respuestas](http://www.hynotech.com/wp-plugins/dropbox
 * Agregado visualizacion de imagenes
 * Agregado cargar contenido via AJAX
 
-= 1.5.x =
+= 1.4.x =
 * Correccion de errores de fuente
 
-= 1.6.0 =
-* Agregado navegacion entre carpetas
-* Modificado descarga de archivos ( carpetas )
+= 1.4 =
+* Agregado soporte para caracteres utf-8
+* Agregado traduccion al Aleman (Gracias Michael Koloff)
+
+= 1.3.x =
+* Correccion de errores de fuente
+
+= 1.3 =
+* Implementado de cURL.
+* Soporte multiidioma (solo en cURL)
+* Descarga de archivos.
+* Link a Carpeta Dropbox.
+
+= 1.2 =
+* Cambio de Fuente de Dropbox.
+
+= 1.1 =
+* Solucion a Bugs reportados.
+
+= 1.0 =
+* Version inicial.
 
 == Upgrade Notice ==
 
-= 1.0 =
-* Iniciando proyecto.
+= 1.6.x =
+* Correccion de errores de idioma en barra de titulos
+* Agregado Italiano (Gracias René Querin)
 
-= 1.1 =
-* Gracias a su colaboracion al reportar bugs en el plugin, se pudo solucionar muchos de ellos.
-* Ahora cuando se publica un URL de Dropbox inexistente, no es Agregado.
+= 1.6.0 =
+* Agregado navegacion entre carpetas; Ahora puedes navegar en los subdirectorios de tu carpeta compartida (mediante AJAX)
 
-= 1.2 =
-* Dropbox Cambio forma de acceso a los archivos y esto provocaba que no se mostraran los nombres de archivos (Solucionado).
+= 1.5.x =
+* Correccion de errores de fuente
+
+= 1.5.0 =
+* Correccion de errores de fuente
+* Agregado desgarga de archivos
+* Agregado descarga de Carpeta en ZIP
+* Agregado visualizacion de imagenes
+* Agregado cargar contenido via AJAX
+
+= 1.4.x =
+* Correccion de errores por cambio de codigo en Dropbox.com
+
+= 1.4 =
+* Agregado soporte para caracteres utf-8 (ä/ö/ü)
+* Agregado traduccion al Aleman (Gracias Michael Koloff)
+
+= 1.3.x =
+* Correccion de errores por cambio de codigo en Dropbox.com
 
 = 1.3 =
 * No funcionaba la importacion de contenido mediante cURL (Solucionado).
@@ -117,25 +138,12 @@ Leer **[Mas > Preguntas y Respuestas](http://www.hynotech.com/wp-plugins/dropbox
 * Habilitado Link a carpeta en dropbox.
 * Modificacion en codigo interno.
 
-= 1.3.x =
-* Correccion de errores por cambio de codigo en Dropbox.com
+= 1.2 =
+* Dropbox Cambio forma de acceso a los archivos y esto provocaba que no se mostraran los nombres de archivos (Solucionado).
 
-= 1.4 =
-* Agregado soporte para caracteres utf-8 (ä/ö/ü)
-* Agregado traduccion al Aleman (Gracias Michael Koloff)
+= 1.1 =
+* Gracias a su colaboracion al reportar bugs en el plugin, se pudo solucionar muchos de ellos.
+* Ahora cuando se publica un URL de Dropbox inexistente, no es Agregado.
 
-= 1.4.x =
-* Correccion de errores por cambio de codigo en Dropbox.com
-
-= 1.5.0 =
-* Correccion de errores de fuente
-* Agregado desgarga de archivos
-* Agregado descarga de Carpeta en ZIP
-* Agregado visualizacion de imagenes
-* Agregado cargar contenido via AJAX
-
-= 1.5.x =
-* Correccion de errores de fuente
-
-= 1.6.0 =
-* Agregado navegacion entre carpetas; Ahora puedes navegar en los subdirectorios de tu carpeta compartida (mediante AJAX)
+= 1.0 =
+* Iniciando proyecto.
