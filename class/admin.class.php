@@ -39,11 +39,12 @@ class DFS_Admin extends DropboxFolderSharePrincipal
                 'titulo' => __("Visualizacion", "dropbox-folder-share"),
                 'campos' => array(
                     'UseAjax' => __('Usar Ajax', "dropbox-folder-share"),
-                    'SeeAs' => __('Modo de Visualizacion', "dropbox-folder-share"),
                     'ShowIcons' => __('Mostrar Iconos', "dropbox-folder-share"),
                     'ShowSize' => __('Mostrar Tamaño de Archivo', "dropbox-folder-share"),
                     'ShowChange' => __('Mostrar Fecha de Modificacion', "dropbox-folder-share"),
-                    'imagesPopup' => __('Mostrar imagenes usando Lightbox', "dropbox-folder-share")
+                    'imagesPopup' => __('Mostrar imagenes usando ThickBox', "dropbox-folder-share"),
+                    'thickboxTypesPopup' => __('Extensiones adicionales en ThickBox', "dropbox-folder-share"),
+                    'defaultHeightBox' => __('Altura maxima del contenedor', "dropbox-folder-share")
                 )
             ),
             "vinculacion" => array(
@@ -103,21 +104,6 @@ class DFS_Admin extends DropboxFolderSharePrincipal
             value="1"
             <?php echo checked(1, $options['UseAjax'], false); ?>
         />
-        <?php
-    }
-
-    //Campo SeeAs
-    function print_visualizacion_SeeAsInput()
-    {
-        $options = get_option(parent::_OPT_SEETINGS_);
-        ?>
-
-        <select id="id_visualizacion_SeeAs" name="<?php echo parent::_OPT_SEETINGS_; ?>[SeeAs]">
-            <option
-                value="lista" <?php echo selected($options['SeeAs'], "lista", false); ?>><?php _e('Lista', "dropbox-folder-share") ?></option>
-            <option
-                value="iconos" <?php echo selected($options['SeeAs'], "iconos", false); ?>><?php _e('Iconos', "dropbox-folder-share") ?></option>
-        </select>
         <?php
     }
 
@@ -182,6 +168,36 @@ class DFS_Admin extends DropboxFolderSharePrincipal
             value="1"
             <?php echo checked(1, $options['imagesPopup'], false); ?>
         />
+        <br/><br/>
+        <?php
+    }
+    //Campo thickboxTypesPopup
+    function print_visualizacion_thickboxTypesPopupInput()
+    {
+        $options = get_option(parent::_OPT_SEETINGS_);
+        ?>
+        <input
+            id="id_visualizacion_thickboxTypesPopup"
+            type="text"
+            name="<?php echo parent::_OPT_SEETINGS_; ?>[thickboxTypes]"
+            value="<?php echo $options['thickboxTypes']; ?>"
+        />
+        <p class="description"><?php _e("Separado por comas", "dropbox-folder-share"); ?></p>
+        <br/><br/>
+        <?php
+    }
+    //Campo defaultHeightBox
+    function print_visualizacion_defaultHeightBoxInput()
+    {
+        $options = get_option(parent::_OPT_SEETINGS_);
+        ?>
+        <input
+            id="id_visualizacion_defaultHeightBox"
+            type="text"
+            name="<?php echo parent::_OPT_SEETINGS_; ?>[defaultHeight]"
+            value="<?php echo $options['defaultHeight']; ?>"
+        />
+        <p class="description"><?php _e("0 para desabilitar y dejar altura automatica", "dropbox-folder-share"); ?></p>
         <br/><br/>
         <?php
     }
@@ -282,13 +298,15 @@ class DFS_Admin extends DropboxFolderSharePrincipal
     //FUNCION DE VALIDACION DE DATOS
     function validate_options($input)
     {
+
         $options = get_option(parent::_OPT_SEETINGS_);
         $options['UseAjax'] = trim($input['UseAjax']);
-        $options['SeeAs'] = trim($input['SeeAs']);
         $options['showIcons'] = trim($input['showIcons']);
         $options['showSize'] = trim($input['showSize']);
         $options['showChange'] = trim($input['showChange']);
         $options['imagesPopup'] = trim($input['imagesPopup']);
+        $options['thickboxTypes'] = trim($input['thickboxTypes']);
+        $options['defaultHeight'] = trim($input['defaultHeight']);
 
         $options['allowDownload'] = trim($input['allowDownload']);
         $options['allowDownloadFolder'] = trim($input['allowDownloadFolder']);
@@ -296,7 +314,6 @@ class DFS_Admin extends DropboxFolderSharePrincipal
         $options['link2Folder'] = trim($input['link2Folder']);
 
         $options['tipoConexion'] = trim($input['tipoConexion']);
-
 
         /* if (!preg_match('/^[a-z0-9]{32}$/i', $options['text_string'])) {
           $options['text_string'] = '';

@@ -105,13 +105,6 @@ $opcion = get_option("dropbox-folder-share-options");
                                     }" /></td>
                         </tr>
                         <tr>
-                            <td colspan="2" style="text-align: center;">
-                                <input id="rbt_ver_como" name="rbt_ver_como" type="radio" value="lista" <?php echo checked("lista", $opcion['SeeAs'], true); ?> />
-                                {#DropBoxFolderShare.txt_ver_como_lista}&nbsp;
-                                <input id="rbt_ver_como" name="rbt_ver_como" type="radio" value="iconos" <?php echo checked("iconos", $opcion['SeeAs'], true); ?> />
-                                {#DropBoxFolderShare.txt_ver_como_iconos} </td>
-                        </tr>
-                        <tr>
                             <td colspan="2">*{#DropBoxFolderShare.txt_necesario}
                                 <input type="hidden" id="hdn_id_page" value="<?php echo $id_page; ?>" /></td>
                         </tr>

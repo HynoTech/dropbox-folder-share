@@ -1,10 +1,9 @@
 <?php
-
 /**
  * Plugin Name: DropBox Folder Share
  * Plugin URI: http://www.hynotech.com/wp-plugins/dropbox-folder-share/
  * Description: Plugin que permitira incluir carpetas de DropBox en nuestras entradas de blog.
- * Version: 1.6.1
+ * Version: 1.7
  * Author: Antonio Salas (Hyno)
  * Author URI: http://www.hynotech.com/
  * Twitter: _AntonySalas_
@@ -14,16 +13,23 @@
  * License: GPL-2.0+
  * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
  */
+
+
 if (!\class_exists("DropboxFolderSharePrincipal")) {
+
+
+
+    //use Carbon\Carbon;
+
 
     Class DropboxFolderSharePrincipal
     {
 
-        const _VERSION_GENERAL_ = "1.6.1";
-        const _VERSION_JS_ = "1.6";
-        const _VERSION_CSS_ = "1.6";
-        const _VERSION_ADMIN_ = "2.0.1";
-        const _VERSION_CSS_DROPBOX_ = "2.0";
+        const _VERSION_GENERAL_ = "1.6.2";
+        const _VERSION_JS_ = "1.6.2";
+        const _VERSION_CSS_ = "1.6.2";
+        const _VERSION_ADMIN_ = "2.0.2";
+        const _VERSION_CSS_DROPBOX_ = "3.0";
 
         const _PARENT_PAGE_ = "options-general.php";
         const _OPT_SEETINGS_ = "dropbox-folder-share-options";
@@ -37,7 +43,6 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
         var $settings = array(); //Almacena los opciones actuales del Plugin
         var $opcDefault = array(
             "UseAjax" => '1',
-            "SeeAs" => "lista",
             "showIcons" => '1',
             "showSize" => '1',
             "showChange" => '1',
@@ -45,12 +50,27 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
             "allowDownloadFolder" => '1',
             "imagesPopup" => '1',
             "link2Folder" => '1',
-            "tipoConexion" => 'fopen'
+            "tipoConexion" => 'fopen',
+            "thickboxTypes" => 'txt,html,htm',
+            "defaultHeight" => '300px'
         );
 
         public function __construct()
         {
-            include_once 'class/admin.class.php';
+            require __DIR__.'/vendor/autoload.php';
+            include_once __DIR__.'/class/admin.class.php';
+
+
+            $zone = explode("_",get_locale());
+
+            setlocale(LC_TIME, get_locale());
+
+            \Carbon\Carbon::setLocale($zone[0]);
+
+            //echo "<h1>" . get_locale() . "</h1>";
+
+
+
             $this->asignar_variables_estaticas();
             load_plugin_textdomain("dropbox-folder-share", false, "dropbox-folder-share" . '/languages/');
 
@@ -61,6 +81,36 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
             add_filter('plugin_action_links_' . self::$basename, array(&$this, 'add_settings_link'), 10, 2);
 
             $this->actualizarOpcAntiguas();
+        }
+
+        public function formatSizeUnits($bytes)
+        {
+            if ($bytes >= 1073741824)
+            {
+                $bytes = number_format($bytes / 1073741824, 2) . ' GB';
+            }
+            elseif ($bytes >= 1048576)
+            {
+                $bytes = number_format($bytes / 1048576, 2) . ' MB';
+            }
+            elseif ($bytes >= 1024)
+            {
+                $bytes = number_format($bytes / 1024, 2) . ' KB';
+            }
+            elseif ($bytes > 1)
+            {
+                $bytes = $bytes . ' bytes';
+            }
+            elseif ($bytes == 1)
+            {
+                $bytes = $bytes . ' byte';
+            }
+            else
+            {
+                $bytes = '0 bytes';
+            }
+
+            return $bytes;
         }
 
         public function asignar_variables_estaticas()
@@ -107,24 +157,20 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
             if (!isset($_POST['dfs_nonce']) || !wp_verify_nonce($_POST['dfs_nonce'],'dfs_nonce'))
                 die(__("Error de seguridad", "dropbox-folder-share"));
 
-            if ( !isset($_POST['link']) || !isset($_POST['ver_como']))
-                die( __("Error de parametros", "dropbox-folder-share") );
-
             // set defaults
             $opciones = get_option(self::_OPT_SEETINGS_);
             extract(shortcode_atts(array(
                 'link' => $_POST['link'],
-                'ver_como' => $_POST['ver_como']
             ), $atts));
 
             $idContent = $_POST['idContent'];
             $titleBar = $_POST["titleBar"];
 
-            echo $this->get_folder($link, $ver_como, $idContent, $titleBar);
+            echo $this->get_folder($link, $idContent, $titleBar);
             die();
         }
 
-        function scriptAjax($link, $ver_como,$idContent){
+        function scriptAjax($link, $idContent){
             //$idContent = "DFS".rand(1,99999);
             $url_imgLoader = self::$url."/img/gears.svg";
 
@@ -133,27 +179,26 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
             $regresarScript .= "<div style='text-align: center'><img src=\"{$url_imgLoader}\"></div>";
             $regresarScript .= "</div>";
             $regresarScript .= "<script>";
-            $regresarScript .= "loadContenDFS('$link', '$ver_como', '$idContent')";
+            $regresarScript .= "loadContenDFS('$link', '$idContent')";
             $regresarScript .= "</script>";
             return $regresarScript;
         }
 
         function replace_shortcode($atts)
         {
-            $idContent = "DFS".rand(1,99999);
+            $idContent = "DFS".mt_rand(1,99999);
             // set defaults
             $opciones = get_option(self::_OPT_SEETINGS_);
             extract(shortcode_atts(array(
                 'link' => 'https://www.dropbox.com/sh/8ifs95x8qgcaf71/1TCmt_bBy1',
-                'ver_como' => $opciones['SeeAs']
             ), $atts));
 
 
             if ($opciones['UseAjax'] === '1'){
-                return $this->scriptAjax($link, $ver_como, $idContent);
+                return $this->scriptAjax($link, $idContent);
             }
             else{
-                return $this->get_folder($link, $ver_como, $idContent);
+                return $this->get_folder($link, $idContent);
             }
 
             //
@@ -190,14 +235,13 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
             return false;
         }
 
-        function get_folder($link, $ver_como = '', $id_content = null, $titleBar = null)
+        function get_folder($link, $id_content = null, $titleBar = null)
         {
             $opcion = get_option(self::_OPT_SEETINGS_);
 
             $url_data = $link;
             $content = $this->fetch_url($url_data);
 
-            $ver_como = ($ver_como == '') ? $opcion['SeeAs'] : $ver_como;
 
             if ($content != "") {
 
@@ -223,31 +267,238 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
 
                     }
 
-                    //var_dump($metaData);
+
+                    /**
+                     * V 1.6.2
+                     * NewForma
+                     */
 
 
-                    $body_txt = $body->item(0)->ownerDocument->saveHTML();
-                    libxml_use_internal_errors(true);
-                    $dom->loadHTML(mb_convert_encoding($body_txt, 'HTML-ENTITIES', 'UTF-8'));
-                    libxml_use_internal_errors(false);
 
-                    $dom->preserveWhiteSpace = false;
-                    $titulosDentro = $dom->getElementById('list-view-header');
+                    $varExt = [
+                        'acrobat' => [
+                            "pdf",
+                            "eps",
+                        ],
+                        'audition' => ["ai"],
+                        'code' => [
+                            "c",
+                            "cpp",
+                            "cs",
+                            "css",
+                            "h",
+                            "htm",
+                            "html",
+                            "java",
+                            "js",
+                            "php",
+                            "pl",
+                            "py",
+                            "rb",
+                            "xml",
+                        ],
+                        'compressed' => [
+                            "bz2",
+                            "gz",
+                            "rar",
+                            "zip",
+                            "tar",
+                        ],
+                        'dvd' => [
+                            "dmg",
+                            "iso",
+                        ],
+                        'excel' => [
+                            "csv",
+                            "ods",
+                            "xls",
+                            "xlsb",
+                            "xlsm",
+                            "xlsx",
+                        ],
+                        'film' => [
+                            "3gp",
+                            "3gpp",
+                            "asf",
+                            "avi",
+                            "flv",
+                            "m4v",
+                            "mkv",
+                            "mov",
+                            "mp4",
+                            "mpg",
+                            "ogv",
+                            "vob",
+                            "wmv",
+                        ],
+                        'flash' => [
+                            "fla",
+                            "swf",
+                        ],
+                        'gear' => [
+                            "exe",
+                            "app",
+                            "dll",
+                        ],
+                        'gray' => [],
+                        'illustrator' => [
+                            "ai",
+                        ],
+                        'keynote' => [
+                            "key",
+                        ],
+                        'linkfile' => [
+                            "webloc",
+                            "url",
+                        ],
+                        'mp3' => [
 
-                    if($titulosDentro){
-                        //var_dump($titulosDentro);
-                        $lista_archivos = $dom->getElementById('list-view-container');
-                        $lista_archivos->setAttribute('style', '');
+                        ],
+                        'paint' => [
+                            "psd"
+                        ],
+                        'paper' => [],
+                        'picture' => [
+                            "dcr",
+                            "r3d",
+                            "bmp",
+                            "dcs",
+                            "gif",
+                            "jpeg",
+                            "jpg",
+                            "png",
+                            "svg",
+                            "tif",
+                            "tiff",
+                            "ptx",
+                            "rwz",
+                            "kdc",
+                        ],
+                        'playlist' => [],
+                        'powerpoint' => [
+                            "pps",
+                            "ppsm",
+                            "ppsx",
+                            "ppt",
+                            "pptm",
+                            "pptx",
+                        ],
+                        'premiere' => [],
+                        'sketch' => [],
+                        'sound' => [
+                            "3ga",
+                            "aac",
+                            "aif",
+                            "aiff",
+                            "amr",
+                            "au",
+                            "iff",
+                            "m3u",
+                            "m4a",
+                            "mid",
+                            "mp3",
+                            "mpa",
+                            "oga",
+                            "ogg",
+                            "ra",
+                            "wav",
+                            "wma",
+                        ],
+                        'stack' => [],
+                        'text' => [
+                            "txt",
+                            "wps",
+                        ],
+                        'vector' => [
+                            "ai",
+                        ],
+                        'webcode' => [],
+                        'word' => [
+                            "doc",
+                            "docm",
+                            "rtf",
+                            "odt",
+                            "pages",
+                            "wpd",
+                        ]
+                    ];
 
-                        $detalleURL = parse_url($link);
+
+                    $dataScript[0] = '"contents"';
+                    $dataScript[1] = '}]}';
+
+
+                    $dataModule[0] = 'window.MODULE_CONFIG = {';
+                    $dataModule[1] = '}}}};';
+
+                    $patronModule = '|'.$dataModule[0].'(.*?)'.$dataModule[1].'|is';
+                    preg_match_all($patronModule, $body->item(0)->ownerDocument->saveHTML(), $varTemp2);
+
+
+                    $soloDataModule = str_replace('window.MODULE_CONFIG = ', '', $varTemp2[0][0]);
+
+                    $soloDataModule = str_replace('}}}};', '}}}}', $soloDataModule);
+
+
+                    $objImportante2 = json_decode( $soloDataModule );
+
+
+
+
+                    if(isset($objImportante2->modules->dirty)){
+                        $retorno = '
+                        <div class="err sl-list-container" style="width: 100%; text-align: center;">
+                            <img src="'. self::$url .'/img/error_404.png" alt="" width="30%">
+                            <h4 class="sl-empty-folder-message">'. __("No encontramos lo que buscas.", "dropbox-folder-share").'</h4>
+                        </div>
+                        ';
+
+                        return $retorno;
+
+                    }
+
+
+
+                    $dataCarpeta = $objImportante2->modules->clean->init_react->components;
+
+                    $patronScript = '|'.$dataScript[0].'(.*?)'.$dataScript[1].'|is';
+
+                    preg_match_all($patronScript, $body->item(0)->ownerDocument->saveHTML(), $varTemp);
+
+                    $objImportante = json_decode("{". $varTemp[0][0]. "}");
+
+
+                    $dataContents = $objImportante->contents;
+
+
+                    $archivosCarpeta = $dataContents->files;
+                    $carpetasCarpeta = $dataContents->folders;
+
+
+                    $datosCarpetaLocal = [
+                        "nombre" => $dataCarpeta[0]->props->folderShareToken->displayName,
+                        "link" => $dataCarpeta[0]->props->folderSharedLinkInfo->url,
+                        "archivos" => $archivosCarpeta,
+                        "carpetas" => $carpetasCarpeta,
+                    ];
+
+
+
+
+
+
+
+                    $cantData = count($datosCarpetaLocal["carpetas"]) + count($datosCarpetaLocal["archivos"]);
+
+
+                    if($cantData > 0){
+
+
+                        $detalleURL = parse_url($datosCarpetaLocal["link"]);
 
                         $arrayPath = explode("/",$detalleURL['path']);
                         $codeRel = end($arrayPath);
 
-                        $txtTitulosIdioma = $dom->saveHTML($lista_archivos->childNodes->item(0));
-
-                        //echo "<textarea>". ($dom->saveHTML($lista_archivos->childNodes->item(0))); echo "</textarea>";
-//die();
 
                         $txtCarpeta ="";
                         if ($opcion['link2Folder'] === '1') {
@@ -267,9 +518,10 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
                                 $lnkDescarga = $newUrl;
 
                                 $txtZip = '<a href="' . $lnkDescarga . '" target="_blank">';
-                                $txtZip .= '<img style="float: right;" src="'. self::$url .'/img/zip.png">';
+                                $txtZip .= '<img style="float: right;" src="'. self::$url .'/img/zip.png" title="' . __('Descargar carpeta actual (zip)', 'dropbox-folder-share') . '" >';
                                 $txtZip .= '</a>';
                             }
+
 
                             if($titleBar != NULL){
 
@@ -294,10 +546,11 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
                                     $nomVinculo = $aElement->item($i)->childNodes->item(0);
                                     $icoVinculo = $aElement->item($i)->childNodes->item(1);
 
-                                    if( ( $nomVinculo->nodeValue != "" ) && ( $nomVinculo->nodeValue == $metaData["og:title"] ) && ( $nomVinculo->getAttribute('href') == $link ) ) {
+                                    if( ( $nomVinculo->nodeValue != "" ) && ( $nomVinculo->nodeValue == $datosCarpetaLocal["nombre"] ) && ( $nomVinculo->getAttribute('href') == $link ) ) {
                                         $elimActivado = true;
                                     }
                                 }
+
 
                                 foreach ( $elementsToDelete as $elementToDelete ) {
                                     $elementToDelete->parentNode->removeChild($elementToDelete);
@@ -305,7 +558,7 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
 
                                 if(!$elimActivado){
                                     $fragInsertHTML = "<span>";
-                                    $fragInsertHTML .= "<a href='{$link}' data-titulo='1' onclick=\"loadContenDFS('{$link}', '{$ver_como}', '{$id_content}'); varTitulo = 1; return false;\">";
+                                    $fragInsertHTML .= "<a href='{$link}' data-titulo='1' onclick=\"loadContenDFS('{$link}', '{$id_content}'); varTitulo = 1; return false;\">";
                                     $fragInsertHTML .= $metaData["og:title"];
                                     $fragInsertHTML .= '</a>';
                                     $fragInsertHTML .= "<a href='{$link}' target='_blank'>";
@@ -325,182 +578,263 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
 
                             }
                             else{
-                                $txtCarpeta .= '<div class="DropboxIcon">://';
+
+                                $txtCarpeta .= "<div style='display: block;'>";
+                                $txtCarpeta .= '<img class="sprite sprite_web s_web_dropbox21x20 icon" src="'. self::$url .'img/icon_spacer.gif" alt=""><i style="float: left;">://</i>';
                                 $txtCarpeta .= "<span>";
-                                $txtCarpeta .= "<a href='{$link}' data-titulo='1' onclick=\"loadContenDFS('{$link}', '{$ver_como}', '{$id_content}'); varTitulo = 1; return false;\">";
-                                $txtCarpeta .= $metaData["og:title"];
+                                $txtCarpeta .= "<a href='{$link}' data-titulo='1' onclick=\"loadContenDFS('{$link}', '{$id_content}'); varTitulo = 1; return false;\">";
+                                $txtCarpeta .= $datosCarpetaLocal["nombre"];
                                 $txtCarpeta .= '</a>';
                                 $txtCarpeta .= "<a href='{$link}' target='_blank'>";
                                 $txtCarpeta .= '<img src="'. self::$url .'/img/ico-external-link.png">';
                                 $txtCarpeta .= '</a>/';
+                                $txtCarpeta .= '';
                                 $txtCarpeta .= "</span>";
-                                $txtCarpeta .= '</div>';
+                                $txtCarpeta .= "</div>";
                             }
 
 
                             $txtCarpeta .= $txtZip;
                         } else {
-                            $txtCarpeta .= '<div class="DropboxIcon">://'.$metaData["og:title"].'</div>';
+                            $txtCarpeta .= '<img class="sprite sprite_web s_web_dropbox21x20 icon" src="'. self::$url .'img/icon_spacer.gif" alt="">//'.$datosCarpetaLocal["nombre"].'</div>';
                         }
 
-                        //echo "<textarea>". ($txtCarpeta = $doc->saveHTML($aData->item(0));); echo "</textarea>";
+
+                        $seccionesLista = [58.6,19.5,21.9];
+
+                        $displaySize = "auto";
+                        if ($opcion['showSize'] != '1') {
+                            $displaySize = "none";
+                            $seccionesLista[0] += $seccionesLista[1];
+                            $seccionesLista[1] = 0;
+                        }
+
+                        $displayChange = "auto";
+                        if ($opcion['showChange'] != '1') {
+                            $displayChange = "none";
+                            $seccionesLista[0] += $seccionesLista[2];
+                            $seccionesLista[2] = 0;
+                        }
 
 
-                        $lista_archivos->removeChild($titulosDentro);
+
+
+                        $htmlCarpetas = "";
+                        foreach ($datosCarpetaLocal["carpetas"] as $carpeta) {
+                            $folderName = $carpeta->filename;
+                            $folderHref = $carpeta->href;
+                            //s_web_folder_32
+
+                            $displayIcon = "auto";
+                            if ($opcion['showIcons'] != '1') {
+                                $displayIcon = "none";
+                            }
+
+
+                            $strOnclick = "onclick='return false;'";
+                            if ($opcion['allowBrowseFolder'] == '1'){
+                                //onclick=\"loadContenDFS('{$folderHref}', '{$ver_como}', '{$id_content}'); varTitulo = 1; return false;\"
+                                $strOnclick = "onclick=\"loadContenDFS('{$folderHref}', '{$id_content}'); varTitulo = 1; return false;\"";
+                            }
+
+
+
+                                $htmlCarpetas .= "
+<li class='sl-list-row clearfix'>
+          <div class='sl-list-column sl-list-column--filename' style='width: {$seccionesLista[0]}% !important;'>
+            <a href='{$folderHref}' data-titulo='1' {$strOnclick} class='sl-file-link'>
+              <div class='o-flag'>
+                <div class='o-flag__fix' style='display: {$displayIcon} '>
+                  <img class='sprite sprite_web s_web_folder_32 icon' src='" . self::$url . "img/icon_spacer.gif' alt=''>
+                </div>
+                <div class='o-flag__flex'>{$folderName} </div>
+              </div>
+            </a>
+
+          </div>
+          <div class='sl-list-column sl-list-column--filesize' style='width: {$seccionesLista[1]}% !important; display: {$displaySize} '>--
+          </div>
+          <div class='sl-list-column sl-list-column--modified' style='width: {$seccionesLista[2]}% !important; display: {$displayChange} '>--
+          </div>
+        </li>
+                        ";
+
+                        }
+
+
+                        $htmlArchivos = '';
+                        foreach ($datosCarpetaLocal["archivos"] as $archivo) {
+                            $previsualizacion = $archivo->preview_url;
+                            $file_link = $archivo->href;
+                            $is_dir = $archivo->is_dir;
+                            $file_name = $archivo->filename;
+                            $bytes = $archivo->bytes;
+                            $creado = $archivo->ts;
+                            $thumb = $archivo->thumbnail_url_tmpl;
+                            $link_descarga = $archivo->direct_blockserver_link;
+
+                            $dataArchivo = explode("?", pathinfo($file_link)["extension"]);
+                            $typeIcon = "";
+                            $displayIcon = "auto";
+                            if ($opcion['showIcons'] === '1') {
+                                foreach ($varExt as $fileType => $ext) {
+                                    if (in_array($dataArchivo[0], $ext)) {
+                                        $typeIcon = "_".$fileType;
+                                        break;
+                                    }
+                                }
+                            }
+                            else{
+                                $displayIcon = "none";
+                            }
+
+
+                            $fileLinkMostrar = $file_link;
+                            if($opcion['allowDownload'] === '1'){
+                                $fileLinkMostrar = $this->downloadLinkGenerator($file_link);
+                            }
+
+
+
+                            $classThickBox = "";
+                            if(($opcion['imagesPopup'] === '1') || (in_array($dataArchivo[0], $arrayExtThickbox))) {
+
+                                $esImg = str_replace("_","",$typeIcon);
+
+                                if($esImg == 'picture'){
+                                    $classThickBox = "thickbox";
+
+                                    $fileLinkMostrar = $this->downloadLinkGenerator($file_link);
+                                }
+                            }
+
+                            $arrayExtThickbox = explode(",",$opcion['thickboxTypes']);
+
+                            if(in_array($dataArchivo[0], $arrayExtThickbox)) {
+
+                                $classThickBox = "thickbox";
+
+                                $fileLinkMostrar = $this->downloadLinkGenerator($file_link);
+
+                                $fileLinkMostrar = "https://docs.google.com/viewer?url=".$fileLinkMostrar."&embedded=true&KeepThis=true&TB_iframe=true&height=400&width=600";
+
+                                //https://docs.google.com/gview?url=http://infolab.stanford.edu/pub/papers/google.pdf&embedded=true
+
+                            }
+
+
+
+
+                            $htmlArchivos .= '
+<li class="sl-list-row clearfix">
+          <div class="sl-list-column sl-list-column--filename"  style="width: '.$seccionesLista[0].'% !important;">
+            <a href="' . $fileLinkMostrar . '" class="sl-file-link '.$classThickBox.'">
+              <div class="o-flag">
+                <div class="o-flag__fix" style="display:'. $displayIcon .'">
+                  <img class="sprite sprite_web s_web_page_white' . $typeIcon . '_32 icon" src="' . self::$url . 'img/icon_spacer.gif" alt="">
+                </div>
+                <div class="o-flag__flex">' . $file_name . '</div>
+              </div>
+            </a>
+          </div>
+          <div class="sl-list-column sl-list-column--filesize" style="width: '.$seccionesLista[1].'% !important; display:'. $displaySize .'">' . (($opcion['showSize'] != '1')?"": self::formatSizeUnits($bytes) ) . '</div>
+          <div class="sl-list-column sl-list-column--modified" style="width: '.$seccionesLista[2].'% !important; display:'. $displayChange .'">' . \Carbon\Carbon::now()->diffForHumans(\Carbon\Carbon::createFromTimestamp($creado)) . '</div>
+        </li>
+                        ';
+
+
+                        }
+
+
+                        /**
+                         * DATOS NECESARIOS
+                         */
+
+                        $nombreCarpeta = $datosCarpetaLocal['nombre'];
+                        $linkCarpeta = $datosCarpetaLocal['link'];
+                        $codTitulo = "
+  <div class='sl-header clearfix'>
+  <div id='Hyno_Header_{$id_content}'>
+  {$txtCarpeta}
+  </div>
+  </div>
+                    ";
+
+                        $codInicial = "
+<div class='sl-page-body'>
+{$codTitulo}
+  <div class='sl-body'>
+    <div class='sl-list-container'>
+      <div class='sl-list-header'>
+        <div class='sl-list-row clearfix'>
+          <div class='sl-list-column sl-list-column--filename' style='width: {$seccionesLista[0]}% !important;'>" . __('Nombre', 'dropbox-folder-share') . "
+          </div>
+          <div class='sl-list-column sl-list-column--filesize' style='width: {$seccionesLista[1]}% !important; display: {$displaySize} '>" . __('Tamaño', 'dropbox-folder-share') . "
+          </div>
+          <div class='sl-list-column sl-list-column--modified' style='width: {$seccionesLista[2]}% !important; display: {$displayChange}'>" . __('Modificado', 'dropbox-folder-share') . "
+          </div>
+        </div>
+      </div>
+      <ol class='sl-list-body o-list-ui o-list-ui--dividers' style='max-height:". (($opcion['defaultHeight'] != '0')?$opcion['defaultHeight']:'auto') ."; overflow:auto;'>
+                    ";
+
+
+                        $codFinal = "
+      </ol>
+    </div>
+  </div>
+</div>
+                    ";
+
+
 
 
                         $txtContenedor[0] = "";
                         $txtContenedor[0] = "<div id='$id_content'>";
                         $txtContenedor[0] .= '<div class="Hyno_ContenFolder">';
-                        $txtContenedor[0] .= "  <div id='Hyno_Header_{$id_content}'>";
-                        $txtContenedor[0] .= '      '.$txtCarpeta;
-                        $txtContenedor[0] .= '  </div>';
-                        if ($ver_como == 'lista'){
-                            $txtContenedor[0] .= $txtTitulosIdioma;
-                        }
 
                         $txtContenedor[0] .= '';
+
+                        $txtContenedor[0] .= $codInicial.$htmlCarpetas.$htmlArchivos.$codFinal;
+
                         $txtContenedor[1] = '</div>';
                         $txtContenedor[1] .= '</div>';
 
-                        //$lista_archivos->childNodes->item(0)->C14N();
-                        $txtIconosDt = '';
 
-                        $olFiles = ($ver_como != 'lista')?'':'<ol class="browse-files gallery-list-view">';
-                        foreach($lista_archivos->childNodes->item(0)->childNodes as $childNode){
-                            $filename_col = $childNode->childNodes->item(0);
-
-                            $lnkIcono = $filename_col->childNodes->item(0);
-                            $lnkFilename = $filename_col->childNodes->item(1)->childNodes->item(0);
-
-                            if ($opcion['allowDownload'] != '1') {
-                                $this->DOMRemove($lnkIcono);
-                                $this->DOMRemove($lnkFilename);
-
-                            }
-                            else{
-                                $downloadParam = array("query" => "dl=1");
-                                $downloadFlags = HTTP_URL_STRIP_AUTH | HTTP_URL_JOIN_PATH | HTTP_URL_JOIN_QUERY | HTTP_URL_STRIP_FRAGMENT;
-
-                                $urlArchivo = $lnkIcono->getAttribute("href");
-                                $urlFilename = $lnkFilename->getAttribute("href");
-
-                                //echo "----<pre>"; print_r(pathinfo($urlArchivo)); echo "</pre>---------";
-                                $dataArchivo = pathinfo($urlArchivo);
-                                if ($opcion['allowBrowseFolder'] == '1') {
-                                    if(!isset($dataArchivo['extension'])){
-                                        $lnkIcono->setAttribute("onclick","loadContenDFS('{$urlArchivo}', '{$ver_como}', '{$id_content}'); return false;");
-                                        $urlArchivo = http_build_url('', [], $downloadFlags);
-
-                                        $lnkFilename->setAttribute("onclick","loadContenDFS('{$urlFilename}', '{$ver_como}', '{$id_content}'); return false;");
-                                        $urlFilename = http_build_url('', [], $downloadFlags);
-                                    }
-                                }
-
-
-                                $urlArchivo = http_build_url($urlArchivo, $downloadParam, $downloadFlags);
-                                $lnkIcono->setAttribute("href",$urlArchivo);
-
-                                //$urlFilename = $lnkFilename->getAttribute("href");
-                                $urlFilename = http_build_url($urlFilename, $downloadParam, $downloadFlags);
-                                $lnkFilename->setAttribute("href",$urlFilename);
-
-                                if($opcion['imagesPopup'] === '1') {
-                                    $partUrl = explode("?",$urlFilename);
-                                    $fileInfo = explode("/", wp_check_filetype($partUrl[0])['type']);
-
-                                    if($fileInfo[0] == 'image'){
-                                        $lnkIcono->setAttribute("class",$lnkIcono->getAttribute("class")." thickbox");
-                                        $lnkIcono->setAttribute("rel", $codeRel);
-
-                                        $lnkFilename->setAttribute("class",$lnkFilename->getAttribute("class")." thickbox");
-                                        $lnkFilename->setAttribute("rel", $codeRel."_txt");
-                                    }
-                                }
-
-                            }
-
-                            if ($opcion['showIcons'] != '1') {
-                                $childNode->childNodes->item(0)->removeChild($filename_col->childNodes->item(0));
-                            }
-                            if ($opcion['showSize'] != '1') {
-                                $childNode->childNodes->item(1)->lastChild->nodeValue = " -- ";
-                            }
-                            if ($opcion['showChange'] != '1') {
-                                $childNode->childNodes->item(2)->lastChild->nodeValue = " -- ";
-                            }
-
-
-                            if ($ver_como != 'lista') {
-                                //$lnkIcono
-                                //$childNode->childNodes->item(0)->childNodes->item(0)->appendChild($lnkIcono);
-                                $childNode->removeChild($childNode->childNodes->item(1));
-                                $childNode->removeChild($childNode->childNodes->item(1));
-                                $childNode->setAttribute("class",$childNode->getAttribute("class"). " iconos");
-
-                                $filename_col->setAttribute('style','display: table; width: 100%;');
-                                $lnkIcono->setAttribute('style','display: table-row; width: 100%;');
-                                if ($opcion['allowDownload'] == '1') {
-                                    $lnkFilename->parentNode->setAttribute('style','display: table-row; width: 100%;');
-                                }
-
-                            }
-
-                            //echo "<h1>".$childNode->parentNode->nodeName."</h1>";
-                            //echo "<h1>".$childNode->lastChild->nodeName."</h1>";
-                            //ELIMINAR BR CLEAR
-                            //$childNode->removeChild($childNode->lastChild);
-
-                            //$childNode->parentNode->removeChild($childNode->lastChild);
-                            //$childNode->childNodes->item(0)->removeChild($filename_col->childNodes->item(0));
-                            //$filename_col['icon'] = $filename_col->childNodes->item(0);
-                            //$filename_col['filename'] = $filename_col->childNodes->item(1);
-
-
-                            //echo '<textarea>'.$childNode->ownerDocument->saveHTML($childNode)."</textarea>";
-                            //echo '<textarea>'.$childNode->childNodes->item(0)->ownerDocument->saveHTML()."</textarea>";
-                            $olFiles .= $childNode->ownerDocument->saveHTML($childNode);
-
-
-                        }
-
-                        $olFiles .= ($ver_como != 'lista')?'':'</ol>';
-
-
-
-
-
-
-                        //$imprimirCaja = $txtContenedor[0].'<div id="list-view-container" class="gallery-view-section">' . $olFiles . "</div>".$txtContenedor[1];
-                        //$imprimirCaja = $txtContenedor[0].'<div id="list-view-container" class="gallery-view-section">' . $txtIconosDt . "</div>".$txtContenedor[1];
-
-
-                        //echo $imprimirCaja;
-
-                        //echo '<textarea>'.$imprimirCaja."</textarea>";
-                        if ($ver_como === 'lista') {
-                            $retorno = $txtContenedor[0].'<div id="list-view-container" class="gallery-view-section">' . $olFiles . "</div>".$txtContenedor[1];
-                        } else {
-                            $retorno = $txtContenedor[0].'<div id="list-view-container" class="gallery-view-section">' . $txtIconosDt . "</div>".$txtContenedor[1];
-                        }
-                        $retorno = $txtContenedor[0].'<div id="list-view-container" class="gallery-view-section">' . $olFiles . "</div>".$txtContenedor[1];
-                        //echo '<textarea>'.$retorno."</textarea>";
+                        $retorno = $txtContenedor[0].$txtContenedor[1];
                     }
                     else {
-                        $retorno = '<div class="Hyno_ContenFolder"><div class="nav-header">
-                        <div id="icon_folder"></div>
-                        <span id="folder-title" class="shmodel-filename header_1"><span style="color: red;font-weight: black;">Error</span>://<span id="ERROR"><span style="color: red;font-style: italic; font-weight: lighter;">' . _e('No se puede leer carpeta compartida', "dropbox-folder-share") . '</span></span></span>
-                        </div>
-						</div>';
+                        $retorno = '
+                        <div class="sl-page-body sl-list-container">
+                            <div class="sl-header clearfix">
+                                <h3 class="sl-title">'.$datosCarpetaLocal['nombre'].'</h3>
+                            </div>
+                            <div class="sl-body sl-body--empty-folder">
+                                <img class="sl-empty-folder-icon" src="'. self::$url .'/img/carpeta.png" alt="">
+                                <h4 class="sl-empty-folder-message">' . __("Esta carpeta está vacía", "dropbox-folder-share") .'</h4>
+                            </div>
+                         </div>
+                        ';
+                        return $retorno;
                     }
+
+
+
+
+
+
+
+
+
 
                 }
                 else {
-                    $retorno = '<div class="Hyno_ContenFolder"><div class="nav-header">
-                        <div id="icon_folder"></div>
-                        <span id="folder-title" class="shmodel-filename header_1"><span style="color: red;font-weight: black;">Error</span>://<span id="ERROR"><span style="color: red;font-style: italic; font-weight: lighter;">' . _e('No se puede leer carpeta compartida', "dropbox-folder-share") . '</span></span></span>
+                    $retorno = '
+                        <div class="err sl-list-container" style="width: 100%; text-align: center;">
+                            <img src="'. self::$url .'/img/error_404.png" alt="" width="30%">
+                            <h4 class="sl-empty-folder-message">'. __("No encontramos lo que buscas.", "dropbox-folder-share").'</h4>
                         </div>
-						</div>';
+                        ';
                 }
 
                 return $retorno;
@@ -508,6 +842,17 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
             else {
                 return  __("No encontrado", "dropbox-folder-share");
             }
+        }
+
+        function downloadLinkGenerator($link){
+            $query_params['dl'] = 1;
+            $detalleURL['query'] = http_build_query($query_params);
+
+            $newUrl = http_build_url($link,
+                $detalleURL,
+                HTTP_URL_STRIP_AUTH | HTTP_URL_JOIN_QUERY | HTTP_URL_STRIP_FRAGMENT
+            );
+            return $newUrl;
         }
 
         function add_settings_link($links, $file)
@@ -554,5 +899,6 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
     //AJAX
     add_action( 'wp_ajax_getFolderContent', array(&$objDropboxFolderSharePrincipal, 'ajaxReplaceShortcode') );
     add_action( 'wp_ajax_nopriv_getFolderContent', array(&$objDropboxFolderSharePrincipal, 'ajaxReplaceShortcode') );
+
 
 }

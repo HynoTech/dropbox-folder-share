@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: DropBox Folder Share\n"
-"POT-Creation-Date: 2016-03-28 00:05-0500\n"
-"PO-Revision-Date: 2016-03-28 00:05-0500\n"
+"POT-Creation-Date: 2016-11-06 22:44-0500\n"
+"PO-Revision-Date: 2016-11-06 22:44-0500\n"
 "Last-Translator: Antonio Salas <antony.salas@gmail.com>\n"
 "Language-Team: Antonio Salas <antony.salas@gmail.com>\n"
 "Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.7\n"
+"X-Generator: Poedit 1.8.11\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-WPHeader: dropbox-folder-share.php\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -32,12 +32,7 @@ msgstr "Shortcode Parameter"
 msgid "URL de la carpeta compartida de DropBox."
 msgstr "Dropbox öffentlicher Ordner URL"
 
-#: admin/admin_page.php:174
-msgid "Como se mostrara la carpeta (<b>iconos</b> o <b>lista</b>)."
-msgstr ""
-"Wie soll der Ordner angezeigt werden? (<b>Icons</ b> oder <b> Liste </ b>)."
-
-#: admin/admin_page.php:185
+#: admin/admin_page.php:181
 msgid ""
 "Gracias por Utilizar este plugin. Me gustaria leer sugerencias u opiniones "
 "para que juntos mejoremos esta herramienta, cualquier sugerencia para "
@@ -49,7 +44,7 @@ msgstr ""
 "irgendwelche Vorschläge, um das Plugin zu verbessern oder Fehler zu melden "
 "hilft uns sehr, zögern Sie nicht uns wissen."
 
-#: admin/admin_page.php:187
+#: admin/admin_page.php:183
 msgid ""
 "Pueden hacernos llegar sus sugerencias, opiniones y/o criticas a travez del "
 "formulario de contactos de"
@@ -61,7 +56,7 @@ msgstr ""
 msgid "Informacion del Plugin"
 msgstr "Plugin Informationen"
 
-#: admin/sidebar.php:17
+#: admin/sidebar.php:17 dropbox-folder-share.php:770
 msgid "Nombre"
 msgstr "Name"
 
@@ -102,82 +97,98 @@ msgid "Usar Ajax"
 msgstr "Mit AJAX"
 
 #: class/admin.class.php:42
-msgid "Modo de Visualizacion"
-msgstr "Darstellungsart"
-
-#: class/admin.class.php:43
 msgid "Mostrar Iconos"
 msgstr "Icons anzeigen"
 
-#: class/admin.class.php:44
+#: class/admin.class.php:43
 msgid "Mostrar Tamaño de Archivo"
 msgstr "Dateigrösse anzeigen"
 
-#: class/admin.class.php:45
+#: class/admin.class.php:44
 msgid "Mostrar Fecha de Modificacion"
 msgstr "Datum der letzten Modifikation anzeigen"
 
-#: class/admin.class.php:46
-msgid "Mostrar imagenes usando Lightbox"
-msgstr "Bilder Lightbox mit"
+#: class/admin.class.php:45
+msgid "Mostrar imagenes usando ThickBox"
+msgstr ""
 
-#: class/admin.class.php:50
+#: class/admin.class.php:46
+msgid "Extensiones adicionales en ThickBox"
+msgstr ""
+
+#: class/admin.class.php:47
+msgid "Altura maxima del contenedor"
+msgstr ""
+
+#: class/admin.class.php:51
 msgid "Vinculacion"
 msgstr "Verknüpfung"
 
-#: class/admin.class.php:52
+#: class/admin.class.php:53
 msgid "Permitir Descarga de Archivos"
 msgstr "Herunterladen der Dateien erlauben"
 
-#: class/admin.class.php:53
+#: class/admin.class.php:54
 msgid "Permitir Descarga de Carpeta (comprimido)"
 msgstr "Herunterladen der Dateien erlauben"
 
-#: class/admin.class.php:54
+#: class/admin.class.php:55
 msgid "Permitir Navegacion entre Carpetas"
 msgstr "Lassen Sie die Navigation zwischen Ordnern"
 
-#: class/admin.class.php:55
+#: class/admin.class.php:56
 msgid "Dejar Link de Carpeta Compartida"
 msgstr "Link zum Öffentlich Ordner anzeigen"
 
-#: class/admin.class.php:59
+#: class/admin.class.php:60
 msgid "Conexion"
 msgstr "Verbindung"
 
-#: class/admin.class.php:61
+#: class/admin.class.php:62
 msgid "Tipo de Conexion a Usar"
 msgstr "gewählter Verbindungstyp"
 
-#: class/admin.class.php:117
-msgid "Lista"
-msgstr "Liste"
+#: class/admin.class.php:185
+msgid "Separado por comas"
+msgstr ""
 
-#: class/admin.class.php:119
-msgid "Iconos"
-msgstr "Icons"
+#: class/admin.class.php:200
+msgid "0 para desabilitar y dejar altura automatica"
+msgstr ""
 
-#: dropbox-folder-share.php:108
+#: dropbox-folder-share.php:158
 msgid "Error de seguridad"
 msgstr "Sicherheitsfehler "
 
-#: dropbox-folder-share.php:111
-msgid "Error de parametros"
-msgstr "Parameterfehler"
+#: dropbox-folder-share.php:452 dropbox-folder-share.php:835
+msgid "No encontramos lo que buscas."
+msgstr ""
 
-#: dropbox-folder-share.php:493 dropbox-folder-share.php:502
-msgid "No se puede leer carpeta compartida"
-msgstr "Der öffentliche Ordner kann nicht gelesen werden"
+#: dropbox-folder-share.php:521
+msgid "Descargar carpeta actual (zip)"
+msgstr ""
 
-#: dropbox-folder-share.php:510
+#: dropbox-folder-share.php:772
+msgid "Tamaño"
+msgstr ""
+
+#: dropbox-folder-share.php:774
+msgid "Modificado"
+msgstr ""
+
+#: dropbox-folder-share.php:814
+msgid "Esta carpeta está vacía"
+msgstr ""
+
+#: dropbox-folder-share.php:843
 msgid "No encontrado"
 msgstr "Nicht gefunden"
 
-#: dropbox-folder-share.php:517
+#: dropbox-folder-share.php:861
 msgid "Dropbox Folder Share - Configuracion"
 msgstr "Dropbox Folder Share - Einstellungen"
 
-#: dropbox-folder-share.php:517
+#: dropbox-folder-share.php:861
 msgid "Configurar"
 msgstr "Einstellen"
 
@@ -204,3 +215,26 @@ msgstr "Antonio Salas (Hyno)"
 #. Author URI of the plugin/theme
 msgid "http://www.hynotech.com/"
 msgstr "http://www.hynotech.com/"
+
+#~ msgid "Como se mostrara la carpeta (<b>iconos</b> o <b>lista</b>)."
+#~ msgstr ""
+#~ "Wie soll der Ordner angezeigt werden? (<b>Icons</ b> oder <b> Liste </ "
+#~ "b>)."
+
+#~ msgid "Modo de Visualizacion"
+#~ msgstr "Darstellungsart"
+
+#~ msgid "Mostrar imagenes usando Lightbox"
+#~ msgstr "Bilder Lightbox mit"
+
+#~ msgid "Lista"
+#~ msgstr "Liste"
+
+#~ msgid "Iconos"
+#~ msgstr "Icons"
+
+#~ msgid "Error de parametros"
+#~ msgstr "Parameterfehler"
+
+#~ msgid "No se puede leer carpeta compartida"
+#~ msgstr "Der öffentliche Ordner kann nicht gelesen werden"

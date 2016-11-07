@@ -2,4413 +2,4808 @@
 .sprite_web {
   width: 16px;
   height: 16px;
-  background-image: url(../img/web_sprites-normal.png);
+  background-image: url(../img/web_sprites-normal_n.png);
   background-repeat: no-repeat;
   background-position: 0 16px;
 }
 
-@media (-webkit-min-device-pixel-ratio: 1.1), (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+@media (-webkit-min-device-pixel-ratio: 1.1), (min-resolution: 192dpi) {
   /* line 13, ../scss/icons.scss */
   .sprite_web {
-    background-image: url(../img/web_2x_sprites-retina.png);
-    background-size: auto 7194px;
+    background-image: url(../img/web_2x_sprites-retina_n.png);
+    background-size: auto 7771.0px;
   }
 
   /* line 17, ../scss/icons.scss */
   .s_web_folder_user_locked_stack_32 {
-    background-position: left -1023px;
+    background-position: left -1056px;
   }
 
   /* line 20, ../scss/icons.scss */
-  .s_web_folder_app {
-    background-position: left -3769px;
+  .s_web_icon_leave {
+    background-position: left -5298px;
   }
 
   /* line 23, ../scss/icons.scss */
-  .s_web_volumeMuted {
-    background-position: left -4525px;
+  .s_web_folder_app {
+    background-position: left -3835px;
   }
 
   /* line 26, ../scss/icons.scss */
-  .s_web_dropbox21x20 {
-    background-position: left -5815px;
+  .s_web_volumeMuted {
+    background-position: left -4671px;
   }
 
   /* line 29, ../scss/icons.scss */
-  .s_web_s_house_gray {
-    background-position: left -6817px;
+  .s_web_dropbox21x20 {
+    background-position: left -6357px;
   }
 
   /* line 32, ../scss/icons.scss */
-  .s_web_email_go {
-    background-position: left -5930px;
+  .s_web_s_house_gray {
+    background-position: left -7374px;
   }
 
   /* line 35, ../scss/icons.scss */
-  .s_web_page_white_mp3_32 {
-    background-position: left -2376px;
+  .s_web_email_go {
+    background-position: left -6472px;
   }
 
   /* line 38, ../scss/icons.scss */
-  .s_web_page_white_premiere_stack_32 {
-    background-position: left -3036px;
+  .s_web_exit-fullscreen {
+    background-position: left -5006px;
   }
 
   /* line 41, ../scss/icons.scss */
-  .s_web_folder_gray {
-    background-position: left -3809px;
+  .s_web_album_16 {
+    background-position: left -6048px;
   }
 
   /* line 44, ../scss/icons.scss */
-  .s_web_folder_user_locked_32 {
-    background-position: left -957px;
+  .s_web_page_white_premiere_stack_32 {
+    background-position: left -3069px;
   }
 
   /* line 47, ../scss/icons.scss */
-  .s_web_page_white_word_gray_32 {
-    background-position: left -3630px;
+  .s_web_folder_gray {
+    background-position: left -3875px;
   }
 
   /* line 50, ../scss/icons.scss */
-  .s_web_issue {
-    background-position: left -4879px;
+  .s_web_folder_user_locked_32 {
+    background-position: left -990px;
   }
 
   /* line 53, ../scss/icons.scss */
-  .s_web_s_greencheck {
-    background-position: left -6737px;
+  .s_web_page_white_word_gray_32 {
+    background-position: left -3663px;
   }
 
   /* line 56, ../scss/icons.scss */
+  .s_web_issue {
+    background-position: left -5357px;
+  }
+
+  /* line 59, ../scss/icons.scss */
+  .s_web_s_greencheck {
+    background-position: left -7294px;
+  }
+
+  /* line 62, ../scss/icons.scss */
   .s_web_folder_paper_team_stack_32 {
     background-position: left -462px;
   }
 
-  /* line 59, ../scss/icons.scss */
+  /* line 65, ../scss/icons.scss */
   .s_web_folder_dropbox_32 {
     background-position: left -264px;
   }
 
-  /* line 62, ../scss/icons.scss */
-  .s_web_package_gray_32 {
-    background-position: left -1122px;
-  }
-
-  /* line 65, ../scss/icons.scss */
-  .s_web_linux_gray {
-    background-position: left -5098px;
-  }
-
   /* line 68, ../scss/icons.scss */
-  .s_web_page_white_vector_gray_32 {
-    background-position: left -3432px;
+  .s_web_package_gray_32 {
+    background-position: left -1155px;
   }
 
   /* line 71, ../scss/icons.scss */
-  .s_web_paper_sidebar_icon {
-    background-position: left -6406px;
+  .s_web_linux_gray {
+    background-position: left -5576px;
   }
 
   /* line 74, ../scss/icons.scss */
-  .s_web_download {
-    background-position: left -5775px;
+  .s_web_page_white_vector_gray_32 {
+    background-position: left -3465px;
   }
 
   /* line 77, ../scss/icons.scss */
-  .s_web_page_white_flash_gray_32 {
-    background-position: left -1947px;
+  .s_web_paper_sidebar_icon {
+    background-position: left -6963px;
   }
 
   /* line 80, ../scss/icons.scss */
-  .s_web_page_white_paint_32 {
-    background-position: left -2475px;
+  .s_web_download {
+    background-position: left -6317px;
   }
 
   /* line 83, ../scss/icons.scss */
-  .s_web_public {
-    background-position: left -5163px;
+  .s_web_s_notifications_off {
+    background-position: left -7468px;
   }
 
   /* line 86, ../scss/icons.scss */
-  .s_web_notifications_icon_white {
-    background-position: left -6342px;
+  .s_web_page_white_flash_gray_32 {
+    background-position: left -1980px;
   }
 
   /* line 89, ../scss/icons.scss */
-  .s_web_s_carousel {
-    background-position: left -6558px;
+  .s_web_page_white_paint_32 {
+    background-position: left -2508px;
   }
 
   /* line 92, ../scss/icons.scss */
+  .s_web_public {
+    background-position: left -5641px;
+  }
+
+  /* line 95, ../scss/icons.scss */
+  .s_web_notifications_icon_white {
+    background-position: left -6899px;
+  }
+
+  /* line 98, ../scss/icons.scss */
+  .s_web_control_close {
+    background-position: left -4377px;
+  }
+
+  /* line 101, ../scss/icons.scss */
+  .s_web_s_carousel {
+    background-position: left -7115px;
+  }
+
+  /* line 104, ../scss/icons.scss */
   .s_web_folder_team_locked_32 {
     background-position: left -693px;
   }
 
-  /* line 95, ../scss/icons.scss */
-  .s_web_upload_16 {
-    background-position: left -7062px;
-  }
-
-  /* line 98, ../scss/icons.scss */
-  .s_web_s_notifications_on {
-    background-position: left -6909px;
-  }
-
-  /* line 101, ../scss/icons.scss */
-  .s_web_page_white_illustrator_gray_32 {
-    background-position: left -2178px;
-  }
-
-  /* line 104, ../scss/icons.scss */
-  .s_web_create-album {
-    background-position: left -5717px;
-  }
-
   /* line 107, ../scss/icons.scss */
-  .s_web_page_white_compressed_stack_32 {
-    background-position: left -1584px;
+  .s_web_upload_16 {
+    background-position: left -7639px;
   }
 
   /* line 110, ../scss/icons.scss */
-  .s_web_windows_gray {
-    background-position: left -5437px;
+  .s_web_s_notifications_on {
+    background-position: left -7486px;
   }
 
   /* line 113, ../scss/icons.scss */
-  .s_web_select {
-    background-position: left -5277px;
+  .s_web_page_white_illustrator_gray_32 {
+    background-position: left -2211px;
   }
 
   /* line 116, ../scss/icons.scss */
-  .s_web_page_white_acrobat_32 {
-    background-position: left -1221px;
+  .s_web_create-album {
+    background-position: left -6259px;
   }
 
   /* line 119, ../scss/icons.scss */
-  .s_web_page_white_text_32 {
-    background-position: left -3300px;
+  .s_web_page_white_compressed_stack_32 {
+    background-position: left -1617px;
   }
 
   /* line 122, ../scss/icons.scss */
-  .s_web_page_white_excel_stack_32 {
-    background-position: left -1782px;
+  .s_web_page_white_playlist_stack_32 {
+    background-position: left -2871px;
   }
 
   /* line 125, ../scss/icons.scss */
-  .s_web_s_show_comments_grey {
-    background-position: left -5239px;
+  .s_web_select {
+    background-position: left -5791px;
   }
 
   /* line 128, ../scss/icons.scss */
-  .s_web_page_white_film_stack_32 {
-    background-position: left -1881px;
+  .s_web_page_white_acrobat_32 {
+    background-position: left -1254px;
   }
 
   /* line 131, ../scss/icons.scss */
-  .s_web_page_white_playlist_32 {
-    background-position: left -2772px;
+  .s_web_page_white_text_32 {
+    background-position: left -3333px;
   }
 
   /* line 134, ../scss/icons.scss */
-  .s_web_overflow-glyph {
-    background-position: left -6379px;
+  .s_web_page_white_excel_stack_32 {
+    background-position: left -1815px;
   }
 
   /* line 137, ../scss/icons.scss */
-  .s_web_more {
-    background-position: left -6282px;
+  .s_web_page_white_webcode_32 {
+    background-position: left -3531px;
   }
 
   /* line 140, ../scss/icons.scss */
-  .s_web_pencil {
-    background-position: left -6423px;
+  .s_web_page_white_film_stack_32 {
+    background-position: left -1914px;
   }
 
   /* line 143, ../scss/icons.scss */
-  .s_web_chevron_thin {
-    background-position: left -4693px;
+  .s_web_page_white_playlist_32 {
+    background-position: left -2805px;
   }
 
   /* line 146, ../scss/icons.scss */
-  .s_web_word {
-    background-position: left -4281px;
+  .s_web_s_paper_new {
+    background-position: left -5735px;
   }
 
   /* line 149, ../scss/icons.scss */
-  .s_web_drops {
-    background-position: left -4758px;
+  .s_web_overflow-glyph {
+    background-position: left -6936px;
   }
 
   /* line 152, ../scss/icons.scss */
-  .s_web_heart {
-    background-position: left -6041px;
+  .s_web_more {
+    background-position: left -6839px;
   }
 
   /* line 155, ../scss/icons.scss */
-  .s_web_lock {
-    background-position: left -6207px;
+  .s_web_pencil {
+    background-position: left -6980px;
   }
 
   /* line 158, ../scss/icons.scss */
-  .s_web_calendar_view_month {
-    background-position: left -5638px;
+  .s_web_chevron_thin {
+    background-position: left -4910px;
   }
 
   /* line 161, ../scss/icons.scss */
-  .s_web_folder_user_delete_32 {
-    background-position: left -891px;
+  .s_web_word {
+    background-position: left -4347px;
   }
 
   /* line 164, ../scss/icons.scss */
-  .s_web_acrobat-40 {
-    background-position: left -4032px;
+  .s_web_drops {
+    background-position: left -4988px;
   }
 
   /* line 167, ../scss/icons.scss */
-  .s_web_page_white_text_stack_32 {
-    background-position: left -3366px;
+  .s_web_heart {
+    background-position: left -6583px;
   }
 
   /* line 170, ../scss/icons.scss */
-  .s_web_s_flip_left {
-    background-position: left -4437px;
+  .s_web_lock {
+    background-position: left -6749px;
   }
 
   /* line 173, ../scss/icons.scss */
-  .s_web_folder_arrow_32 {
-    background-position: left -5971px;
+  .s_web_calendar_view_month {
+    background-position: left -6180px;
   }
 
   /* line 176, ../scss/icons.scss */
-  .s_web_s_clock {
-    background-position: left -6595px;
+  .s_web_shared_link_gray {
+    background-position: left -4726px;
   }
 
   /* line 179, ../scss/icons.scss */
-  .s_web_s_photo {
-    background-position: left -6927px;
+  .s_web_folder_user_delete_32 {
+    background-position: left -924px;
   }
 
   /* line 182, ../scss/icons.scss */
+  .s_web_acrobat-40 {
+    background-position: left -4098px;
+  }
+
+  /* line 185, ../scss/icons.scss */
+  .s_web_page_white_text_stack_32 {
+    background-position: left -3399px;
+  }
+
+  /* line 188, ../scss/icons.scss */
+  .s_web_s_flip_left {
+    background-position: left -4583px;
+  }
+
+  /* line 191, ../scss/icons.scss */
+  .s_web_folder_arrow_32 {
+    background-position: left -6513px;
+  }
+
+  /* line 194, ../scss/icons.scss */
+  .s_web_s_clock {
+    background-position: left -7152px;
+  }
+
+  /* line 197, ../scss/icons.scss */
+  .s_web_s_photo {
+    background-position: left -7504px;
+  }
+
+  /* line 200, ../scss/icons.scss */
   .s_web_folder_paper_team_gray_32 {
     background-position: left -429px;
   }
 
-  /* line 185, ../scss/icons.scss */
+  /* line 203, ../scss/icons.scss */
+  .s_web_tutorial_close {
+    background-position: left -5911px;
+  }
+
+  /* line 206, ../scss/icons.scss */
   .s_web_page_white_gear_32 {
-    background-position: left -2013px;
+    background-position: left -2046px;
   }
 
-  /* line 188, ../scss/icons.scss */
+  /* line 209, ../scss/icons.scss */
   .s_web_personal_icon {
-    background-position: left -3966px;
+    background-position: left -4032px;
   }
 
-  /* line 191, ../scss/icons.scss */
+  /* line 212, ../scss/icons.scss */
   .s_web_page_white_paint_stack_32 {
-    background-position: left -2541px;
+    background-position: left -2574px;
   }
 
-  /* line 194, ../scss/icons.scss */
+  /* line 215, ../scss/icons.scss */
   .s_web_folder_dropbox_stack_32 {
     background-position: left -330px;
   }
 
-  /* line 197, ../scss/icons.scss */
-  .s_web_folder_user_gray_32 {
-    background-position: left -924px;
-  }
-
-  /* line 200, ../scss/icons.scss */
-  .s_web_group {
-    background-position: left -4830px;
-  }
-
-  /* line 203, ../scss/icons.scss */
-  .s_web_page_white_dvd_stack_32 {
-    background-position: left -1683px;
-  }
-
-  /* line 206, ../scss/icons.scss */
-  .s_web_bullet_minus {
-    background-position: left -5570px;
-  }
-
-  /* line 209, ../scss/icons.scss */
-  .s_web_page_white_film_gray_32 {
-    background-position: left -1848px;
-  }
-
-  /* line 212, ../scss/icons.scss */
-  .s_web_previous_versions {
-    background-position: left -5143px;
-  }
-
-  /* line 215, ../scss/icons.scss */
-  .s_web_album_delete_16 {
-    background-position: left -5526px;
-  }
-
   /* line 218, ../scss/icons.scss */
-  .s_web_page_white_dvd_32 {
-    background-position: left -1617px;
+  .s_web_folder_user_gray_32 {
+    background-position: left -957px;
   }
 
   /* line 221, ../scss/icons.scss */
-  .s_web_excel-40 {
-    background-position: left -4073px;
+  .s_web_group {
+    background-position: left -5092px;
   }
 
   /* line 224, ../scss/icons.scss */
-  .s_web_page_white_word_32 {
-    background-position: left -3597px;
+  .s_web_page_white_dvd_stack_32 {
+    background-position: left -1716px;
   }
 
   /* line 227, ../scss/icons.scss */
-  .s_web_lightbox_prev {
-    background-position: left -6170px;
+  .s_web_bullet_minus {
+    background-position: left -6112px;
   }
 
   /* line 230, ../scss/icons.scss */
+  .s_web_control_menu {
+    background-position: left -4432px;
+  }
+
+  /* line 233, ../scss/icons.scss */
+  .s_web_page_white_film_gray_32 {
+    background-position: left -1881px;
+  }
+
+  /* line 236, ../scss/icons.scss */
+  .s_web_previous_versions {
+    background-position: left -5621px;
+  }
+
+  /* line 239, ../scss/icons.scss */
+  .s_web_paper_white_32 {
+    background-position: left -3729px;
+  }
+
+  /* line 242, ../scss/icons.scss */
+  .s_web_album_delete_16 {
+    background-position: left -6068px;
+  }
+
+  /* line 245, ../scss/icons.scss */
+  .s_web_page_white_dvd_32 {
+    background-position: left -1650px;
+  }
+
+  /* line 248, ../scss/icons.scss */
+  .s_web_excel-40 {
+    background-position: left -4139px;
+  }
+
+  /* line 251, ../scss/icons.scss */
+  .s_web_ic_comment_area {
+    background-position: left -5124px;
+  }
+
+  /* line 254, ../scss/icons.scss */
+  .s_web_page_white_word_32 {
+    background-position: left -3630px;
+  }
+
+  /* line 257, ../scss/icons.scss */
+  .s_web_control_comments_off {
+    background-position: left -4390px;
+  }
+
+  /* line 260, ../scss/icons.scss */
+  .s_web_lightbox_prev {
+    background-position: left -6712px;
+  }
+
+  /* line 263, ../scss/icons.scss */
   .s_web_folder_team_32 {
     background-position: left -627px;
   }
 
-  /* line 233, ../scss/icons.scss */
+  /* line 266, ../scss/icons.scss */
   .s_web_page_white_excel_gray_32 {
-    background-position: left -1749px;
+    background-position: left -1782px;
   }
 
-  /* line 236, ../scss/icons.scss */
+  /* line 269, ../scss/icons.scss */
   .s_web_folder_stack_32 {
     background-position: left -594px;
   }
 
-  /* line 239, ../scss/icons.scss */
+  /* line 272, ../scss/icons.scss */
+  .s_web_lock_blue {
+    background-position: left -6766px;
+  }
+
+  /* line 275, ../scss/icons.scss */
+  .s_web_s_drops_new {
+    background-position: left -5717px;
+  }
+
+  /* line 278, ../scss/icons.scss */
   .s_web_page_white_word_stack_32 {
-    background-position: left -3663px;
+    background-position: left -3696px;
   }
 
-  /* line 242, ../scss/icons.scss */
+  /* line 281, ../scss/icons.scss */
   .s_web_white_check {
-    background-position: left -5394px;
+    background-position: left -5924px;
   }
 
-  /* line 245, ../scss/icons.scss */
+  /* line 284, ../scss/icons.scss */
   .s_web_page_white_sketch_32 {
-    background-position: left -3069px;
-  }
-
-  /* line 248, ../scss/icons.scss */
-  .s_web_notifications_icon_blue {
-    background-position: left -6322px;
-  }
-
-  /* line 251, ../scss/icons.scss */
-  .s_web_folder_user_32 {
-    background-position: left -825px;
-  }
-
-  /* line 254, ../scss/icons.scss */
-  .s_web_page_white_sketch_gray_32 {
     background-position: left -3102px;
   }
 
-  /* line 257, ../scss/icons.scss */
+  /* line 287, ../scss/icons.scss */
+  .s_web_ic_comment_area_large_dark {
+    background-position: left -5212px;
+  }
+
+  /* line 290, ../scss/icons.scss */
+  .s_web_ic_comment_area_large {
+    background-position: left -5189px;
+  }
+
+  /* line 293, ../scss/icons.scss */
+  .s_web_notifications_icon_blue {
+    background-position: left -6879px;
+  }
+
+  /* line 296, ../scss/icons.scss */
+  .s_web_folder_user_32 {
+    background-position: left -858px;
+  }
+
+  /* line 299, ../scss/icons.scss */
+  .s_web_page_white_sketch_gray_32 {
+    background-position: left -3135px;
+  }
+
+  /* line 302, ../scss/icons.scss */
   .s_web_print {
-    background-position: left -4397px;
+    background-position: left -4543px;
   }
 
-  /* line 260, ../scss/icons.scss */
+  /* line 305, ../scss/icons.scss */
   .s_web_page_white_code_gray_32 {
-    background-position: left -1452px;
+    background-position: left -1485px;
   }
 
-  /* line 263, ../scss/icons.scss */
+  /* line 308, ../scss/icons.scss */
+  .s_web_folder_team_member_32 {
+    background-position: left -792px;
+  }
+
+  /* line 311, ../scss/icons.scss */
   .s_web_user_add {
-    background-position: left -7102px;
+    background-position: left -7679px;
   }
 
-  /* line 266, ../scss/icons.scss */
+  /* line 314, ../scss/icons.scss */
   .s_web_page_white_dvd_gray_32 {
-    background-position: left -1650px;
+    background-position: left -1683px;
   }
 
-  /* line 269, ../scss/icons.scss */
+  /* line 317, ../scss/icons.scss */
   .s_web_s_gear {
-    background-position: left -6717px;
+    background-position: left -7274px;
   }
 
-  /* line 272, ../scss/icons.scss */
+  /* line 320, ../scss/icons.scss */
   .s_web_folder_camera_stack_32 {
     background-position: left -231px;
   }
 
-  /* line 275, ../scss/icons.scss */
-  .s_web_folder_user_locked_gray_32 {
-    background-position: left -990px;
-  }
-
-  /* line 278, ../scss/icons.scss */
-  .s_web_page_white_code_32 {
-    background-position: left -1419px;
-  }
-
-  /* line 281, ../scss/icons.scss */
-  .s_web_page_white_excel_32 {
-    background-position: left -1716px;
-  }
-
-  /* line 284, ../scss/icons.scss */
-  .s_web_page_white_powerpoint_stack_32 {
-    background-position: left -2937px;
-  }
-
-  /* line 287, ../scss/icons.scss */
-  .s_web_page_white_gray_32 {
-    background-position: left -2112px;
-  }
-
-  /* line 290, ../scss/icons.scss */
-  .s_web_volumeInactive {
-    background-position: left -4510px;
-  }
-
-  /* line 293, ../scss/icons.scss */
-  .s_web_bulletpoint-x {
-    background-position: left -5621px;
-  }
-
-  /* line 296, ../scss/icons.scss */
-  .s_web_chevron {
-    background-position: left -5685px;
-  }
-
-  /* line 299, ../scss/icons.scss */
-  .s_web_open {
-    background-position: left -6362px;
-  }
-
-  /* line 302, ../scss/icons.scss */
-  .s_web_page_white_sound_gray_32 {
-    background-position: left -3201px;
-  }
-
-  /* line 305, ../scss/icons.scss */
-  .s_web_page_white_webcode_stack_32 {
-    background-position: left -3564px;
-  }
-
-  /* line 308, ../scss/icons.scss */
-  .s_web_android_gray {
-    background-position: left -4580px;
-  }
-
-  /* line 311, ../scss/icons.scss */
-  .s_web_bluestar {
-    background-position: left -4663px;
-  }
-
-  /* line 314, ../scss/icons.scss */
-  .s_web_delete_16 {
-    background-position: left -5755px;
-  }
-
-  /* line 317, ../scss/icons.scss */
-  .s_web_arrow-up-gray {
-    background-position: left -5564px;
-  }
-
-  /* line 320, ../scss/icons.scss */
-  .s_web_page_white_powerpoint_32 {
-    background-position: left -2871px;
-  }
-
   /* line 323, ../scss/icons.scss */
-  .s_web_trash-can-open {
-    background-position: left -7022px;
+  .s_web_folder_user_locked_gray_32 {
+    background-position: left -1023px;
   }
 
   /* line 326, ../scss/icons.scss */
-  .s_web_more-gray {
-    background-position: left -6262px;
+  .s_web_page_white_code_32 {
+    background-position: left -1452px;
   }
 
   /* line 329, ../scss/icons.scss */
-  .s_web_lightbox_close {
-    background-position: left -6096px;
+  .s_web_page_white_excel_32 {
+    background-position: left -1749px;
   }
 
   /* line 332, ../scss/icons.scss */
-  .s_web_s_file_comment {
-    background-position: left -6697px;
+  .s_web_page_white_powerpoint_stack_32 {
+    background-position: left -2970px;
   }
 
   /* line 335, ../scss/icons.scss */
-  .s_web_copy {
-    background-position: left -5697px;
-  }
-
-  /* line 338, ../scss/icons.scss */
-  .s_web_page_white_illustrator_32 {
+  .s_web_page_white_gray_32 {
     background-position: left -2145px;
   }
 
+  /* line 338, ../scss/icons.scss */
+  .s_web_volumeInactive {
+    background-position: left -4656px;
+  }
+
   /* line 341, ../scss/icons.scss */
-  .s_web_zoomout {
-    background-position: left -4560px;
+  .s_web_bulletpoint-x {
+    background-position: left -6163px;
   }
 
   /* line 344, ../scss/icons.scss */
-  .s_web_share-link-globe {
-    background-position: left -5295px;
+  .s_web_chevron {
+    background-position: left -6227px;
   }
 
   /* line 347, ../scss/icons.scss */
+  .s_web_open {
+    background-position: left -6919px;
+  }
+
+  /* line 350, ../scss/icons.scss */
+  .s_web_page_white_sound_gray_32 {
+    background-position: left -3234px;
+  }
+
+  /* line 353, ../scss/icons.scss */
+  .s_web_page_white_webcode_stack_32 {
+    background-position: left -3597px;
+  }
+
+  /* line 356, ../scss/icons.scss */
+  .s_web_android_gray {
+    background-position: left -4789px;
+  }
+
+  /* line 359, ../scss/icons.scss */
+  .s_web_ic_comment_area_dark {
+    background-position: left -5168px;
+  }
+
+  /* line 362, ../scss/icons.scss */
+  .s_web_delete_16 {
+    background-position: left -6297px;
+  }
+
+  /* line 365, ../scss/icons.scss */
+  .s_web_arrow-up-gray {
+    background-position: left -6106px;
+  }
+
+  /* line 368, ../scss/icons.scss */
+  .s_web_page_white_powerpoint_32 {
+    background-position: left -2904px;
+  }
+
+  /* line 371, ../scss/icons.scss */
+  .s_web_trash-can-open {
+    background-position: left -7599px;
+  }
+
+  /* line 374, ../scss/icons.scss */
+  .s_web_more-gray {
+    background-position: left -6819px;
+  }
+
+  /* line 377, ../scss/icons.scss */
+  .s_web_lightbox_close {
+    background-position: left -6638px;
+  }
+
+  /* line 380, ../scss/icons.scss */
+  .s_web_s_file_comment {
+    background-position: left -7254px;
+  }
+
+  /* line 383, ../scss/icons.scss */
+  .s_web_control_more {
+    background-position: left -4439px;
+  }
+
+  /* line 386, ../scss/icons.scss */
+  .s_web_copy {
+    background-position: left -6239px;
+  }
+
+  /* line 389, ../scss/icons.scss */
+  .s_web_page_white_illustrator_32 {
+    background-position: left -2178px;
+  }
+
+  /* line 392, ../scss/icons.scss */
+  .s_web_zoomout {
+    background-position: left -4706px;
+  }
+
+  /* line 395, ../scss/icons.scss */
+  .s_web_share-link-globe {
+    background-position: left -5826px;
+  }
+
+  /* line 398, ../scss/icons.scss */
   .s_web_folder_team_locked_stack_32 {
     background-position: left -759px;
   }
 
-  /* line 350, ../scss/icons.scss */
+  /* line 401, ../scss/icons.scss */
   .s_web_page_white_audition_32 {
-    background-position: left -1320px;
+    background-position: left -1353px;
   }
 
-  /* line 353, ../scss/icons.scss */
+  /* line 404, ../scss/icons.scss */
   .s_web_work_icon {
-    background-position: left -3999px;
+    background-position: left -4065px;
   }
 
-  /* line 356, ../scss/icons.scss */
+  /* line 407, ../scss/icons.scss */
   .s_web_folder_public {
-    background-position: left -3829px;
+    background-position: left -3895px;
   }
 
-  /* line 359, ../scss/icons.scss */
-  .s_web_page_white_compressed_32 {
-    background-position: left -1518px;
+  /* line 410, ../scss/icons.scss */
+  .s_web_check_light_gray {
+    background-position: left -4883px;
   }
 
-  /* line 362, ../scss/icons.scss */
-  .s_web_s-student-promo {
-    background-position: left -5223px;
+  /* line 413, ../scss/icons.scss */
+  .s_web_folder_user_add_32 {
+    background-position: left -891px;
   }
 
-  /* line 365, ../scss/icons.scss */
+  /* line 416, ../scss/icons.scss */
   .s_web_s_file {
-    background-position: left -6677px;
+    background-position: left -7234px;
   }
 
-  /* line 368, ../scss/icons.scss */
+  /* line 419, ../scss/icons.scss */
   .s_web_s_team {
-    background-position: left -7002px;
+    background-position: left -7579px;
   }
 
-  /* line 371, ../scss/icons.scss */
+  /* line 422, ../scss/icons.scss */
   .s_web_folder_team_locked_gray_32 {
     background-position: left -726px;
   }
 
-  /* line 374, ../scss/icons.scss */
+  /* line 425, ../scss/icons.scss */
   .s_web_folder_user_blue {
-    background-position: left -3889px;
+    background-position: left -3955px;
   }
 
-  /* line 377, ../scss/icons.scss */
+  /* line 428, ../scss/icons.scss */
   .s_web_blackberry_gray {
-    background-position: left -4646px;
+    background-position: left -4855px;
   }
 
-  /* line 380, ../scss/icons.scss */
+  /* line 431, ../scss/icons.scss */
   .s_web_play {
-    background-position: left -4371px;
+    background-position: left -4517px;
   }
 
-  /* line 383, ../scss/icons.scss */
+  /* line 434, ../scss/icons.scss */
   .s_web_page_white_stack_32 {
-    background-position: left -3267px;
+    background-position: left -3300px;
   }
 
-  /* line 386, ../scss/icons.scss */
+  /* line 437, ../scss/icons.scss */
   .s_web_folder_public_stack_32 {
     background-position: left -561px;
   }
 
-  /* line 389, ../scss/icons.scss */
-  .s_web_s_cake {
-    background-position: left -6538px;
-  }
-
-  /* line 392, ../scss/icons.scss */
-  .s_web_page_white_code_stack_32 {
-    background-position: left -1485px;
-  }
-
-  /* line 395, ../scss/icons.scss */
-  .s_web_caret_gray {
-    background-position: left -5676px;
-  }
-
-  /* line 398, ../scss/icons.scss */
-  .s_web_page_white_linkfile_32 {
-    background-position: left -2343px;
-  }
-
-  /* line 401, ../scss/icons.scss */
-  .s_web_globe_gray_20x20 {
-    background-position: left -4776px;
-  }
-
-  /* line 404, ../scss/icons.scss */
-  .s_web_folder_user_stack_32 {
-    background-position: left -1056px;
-  }
-
-  /* line 407, ../scss/icons.scss */
-  .s_web_page_white_paper_gray_32 {
-    background-position: left -2607px;
-  }
-
-  /* line 410, ../scss/icons.scss */
-  .s_web_page_white_sketch_stack_32 {
-    background-position: left -3135px;
-  }
-
-  /* line 413, ../scss/icons.scss */
-  .s_web_s_house {
-    background-position: left -6797px;
-  }
-
-  /* line 416, ../scss/icons.scss */
-  .s_web_page_white_paint_gray_32 {
-    background-position: left -2508px;
-  }
-
-  /* line 419, ../scss/icons.scss */
-  .s_web_fla_32 {
-    background-position: left 0;
-  }
-
-  /* line 422, ../scss/icons.scss */
-  .s_web_s_briefcase_gray {
-    background-position: left -6518px;
-  }
-
-  /* line 425, ../scss/icons.scss */
-  .s_web_pause {
-    background-position: left -4358px;
-  }
-
-  /* line 428, ../scss/icons.scss */
-  .s_web_page_white_playlist_gray_32 {
-    background-position: left -2805px;
-  }
-
-  /* line 431, ../scss/icons.scss */
-  .s_web_s_resolve {
-    background-position: left -6967px;
-  }
-
-  /* line 434, ../scss/icons.scss */
-  .s_web_rainbow_16 {
-    background-position: left -3926px;
-  }
-
-  /* line 437, ../scss/icons.scss */
-  .s_web_folder {
-    background-position: left -3729px;
-  }
-
   /* line 440, ../scss/icons.scss */
-  .s_web_page_white_mp3_gray_32 {
-    background-position: left -2409px;
+  .s_web_s_cake {
+    background-position: left -7095px;
   }
 
   /* line 443, ../scss/icons.scss */
-  .s_web_mag_glass {
-    background-position: left -6224px;
+  .s_web_page_white_code_stack_32 {
+    background-position: left -1518px;
   }
 
   /* line 446, ../scss/icons.scss */
-  .s_web_page_white_audition_gray_32 {
-    background-position: left -1353px;
+  .s_web_caret_gray {
+    background-position: left -6218px;
   }
 
   /* line 449, ../scss/icons.scss */
+  .s_web_page_white_linkfile_32 {
+    background-position: left -2376px;
+  }
+
+  /* line 452, ../scss/icons.scss */
+  .s_web_globe_gray_20x20 {
+    background-position: left -5038px;
+  }
+
+  /* line 455, ../scss/icons.scss */
+  .s_web_ic_sticker {
+    background-position: left -5256px;
+  }
+
+  /* line 458, ../scss/icons.scss */
+  .s_web_folder_user_stack_32 {
+    background-position: left -1089px;
+  }
+
+  /* line 461, ../scss/icons.scss */
+  .s_web_page_white_paper_gray_32 {
+    background-position: left -2640px;
+  }
+
+  /* line 464, ../scss/icons.scss */
+  .s_web_page_white_sketch_stack_32 {
+    background-position: left -3168px;
+  }
+
+  /* line 467, ../scss/icons.scss */
+  .s_web_s_house {
+    background-position: left -7354px;
+  }
+
+  /* line 470, ../scss/icons.scss */
+  .s_web_page_white_paint_gray_32 {
+    background-position: left -2541px;
+  }
+
+  /* line 473, ../scss/icons.scss */
+  .s_web_fla_32 {
+    background-position: left -0px;
+  }
+
+  /* line 476, ../scss/icons.scss */
+  .s_web_s_briefcase_gray {
+    background-position: left -7075px;
+  }
+
+  /* line 479, ../scss/icons.scss */
+  .s_web_pause {
+    background-position: left -4504px;
+  }
+
+  /* line 482, ../scss/icons.scss */
+  .s_web_page_white_playlist_gray_32 {
+    background-position: left -2838px;
+  }
+
+  /* line 485, ../scss/icons.scss */
+  .s_web_s_resolve {
+    background-position: left -7544px;
+  }
+
+  /* line 488, ../scss/icons.scss */
+  .s_web_rainbow_16 {
+    background-position: left -3992px;
+  }
+
+  /* line 491, ../scss/icons.scss */
+  .s_web_folder {
+    background-position: left -3795px;
+  }
+
+  /* line 494, ../scss/icons.scss */
+  .s_web_page_white_mp3_gray_32 {
+    background-position: left -2442px;
+  }
+
+  /* line 497, ../scss/icons.scss */
+  .s_web_mag_glass {
+    background-position: left -6781px;
+  }
+
+  /* line 500, ../scss/icons.scss */
+  .s_web_page_white_audition_gray_32 {
+    background-position: left -1386px;
+  }
+
+  /* line 503, ../scss/icons.scss */
+  .s_web_check_gray {
+    background-position: left -4872px;
+  }
+
+  /* line 506, ../scss/icons.scss */
+  .s_web_settings {
+    background-position: left -5809px;
+  }
+
+  /* line 509, ../scss/icons.scss */
   .s_web_folder_gray_32 {
     background-position: left -363px;
   }
 
-  /* line 452, ../scss/icons.scss */
+  /* line 512, ../scss/icons.scss */
   .s_web_s_comments_unlocked {
-    background-position: left -6637px;
+    background-position: left -7194px;
   }
 
-  /* line 455, ../scss/icons.scss */
+  /* line 515, ../scss/icons.scss */
   .s_web_page_white_go {
-    background-position: left -6386px;
+    background-position: left -6943px;
   }
 
-  /* line 458, ../scss/icons.scss */
+  /* line 518, ../scss/icons.scss */
   .s_web_folder_app_32 {
     background-position: left -66px;
   }
 
-  /* line 461, ../scss/icons.scss */
+  /* line 521, ../scss/icons.scss */
   .s_web_bullet_plus {
-    background-position: left -5587px;
+    background-position: left -6129px;
   }
 
-  /* line 464, ../scss/icons.scss */
+  /* line 524, ../scss/icons.scss */
   .s_web_s_disable {
-    background-position: left -6659px;
+    background-position: left -7216px;
   }
 
-  /* line 467, ../scss/icons.scss */
+  /* line 527, ../scss/icons.scss */
   .s_web_page_white_text_gray_32 {
-    background-position: left -3333px;
+    background-position: left -3366px;
   }
 
-  /* line 470, ../scss/icons.scss */
+  /* line 530, ../scss/icons.scss */
   .s_web_fullscreen {
-    background-position: left -4318px;
+    background-position: left -5023px;
   }
 
-  /* line 473, ../scss/icons.scss */
+  /* line 533, ../scss/icons.scss */
   .s_web_s_check {
-    background-position: left -6578px;
+    background-position: left -7135px;
   }
 
-  /* line 476, ../scss/icons.scss */
+  /* line 536, ../scss/icons.scss */
   .s_web_folder_app_gray_32 {
     background-position: left -99px;
   }
 
-  /* line 479, ../scss/icons.scss */
+  /* line 539, ../scss/icons.scss */
   .s_web_email {
-    background-position: left -5836px;
+    background-position: left -6378px;
   }
 
-  /* line 482, ../scss/icons.scss */
+  /* line 542, ../scss/icons.scss */
   .s_web_lightbox_delete_16 {
-    background-position: left -6113px;
+    background-position: left -6655px;
   }
 
-  /* line 485, ../scss/icons.scss */
+  /* line 545, ../scss/icons.scss */
   .s_web_arrow-down-blue {
-    background-position: left -5546px;
+    background-position: left -6088px;
   }
 
-  /* line 488, ../scss/icons.scss */
+  /* line 548, ../scss/icons.scss */
+  .s_web_ic_comment_text {
+    background-position: left -5235px;
+  }
+
+  /* line 551, ../scss/icons.scss */
   .s_web_s_comments_locked {
-    background-position: left -6615px;
+    background-position: left -7172px;
   }
 
-  /* line 491, ../scss/icons.scss */
+  /* line 554, ../scss/icons.scss */
   .s_web_page_white_webcode_gray_32 {
-    background-position: left -3531px;
+    background-position: left -3564px;
   }
 
-  /* line 494, ../scss/icons.scss */
+  /* line 557, ../scss/icons.scss */
+  .s_web_page_white_picture_gray_32 {
+    background-position: left -2739px;
+  }
+
+  /* line 560, ../scss/icons.scss */
   .s_web_folder_user_locked {
-    background-position: left -3906px;
+    background-position: left -3972px;
   }
 
-  /* line 497, ../scss/icons.scss */
+  /* line 563, ../scss/icons.scss */
   .s_web_email_32 {
-    background-position: left -5877px;
+    background-position: left -6419px;
   }
 
-  /* line 500, ../scss/icons.scss */
+  /* line 566, ../scss/icons.scss */
   .s_web_folder_camera_gray_32 {
     background-position: left -198px;
   }
 
-  /* line 503, ../scss/icons.scss */
+  /* line 569, ../scss/icons.scss */
   .s_web_delete {
-    background-position: left -5737px;
+    background-position: left -6279px;
   }
 
-  /* line 506, ../scss/icons.scss */
-  .s_web_arrow-down-white {
-    background-position: left -5558px;
+  /* line 572, ../scss/icons.scss */
+  .s_web_dropbox_gray {
+    background-position: left -4971px;
   }
 
-  /* line 509, ../scss/icons.scss */
+  /* line 575, ../scss/icons.scss */
   .s_web_s_briefcase {
-    background-position: left -6498px;
+    background-position: left -7055px;
   }
 
-  /* line 512, ../scss/icons.scss */
+  /* line 578, ../scss/icons.scss */
   .s_web_invite_user {
-    background-position: left -4862px;
+    background-position: left -5340px;
   }
 
-  /* line 515, ../scss/icons.scss */
+  /* line 581, ../scss/icons.scss */
+  .s_web_s_lock_flat {
+    background-position: left -7414px;
+  }
+
+  /* line 584, ../scss/icons.scss */
   .s_web_package_32 {
-    background-position: left -1089px;
+    background-position: left -1122px;
   }
 
-  /* line 518, ../scss/icons.scss */
+  /* line 587, ../scss/icons.scss */
   .s_web_cancel {
-    background-position: left -5658px;
+    background-position: left -6200px;
   }
 
-  /* line 521, ../scss/icons.scss */
+  /* line 590, ../scss/icons.scss */
   .s_web_folder_add {
-    background-position: left -3749px;
+    background-position: left -3815px;
   }
 
-  /* line 524, ../scss/icons.scss */
+  /* line 593, ../scss/icons.scss */
   .s_web_page_white_vector_32 {
-    background-position: left -3399px;
+    background-position: left -3432px;
   }
 
-  /* line 527, ../scss/icons.scss */
+  /* line 596, ../scss/icons.scss */
   .s_web_page_white_premiere_gray_32 {
-    background-position: left -3003px;
+    background-position: left -3036px;
   }
 
-  /* line 530, ../scss/icons.scss */
+  /* line 599, ../scss/icons.scss */
+  .s_web_shared_link_white {
+    background-position: left -4741px;
+  }
+
+  /* line 602, ../scss/icons.scss */
   .s_web_page_white_compressed_gray_32 {
-    background-position: left -1551px;
+    background-position: left -1584px;
   }
 
-  /* line 533, ../scss/icons.scss */
+  /* line 605, ../scss/icons.scss */
   .s_web_folder_public_gray_32 {
     background-position: left -528px;
   }
 
-  /* line 536, ../scss/icons.scss */
+  /* line 608, ../scss/icons.scss */
   .s_web_folder_camera_32 {
     background-position: left -165px;
   }
 
-  /* line 539, ../scss/icons.scss */
-  .s_web_album_16 {
-    background-position: left -5506px;
+  /* line 611, ../scss/icons.scss */
+  .s_web_ic_comment_area_blue {
+    background-position: left -5147px;
   }
 
-  /* line 542, ../scss/icons.scss */
+  /* line 614, ../scss/icons.scss */
+  .s_web_page_white_mp3_32 {
+    background-position: left -2409px;
+  }
+
+  /* line 617, ../scss/icons.scss */
   .s_web_download_arrow {
-    background-position: left -5795px;
+    background-position: left -6337px;
   }
 
-  /* line 545, ../scss/icons.scss */
+  /* line 620, ../scss/icons.scss */
   .s_web_request_notifications_icon {
-    background-position: left -6463px;
+    background-position: left -7020px;
   }
 
-  /* line 548, ../scss/icons.scss */
+  /* line 623, ../scss/icons.scss */
   .s_web_rename {
-    background-position: left -6443px;
+    background-position: left -7000px;
   }
 
-  /* line 551, ../scss/icons.scss */
+  /* line 626, ../scss/icons.scss */
   .s_web_folder_team_stack_32 {
-    background-position: left -792px;
+    background-position: left -825px;
   }
 
-  /* line 554, ../scss/icons.scss */
+  /* line 629, ../scss/icons.scss */
   .s_web_folder_camera {
-    background-position: left -3789px;
+    background-position: left -3855px;
   }
 
-  /* line 557, ../scss/icons.scss */
+  /* line 632, ../scss/icons.scss */
   .s_web_s_flip_right {
-    background-position: left -4456px;
+    background-position: left -4602px;
   }
 
-  /* line 560, ../scss/icons.scss */
+  /* line 635, ../scss/icons.scss */
   .s_web_s_mailbox {
-    background-position: left -6857px;
+    background-position: left -7427px;
   }
 
-  /* line 563, ../scss/icons.scss */
+  /* line 638, ../scss/icons.scss */
   .s_web_page_white_keynote_stack_32 {
-    background-position: left -2310px;
+    background-position: left -2343px;
   }
 
-  /* line 566, ../scss/icons.scss */
+  /* line 641, ../scss/icons.scss */
   .s_web_lightbox_open {
-    background-position: left -4916px;
+    background-position: left -5394px;
   }
 
-  /* line 569, ../scss/icons.scss */
+  /* line 644, ../scss/icons.scss */
   .s_web_folder_public_32 {
     background-position: left -495px;
   }
 
-  /* line 572, ../scss/icons.scss */
+  /* line 647, ../scss/icons.scss */
   .s_web_page_white_vector_stack_32 {
-    background-position: left -3465px;
+    background-position: left -3498px;
   }
 
-  /* line 575, ../scss/icons.scss */
+  /* line 650, ../scss/icons.scss */
   .s_web_folder_paper_team_32 {
     background-position: left -396px;
   }
 
-  /* line 578, ../scss/icons.scss */
-  .s_web_s_notifications_off {
-    background-position: left -6891px;
-  }
-
-  /* line 581, ../scss/icons.scss */
-  .s_web_banner_x {
-    background-position: left -4625px;
-  }
-
-  /* line 584, ../scss/icons.scss */
-  .s_web_s_sync {
-    background-position: left -6985px;
-  }
-
-  /* line 587, ../scss/icons.scss */
-  .s_web_page_white_illustrator_stack_32 {
-    background-position: left -2211px;
-  }
-
-  /* line 590, ../scss/icons.scss */
-  .s_web_user {
-    background-position: left -7082px;
-  }
-
-  /* line 593, ../scss/icons.scss */
-  .s_web_page_white_paper_32 {
-    background-position: left -2574px;
-  }
-
-  /* line 596, ../scss/icons.scss */
-  .s_web_xclose {
-    background-position: left -7182px;
-  }
-
-  /* line 599, ../scss/icons.scss */
-  .s_web_user_warn {
-    background-position: left -7162px;
-  }
-
-  /* line 602, ../scss/icons.scss */
-  .s_web_menu-right-arrow {
-    background-position: left -5115px;
-  }
-
-  /* line 605, ../scss/icons.scss */
-  .s_web_folder_user_add_32 {
-    background-position: left -858px;
-  }
-
-  /* line 608, ../scss/icons.scss */
-  .s_web_left {
-    background-position: left -4338px;
-  }
-
-  /* line 611, ../scss/icons.scss */
-  .s_web_restore {
-    background-position: left -6480px;
-  }
-
-  /* line 614, ../scss/icons.scss */
-  .s_web_lightbox_next {
-    background-position: left -6153px;
-  }
-
-  /* line 617, ../scss/icons.scss */
-  .s_web_fb_20 {
-    background-position: left -5950px;
-  }
-
-  /* line 620, ../scss/icons.scss */
-  .s_web_s-link-blue {
-    background-position: left -5203px;
-  }
-
-  /* line 623, ../scss/icons.scss */
-  .s_web_page_white_keynote_gray_32 {
-    background-position: left -2277px;
-  }
-
-  /* line 626, ../scss/icons.scss */
-  .s_web_dropbox_gray {
-    background-position: left -4741px;
-  }
-
-  /* line 629, ../scss/icons.scss */
-  .s_web_add {
-    background-position: left -5488px;
-  }
-
-  /* line 632, ../scss/icons.scss */
-  .s_web_page_white_picture_32 {
-    background-position: left -2673px;
-  }
-
-  /* line 635, ../scss/icons.scss */
-  .s_web_powerpoint-40 {
-    background-position: left -4182px;
-  }
-
-  /* line 638, ../scss/icons.scss */
-  .s_web_page_white_32 {
-    background-position: left -1188px;
-  }
-
-  /* line 641, ../scss/icons.scss */
-  .s_web_rainbow_16_gray {
-    background-position: left -3946px;
-  }
-
-  /* line 644, ../scss/icons.scss */
-  .s_web_windows_xp_gray {
-    background-position: left -5454px;
-  }
-
-  /* line 647, ../scss/icons.scss */
-  .s_web_user_delete {
-    background-position: left -7122px;
-  }
-
-  /* line 650, ../scss/icons.scss */
-  .s_web_gift {
-    background-position: left -6004px;
-  }
-
   /* line 653, ../scss/icons.scss */
-  .s_web_apple_gray {
-    background-position: left -4597px;
+  .s_web_page_white_compressed_32 {
+    background-position: left -1551px;
   }
 
   /* line 656, ../scss/icons.scss */
-  .s_web_s_greycheck {
-    background-position: left -6758px;
+  .s_web_banner_x {
+    background-position: left -4834px;
   }
 
   /* line 659, ../scss/icons.scss */
-  .s_web_lightbox_more {
-    background-position: left -6133px;
+  .s_web_s_sync {
+    background-position: left -7562px;
   }
 
   /* line 662, ../scss/icons.scss */
-  .s_web_page_white_playlist_stack_32 {
-    background-position: left -2838px;
+  .s_web_page_white_illustrator_stack_32 {
+    background-position: left -2244px;
   }
 
   /* line 665, ../scss/icons.scss */
-  .s_web_page_white_paper_stack_32 {
-    background-position: left -2640px;
+  .s_web_user {
+    background-position: left -7659px;
   }
 
   /* line 668, ../scss/icons.scss */
-  .s_web_arrow-down-gray {
-    background-position: left -5552px;
+  .s_web_page_white_paper_32 {
+    background-position: left -2607px;
   }
 
   /* line 671, ../scss/icons.scss */
-  .s_web_move_16 {
-    background-position: left -6302px;
+  .s_web_xclose {
+    background-position: left -7759px;
   }
 
   /* line 674, ../scss/icons.scss */
-  .s_web_word-40 {
-    background-position: left -4240px;
+  .s_web_user_warn {
+    background-position: left -7739px;
   }
 
   /* line 677, ../scss/icons.scss */
-  .s_web_zoom {
-    background-position: left -4540px;
+  .s_web_menu-right-arrow {
+    background-position: left -5593px;
   }
 
   /* line 680, ../scss/icons.scss */
-  .s_web_star {
-    background-position: left -5363px;
+  .s_web_s-student-promo {
+    background-position: left -5701px;
   }
 
   /* line 683, ../scss/icons.scss */
-  .s_web_page_white_premiere_32 {
-    background-position: left -2970px;
+  .s_web_left {
+    background-position: left -4484px;
   }
 
   /* line 686, ../scss/icons.scss */
-  .s_web_glyph {
-    background-position: left -4797px;
+  .s_web_restore {
+    background-position: left -7037px;
   }
 
   /* line 689, ../scss/icons.scss */
-  .s_web_deselect {
-    background-position: left -4706px;
+  .s_web_lightbox_next {
+    background-position: left -6695px;
   }
 
   /* line 692, ../scss/icons.scss */
-  .s_web_page_white_flash_32 {
-    background-position: left -1914px;
+  .s_web_fb_20 {
+    background-position: left -6492px;
   }
 
   /* line 695, ../scss/icons.scss */
-  .s_web_s_link {
-    background-position: left -6837px;
+  .s_web_control_comments_on {
+    background-position: left -4411px;
   }
 
   /* line 698, ../scss/icons.scss */
+  .s_web_s-link-blue {
+    background-position: left -5681px;
+  }
+
+  /* line 701, ../scss/icons.scss */
+  .s_web_page_white_keynote_gray_32 {
+    background-position: left -2310px;
+  }
+
+  /* line 704, ../scss/icons.scss */
+  .s_web_arrow-down-white {
+    background-position: left -6100px;
+  }
+
+  /* line 707, ../scss/icons.scss */
+  .s_web_add {
+    background-position: left -6030px;
+  }
+
+  /* line 710, ../scss/icons.scss */
+  .s_web_page_white_picture_32 {
+    background-position: left -2706px;
+  }
+
+  /* line 713, ../scss/icons.scss */
+  .s_web_powerpoint-40 {
+    background-position: left -4248px;
+  }
+
+  /* line 716, ../scss/icons.scss */
+  .s_web_page_white_32 {
+    background-position: left -1221px;
+  }
+
+  /* line 719, ../scss/icons.scss */
+  .s_web_rainbow_16_gray {
+    background-position: left -4012px;
+  }
+
+  /* line 722, ../scss/icons.scss */
+  .s_web_s_star_32 {
+    background-position: left -4756px;
+  }
+
+  /* line 725, ../scss/icons.scss */
+  .s_web_windows_xp_gray {
+    background-position: left -5984px;
+  }
+
+  /* line 728, ../scss/icons.scss */
+  .s_web_user_delete {
+    background-position: left -7699px;
+  }
+
+  /* line 731, ../scss/icons.scss */
+  .s_web_gift {
+    background-position: left -6546px;
+  }
+
+  /* line 734, ../scss/icons.scss */
+  .s_web_apple_gray {
+    background-position: left -4806px;
+  }
+
+  /* line 737, ../scss/icons.scss */
+  .s_web_s_greycheck {
+    background-position: left -7315px;
+  }
+
+  /* line 740, ../scss/icons.scss */
+  .s_web_lightbox_more {
+    background-position: left -6675px;
+  }
+
+  /* line 743, ../scss/icons.scss */
+  .s_web_windows_gray {
+    background-position: left -5967px;
+  }
+
+  /* line 746, ../scss/icons.scss */
+  .s_web_page_white_paper_stack_32 {
+    background-position: left -2673px;
+  }
+
+  /* line 749, ../scss/icons.scss */
+  .s_web_arrow-down-gray {
+    background-position: left -6094px;
+  }
+
+  /* line 752, ../scss/icons.scss */
+  .s_web_word-40 {
+    background-position: left -4306px;
+  }
+
+  /* line 755, ../scss/icons.scss */
+  .s_web_zoom {
+    background-position: left -4686px;
+  }
+
+  /* line 758, ../scss/icons.scss */
+  .s_web_page_white_premiere_32 {
+    background-position: left -3003px;
+  }
+
+  /* line 761, ../scss/icons.scss */
+  .s_web_glyph {
+    background-position: left -5059px;
+  }
+
+  /* line 764, ../scss/icons.scss */
+  .s_web_deselect {
+    background-position: left -4936px;
+  }
+
+  /* line 767, ../scss/icons.scss */
+  .s_web_page_white_flash_32 {
+    background-position: left -1947px;
+  }
+
+  /* line 770, ../scss/icons.scss */
+  .s_web_s_link {
+    background-position: left -7394px;
+  }
+
+  /* line 773, ../scss/icons.scss */
   .s_web_folder_32 {
     background-position: left -33px;
   }
 
-  /* line 701, ../scss/icons.scss */
+  /* line 776, ../scss/icons.scss */
   .s_web_back_chevron {
-    background-position: left -4614px;
+    background-position: left -4823px;
   }
 
-  /* line 704, ../scss/icons.scss */
+  /* line 779, ../scss/icons.scss */
   .s_web_page_white_powerpoint_gray_32 {
-    background-position: left -2904px;
+    background-position: left -2937px;
   }
 
-  /* line 707, ../scss/icons.scss */
+  /* line 782, ../scss/icons.scss */
   .s_web_folder_team_gray_32 {
     background-position: left -660px;
   }
 
-  /* line 710, ../scss/icons.scss */
+  /* line 785, ../scss/icons.scss */
   .s_web_onenote {
-    background-position: left -4131px;
+    background-position: left -4197px;
   }
 
-  /* line 713, ../scss/icons.scss */
+  /* line 788, ../scss/icons.scss */
   .s_web_trash-can {
-    background-position: left -7042px;
+    background-position: left -7619px;
   }
 
-  /* line 716, ../scss/icons.scss */
+  /* line 791, ../scss/icons.scss */
   .s_web_page_white_acrobat_stack_32 {
-    background-position: left -1287px;
+    background-position: left -1320px;
   }
 
-  /* line 719, ../scss/icons.scss */
+  /* line 794, ../scss/icons.scss */
   .s_web_page_white_sound_stack_32 {
-    background-position: left -3234px;
+    background-position: left -3267px;
   }
 
-  /* line 722, ../scss/icons.scss */
+  /* line 797, ../scss/icons.scss */
   .s_web_page_white_gear_stack_32 {
-    background-position: left -2079px;
+    background-position: left -2112px;
   }
 
-  /* line 725, ../scss/icons.scss */
+  /* line 800, ../scss/icons.scss */
   .s_web_modal {
-    background-position: left -5126px;
-  }
-
-  /* line 728, ../scss/icons.scss */
-  .s_web_powerpoint {
-    background-position: left -4223px;
-  }
-
-  /* line 731, ../scss/icons.scss */
-  .s_web_playInactive {
-    background-position: left -4384px;
-  }
-
-  /* line 734, ../scss/icons.scss */
-  .s_web_page_white_webcode_32 {
-    background-position: left -3498px;
-  }
-
-  /* line 737, ../scss/icons.scss */
-  .s_web_page_white_audition_stack_32 {
-    background-position: left -1386px;
-  }
-
-  /* line 740, ../scss/icons.scss */
-  .s_web_down {
-    background-position: left -4298px;
-  }
-
-  /* line 743, ../scss/icons.scss */
-  .s_web_right {
-    background-position: left -4417px;
-  }
-
-  /* line 746, ../scss/icons.scss */
-  .s_web_page_white_mp3_stack_32 {
-    background-position: left -2442px;
-  }
-
-  /* line 749, ../scss/icons.scss */
-  .s_web_chevron_long {
-    background-position: left -4677px;
-  }
-
-  /* line 752, ../scss/icons.scss */
-  .s_web_email_20 {
-    background-position: left -5856px;
-  }
-
-  /* line 755, ../scss/icons.scss */
-  .s_web_page_white_picture_stack_32 {
-    background-position: left -2739px;
-  }
-
-  /* line 758, ../scss/icons.scss */
-  .s_web_volume {
-    background-position: left -4495px;
-  }
-
-  /* line 761, ../scss/icons.scss */
-  .s_web_s_mention_add {
-    background-position: left -6877px;
-  }
-
-  /* line 764, ../scss/icons.scss */
-  .s_web_page_white_flash_stack_32 {
-    background-position: left -1980px;
-  }
-
-  /* line 767, ../scss/icons.scss */
-  .s_web_page_white_film_32 {
-    background-position: left -1815px;
-  }
-
-  /* line 770, ../scss/icons.scss */
-  .s_web_info {
-    background-position: left -6076px;
-  }
-
-  /* line 773, ../scss/icons.scss */
-  .s_web_up {
-    background-position: left -4475px;
-  }
-
-  /* line 776, ../scss/icons.scss */
-  .s_web_bulletpoint-check {
     background-position: left -5604px;
   }
 
-  /* line 779, ../scss/icons.scss */
-  .s_web_page_white_picture_gray_32 {
-    background-position: left -2706px;
+  /* line 803, ../scss/icons.scss */
+  .s_web_powerpoint {
+    background-position: left -4289px;
   }
 
-  /* line 782, ../scss/icons.scss */
+  /* line 806, ../scss/icons.scss */
+  .s_web_playInactive {
+    background-position: left -4530px;
+  }
+
+  /* line 809, ../scss/icons.scss */
+  .s_web_s_show_comments_grey {
+    background-position: left -5753px;
+  }
+
+  /* line 812, ../scss/icons.scss */
+  .s_web_page_white_audition_stack_32 {
+    background-position: left -1419px;
+  }
+
+  /* line 815, ../scss/icons.scss */
+  .s_web_down {
+    background-position: left -4444px;
+  }
+
+  /* line 818, ../scss/icons.scss */
+  .s_web_right {
+    background-position: left -4563px;
+  }
+
+  /* line 821, ../scss/icons.scss */
+  .s_web_move_16 {
+    background-position: left -6859px;
+  }
+
+  /* line 824, ../scss/icons.scss */
+  .s_web_page_white_mp3_stack_32 {
+    background-position: left -2475px;
+  }
+
+  /* line 827, ../scss/icons.scss */
+  .s_web_chevron_long {
+    background-position: left -4894px;
+  }
+
+  /* line 830, ../scss/icons.scss */
+  .s_web_email_20 {
+    background-position: left -6398px;
+  }
+
+  /* line 833, ../scss/icons.scss */
+  .s_web_page_white_picture_stack_32 {
+    background-position: left -2772px;
+  }
+
+  /* line 836, ../scss/icons.scss */
+  .s_web_volume {
+    background-position: left -4641px;
+  }
+
+  /* line 839, ../scss/icons.scss */
+  .s_web_s_mention_add {
+    background-position: left -7447px;
+  }
+
+  /* line 842, ../scss/icons.scss */
+  .s_web_page_white_flash_stack_32 {
+    background-position: left -2013px;
+  }
+
+  /* line 845, ../scss/icons.scss */
+  .s_web_page_white_film_32 {
+    background-position: left -1848px;
+  }
+
+  /* line 848, ../scss/icons.scss */
+  .s_web_info {
+    background-position: left -6618px;
+  }
+
+  /* line 851, ../scss/icons.scss */
+  .s_web_up {
+    background-position: left -4621px;
+  }
+
+  /* line 854, ../scss/icons.scss */
+  .s_web_bulletpoint-check {
+    background-position: left -6146px;
+  }
+
+  /* line 857, ../scss/icons.scss */
   .s_web_folder_app_stack_32 {
     background-position: left -132px;
   }
 
-  /* line 785, ../scss/icons.scss */
+  /* line 860, ../scss/icons.scss */
   .s_web_folder_user {
-    background-position: left -3849px;
+    background-position: left -3915px;
   }
 
-  /* line 788, ../scss/icons.scss */
+  /* line 863, ../scss/icons.scss */
   .s_web_heart-broken {
-    background-position: left -6021px;
+    background-position: left -6563px;
   }
 
-  /* line 791, ../scss/icons.scss */
+  /* line 866, ../scss/icons.scss */
   .s_web_email_add {
-    background-position: left -5910px;
+    background-position: left -6452px;
   }
 
-  /* line 794, ../scss/icons.scss */
+  /* line 869, ../scss/icons.scss */
   .s_web_page_white_acrobat_gray_32 {
-    background-position: left -1254px;
+    background-position: left -1287px;
   }
 
-  /* line 797, ../scss/icons.scss */
+  /* line 872, ../scss/icons.scss */
   .s_web_link_white {
-    background-position: left -6187px;
+    background-position: left -6729px;
   }
 
-  /* line 800, ../scss/icons.scss */
+  /* line 875, ../scss/icons.scss */
   .s_web_folder_dropbox_gray_32 {
     background-position: left -297px;
   }
 
-  /* line 803, ../scss/icons.scss */
+  /* line 878, ../scss/icons.scss */
   .s_web_star_upgrade {
-    background-position: left -5377px;
+    background-position: left -5894px;
   }
 
-  /* line 806, ../scss/icons.scss */
+  /* line 881, ../scss/icons.scss */
   .s_web_excel {
-    background-position: left -4114px;
+    background-position: left -4180px;
   }
 
-  /* line 809, ../scss/icons.scss */
+  /* line 884, ../scss/icons.scss */
   .s_web_folder_user_add {
-    background-position: left -3869px;
+    background-position: left -3935px;
   }
 
-  /* line 812, ../scss/icons.scss */
+  /* line 887, ../scss/icons.scss */
   .s_web_page_white_sound_32 {
-    background-position: left -3168px;
+    background-position: left -3201px;
   }
 
-  /* line 815, ../scss/icons.scss */
+  /* line 890, ../scss/icons.scss */
+  .s_web_control_back {
+    background-position: left -4364px;
+  }
+
+  /* line 893, ../scss/icons.scss */
   .s_web_ow_folder {
-    background-position: left -4165px;
+    background-position: left -4231px;
   }
 
-  /* line 818, ../scss/icons.scss */
+  /* line 896, ../scss/icons.scss */
   .s_web_ow_desktop {
-    background-position: left -4148px;
+    background-position: left -4214px;
   }
 
-  /* line 821, ../scss/icons.scss */
+  /* line 899, ../scss/icons.scss */
+  .s_web_xclose_light_gray {
+    background-position: left -6001px;
+  }
+
+  /* line 902, ../scss/icons.scss */
   .s_web_dropbox {
-    background-position: left -4724px;
+    background-position: left -4954px;
   }
 
-  /* line 824, ../scss/icons.scss */
+  /* line 905, ../scss/icons.scss */
   .s_web_page_white_gear_gray_32 {
-    background-position: left -2046px;
+    background-position: left -2079px;
   }
 
-  /* line 827, ../scss/icons.scss */
+  /* line 908, ../scss/icons.scss */
   .s_web_user_gray {
-    background-position: left -7142px;
+    background-position: left -7719px;
   }
 
-  /* line 830, ../scss/icons.scss */
+  /* line 911, ../scss/icons.scss */
   .s_web_package_stack_32 {
-    background-position: left -1155px;
+    background-position: left -1188px;
   }
 
-  /* line 833, ../scss/icons.scss */
+  /* line 914, ../scss/icons.scss */
   .s_web_page_white_keynote_32 {
-    background-position: left -2244px;
+    background-position: left -2277px;
   }
 
-  /* line 836, ../scss/icons.scss */
+  /* line 917, ../scss/icons.scss */
   .s_web_s_hide {
-    background-position: left -6779px;
+    background-position: left -7336px;
   }
 
-  /* line 839, ../scss/icons.scss */
+  /* line 920, ../scss/icons.scss */
   .s_web_shared_folder_joined_32 {
-    background-position: left -3696px;
+    background-position: left -3762px;
   }
 
-  /* line 842, ../scss/icons.scss */
+  /* line 923, ../scss/icons.scss */
   .s_web_s_rainbow {
-    background-position: left -6947px;
+    background-position: left -7524px;
   }
 
-  /* line 845, ../scss/icons.scss */
+  /* line 926, ../scss/icons.scss */
   .s_web_group_warn {
-    background-position: left -4846px;
+    background-position: left -5108px;
   }
 }
-/* line 850, ../scss/icons.scss */
+/* line 930, ../scss/icons.scss */
 .s_web_folder_user_locked_stack_32 {
-  background-position: left -1396px;
+  background-position: left -1448px;
   width: 32px;
   height: 32px;
 }
 
-/* line 855, ../scss/icons.scss */
+/* line 935, ../scss/icons.scss */
 .s_web_s_device_mobile_android {
-  background-position: left -7791px;
-  background-image: url(../img/web_sprites-normal.png);
+  background-position: left -8348px;
+  background-image: url(../img/web_sprites-normal_n.png);
   background-size: auto auto;
 }
 
-/* line 860, ../scss/icons.scss */
+/* line 940, ../scss/icons.scss */
+.s_web_icon_leave {
+  background-position: left -7083px;
+  width: 22px;
+  height: 20px;
+}
+
+/* line 945, ../scss/icons.scss */
 .s_web_folder_app {
-  background-position: left -4260px;
+  background-position: left -4346px;
   width: 19px;
   height: 19px;
 }
 
-/* line 865, ../scss/icons.scss */
+/* line 950, ../scss/icons.scss */
 .s_web_page_white_sound {
-  background-position: left -270px;
-  background-image: url(../img/web_sprites-normal.png);
+  background-position: left -288px;
+  background-image: url(../img/web_sprites-normal_n.png);
   background-size: auto auto;
 }
 
-/* line 870, ../scss/icons.scss */
+/* line 955, ../scss/icons.scss */
 .s_web_api_python_disabled {
-  background-position: left -5653px;
-  background-image: url(../img/web_sprites-normal.png);
+  background-position: left -5891px;
+  background-image: url(../img/web_sprites-normal_n.png);
   background-size: auto auto;
 }
 
-/* line 875, ../scss/icons.scss */
+/* line 960, ../scss/icons.scss */
 .s_web_volumeMuted {
-  background-position: left -5165px;
+  background-position: left -5337px;
   width: 16px;
   height: 14px;
 }
 
-/* line 880, ../scss/icons.scss */
+/* line 965, ../scss/icons.scss */
 .s_web_dropbox21x20 {
-  background-position: left -8772px;
+  background-position: left -9447px;
   width: 21px;
   height: 20px;
 }
 
-/* line 885, ../scss/icons.scss */
+/* line 970, ../scss/icons.scss */
 .s_web_s_house_gray {
-  background-position: left -9840px;
+  background-position: left -10493px;
   width: 19px;
   height: 19px;
 }
 
-/* line 890, ../scss/icons.scss */
+/* line 975, ../scss/icons.scss */
 .s_web_email_go {
-  background-position: left -8930px;
+  background-position: left -9567px;
   width: 19px;
   height: 19px;
 }
 
-/* line 895, ../scss/icons.scss */
+/* line 980, ../scss/icons.scss */
 .s_web_lightbox_add_to_album {
-  background-position: left -6789px;
+  background-position: left -7310px;
   width: 32px;
   height: 32px;
-  background-image: url(../img/web_sprites-normal.png);
+  background-image: url(../img/web_sprites-normal_n.png);
   background-size: auto auto;
 }
 
-/* line 902, ../scss/icons.scss */
+/* line 987, ../scss/icons.scss */
+.s_web_exit-fullscreen {
+  background-position: left -6598px;
+}
+
+/* line 990, ../scss/icons.scss */
 .s_web_computer_add {
-  background-position: left -6017px;
-  background-image: url(../img/web_sprites-normal.png);
-  background-size: auto auto;
-}
-
-/* line 907, ../scss/icons.scss */
-.s_web_page_white_mp3_32 {
-  background-position: left -2790px;
-  width: 32px;
-  height: 32px;
-}
-
-/* line 912, ../scss/icons.scss */
-.s_web_page_white_premiere_stack_32 {
-  background-position: left -3470px;
-  width: 32px;
-  height: 32px;
-}
-
-/* line 917, ../scss/icons.scss */
-.s_web_lightbox_view_original {
-  background-position: left -6979px;
-  width: 32px;
-  height: 32px;
-  background-image: url(../img/web_sprites-normal.png);
-  background-size: auto auto;
-}
-
-/* line 924, ../scss/icons.scss */
-.s_web_folder_gray {
-  background-position: left -4302px;
-  width: 19px;
-  height: 19px;
-}
-
-/* line 929, ../scss/icons.scss */
-.s_web_facebook {
-  background-position: left -6337px;
-  width: 19px;
-  height: 19px;
-  background-image: url(../img/web_sprites-normal.png);
-  background-size: auto auto;
-}
-
-/* line 936, ../scss/icons.scss */
-.s_web_folder_user_locked_32 {
-  background-position: left -1328px;
-  width: 32px;
-  height: 32px;
-}
-
-/* line 941, ../scss/icons.scss */
-.s_web_page_white_word_gray_32 {
-  background-position: left -4082px;
-  width: 32px;
-  height: 32px;
-}
-
-/* line 946, ../scss/icons.scss */
-.s_web_issue {
-  background-position: left -6751px;
-  width: 36px;
-  height: 36px;
-}
-
-/* line 951, ../scss/icons.scss */
-.s_web_s_greencheck {
-  background-position: left -9756px;
-  width: 20px;
-  height: 20px;
-}
-
-/* line 956, ../scss/icons.scss */
-.s_web_folder_paper_team_stack_32 {
-  background-position: left -818px;
-  width: 32px;
-  height: 32px;
-}
-
-/* line 961, ../scss/icons.scss */
-.s_web_folder_dropbox_32 {
-  background-position: left -614px;
-  width: 32px;
-  height: 32px;
-}
-
-/* line 966, ../scss/icons.scss */
-.s_web_google_gray {
-  background-position: left -6499px;
-  width: 19px;
-  height: 19px;
-  background-image: url(../img/web_sprites-normal.png);
-  background-size: auto auto;
-}
-
-/* line 973, ../scss/icons.scss */
-.s_web_s_browser_ie {
-  background-position: left -7701px;
-  background-image: url(../img/web_sprites-normal.png);
-  background-size: auto auto;
-}
-
-/* line 978, ../scss/icons.scss */
-.s_web_api_js {
-  background-position: left -5527px;
-  background-image: url(../img/web_sprites-normal.png);
-  background-size: auto auto;
-}
-
-/* line 983, ../scss/icons.scss */
-.s_web_package_gray_32 {
-  background-position: left -1498px;
-  width: 32px;
-  height: 32px;
-}
-
-/* line 988, ../scss/icons.scss */
-.s_web_timeline_dot {
-  background-position: left -8145px;
-  width: 4px;
-  height: 4px;
-  background-image: url(../img/web_sprites-normal.png);
+  background-position: left -6278px;
+  background-image: url(../img/web_sprites-normal_n.png);
   background-size: auto auto;
 }
 
 /* line 995, ../scss/icons.scss */
-.s_web_linux_gray {
-  background-position: left -7201px;
+.s_web_album_16 {
+  background-position: left -9118px;
+  width: 19px;
+  height: 19px;
 }
 
-/* line 998, ../scss/icons.scss */
-.s_web_page_white_vector_gray_32 {
-  background-position: left -3878px;
+/* line 1000, ../scss/icons.scss */
+.s_web_page_white_premiere_stack_32 {
+  background-position: left -3522px;
   width: 32px;
   height: 32px;
 }
 
-/* line 1003, ../scss/icons.scss */
+/* line 1005, ../scss/icons.scss */
+.s_web_lightbox_view_original {
+  background-position: left -7500px;
+  width: 32px;
+  height: 32px;
+  background-image: url(../img/web_sprites-normal_n.png);
+  background-size: auto auto;
+}
+
+/* line 1012, ../scss/icons.scss */
+.s_web_folder_gray {
+  background-position: left -4388px;
+  width: 19px;
+  height: 19px;
+}
+
+/* line 1017, ../scss/icons.scss */
+.s_web_facebook {
+  background-position: left -6616px;
+  width: 19px;
+  height: 19px;
+  background-image: url(../img/web_sprites-normal_n.png);
+  background-size: auto auto;
+}
+
+/* line 1024, ../scss/icons.scss */
+.s_web_folder_user_locked_32 {
+  background-position: left -1380px;
+  width: 32px;
+  height: 32px;
+}
+
+/* line 1029, ../scss/icons.scss */
+.s_web_page_white_word_gray_32 {
+  background-position: left -4134px;
+  width: 32px;
+  height: 32px;
+}
+
+/* line 1034, ../scss/icons.scss */
+.s_web_issue {
+  background-position: left -7272px;
+  width: 36px;
+  height: 36px;
+}
+
+/* line 1039, ../scss/icons.scss */
+.s_web_s_greencheck {
+  background-position: left -10409px;
+  width: 20px;
+  height: 20px;
+}
+
+/* line 1044, ../scss/icons.scss */
+.s_web_folder_paper_team_stack_32 {
+  background-position: left -836px;
+  width: 32px;
+  height: 32px;
+}
+
+/* line 1049, ../scss/icons.scss */
+.s_web_folder_dropbox_32 {
+  background-position: left -632px;
+  width: 32px;
+  height: 32px;
+}
+
+/* line 1054, ../scss/icons.scss */
+.s_web_google_gray {
+  background-position: left -6794px;
+  width: 19px;
+  height: 19px;
+  background-image: url(../img/web_sprites-normal_n.png);
+  background-size: auto auto;
+}
+
+/* line 1061, ../scss/icons.scss */
+.s_web_s_browser_ie {
+  background-position: left -8222px;
+  background-image: url(../img/web_sprites-normal_n.png);
+  background-size: auto auto;
+}
+
+/* line 1066, ../scss/icons.scss */
+.s_web_api_js {
+  background-position: left -5765px;
+  background-image: url(../img/web_sprites-normal_n.png);
+  background-size: auto auto;
+}
+
+/* line 1071, ../scss/icons.scss */
+.s_web_package_gray_32 {
+  background-position: left -1550px;
+  width: 32px;
+  height: 32px;
+}
+
+/* line 1076, ../scss/icons.scss */
+.s_web_timeline_dot {
+  background-position: left -8743px;
+  width: 4px;
+  height: 4px;
+  background-image: url(../img/web_sprites-normal_n.png);
+  background-size: auto auto;
+}
+
+/* line 1083, ../scss/icons.scss */
+.s_web_linux_gray {
+  background-position: left -7722px;
+}
+
+/* line 1086, ../scss/icons.scss */
+.s_web_page_white_vector_gray_32 {
+  background-position: left -3930px;
+  width: 32px;
+  height: 32px;
+}
+
+/* line 1091, ../scss/icons.scss */
 .s_web_paper_sidebar_icon {
-  background-position: left -9408px;
+  background-position: left -10061px;
   width: 15px;
   height: 16px;
 }
 
-/* line 1008, ../scss/icons.scss */
+/* line 1096, ../scss/icons.scss */
 .s_web_download {
-  background-position: left -8730px;
+  background-position: left -9405px;
   width: 19px;
   height: 19px;
 }
 
-/* line 1013, ../scss/icons.scss */
+/* line 1101, ../scss/icons.scss */
+.s_web_s_notifications_off {
+  background-position: left -10612px;
+  width: 17px;
+  height: 17px;
+}
+
+/* line 1106, ../scss/icons.scss */
 .s_web_api_php_disabled {
-  background-position: left -5617px;
-  background-image: url(../img/web_sprites-normal.png);
+  background-position: left -5855px;
+  background-image: url(../img/web_sprites-normal_n.png);
   background-size: auto auto;
 }
 
-/* line 1018, ../scss/icons.scss */
+/* line 1111, ../scss/icons.scss */
 .s_web_page_white_flash_gray_32 {
-  background-position: left -2348px;
+  background-position: left -2400px;
   width: 32px;
   height: 32px;
 }
 
-/* line 1023, ../scss/icons.scss */
+/* line 1116, ../scss/icons.scss */
 .s_web_page_white_paint_32 {
-  background-position: left -2892px;
+  background-position: left -2944px;
   width: 32px;
   height: 32px;
 }
 
-/* line 1028, ../scss/icons.scss */
+/* line 1121, ../scss/icons.scss */
 .s_web_Safari {
-  background-position: left -5295px;
-  background-image: url(../img/web_sprites-normal.png);
+  background-position: left -5533px;
+  background-image: url(../img/web_sprites-normal_n.png);
   background-size: auto auto;
 }
 
-/* line 1033, ../scss/icons.scss */
+/* line 1126, ../scss/icons.scss */
 .s_web_facebook_gray {
-  background-position: left -6358px;
+  background-position: left -6637px;
   width: 19px;
   height: 19px;
-  background-image: url(../img/web_sprites-normal.png);
+  background-image: url(../img/web_sprites-normal_n.png);
   background-size: auto auto;
 }
 
-/* line 1040, ../scss/icons.scss */
+/* line 1133, ../scss/icons.scss */
 .s_web_public {
-  background-position: left -7438px;
+  background-position: left -7959px;
   width: 19px;
   height: 19px;
 }
 
-/* line 1045, ../scss/icons.scss */
+/* line 1138, ../scss/icons.scss */
 .s_web_api_osx {
-  background-position: left -5563px;
-  background-image: url(../img/web_sprites-normal.png);
+  background-position: left -5801px;
+  background-image: url(../img/web_sprites-normal_n.png);
   background-size: auto auto;
 }
 
-/* line 1050, ../scss/icons.scss */
+/* line 1143, ../scss/icons.scss */
 .s_web_notifications_icon_white {
-  background-position: left -9340px;
+  background-position: left -9993px;
   width: 19px;
   height: 19px;
 }
 
-/* line 1055, ../scss/icons.scss */
+/* line 1148, ../scss/icons.scss */
 .s_web_api_android {
-  background-position: left -5383px;
-  background-image: url(../img/web_sprites-normal.png);
+  background-position: left -5621px;
+  background-image: url(../img/web_sprites-normal_n.png);
   background-size: auto auto;
 }
 
-/* line 1060, ../scss/icons.scss */
+/* line 1153, ../scss/icons.scss */
+.s_web_control_close {
+  background-position: left -5025px;
+  width: 12px;
+  height: 12px;
+}
+
+/* line 1158, ../scss/icons.scss */
 .s_web_s_carousel {
-  background-position: left -9568px;
+  background-position: left -10221px;
   width: 19px;
   height: 19px;
 }
 
-/* line 1065, ../scss/icons.scss */
+/* line 1163, ../scss/icons.scss */
 .s_web_folder_team_locked_32 {
-  background-position: left -1056px;
+  background-position: left -1074px;
   width: 32px;
   height: 32px;
 }
 
-/* line 1070, ../scss/icons.scss */
+/* line 1168, ../scss/icons.scss */
 .s_web_upload_16 {
-  background-position: left -10118px;
+  background-position: left -10792px;
   width: 19px;
   height: 19px;
 }
 
-/* line 1075, ../scss/icons.scss */
+/* line 1173, ../scss/icons.scss */
 .s_web_s_notifications_on {
-  background-position: left -9957px;
+  background-position: left -10631px;
   width: 17px;
   height: 17px;
 }
 
-/* line 1080, ../scss/icons.scss */
+/* line 1178, ../scss/icons.scss */
 .s_web_page_white_illustrator_gray_32 {
-  background-position: left -2586px;
+  background-position: left -2638px;
   width: 32px;
   height: 32px;
 }
 
-/* line 1085, ../scss/icons.scss */
+/* line 1183, ../scss/icons.scss */
 .s_web_page_white_vector {
-  background-position: left -306px;
-  background-image: url(../img/web_sprites-normal.png);
+  background-position: left -324px;
+  background-image: url(../img/web_sprites-normal_n.png);
   background-size: auto auto;
 }
 
-/* line 1090, ../scss/icons.scss */
+/* line 1188, ../scss/icons.scss */
 .s_web_lightbox_remove_from_album {
-  background-position: left -6875px;
+  background-position: left -7396px;
   width: 32px;
   height: 32px;
-  background-image: url(../img/web_sprites-normal.png);
+  background-image: url(../img/web_sprites-normal_n.png);
   background-size: auto auto;
 }
 
-/* line 1097, ../scss/icons.scss */
+/* line 1195, ../scss/icons.scss */
 .s_web_create-album {
-  background-position: left -8669px;
+  background-position: left -9344px;
   width: 19px;
   height: 19px;
 }
 
-/* line 1102, ../scss/icons.scss */
+/* line 1200, ../scss/icons.scss */
 .s_web_page_white_compressed_stack_32 {
-  background-position: left -1974px;
+  background-position: left -2026px;
   width: 32px;
   height: 32px;
 }
 
-/* line 1107, ../scss/icons.scss */
-.s_web_windows_gray {
-  background-position: left -8300px;
+/* line 1205, ../scss/icons.scss */
+.s_web_page_white_playlist_stack_32 {
+  background-position: left -3318px;
+  width: 32px;
+  height: 32px;
 }
 
-/* line 1110, ../scss/icons.scss */
+/* line 1210, ../scss/icons.scss */
 .s_web_select {
-  background-position: left -7915px;
+  background-position: left -8510px;
   width: 17px;
   height: 17px;
 }
 
-/* line 1115, ../scss/icons.scss */
+/* line 1215, ../scss/icons.scss */
 .s_web_page_white_gear {
-  background-position: left -180px;
-  background-image: url(../img/web_sprites-normal.png);
+  background-position: left -198px;
+  background-image: url(../img/web_sprites-normal_n.png);
   background-size: auto auto;
 }
 
-/* line 1120, ../scss/icons.scss */
+/* line 1220, ../scss/icons.scss */
 .s_web_page_white_acrobat_32 {
-  background-position: left -1600px;
+  background-position: left -1652px;
   width: 32px;
   height: 32px;
 }
 
-/* line 1125, ../scss/icons.scss */
+/* line 1225, ../scss/icons.scss */
 .s_web_page_white_text_32 {
-  background-position: left -3742px;
+  background-position: left -3794px;
   width: 32px;
   height: 32px;
 }
 
-/* line 1130, ../scss/icons.scss */
+/* line 1230, ../scss/icons.scss */
 .s_web_page_white_excel_stack_32 {
-  background-position: left -2178px;
+  background-position: left -2230px;
   width: 32px;
   height: 32px;
 }
 
-/* line 1135, ../scss/icons.scss */
-.s_web_s_show_comments_grey {
-  background-position: left -7881px;
-  width: 18px;
-  height: 18px;
+/* line 1235, ../scss/icons.scss */
+.s_web_page_white_webcode_32 {
+  background-position: left -3998px;
+  width: 32px;
+  height: 32px;
 }
 
-/* line 1140, ../scss/icons.scss */
+/* line 1240, ../scss/icons.scss */
 .s_web_page_white_film_stack_32 {
-  background-position: left -2280px;
+  background-position: left -2332px;
   width: 32px;
   height: 32px;
 }
 
-/* line 1145, ../scss/icons.scss */
+/* line 1245, ../scss/icons.scss */
 .s_web_page_white_playlist_32 {
-  background-position: left -3198px;
+  background-position: left -3250px;
   width: 32px;
   height: 32px;
 }
 
-/* line 1150, ../scss/icons.scss */
+/* line 1250, ../scss/icons.scss */
+.s_web_s_paper_new {
+  background-position: left -8457px;
+  width: 16px;
+  height: 17px;
+}
+
+/* line 1255, ../scss/icons.scss */
 .s_web_iphone {
-  background-position: left -6676px;
+  background-position: left -7197px;
   width: 14px;
   height: 21px;
-  background-image: url(../img/web_sprites-normal.png);
+  background-image: url(../img/web_sprites-normal_n.png);
   background-size: auto auto;
 }
 
-/* line 1157, ../scss/icons.scss */
+/* line 1262, ../scss/icons.scss */
 .s_web_overflow-glyph {
-  background-position: left -9379px;
+  background-position: left -10032px;
   width: 20px;
   height: 6px;
 }
 
-/* line 1162, ../scss/icons.scss */
+/* line 1267, ../scss/icons.scss */
+.s_web_s_device_mobile {
+  background-position: left -8330px;
+  background-image: url(../img/web_sprites-normal_n.png);
+  background-size: auto auto;
+}
+
+/* line 1272, ../scss/icons.scss */
 .s_web_more {
-  background-position: left -9277px;
+  background-position: left -9930px;
   width: 19px;
   height: 19px;
 }
 
-/* line 1167, ../scss/icons.scss */
+/* line 1277, ../scss/icons.scss */
 .s_web_pencil {
-  background-position: left -9426px;
+  background-position: left -10079px;
   width: 19px;
   height: 19px;
 }
 
-/* line 1172, ../scss/icons.scss */
+/* line 1282, ../scss/icons.scss */
 .s_web_like_icon_selected_hover {
-  background-position: left -7149px;
+  background-position: left -7670px;
   width: 32px;
   height: 32px;
-  background-image: url(../img/web_sprites-normal.png);
+  background-image: url(../img/web_sprites-normal_n.png);
   background-size: auto auto;
 }
 
-/* line 1179, ../scss/icons.scss */
+/* line 1289, ../scss/icons.scss */
 .s_web_Opera {
-  background-position: left -5277px;
-  background-image: url(../img/web_sprites-normal.png);
+  background-position: left -5515px;
+  background-image: url(../img/web_sprites-normal_n.png);
   background-size: auto auto;
 }
 
-/* line 1184, ../scss/icons.scss */
+/* line 1294, ../scss/icons.scss */
 .s_web_yahoo {
-  background-position: left -8364px;
+  background-position: left -9039px;
   width: 19px;
   height: 19px;
-  background-image: url(../img/web_sprites-normal.png);
+  background-image: url(../img/web_sprites-normal_n.png);
   background-size: auto auto;
 }
 
-/* line 1191, ../scss/icons.scss */
+/* line 1301, ../scss/icons.scss */
 .s_web_chevron_thin {
-  background-position: left -5967px;
+  background-position: left -6214px;
   width: 8px;
   height: 12px;
 }
 
-/* line 1196, ../scss/icons.scss */
+/* line 1306, ../scss/icons.scss */
 .s_web_word {
-  background-position: left -4907px;
+  background-position: left -4993px;
 }
 
-/* line 1199, ../scss/icons.scss */
+/* line 1309, ../scss/icons.scss */
 .s_web_search-icon-filepicker {
-  background-position: left -7901px;
+  background-position: left -8496px;
   width: 10px;
   height: 12px;
-  background-image: url(../img/web_sprites-normal.png);
+  background-image: url(../img/web_sprites-normal_n.png);
   background-size: auto auto;
 }
 
-/* line 1206, ../scss/icons.scss */
+/* line 1316, ../scss/icons.scss */
 .s_web_package {
-  background-position: left -36px;
-  background-image: url(../img/web_sprites-normal.png);
+  background-position: left -54px;
+  background-image: url(../img/web_sprites-normal_n.png);
   background-size: auto auto;
 }
 
-/* line 1211, ../scss/icons.scss */
+/* line 1321, ../scss/icons.scss */
 .s_web_quota_full_32 {
-  background-position: left -7493px;
+  background-position: left -8014px;
   width: 32px;
   height: 32px;
-  background-image: url(../img/web_sprites-normal.png);
-  background-size: auto auto;
-}
-
-/* line 1218, ../scss/icons.scss */
-.s_web_fla {
-  background-position: left 0;
-  background-image: url(../img/web_sprites-normal.png);
-  background-size: auto auto;
-}
-
-/* line 1223, ../scss/icons.scss */
-.s_web_drops {
-  background-position: left -6229px;
-  width: 17px;
-  height: 17px;
-}
-
-/* line 1228, ../scss/icons.scss */
-.s_web_heart {
-  background-position: left -9064px;
-  width: 17px;
-  height: 17px;
-}
-
-/* line 1233, ../scss/icons.scss */
-.s_web_Chrome {
-  background-position: left -5223px;
-  background-image: url(../img/web_sprites-normal.png);
-  background-size: auto auto;
-}
-
-/* line 1238, ../scss/icons.scss */
-.s_web_lock {
-  background-position: left -9221px;
-}
-
-/* line 1241, ../scss/icons.scss */
-.s_web_team_reduce_user_32 {
-  background-position: left -8073px;
-  width: 32px;
-  height: 32px;
-  background-image: url(../img/web_sprites-normal.png);
-  background-size: auto auto;
-}
-
-/* line 1248, ../scss/icons.scss */
-.s_web_calendar_view_month {
-  background-position: left -8585px;
-  width: 19px;
-  height: 19px;
-}
-
-/* line 1253, ../scss/icons.scss */
-.s_web_api_ios_disabled {
-  background-position: left -5473px;
-  background-image: url(../img/web_sprites-normal.png);
-  background-size: auto auto;
-}
-
-/* line 1258, ../scss/icons.scss */
-.s_web_lightbox_selected {
-  background-position: left -6909px;
-  background-image: url(../img/web_sprites-normal.png);
-  background-size: auto auto;
-}
-
-/* line 1263, ../scss/icons.scss */
-.s_web_page_white_paint {
-  background-position: left -216px;
-  background-image: url(../img/web_sprites-normal.png);
-  background-size: auto auto;
-}
-
-/* line 1268, ../scss/icons.scss */
-.s_web_folder_user_delete_32 {
-  background-position: left -1260px;
-  width: 32px;
-  height: 32px;
-}
-
-/* line 1273, ../scss/icons.scss */
-.s_web_information {
-  background-position: left -6640px;
-  background-image: url(../img/web_sprites-normal.png);
-  background-size: auto auto;
-}
-
-/* line 1278, ../scss/icons.scss */
-.s_web_acrobat-40 {
-  background-position: left -4649px;
-  width: 40px;
-  height: 40px;
-}
-
-/* line 1283, ../scss/icons.scss */
-.s_web_page_white_text_stack_32 {
-  background-position: left -3810px;
-  width: 32px;
-  height: 32px;
-}
-
-/* line 1288, ../scss/icons.scss */
-.s_web_s_flip_left {
-  background-position: left -5072px;
-  width: 10px;
-  height: 18px;
-}
-
-/* line 1293, ../scss/icons.scss */
-.s_web_folder_arrow_32 {
-  background-position: left -8991px;
-  width: 32px;
-  height: 32px;
-}
-
-/* line 1298, ../scss/icons.scss */
-.s_web_mac {
-  background-position: left -7281px;
-  background-image: url(../img/web_sprites-normal.png);
-  background-size: auto auto;
-}
-
-/* line 1303, ../scss/icons.scss */
-.s_web_s_clock {
-  background-position: left -9607px;
-  width: 19px;
-  height: 19px;
-}
-
-/* line 1308, ../scss/icons.scss */
-.s_web_page_white_compressed {
-  background-position: left -108px;
-  background-image: url(../img/web_sprites-normal.png);
-  background-size: auto auto;
-}
-
-/* line 1313, ../scss/icons.scss */
-.s_web_s_photo {
-  background-position: left -9976px;
-  width: 19px;
-  height: 19px;
-}
-
-/* line 1318, ../scss/icons.scss */
-.s_web_folder_paper_team_gray_32 {
-  background-position: left -784px;
-  width: 32px;
-  height: 32px;
-}
-
-/* line 1323, ../scss/icons.scss */
-.s_web_api_ruby {
-  background-position: left -5671px;
-  background-image: url(../img/web_sprites-normal.png);
+  background-image: url(../img/web_sprites-normal_n.png);
   background-size: auto auto;
 }
 
 /* line 1328, ../scss/icons.scss */
-.s_web_world_link {
-  background-position: left -8336px;
-  background-image: url(../img/web_sprites-normal.png);
+.s_web_fla {
+  background-position: left -0px;
+  background-image: url(../img/web_sprites-normal_n.png);
   background-size: auto auto;
 }
 
 /* line 1333, ../scss/icons.scss */
-.s_web_page_white_gear_32 {
-  background-position: left -2416px;
-  width: 32px;
-  height: 32px;
+.s_web_drops {
+  background-position: left -6490px;
+  width: 17px;
+  height: 17px;
 }
 
 /* line 1338, ../scss/icons.scss */
-.s_web_s_device_mac {
-  background-position: left -7773px;
-  background-image: url(../img/web_sprites-normal.png);
-  background-size: auto auto;
+.s_web_heart {
+  background-position: left -9701px;
+  width: 17px;
+  height: 17px;
 }
 
 /* line 1343, ../scss/icons.scss */
-.s_web_personal_icon {
-  background-position: left -4535px;
-  width: 32px;
-  height: 32px;
+.s_web_Chrome {
+  background-position: left -5461px;
+  background-image: url(../img/web_sprites-normal_n.png);
+  background-size: auto auto;
 }
 
 /* line 1348, ../scss/icons.scss */
-.s_web_stacked-shared-folder_32 {
-  background-position: left -4184px;
+.s_web_lock {
+  background-position: left -9858px;
+}
+
+/* line 1351, ../scss/icons.scss */
+.s_web_team_reduce_user_32 {
+  background-position: left -8671px;
   width: 32px;
   height: 32px;
-  background-image: url(../img/web_sprites-normal.png);
+  background-image: url(../img/web_sprites-normal_n.png);
   background-size: auto auto;
 }
 
-/* line 1355, ../scss/icons.scss */
-.s_web_rename_icon {
-  background-position: left -7561px;
-  width: 32px;
-  height: 32px;
-  background-image: url(../img/web_sprites-normal.png);
-  background-size: auto auto;
-}
-
-/* line 1362, ../scss/icons.scss */
-.s_web_application_add {
-  background-position: left -5725px;
-  background-image: url(../img/web_sprites-normal.png);
-  background-size: auto auto;
-}
-
-/* line 1367, ../scss/icons.scss */
-.s_web_download-dropdown-arrow-white {
-  background-position: left -6162px;
-  background-image: url(../img/web_sprites-normal.png);
-  background-size: auto auto;
-}
-
-/* line 1372, ../scss/icons.scss */
-.s_web_help {
-  background-position: left -6572px;
-  background-image: url(../img/web_sprites-normal.png);
-  background-size: auto auto;
-}
-
-/* line 1377, ../scss/icons.scss */
-.s_web_share_get_link_icon {
-  background-position: left -7970px;
-  background-image: url(../img/web_sprites-normal.png);
-  background-size: auto auto;
-}
-
-/* line 1382, ../scss/icons.scss */
-.s_web_page_white_paint_stack_32 {
-  background-position: left -2960px;
-  width: 32px;
-  height: 32px;
-}
-
-/* line 1387, ../scss/icons.scss */
-.s_web_folder_dropbox_stack_32 {
-  background-position: left -682px;
-  width: 32px;
-  height: 32px;
-}
-
-/* line 1392, ../scss/icons.scss */
-.s_web_folder_user_gray_32 {
-  background-position: left -1294px;
-  width: 32px;
-  height: 32px;
-}
-
-/* line 1397, ../scss/icons.scss */
-.s_web_share_twitter_icon {
-  background-position: left -7988px;
-  background-image: url(../img/web_sprites-normal.png);
-  background-size: auto auto;
-}
-
-/* line 1402, ../scss/icons.scss */
-.s_web_group {
-  background-position: left -6520px;
-  width: 19px;
-  height: 15px;
-}
-
-/* line 1407, ../scss/icons.scss */
-.s_web_page_white_dvd_stack_32 {
-  background-position: left -2076px;
-  width: 32px;
-  height: 32px;
-}
-
-/* line 1412, ../scss/icons.scss */
-.s_web_bullet_minus {
-  background-position: left -8513px;
-}
-
-/* line 1415, ../scss/icons.scss */
-.s_web_white_check_bold {
-  background-position: left -8281px;
-  width: 21px;
-  height: 17px;
-  background-image: url(../img/web_sprites-normal.png);
-  background-size: auto auto;
-}
-
-/* line 1422, ../scss/icons.scss */
-.s_web_page_white_film_gray_32 {
-  background-position: left -2246px;
-  width: 32px;
-  height: 32px;
-}
-
-/* line 1427, ../scss/icons.scss */
-.s_web_previous_versions {
-  background-position: left -7417px;
+/* line 1358, ../scss/icons.scss */
+.s_web_calendar_view_month {
+  background-position: left -9260px;
   width: 19px;
   height: 19px;
 }
 
-/* line 1432, ../scss/icons.scss */
-.s_web_event_share {
-  background-position: left -6288px;
-  width: 18px;
-  height: 18px;
-  background-image: url(../img/web_sprites-normal.png);
+/* line 1363, ../scss/icons.scss */
+.s_web_api_ios_disabled {
+  background-position: left -5711px;
+  background-image: url(../img/web_sprites-normal_n.png);
   background-size: auto auto;
 }
 
-/* line 1439, ../scss/icons.scss */
-.s_web_lock32 {
-  background-position: left -7219px;
+/* line 1368, ../scss/icons.scss */
+.s_web_lightbox_selected {
+  background-position: left -7430px;
+  background-image: url(../img/web_sprites-normal_n.png);
+  background-size: auto auto;
+}
+
+/* line 1373, ../scss/icons.scss */
+.s_web_shared_link_gray {
+  background-position: left -5395px;
+  width: 14px;
+  height: 14px;
+}
+
+/* line 1378, ../scss/icons.scss */
+.s_web_page_white_paint {
+  background-position: left -234px;
+  background-image: url(../img/web_sprites-normal_n.png);
+  background-size: auto auto;
+}
+
+/* line 1383, ../scss/icons.scss */
+.s_web_folder_user_delete_32 {
+  background-position: left -1312px;
   width: 32px;
   height: 32px;
-  background-image: url(../img/web_sprites-normal.png);
+}
+
+/* line 1388, ../scss/icons.scss */
+.s_web_information {
+  background-position: left -7161px;
+  background-image: url(../img/web_sprites-normal_n.png);
   background-size: auto auto;
 }
 
-/* line 1446, ../scss/icons.scss */
-.s_web_album_delete_16 {
-  background-position: left -8464px;
-  width: 19px;
-  height: 19px;
-}
-
-/* line 1451, ../scss/icons.scss */
-.s_web_page_white_dvd_32 {
-  background-position: left -2008px;
-  width: 32px;
-  height: 32px;
-}
-
-/* line 1456, ../scss/icons.scss */
-.s_web_creditcards {
-  background-position: left -6035px;
-  background-image: url(../img/web_sprites-normal.png);
-  background-size: auto auto;
-}
-
-/* line 1461, ../scss/icons.scss */
-.s_web_excel-40 {
-  background-position: left -4691px;
+/* line 1393, ../scss/icons.scss */
+.s_web_acrobat-40 {
+  background-position: left -4735px;
   width: 40px;
   height: 40px;
 }
 
-/* line 1466, ../scss/icons.scss */
-.s_web_photos_drag_add {
-  background-position: left -7383px;
+/* line 1398, ../scss/icons.scss */
+.s_web_page_white_text_stack_32 {
+  background-position: left -3862px;
   width: 32px;
   height: 32px;
-  background-image: url(../img/web_sprites-normal.png);
+}
+
+/* line 1403, ../scss/icons.scss */
+.s_web_s_flip_left {
+  background-position: left -5244px;
+  width: 10px;
+  height: 18px;
+}
+
+/* line 1408, ../scss/icons.scss */
+.s_web_folder_arrow_32 {
+  background-position: left -9628px;
+  width: 32px;
+  height: 32px;
+}
+
+/* line 1413, ../scss/icons.scss */
+.s_web_mac {
+  background-position: left -7802px;
+  background-image: url(../img/web_sprites-normal_n.png);
   background-size: auto auto;
 }
 
-/* line 1473, ../scss/icons.scss */
-.s_web_page_white_word_32 {
-  background-position: left -4048px;
+/* line 1418, ../scss/icons.scss */
+.s_web_s_clock {
+  background-position: left -10260px;
+  width: 19px;
+  height: 19px;
+}
+
+/* line 1423, ../scss/icons.scss */
+.s_web_page_white_compressed {
+  background-position: left -126px;
+  background-image: url(../img/web_sprites-normal_n.png);
+  background-size: auto auto;
+}
+
+/* line 1428, ../scss/icons.scss */
+.s_web_s_photo {
+  background-position: left -10650px;
+  width: 19px;
+  height: 19px;
+}
+
+/* line 1433, ../scss/icons.scss */
+.s_web_folder_paper_team_gray_32 {
+  background-position: left -802px;
   width: 32px;
   height: 32px;
 }
 
-/* line 1478, ../scss/icons.scss */
-.s_web_s_notepad {
-  background-position: left -9918px;
+/* line 1438, ../scss/icons.scss */
+.s_web_api_ruby {
+  background-position: left -5909px;
+  background-image: url(../img/web_sprites-normal_n.png);
+  background-size: auto auto;
+}
+
+/* line 1443, ../scss/icons.scss */
+.s_web_tutorial_close {
+  background-position: left -8831px;
+  width: 12px;
+  height: 12px;
+}
+
+/* line 1448, ../scss/icons.scss */
+.s_web_world_link {
+  background-position: left -8998px;
+  background-image: url(../img/web_sprites-normal_n.png);
+  background-size: auto auto;
+}
+
+/* line 1453, ../scss/icons.scss */
+.s_web_page_white_gear_32 {
+  background-position: left -2468px;
+  width: 32px;
+  height: 32px;
+}
+
+/* line 1458, ../scss/icons.scss */
+.s_web_s_device_mac {
+  background-position: left -8312px;
+  background-image: url(../img/web_sprites-normal_n.png);
+  background-size: auto auto;
+}
+
+/* line 1463, ../scss/icons.scss */
+.s_web_personal_icon {
+  background-position: left -4621px;
+  width: 32px;
+  height: 32px;
+}
+
+/* line 1468, ../scss/icons.scss */
+.s_web_stacked-shared-folder_32 {
+  background-position: left -4270px;
+  width: 32px;
+  height: 32px;
+  background-image: url(../img/web_sprites-normal_n.png);
+  background-size: auto auto;
+}
+
+/* line 1475, ../scss/icons.scss */
+.s_web_rename_icon {
+  background-position: left -8082px;
+  width: 32px;
+  height: 32px;
+  background-image: url(../img/web_sprites-normal_n.png);
+  background-size: auto auto;
+}
+
+/* line 1482, ../scss/icons.scss */
+.s_web_application_add {
+  background-position: left -5963px;
+  background-image: url(../img/web_sprites-normal_n.png);
+  background-size: auto auto;
+}
+
+/* line 1487, ../scss/icons.scss */
+.s_web_download-dropdown-arrow-white {
+  background-position: left -6423px;
+  background-image: url(../img/web_sprites-normal_n.png);
+  background-size: auto auto;
+}
+
+/* line 1492, ../scss/icons.scss */
+.s_web_help {
+  background-position: left -6867px;
+  background-image: url(../img/web_sprites-normal_n.png);
+  background-size: auto auto;
+}
+
+/* line 1497, ../scss/icons.scss */
+.s_web_share_get_link_icon {
+  background-position: left -8583px;
+  background-image: url(../img/web_sprites-normal_n.png);
+  background-size: auto auto;
+}
+
+/* line 1502, ../scss/icons.scss */
+.s_web_folder_team {
+  background-position: left -36px;
+  background-image: url(../img/web_sprites-normal_n.png);
+  background-size: auto auto;
+}
+
+/* line 1507, ../scss/icons.scss */
+.s_web_page_white_paint_stack_32 {
+  background-position: left -3012px;
+  width: 32px;
+  height: 32px;
+}
+
+/* line 1512, ../scss/icons.scss */
+.s_web_folder_dropbox_stack_32 {
+  background-position: left -700px;
+  width: 32px;
+  height: 32px;
+}
+
+/* line 1517, ../scss/icons.scss */
+.s_web_folder_user_gray_32 {
+  background-position: left -1346px;
+  width: 32px;
+  height: 32px;
+}
+
+/* line 1522, ../scss/icons.scss */
+.s_web_share_twitter_icon {
+  background-position: left -8601px;
+  background-image: url(../img/web_sprites-normal_n.png);
+  background-size: auto auto;
+}
+
+/* line 1527, ../scss/icons.scss */
+.s_web_group {
+  background-position: left -6815px;
+  width: 19px;
+  height: 15px;
+}
+
+/* line 1532, ../scss/icons.scss */
+.s_web_page_white_dvd_stack_32 {
+  background-position: left -2128px;
+  width: 32px;
+  height: 32px;
+}
+
+/* line 1537, ../scss/icons.scss */
+.s_web_bullet_minus {
+  background-position: left -9188px;
+}
+
+/* line 1540, ../scss/icons.scss */
+.s_web_white_check_bold {
+  background-position: left -8943px;
+  width: 21px;
+  height: 17px;
+  background-image: url(../img/web_sprites-normal_n.png);
+  background-size: auto auto;
+}
+
+/* line 1547, ../scss/icons.scss */
+.s_web_control_menu {
+  background-position: left -5083px;
+  width: 8px;
+  height: 6px;
+}
+
+/* line 1552, ../scss/icons.scss */
+.s_web_page_white_film_gray_32 {
+  background-position: left -2298px;
+  width: 32px;
+  height: 32px;
+}
+
+/* line 1557, ../scss/icons.scss */
+.s_web_previous_versions {
+  background-position: left -7938px;
+  width: 19px;
+  height: 19px;
+}
+
+/* line 1562, ../scss/icons.scss */
+.s_web_event_share {
+  background-position: left -6549px;
   width: 18px;
   height: 18px;
-  background-image: url(../img/web_sprites-normal.png);
+  background-image: url(../img/web_sprites-normal_n.png);
   background-size: auto auto;
 }
 
-/* line 1485, ../scss/icons.scss */
+/* line 1569, ../scss/icons.scss */
+.s_web_paper_white_32 {
+  background-position: left -4202px;
+  width: 32px;
+  height: 32px;
+}
+
+/* line 1574, ../scss/icons.scss */
+.s_web_lock32 {
+  background-position: left -7740px;
+  width: 32px;
+  height: 32px;
+  background-image: url(../img/web_sprites-normal_n.png);
+  background-size: auto auto;
+}
+
+/* line 1581, ../scss/icons.scss */
+.s_web_album_delete_16 {
+  background-position: left -9139px;
+  width: 19px;
+  height: 19px;
+}
+
+/* line 1586, ../scss/icons.scss */
+.s_web_page_white_dvd_32 {
+  background-position: left -2060px;
+  width: 32px;
+  height: 32px;
+}
+
+/* line 1591, ../scss/icons.scss */
+.s_web_creditcards {
+  background-position: left -6296px;
+  background-image: url(../img/web_sprites-normal_n.png);
+  background-size: auto auto;
+}
+
+/* line 1596, ../scss/icons.scss */
+.s_web_excel-40 {
+  background-position: left -4777px;
+  width: 40px;
+  height: 40px;
+}
+
+/* line 1601, ../scss/icons.scss */
+.s_web_photos_drag_add {
+  background-position: left -7904px;
+  width: 32px;
+  height: 32px;
+  background-image: url(../img/web_sprites-normal_n.png);
+  background-size: auto auto;
+}
+
+/* line 1608, ../scss/icons.scss */
+.s_web_ic_comment_area {
+  background-position: left -6885px;
+  width: 22px;
+  height: 22px;
+}
+
+/* line 1613, ../scss/icons.scss */
+.s_web_page_white_word_32 {
+  background-position: left -4100px;
+  width: 32px;
+  height: 32px;
+}
+
+/* line 1618, ../scss/icons.scss */
+.s_web_s_notepad {
+  background-position: left -10592px;
+  width: 18px;
+  height: 18px;
+  background-image: url(../img/web_sprites-normal_n.png);
+  background-size: auto auto;
+}
+
+/* line 1625, ../scss/icons.scss */
 .s_web_page_white_word {
-  background-position: left -324px;
-  background-image: url(../img/web_sprites-normal.png);
+  background-position: left -342px;
+  background-image: url(../img/web_sprites-normal_n.png);
   background-size: auto auto;
 }
 
-/* line 1490, ../scss/icons.scss */
+/* line 1630, ../scss/icons.scss */
+.s_web_control_comments_off {
+  background-position: left -5039px;
+  width: 20px;
+  height: 20px;
+}
+
+/* line 1635, ../scss/icons.scss */
 .s_web_api_ruby_disabled {
-  background-position: left -5689px;
-  background-image: url(../img/web_sprites-normal.png);
+  background-position: left -5927px;
+  background-image: url(../img/web_sprites-normal_n.png);
   background-size: auto auto;
 }
 
-/* line 1495, ../scss/icons.scss */
+/* line 1640, ../scss/icons.scss */
 .s_web_lightbox_prev {
-  background-position: left -9182px;
+  background-position: left -9819px;
 }
 
-/* line 1498, ../scss/icons.scss */
+/* line 1643, ../scss/icons.scss */
 .s_web_folder_team_32 {
-  background-position: left -988px;
+  background-position: left -1006px;
   width: 32px;
   height: 32px;
 }
 
-/* line 1503, ../scss/icons.scss */
+/* line 1648, ../scss/icons.scss */
 .s_web_page_white_excel_gray_32 {
-  background-position: left -2144px;
+  background-position: left -2196px;
   width: 32px;
   height: 32px;
 }
 
-/* line 1508, ../scss/icons.scss */
+/* line 1653, ../scss/icons.scss */
 .s_web_folder_stack_32 {
-  background-position: left -954px;
+  background-position: left -972px;
   width: 32px;
   height: 32px;
 }
 
-/* line 1513, ../scss/icons.scss */
+/* line 1658, ../scss/icons.scss */
+.s_web_lock_blue {
+  background-position: left -9876px;
+  width: 12px;
+  height: 14px;
+}
+
+/* line 1663, ../scss/icons.scss */
+.s_web_s_drops_new {
+  background-position: left -8438px;
+  width: 17px;
+  height: 17px;
+}
+
+/* line 1668, ../scss/icons.scss */
+.s_web_close_small {
+  background-position: left -6246px;
+  width: 12px;
+  height: 12px;
+  background-image: url(../img/web_sprites-normal_n.png);
+  background-size: auto auto;
+}
+
+/* line 1675, ../scss/icons.scss */
 .s_web_page_white_word_stack_32 {
-  background-position: left -4116px;
+  background-position: left -4168px;
   width: 32px;
   height: 32px;
 }
 
-/* line 1518, ../scss/icons.scss */
+/* line 1680, ../scss/icons.scss */
 .s_web_white_check {
-  background-position: left -8255px;
+  background-position: left -8917px;
   width: 24px;
   height: 24px;
 }
 
-/* line 1523, ../scss/icons.scss */
+/* line 1685, ../scss/icons.scss */
 .s_web_page_white_sketch_32 {
-  background-position: left -3504px;
+  background-position: left -3556px;
   width: 33px;
   height: 32px;
 }
 
-/* line 1528, ../scss/icons.scss */
+/* line 1690, ../scss/icons.scss */
+.s_web_ic_comment_area_large_dark {
+  background-position: left -6977px;
+  width: 22px;
+  height: 22px;
+}
+
+/* line 1695, ../scss/icons.scss */
+.s_web_ic_comment_area_large {
+  background-position: left -6953px;
+  width: 22px;
+  height: 22px;
+}
+
+/* line 1700, ../scss/icons.scss */
 .s_web_notifications_icon_blue {
-  background-position: left -9319px;
+  background-position: left -9972px;
   width: 19px;
   height: 19px;
 }
 
-/* line 1533, ../scss/icons.scss */
+/* line 1705, ../scss/icons.scss */
 .s_web_folder_user_32 {
-  background-position: left -1192px;
+  background-position: left -1244px;
   width: 32px;
   height: 32px;
 }
 
-/* line 1538, ../scss/icons.scss */
+/* line 1710, ../scss/icons.scss */
 .s_web_page_white_sketch_gray_32 {
-  background-position: left -3538px;
+  background-position: left -3590px;
   width: 33px;
   height: 32px;
 }
 
-/* line 1543, ../scss/icons.scss */
+/* line 1715, ../scss/icons.scss */
 .s_web_api_java {
-  background-position: left -5491px;
-  background-image: url(../img/web_sprites-normal.png);
+  background-position: left -5729px;
+  background-image: url(../img/web_sprites-normal_n.png);
   background-size: auto auto;
 }
 
-/* line 1548, ../scss/icons.scss */
+/* line 1720, ../scss/icons.scss */
 .s_web_print {
-  background-position: left -5030px;
-  width: 19px;
-  height: 19px;
-}
-
-/* line 1553, ../scss/icons.scss */
-.s_web_page_white_code_gray_32 {
-  background-position: left -1838px;
-  width: 32px;
-  height: 32px;
-}
-
-/* line 1558, ../scss/icons.scss */
-.s_web_user_add {
-  background-position: left -10160px;
-  width: 19px;
-  height: 19px;
-}
-
-/* line 1563, ../scss/icons.scss */
-.s_web_page_white_dvd_gray_32 {
-  background-position: left -2042px;
-  width: 32px;
-  height: 32px;
-}
-
-/* line 1568, ../scss/icons.scss */
-.s_web_application_double {
-  background-position: left -5761px;
-  background-image: url(../img/web_sprites-normal.png);
-  background-size: auto auto;
-}
-
-/* line 1573, ../scss/icons.scss */
-.s_web_s_gear {
-  background-position: left -9735px;
-  width: 19px;
-  height: 19px;
-}
-
-/* line 1578, ../scss/icons.scss */
-.s_web_folder_camera_stack_32 {
-  background-position: left -580px;
-  width: 32px;
-  height: 32px;
-}
-
-/* line 1583, ../scss/icons.scss */
-.s_web_event_select {
-  background-position: left -6268px;
-  width: 18px;
-  height: 18px;
-  background-image: url(../img/web_sprites-normal.png);
-  background-size: auto auto;
-}
-
-/* line 1590, ../scss/icons.scss */
-.s_web_folder_user_locked_gray_32 {
-  background-position: left -1362px;
-  width: 32px;
-  height: 32px;
-}
-
-/* line 1595, ../scss/icons.scss */
-.s_web_page_white_code_32 {
-  background-position: left -1804px;
-  width: 32px;
-  height: 32px;
-}
-
-/* line 1600, ../scss/icons.scss */
-.s_web_twitter_20 {
-  background-position: left -8183px;
-  width: 20px;
-  height: 20px;
-  background-image: url(../img/web_sprites-normal.png);
-  background-size: auto auto;
-}
-
-/* line 1607, ../scss/icons.scss */
-.s_web_page_white_excel_32 {
-  background-position: left -2110px;
-  width: 32px;
-  height: 32px;
-}
-
-/* line 1612, ../scss/icons.scss */
-.s_web_page_white_powerpoint_stack_32 {
-  background-position: left -3368px;
-  width: 32px;
-  height: 32px;
-}
-
-/* line 1617, ../scss/icons.scss */
-.s_web_page_white_dvd {
-  background-position: left -126px;
-  background-image: url(../img/web_sprites-normal.png);
-  background-size: auto auto;
-}
-
-/* line 1622, ../scss/icons.scss */
-.s_web_page_white_gray_32 {
-  background-position: left -2518px;
-  width: 32px;
-  height: 32px;
-}
-
-/* line 1627, ../scss/icons.scss */
-.s_web_toggle_grid {
-  background-position: left -8151px;
-  width: 14px;
-  height: 14px;
-  background-image: url(../img/web_sprites-normal.png);
-  background-size: auto auto;
-}
-
-/* line 1634, ../scss/icons.scss */
-.s_web_volumeInactive {
-  background-position: left -5149px;
-  width: 16px;
-  height: 14px;
-}
-
-/* line 1639, ../scss/icons.scss */
-.s_web_bulletpoint-x {
-  background-position: left -8567px;
-}
-
-/* line 1642, ../scss/icons.scss */
-.s_web_lock_dark {
-  background-position: left -7253px;
-  width: 10px;
-  height: 12px;
-  background-image: url(../img/web_sprites-normal.png);
-  background-size: auto auto;
-}
-
-/* line 1649, ../scss/icons.scss */
-.s_web_chevron {
-  background-position: left -8635px;
-  width: 7px;
-  height: 11px;
-}
-
-/* line 1654, ../scss/icons.scss */
-.s_web_lightbox_download {
-  background-position: left -6823px;
-  width: 32px;
-  height: 32px;
-  background-image: url(../img/web_sprites-normal.png);
-  background-size: auto auto;
-}
-
-/* line 1661, ../scss/icons.scss */
-.s_web_open {
-  background-position: left -9361px;
-}
-
-/* line 1664, ../scss/icons.scss */
-.s_web_page_white_sound_gray_32 {
-  background-position: left -3640px;
-  width: 32px;
-  height: 32px;
-}
-
-/* line 1669, ../scss/icons.scss */
-.s_web_page_white_webcode_stack_32 {
-  background-position: left -4014px;
-  width: 32px;
-  height: 32px;
-}
-
-/* line 1674, ../scss/icons.scss */
-.s_web_android_gray {
-  background-position: left -5347px;
-}
-
-/* line 1677, ../scss/icons.scss */
-.s_web_bluestar {
-  background-position: left -5913px;
-  width: 13px;
-  height: 13px;
-}
-
-/* line 1682, ../scss/icons.scss */
-.s_web_delete_16 {
-  background-position: left -8709px;
-  width: 19px;
-  height: 19px;
-}
-
-/* line 1687, ../scss/icons.scss */
-.s_web_banana {
-  background-position: left -5837px;
-  background-image: url(../img/web_sprites-normal.png);
-  background-size: auto auto;
-}
-
-/* line 1692, ../scss/icons.scss */
-.s_web_arrow-up-gray {
-  background-position: left -8506px;
-  width: 9px;
-  height: 5px;
-}
-
-/* line 1697, ../scss/icons.scss */
-.s_web_gear {
-  background-position: left -6401px;
-  width: 19px;
-  height: 19px;
-  background-image: url(../img/web_sprites-normal.png);
-  background-size: auto auto;
-}
-
-/* line 1704, ../scss/icons.scss */
-.s_web_page_white_powerpoint_32 {
-  background-position: left -3300px;
-  width: 32px;
-  height: 32px;
-}
-
-/* line 1709, ../scss/icons.scss */
-.s_web_trash-can-open {
-  background-position: left -10076px;
-  width: 19px;
-  height: 19px;
-}
-
-/* line 1714, ../scss/icons.scss */
-.s_web_like_icon_hover {
-  background-position: left -7081px;
-  width: 32px;
-  height: 32px;
-  background-image: url(../img/web_sprites-normal.png);
-  background-size: auto auto;
-}
-
-/* line 1721, ../scss/icons.scss */
-.s_web_more-gray {
-  background-position: left -9256px;
-  width: 19px;
-  height: 19px;
-}
-
-/* line 1726, ../scss/icons.scss */
-.s_web_lightbox_close {
-  background-position: left -9104px;
-}
-
-/* line 1729, ../scss/icons.scss */
-.s_web_s_file_comment {
-  background-position: left -9714px;
-  width: 19px;
-  height: 19px;
-}
-
-/* line 1734, ../scss/icons.scss */
-.s_web_albums {
-  background-position: left -5313px;
-  width: 32px;
-  height: 32px;
-  background-image: url(../img/web_sprites-normal.png);
-  background-size: auto auto;
-}
-
-/* line 1741, ../scss/icons.scss */
-.s_web_copy {
-  background-position: left -8648px;
-  width: 19px;
-  height: 19px;
-}
-
-/* line 1746, ../scss/icons.scss */
-.s_web_page_white_illustrator_32 {
-  background-position: left -2552px;
-  width: 32px;
-  height: 32px;
-}
-
-/* line 1751, ../scss/icons.scss */
-.s_web_page_white_excel {
-  background-position: left -144px;
-  background-image: url(../img/web_sprites-normal.png);
-  background-size: auto auto;
-}
-
-/* line 1756, ../scss/icons.scss */
-.s_web_zoomout {
   background-position: left -5202px;
   width: 19px;
   height: 19px;
 }
 
-/* line 1761, ../scss/icons.scss */
-.s_web_application_delete {
-  background-position: left -5743px;
-  background-image: url(../img/web_sprites-normal.png);
-  background-size: auto auto;
-}
-
-/* line 1766, ../scss/icons.scss */
-.s_web_team_add_user_32 {
-  background-position: left -8039px;
-  width: 32px;
-  height: 32px;
-  background-image: url(../img/web_sprites-normal.png);
-  background-size: auto auto;
-}
-
-/* line 1773, ../scss/icons.scss */
-.s_web_share-link-globe {
-  background-position: left -7934px;
-}
-
-/* line 1776, ../scss/icons.scss */
-.s_web_folder_team_locked_stack_32 {
-  background-position: left -1124px;
+/* line 1725, ../scss/icons.scss */
+.s_web_page_white_code_gray_32 {
+  background-position: left -1890px;
   width: 32px;
   height: 32px;
 }
 
-/* line 1781, ../scss/icons.scss */
-.s_web_page_white_audition_32 {
-  background-position: left -1702px;
+/* line 1730, ../scss/icons.scss */
+.s_web_folder_team_member_32 {
+  background-position: left -1176px;
   width: 32px;
   height: 32px;
 }
 
-/* line 1786, ../scss/icons.scss */
-.s_web_work_icon {
-  background-position: left -4615px;
-  width: 32px;
-  height: 32px;
-}
-
-/* line 1791, ../scss/icons.scss */
-.s_web_folder_public {
-  background-position: left -4323px;
+/* line 1735, ../scss/icons.scss */
+.s_web_user_add {
+  background-position: left -10834px;
   width: 19px;
   height: 19px;
 }
 
-/* line 1796, ../scss/icons.scss */
-.s_web_page_white_compressed_32 {
-  background-position: left -1906px;
+/* line 1740, ../scss/icons.scss */
+.s_web_page_white_dvd_gray_32 {
+  background-position: left -2094px;
   width: 32px;
   height: 32px;
 }
 
+/* line 1745, ../scss/icons.scss */
+.s_web_application_double {
+  background-position: left -5999px;
+  background-image: url(../img/web_sprites-normal_n.png);
+  background-size: auto auto;
+}
+
+/* line 1750, ../scss/icons.scss */
+.s_web_s_gear {
+  background-position: left -10388px;
+  width: 19px;
+  height: 19px;
+}
+
+/* line 1755, ../scss/icons.scss */
+.s_web_folder_camera_stack_32 {
+  background-position: left -598px;
+  width: 32px;
+  height: 32px;
+}
+
+/* line 1760, ../scss/icons.scss */
+.s_web_event_select {
+  background-position: left -6529px;
+  width: 18px;
+  height: 18px;
+  background-image: url(../img/web_sprites-normal_n.png);
+  background-size: auto auto;
+}
+
+/* line 1767, ../scss/icons.scss */
+.s_web_folder_user_locked_gray_32 {
+  background-position: left -1414px;
+  width: 32px;
+  height: 32px;
+}
+
+/* line 1772, ../scss/icons.scss */
+.s_web_page_white_code_32 {
+  background-position: left -1856px;
+  width: 32px;
+  height: 32px;
+}
+
+/* line 1777, ../scss/icons.scss */
+.s_web_twitter_20 {
+  background-position: left -8845px;
+  width: 20px;
+  height: 20px;
+  background-image: url(../img/web_sprites-normal_n.png);
+  background-size: auto auto;
+}
+
+/* line 1784, ../scss/icons.scss */
+.s_web_page_white_excel_32 {
+  background-position: left -2162px;
+  width: 32px;
+  height: 32px;
+}
+
+/* line 1789, ../scss/icons.scss */
+.s_web_page_white_powerpoint_stack_32 {
+  background-position: left -3420px;
+  width: 32px;
+  height: 32px;
+}
+
+/* line 1794, ../scss/icons.scss */
+.s_web_triangle_closed_1x {
+  background-position: left -8781px;
+  width: 6px;
+  height: 7px;
+  background-image: url(../img/web_sprites-normal_n.png);
+  background-size: auto auto;
+}
+
 /* line 1801, ../scss/icons.scss */
-.s_web_download-dropdown-arrow-blue {
-  background-position: left -6144px;
-  background-image: url(../img/web_sprites-normal.png);
+.s_web_page_white_dvd {
+  background-position: left -144px;
+  background-image: url(../img/web_sprites-normal_n.png);
   background-size: auto auto;
 }
 
 /* line 1806, ../scss/icons.scss */
-.s_web_s-student-promo {
-  background-position: left -7630px;
-  width: 16px;
-  height: 15px;
-}
-
-/* line 1811, ../scss/icons.scss */
-.s_web_s_file {
-  background-position: left -9693px;
-  width: 19px;
-  height: 19px;
-}
-
-/* line 1816, ../scss/icons.scss */
-.s_web_s_team {
-  background-position: left -10055px;
-  width: 19px;
-  height: 19px;
-}
-
-/* line 1821, ../scss/icons.scss */
-.s_web_folder_team_locked_gray_32 {
-  background-position: left -1090px;
+.s_web_page_white_gray_32 {
+  background-position: left -2570px;
   width: 32px;
   height: 32px;
 }
 
+/* line 1811, ../scss/icons.scss */
+.s_web_toggle_grid {
+  background-position: left -8749px;
+  width: 14px;
+  height: 14px;
+  background-image: url(../img/web_sprites-normal_n.png);
+  background-size: auto auto;
+}
+
+/* line 1818, ../scss/icons.scss */
+.s_web_volumeInactive {
+  background-position: left -5321px;
+  width: 16px;
+  height: 14px;
+}
+
+/* line 1823, ../scss/icons.scss */
+.s_web_bulletpoint-x {
+  background-position: left -9242px;
+}
+
 /* line 1826, ../scss/icons.scss */
-.s_web_event_add_to_album {
-  background-position: left -6248px;
-  width: 18px;
-  height: 18px;
-  background-image: url(../img/web_sprites-normal.png);
+.s_web_lock_dark {
+  background-position: left -7774px;
+  width: 10px;
+  height: 12px;
+  background-image: url(../img/web_sprites-normal_n.png);
   background-size: auto auto;
 }
 
 /* line 1833, ../scss/icons.scss */
-.s_web_page_white_picture {
-  background-position: left -234px;
-  background-image: url(../img/web_sprites-normal.png);
-  background-size: auto auto;
+.s_web_chevron {
+  background-position: left -9310px;
+  width: 7px;
+  height: 11px;
 }
 
 /* line 1838, ../scss/icons.scss */
-.s_web_folder_user_blue {
-  background-position: left -4386px;
-}
-
-/* line 1841, ../scss/icons.scss */
-.s_web_blackberry_gray {
-  background-position: left -5895px;
-}
-
-/* line 1844, ../scss/icons.scss */
-.s_web_play {
-  background-position: left -5002px;
-  width: 10px;
-  height: 12px;
-}
-
-/* line 1849, ../scss/icons.scss */
-.s_web_page_white_stack_32 {
-  background-position: left -3708px;
+.s_web_lightbox_download {
+  background-position: left -7344px;
   width: 32px;
   height: 32px;
-}
-
-/* line 1854, ../scss/icons.scss */
-.s_web_folder_public_stack_32 {
-  background-position: left -920px;
-  width: 32px;
-  height: 32px;
-}
-
-/* line 1859, ../scss/icons.scss */
-.s_web_s_cake {
-  background-position: left -9547px;
-  width: 19px;
-  height: 19px;
-}
-
-/* line 1864, ../scss/icons.scss */
-.s_web_page_white_code_stack_32 {
-  background-position: left -1872px;
-  width: 32px;
-  height: 32px;
-}
-
-/* line 1869, ../scss/icons.scss */
-.s_web_caret_gray {
-  background-position: left -8625px;
-  width: 13px;
-  height: 8px;
-}
-
-/* line 1874, ../scss/icons.scss */
-.s_web_page_white {
-  background-position: left -54px;
-  background-image: url(../img/web_sprites-normal.png);
+  background-image: url(../img/web_sprites-normal_n.png);
   background-size: auto auto;
 }
 
-/* line 1879, ../scss/icons.scss */
-.s_web_page_white_linkfile_32 {
-  background-position: left -2756px;
+/* line 1845, ../scss/icons.scss */
+.s_web_open {
+  background-position: left -10014px;
+}
+
+/* line 1848, ../scss/icons.scss */
+.s_web_page_white_sound_gray_32 {
+  background-position: left -3692px;
   width: 32px;
   height: 32px;
 }
 
-/* line 1884, ../scss/icons.scss */
-.s_web_globe_gray_20x20 {
-  background-position: left -6422px;
+/* line 1853, ../scss/icons.scss */
+.s_web_page_white_webcode_stack_32 {
+  background-position: left -4066px;
+  width: 32px;
+  height: 32px;
+}
+
+/* line 1858, ../scss/icons.scss */
+.s_web_android_gray {
+  background-position: left -5585px;
+}
+
+/* line 1861, ../scss/icons.scss */
+.s_web_ic_comment_area_dark {
+  background-position: left -6931px;
   width: 20px;
   height: 20px;
 }
 
-/* line 1889, ../scss/icons.scss */
-.s_web_like_icon_empty {
-  background-position: left -7047px;
-  width: 32px;
-  height: 32px;
-  background-image: url(../img/web_sprites-normal.png);
-  background-size: auto auto;
-}
-
-/* line 1896, ../scss/icons.scss */
-.s_web_s_browser_generic {
-  background-position: left -7683px;
-  background-image: url(../img/web_sprites-normal.png);
-  background-size: auto auto;
-}
-
-/* line 1901, ../scss/icons.scss */
-.s_web_folder_user_stack_32 {
-  background-position: left -1430px;
-  width: 32px;
-  height: 32px;
-}
-
-/* line 1906, ../scss/icons.scss */
-.s_web_android_small {
-  background-position: left -5365px;
-  background-image: url(../img/web_sprites-normal.png);
-  background-size: auto auto;
-}
-
-/* line 1911, ../scss/icons.scss */
-.s_web_page_white_paper_gray_32 {
-  background-position: left -3028px;
-  width: 32px;
-  height: 32px;
-}
-
-/* line 1916, ../scss/icons.scss */
-.s_web_page_white_sketch_stack_32 {
-  background-position: left -3572px;
-  width: 32px;
-  height: 32px;
-}
-
-/* line 1921, ../scss/icons.scss */
-.s_web_s_house {
-  background-position: left -9819px;
+/* line 1866, ../scss/icons.scss */
+.s_web_delete_16 {
+  background-position: left -9384px;
   width: 19px;
   height: 19px;
 }
 
-/* line 1926, ../scss/icons.scss */
-.s_web_page_white_paint_gray_32 {
-  background-position: left -2926px;
+/* line 1871, ../scss/icons.scss */
+.s_web_banana {
+  background-position: left -6075px;
+  background-image: url(../img/web_sprites-normal_n.png);
+  background-size: auto auto;
+}
+
+/* line 1876, ../scss/icons.scss */
+.s_web_arrow-up-gray {
+  background-position: left -9181px;
+  width: 9px;
+  height: 5px;
+}
+
+/* line 1881, ../scss/icons.scss */
+.s_web_gear {
+  background-position: left -6696px;
+  width: 19px;
+  height: 19px;
+  background-image: url(../img/web_sprites-normal_n.png);
+  background-size: auto auto;
+}
+
+/* line 1888, ../scss/icons.scss */
+.s_web_page_white_powerpoint_32 {
+  background-position: left -3352px;
   width: 32px;
   height: 32px;
 }
 
-/* line 1931, ../scss/icons.scss */
-.s_web_fla_32 {
-  background-position: left -342px;
-  width: 32px;
-  height: 32px;
-}
-
-/* line 1936, ../scss/icons.scss */
-.s_web_s_briefcase_gray {
-  background-position: left -9526px;
+/* line 1893, ../scss/icons.scss */
+.s_web_trash-can-open {
+  background-position: left -10750px;
   width: 19px;
   height: 19px;
 }
 
-/* line 1941, ../scss/icons.scss */
-.s_web_pause {
-  background-position: left -4988px;
+/* line 1898, ../scss/icons.scss */
+.s_web_like_icon_hover {
+  background-position: left -7602px;
+  width: 32px;
+  height: 32px;
+  background-image: url(../img/web_sprites-normal_n.png);
+  background-size: auto auto;
+}
+
+/* line 1905, ../scss/icons.scss */
+.s_web_more-gray {
+  background-position: left -9909px;
+  width: 19px;
+  height: 19px;
+}
+
+/* line 1910, ../scss/icons.scss */
+.s_web_lightbox_close {
+  background-position: left -9741px;
+}
+
+/* line 1913, ../scss/icons.scss */
+.s_web_s_file_comment {
+  background-position: left -10367px;
+  width: 19px;
+  height: 19px;
+}
+
+/* line 1918, ../scss/icons.scss */
+.s_web_control_more {
+  background-position: left -5091px;
+  width: 16px;
+  height: 4px;
+}
+
+/* line 1923, ../scss/icons.scss */
+.s_web_albums {
+  background-position: left -5551px;
+  width: 32px;
+  height: 32px;
+  background-image: url(../img/web_sprites-normal_n.png);
+  background-size: auto auto;
+}
+
+/* line 1930, ../scss/icons.scss */
+.s_web_copy {
+  background-position: left -9323px;
+  width: 19px;
+  height: 19px;
+}
+
+/* line 1935, ../scss/icons.scss */
+.s_web_page_white_illustrator_32 {
+  background-position: left -2604px;
+  width: 32px;
+  height: 32px;
+}
+
+/* line 1940, ../scss/icons.scss */
+.s_web_page_white_excel {
+  background-position: left -162px;
+  background-image: url(../img/web_sprites-normal_n.png);
+  background-size: auto auto;
+}
+
+/* line 1945, ../scss/icons.scss */
+.s_web_zoomout {
+  background-position: left -5374px;
+  width: 19px;
+  height: 19px;
+}
+
+/* line 1950, ../scss/icons.scss */
+.s_web_triangle_open_1x {
+  background-position: left -8806px;
+  width: 8px;
+  height: 7px;
+  background-image: url(../img/web_sprites-normal_n.png);
+  background-size: auto auto;
+}
+
+/* line 1957, ../scss/icons.scss */
+.s_web_application_delete {
+  background-position: left -5981px;
+  background-image: url(../img/web_sprites-normal_n.png);
+  background-size: auto auto;
+}
+
+/* line 1962, ../scss/icons.scss */
+.s_web_team_add_user_32 {
+  background-position: left -8637px;
+  width: 32px;
+  height: 32px;
+  background-image: url(../img/web_sprites-normal_n.png);
+  background-size: auto auto;
+}
+
+/* line 1969, ../scss/icons.scss */
+.s_web_share-link-globe {
+  background-position: left -8547px;
+}
+
+/* line 1972, ../scss/icons.scss */
+.s_web_folder_team_locked_stack_32 {
+  background-position: left -1142px;
+  width: 32px;
+  height: 32px;
+}
+
+/* line 1977, ../scss/icons.scss */
+.s_web_page_white_audition_32 {
+  background-position: left -1754px;
+  width: 32px;
+  height: 32px;
+}
+
+/* line 1982, ../scss/icons.scss */
+.s_web_work_icon {
+  background-position: left -4701px;
+  width: 32px;
+  height: 32px;
+}
+
+/* line 1987, ../scss/icons.scss */
+.s_web_folder_public {
+  background-position: left -4409px;
+  width: 19px;
+  height: 19px;
+}
+
+/* line 1992, ../scss/icons.scss */
+.s_web_check_light_gray {
+  background-position: left -6185px;
+  width: 12px;
+  height: 10px;
+}
+
+/* line 1997, ../scss/icons.scss */
+.s_web_triangle_closed_2x {
+  background-position: left -8790px;
+  width: 12px;
+  height: 14px;
+  background-image: url(../img/web_sprites-normal_n.png);
+  background-size: auto auto;
+}
+
+/* line 2004, ../scss/icons.scss */
+.s_web_download-dropdown-arrow-blue {
+  background-position: left -6405px;
+  background-image: url(../img/web_sprites-normal_n.png);
+  background-size: auto auto;
+}
+
+/* line 2009, ../scss/icons.scss */
+.s_web_folder_user_add_32 {
+  background-position: left -1278px;
+  width: 32px;
+  height: 32px;
+}
+
+/* line 2014, ../scss/icons.scss */
+.s_web_s_file {
+  background-position: left -10346px;
+  width: 19px;
+  height: 19px;
+}
+
+/* line 2019, ../scss/icons.scss */
+.s_web_s_team {
+  background-position: left -10729px;
+  width: 19px;
+  height: 19px;
+}
+
+/* line 2024, ../scss/icons.scss */
+.s_web_folder_team_locked_gray_32 {
+  background-position: left -1108px;
+  width: 32px;
+  height: 32px;
+}
+
+/* line 2029, ../scss/icons.scss */
+.s_web_event_add_to_album {
+  background-position: left -6509px;
+  width: 18px;
+  height: 18px;
+  background-image: url(../img/web_sprites-normal_n.png);
+  background-size: auto auto;
+}
+
+/* line 2036, ../scss/icons.scss */
+.s_web_page_white_picture {
+  background-position: left -252px;
+  background-image: url(../img/web_sprites-normal_n.png);
+  background-size: auto auto;
+}
+
+/* line 2041, ../scss/icons.scss */
+.s_web_folder_user_blue {
+  background-position: left -4472px;
+}
+
+/* line 2044, ../scss/icons.scss */
+.s_web_blackberry_gray {
+  background-position: left -6133px;
+}
+
+/* line 2047, ../scss/icons.scss */
+.s_web_play {
+  background-position: left -5174px;
   width: 10px;
   height: 12px;
 }
 
-/* line 1946, ../scss/icons.scss */
-.s_web_page_white_playlist_gray_32 {
-  background-position: left -3232px;
+/* line 2052, ../scss/icons.scss */
+.s_web_page_white_stack_32 {
+  background-position: left -3760px;
   width: 32px;
   height: 32px;
 }
 
-/* line 1951, ../scss/icons.scss */
+/* line 2057, ../scss/icons.scss */
+.s_web_folder_public_stack_32 {
+  background-position: left -938px;
+  width: 32px;
+  height: 32px;
+}
+
+/* line 2062, ../scss/icons.scss */
+.s_web_s_cake {
+  background-position: left -10200px;
+  width: 19px;
+  height: 19px;
+}
+
+/* line 2067, ../scss/icons.scss */
+.s_web_page_white_code_stack_32 {
+  background-position: left -1924px;
+  width: 32px;
+  height: 32px;
+}
+
+/* line 2072, ../scss/icons.scss */
+.s_web_caret_gray {
+  background-position: left -9300px;
+  width: 13px;
+  height: 8px;
+}
+
+/* line 2077, ../scss/icons.scss */
+.s_web_page_white {
+  background-position: left -72px;
+  background-image: url(../img/web_sprites-normal_n.png);
+  background-size: auto auto;
+}
+
+/* line 2082, ../scss/icons.scss */
+.s_web_page_white_linkfile_32 {
+  background-position: left -2808px;
+  width: 32px;
+  height: 32px;
+}
+
+/* line 2087, ../scss/icons.scss */
+.s_web_globe_gray_20x20 {
+  background-position: left -6717px;
+  width: 20px;
+  height: 20px;
+}
+
+/* line 2092, ../scss/icons.scss */
+.s_web_like_icon_empty {
+  background-position: left -7568px;
+  width: 32px;
+  height: 32px;
+  background-image: url(../img/web_sprites-normal_n.png);
+  background-size: auto auto;
+}
+
+/* line 2099, ../scss/icons.scss */
+.s_web_s_browser_generic {
+  background-position: left -8204px;
+  background-image: url(../img/web_sprites-normal_n.png);
+  background-size: auto auto;
+}
+
+/* line 2104, ../scss/icons.scss */
+.s_web_ic_sticker {
+  background-position: left -7023px;
+  width: 20px;
+  height: 20px;
+}
+
+/* line 2109, ../scss/icons.scss */
+.s_web_folder_user_stack_32 {
+  background-position: left -1482px;
+  width: 32px;
+  height: 32px;
+}
+
+/* line 2114, ../scss/icons.scss */
+.s_web_android_small {
+  background-position: left -5603px;
+  background-image: url(../img/web_sprites-normal_n.png);
+  background-size: auto auto;
+}
+
+/* line 2119, ../scss/icons.scss */
+.s_web_page_white_paper_gray_32 {
+  background-position: left -3080px;
+  width: 32px;
+  height: 32px;
+}
+
+/* line 2124, ../scss/icons.scss */
+.s_web_page_white_sketch_stack_32 {
+  background-position: left -3624px;
+  width: 32px;
+  height: 32px;
+}
+
+/* line 2129, ../scss/icons.scss */
+.s_web_s_house {
+  background-position: left -10472px;
+  width: 19px;
+  height: 19px;
+}
+
+/* line 2134, ../scss/icons.scss */
+.s_web_page_white_paint_gray_32 {
+  background-position: left -2978px;
+  width: 32px;
+  height: 32px;
+}
+
+/* line 2139, ../scss/icons.scss */
+.s_web_fla_32 {
+  background-position: left -360px;
+  width: 32px;
+  height: 32px;
+}
+
+/* line 2144, ../scss/icons.scss */
+.s_web_s_briefcase_gray {
+  background-position: left -10179px;
+  width: 19px;
+  height: 19px;
+}
+
+/* line 2149, ../scss/icons.scss */
+.s_web_pause {
+  background-position: left -5160px;
+  width: 10px;
+  height: 12px;
+}
+
+/* line 2154, ../scss/icons.scss */
+.s_web_page_white_playlist_gray_32 {
+  background-position: left -3284px;
+  width: 32px;
+  height: 32px;
+}
+
+/* line 2159, ../scss/icons.scss */
 .s_web_s_resolve {
-  background-position: left -10018px;
+  background-position: left -10692px;
   width: 17px;
   height: 17px;
 }
 
-/* line 1956, ../scss/icons.scss */
+/* line 2164, ../scss/icons.scss */
 .s_web_rainbow_16 {
-  background-position: left -4425px;
+  background-position: left -4511px;
   width: 19px;
   height: 19px;
 }
 
-/* line 1961, ../scss/icons.scss */
+/* line 2169, ../scss/icons.scss */
 .s_web_folder {
-  background-position: left -4218px;
+  background-position: left -4304px;
   width: 19px;
   height: 19px;
 }
 
-/* line 1966, ../scss/icons.scss */
+/* line 2174, ../scss/icons.scss */
 .s_web_page_white_mp3_gray_32 {
-  background-position: left -2824px;
+  background-position: left -2876px;
   width: 32px;
   height: 32px;
 }
 
-/* line 1971, ../scss/icons.scss */
+/* line 2179, ../scss/icons.scss */
 .s_web_mag_glass {
-  background-position: left -9239px;
+  background-position: left -9892px;
   width: 15px;
   height: 15px;
 }
 
-/* line 1976, ../scss/icons.scss */
+/* line 2184, ../scss/icons.scss */
 .s_web_exclamation_32 {
-  background-position: left -6308px;
+  background-position: left -6569px;
   width: 26px;
   height: 27px;
-  background-image: url(../img/web_sprites-normal.png);
+  background-image: url(../img/web_sprites-normal_n.png);
   background-size: auto auto;
 }
 
-/* line 1983, ../scss/icons.scss */
+/* line 2191, ../scss/icons.scss */
+.s_web_triangle_open_2x {
+  background-position: left -8815px;
+  width: 16px;
+  height: 14px;
+  background-image: url(../img/web_sprites-normal_n.png);
+  background-size: auto auto;
+}
+
+/* line 2198, ../scss/icons.scss */
 .s_web_s_browser_opera {
-  background-position: left -7719px;
-  background-image: url(../img/web_sprites-normal.png);
+  background-position: left -8240px;
+  background-image: url(../img/web_sprites-normal_n.png);
   background-size: auto auto;
 }
 
-/* line 1988, ../scss/icons.scss */
+/* line 2203, ../scss/icons.scss */
 .s_web_page_white_audition_gray_32 {
-  background-position: left -1736px;
+  background-position: left -1788px;
   width: 32px;
   height: 32px;
 }
 
-/* line 1993, ../scss/icons.scss */
+/* line 2208, ../scss/icons.scss */
+.s_web_check_gray {
+  background-position: left -6173px;
+  width: 12px;
+  height: 10px;
+}
+
+/* line 2213, ../scss/icons.scss */
+.s_web_settings {
+  background-position: left -8529px;
+}
+
+/* line 2216, ../scss/icons.scss */
 .s_web_folder_gray_32 {
-  background-position: left -716px;
+  background-position: left -734px;
   width: 32px;
   height: 32px;
 }
 
-/* line 1998, ../scss/icons.scss */
+/* line 2221, ../scss/icons.scss */
 .s_web_s_comments_unlocked {
-  background-position: left -9651px;
+  background-position: left -10304px;
   width: 21px;
   height: 21px;
 }
 
-/* line 2003, ../scss/icons.scss */
+/* line 2226, ../scss/icons.scss */
 .s_web_page_white_go {
-  background-position: left -9387px;
+  background-position: left -10040px;
   width: 19px;
   height: 19px;
 }
 
-/* line 2008, ../scss/icons.scss */
+/* line 2231, ../scss/icons.scss */
 .s_web_teams {
-  background-position: left -8107px;
+  background-position: left -8705px;
   width: 36px;
   height: 36px;
-  background-image: url(../img/web_sprites-normal.png);
+  background-image: url(../img/web_sprites-normal_n.png);
   background-size: auto auto;
 }
 
-/* line 2015, ../scss/icons.scss */
+/* line 2238, ../scss/icons.scss */
 .s_web_folder_app_32 {
-  background-position: left -410px;
+  background-position: left -428px;
   width: 32px;
   height: 32px;
 }
 
-/* line 2020, ../scss/icons.scss */
+/* line 2243, ../scss/icons.scss */
 .s_web_activity {
-  background-position: left -8406px;
-  background-image: url(../img/web_sprites-normal.png);
+  background-position: left -9081px;
+  background-image: url(../img/web_sprites-normal_n.png);
   background-size: auto auto;
 }
 
-/* line 2025, ../scss/icons.scss */
+/* line 2248, ../scss/icons.scss */
 .s_web_x {
-  background-position: left -8354px;
+  background-position: left -9016px;
   width: 8px;
   height: 8px;
-  background-image: url(../img/web_sprites-normal.png);
-  background-size: auto auto;
-}
-
-/* line 2032, ../scss/icons.scss */
-.s_web_bullet_plus {
-  background-position: left -8531px;
-}
-
-/* line 2035, ../scss/icons.scss */
-.s_web_s_disable {
-  background-position: left -9674px;
-  width: 17px;
-  height: 17px;
-}
-
-/* line 2040, ../scss/icons.scss */
-.s_web_close {
-  background-position: left -5981px;
-  background-image: url(../img/web_sprites-normal.png);
-  background-size: auto auto;
-}
-
-/* line 2045, ../scss/icons.scss */
-.s_web_page_white_text_gray_32 {
-  background-position: left -3776px;
-  width: 32px;
-  height: 32px;
-}
-
-/* line 2050, ../scss/icons.scss */
-.s_web_fullscreen {
-  background-position: left -4946px;
-  width: 19px;
-  height: 19px;
-}
-
-/* line 2055, ../scss/icons.scss */
-.s_web_s_check {
-  background-position: left -9589px;
-}
-
-/* line 2058, ../scss/icons.scss */
-.s_web_folder_app_gray_32 {
-  background-position: left -444px;
-  width: 32px;
-  height: 32px;
-}
-
-/* line 2063, ../scss/icons.scss */
-.s_web_email {
-  background-position: left -8832px;
-  width: 19px;
-  height: 19px;
-}
-
-/* line 2068, ../scss/icons.scss */
-.s_web_lightbox_delete_16 {
-  background-position: left -9122px;
-  width: 19px;
-  height: 19px;
-}
-
-/* line 2073, ../scss/icons.scss */
-.s_web_arrow-down-blue {
-  background-position: left -8485px;
-  width: 9px;
-  height: 5px;
-}
-
-/* line 2078, ../scss/icons.scss */
-.s_web_page_white_powerpoint {
-  background-position: left -252px;
-  background-image: url(../img/web_sprites-normal.png);
-  background-size: auto auto;
-}
-
-/* line 2083, ../scss/icons.scss */
-.s_web_s_comments_locked {
-  background-position: left -9628px;
-  width: 21px;
-  height: 21px;
-}
-
-/* line 2088, ../scss/icons.scss */
-.s_web_page_white_webcode_gray_32 {
-  background-position: left -3980px;
-  width: 32px;
-  height: 32px;
-}
-
-/* line 2093, ../scss/icons.scss */
-.s_web_Firefox {
-  background-position: left -5241px;
-  background-image: url(../img/web_sprites-normal.png);
-  background-size: auto auto;
-}
-
-/* line 2098, ../scss/icons.scss */
-.s_web_folder_user_locked {
-  background-position: left -4404px;
-  width: 19px;
-  height: 19px;
-}
-
-/* line 2103, ../scss/icons.scss */
-.s_web_s_device_mobile_blackberry {
-  background-position: left -7809px;
-  background-image: url(../img/web_sprites-normal.png);
-  background-size: auto auto;
-}
-
-/* line 2108, ../scss/icons.scss */
-.s_web_email_32 {
-  background-position: left -8875px;
-  width: 32px;
-  height: 32px;
-}
-
-/* line 2113, ../scss/icons.scss */
-.s_web_folder_camera_gray_32 {
-  background-position: left -546px;
-  width: 32px;
-  height: 32px;
-}
-
-/* line 2118, ../scss/icons.scss */
-.s_web_delete {
-  background-position: left -8690px;
-  width: 17px;
-  height: 17px;
-}
-
-/* line 2123, ../scss/icons.scss */
-.s_web_arrow-down-white {
-  background-position: left -8499px;
-  width: 9px;
-  height: 5px;
-}
-
-/* line 2128, ../scss/icons.scss */
-.s_web_s_briefcase {
-  background-position: left -9505px;
-  width: 19px;
-  height: 19px;
-}
-
-/* line 2133, ../scss/icons.scss */
-.s_web_invite_user {
-  background-position: left -6658px;
-  width: 22px;
-  height: 16px;
-}
-
-/* line 2138, ../scss/icons.scss */
-.s_web_package_32 {
-  background-position: left -1464px;
-  width: 32px;
-  height: 32px;
-}
-
-/* line 2143, ../scss/icons.scss */
-.s_web_linux {
-  background-position: left -7183px;
-  background-image: url(../img/web_sprites-normal.png);
-  background-size: auto auto;
-}
-
-/* line 2148, ../scss/icons.scss */
-.s_web_cancel {
-  background-position: left -8606px;
-  width: 17px;
-  height: 17px;
-}
-
-/* line 2153, ../scss/icons.scss */
-.s_web_api_java_disabled {
-  background-position: left -5509px;
-  background-image: url(../img/web_sprites-normal.png);
-  background-size: auto auto;
-}
-
-/* line 2158, ../scss/icons.scss */
-.s_web_page_white_text {
-  background-position: left -288px;
-  background-image: url(../img/web_sprites-normal.png);
-  background-size: auto auto;
-}
-
-/* line 2163, ../scss/icons.scss */
-.s_web_image_placeholder {
-  background-position: left -6606px;
-  width: 32px;
-  height: 32px;
-  background-image: url(../img/web_sprites-normal.png);
-  background-size: auto auto;
-}
-
-/* line 2170, ../scss/icons.scss */
-.s_web_folder_add {
-  background-position: left -4239px;
-  width: 19px;
-  height: 19px;
-}
-
-/* line 2175, ../scss/icons.scss */
-.s_web_personal_44 {
-  background-position: left -4489px;
-  width: 44px;
-  height: 44px;
-  background-image: url(../img/web_sprites-normal.png);
-  background-size: auto auto;
-}
-
-/* line 2182, ../scss/icons.scss */
-.s_web_page_white_vector_32 {
-  background-position: left -3844px;
-  width: 32px;
-  height: 32px;
-}
-
-/* line 2187, ../scss/icons.scss */
-.s_web_page_white_premiere_gray_32 {
-  background-position: left -3436px;
-  width: 32px;
-  height: 32px;
-}
-
-/* line 2192, ../scss/icons.scss */
-.s_web_twitter_32 {
-  background-position: left -8205px;
-  width: 32px;
-  height: 32px;
-  background-image: url(../img/web_sprites-normal.png);
-  background-size: auto auto;
-}
-
-/* line 2199, ../scss/icons.scss */
-.s_web_lightbox_show_in_folder {
-  background-position: left -6927px;
-  width: 32px;
-  height: 32px;
-  background-image: url(../img/web_sprites-normal.png);
-  background-size: auto auto;
-}
-
-/* line 2206, ../scss/icons.scss */
-.s_web_s_browser_safari {
-  background-position: left -7737px;
-  background-image: url(../img/web_sprites-normal.png);
-  background-size: auto auto;
-}
-
-/* line 2211, ../scss/icons.scss */
-.s_web_toggle_list {
-  background-position: left -8167px;
-  width: 14px;
-  height: 14px;
-  background-image: url(../img/web_sprites-normal.png);
-  background-size: auto auto;
-}
-
-/* line 2218, ../scss/icons.scss */
-.s_web_page_white_compressed_gray_32 {
-  background-position: left -1940px;
-  width: 32px;
-  height: 32px;
-}
-
-/* line 2223, ../scss/icons.scss */
-.s_web_folder_public_gray_32 {
-  background-position: left -886px;
-  width: 32px;
-  height: 32px;
-}
-
-/* line 2228, ../scss/icons.scss */
-.s_web_yahoo_gray {
-  background-position: left -8385px;
-  width: 19px;
-  height: 19px;
-  background-image: url(../img/web_sprites-normal.png);
-  background-size: auto auto;
-}
-
-/* line 2235, ../scss/icons.scss */
-.s_web_folder_camera_32 {
-  background-position: left -512px;
-  width: 32px;
-  height: 32px;
-}
-
-/* line 2240, ../scss/icons.scss */
-.s_web_album_16 {
-  background-position: left -8443px;
-  width: 19px;
-  height: 19px;
-}
-
-/* line 2245, ../scss/icons.scss */
-.s_web_download_arrow {
-  background-position: left -8751px;
-  width: 19px;
-  height: 19px;
-}
-
-/* line 2250, ../scss/icons.scss */
-.s_web_api_android_disabled {
-  background-position: left -5401px;
-  background-image: url(../img/web_sprites-normal.png);
+  background-image: url(../img/web_sprites-normal_n.png);
   background-size: auto auto;
 }
 
 /* line 2255, ../scss/icons.scss */
-.s_web_request_notifications_icon {
-  background-position: left -9468px;
-  width: 14px;
-  height: 16px;
+.s_web_bullet_plus {
+  background-position: left -9206px;
 }
 
-/* line 2260, ../scss/icons.scss */
-.s_web_view_original {
-  background-position: left -8239px;
+/* line 2258, ../scss/icons.scss */
+.s_web_s_disable {
+  background-position: left -10327px;
+  width: 17px;
+  height: 17px;
+}
+
+/* line 2263, ../scss/icons.scss */
+.s_web_close {
+  background-position: left -6228px;
+  background-image: url(../img/web_sprites-normal_n.png);
+  background-size: auto auto;
+}
+
+/* line 2268, ../scss/icons.scss */
+.s_web_page_white_text_gray_32 {
+  background-position: left -3828px;
+  width: 32px;
+  height: 32px;
+}
+
+/* line 2273, ../scss/icons.scss */
+.s_web_fullscreen {
+  background-position: left -6680px;
   width: 14px;
   height: 14px;
-  background-image: url(../img/web_sprites-normal.png);
-  background-size: auto auto;
 }
 
-/* line 2267, ../scss/icons.scss */
-.s_web_rename {
-  background-position: left -9447px;
-  width: 19px;
-  height: 19px;
-}
-
-/* line 2272, ../scss/icons.scss */
-.s_web_file {
-  background-position: left -4467px;
-  width: 20px;
+/* line 2278, ../scss/icons.scss */
+.s_web_icon_rename {
+  background-position: left -7105px;
+  width: 22px;
   height: 20px;
-  background-image: url(../img/web_sprites-normal.png);
+  background-image: url(../img/web_sprites-normal_n.png);
   background-size: auto auto;
 }
 
-/* line 2279, ../scss/icons.scss */
-.s_web_folder_team_stack_32 {
-  background-position: left -1158px;
+/* line 2285, ../scss/icons.scss */
+.s_web_s_check {
+  background-position: left -10242px;
+}
+
+/* line 2288, ../scss/icons.scss */
+.s_web_folder_app_gray_32 {
+  background-position: left -462px;
   width: 32px;
   height: 32px;
 }
 
-/* line 2284, ../scss/icons.scss */
-.s_web_folder_user_20 {
-  background-position: left -6379px;
-  width: 20px;
-  height: 20px;
-  background-image: url(../img/web_sprites-normal.png);
-  background-size: auto auto;
-}
-
-/* line 2291, ../scss/icons.scss */
-.s_web_folder_camera {
-  background-position: left -4281px;
+/* line 2293, ../scss/icons.scss */
+.s_web_email {
+  background-position: left -9469px;
   width: 19px;
   height: 19px;
 }
 
-/* line 2296, ../scss/icons.scss */
-.s_web_s_flip_right {
-  background-position: left -5092px;
-  width: 10px;
-  height: 18px;
-}
-
-/* line 2301, ../scss/icons.scss */
-.s_web_s_mailbox {
-  background-position: left -9882px;
+/* line 2298, ../scss/icons.scss */
+.s_web_lightbox_delete_16 {
+  background-position: left -9759px;
   width: 19px;
   height: 19px;
 }
 
-/* line 2306, ../scss/icons.scss */
-.s_web_page_white_keynote_stack_32 {
-  background-position: left -2722px;
-  width: 32px;
-  height: 32px;
-}
-
-/* line 2311, ../scss/icons.scss */
-.s_web_lightbox_open {
-  background-position: left -6857px;
-}
-
-/* line 2314, ../scss/icons.scss */
-.s_web_folder_public_32 {
-  background-position: left -852px;
-  width: 32px;
-  height: 32px;
-}
-
-/* line 2319, ../scss/icons.scss */
-.s_web_page_white_vector_stack_32 {
-  background-position: left -3912px;
-  width: 32px;
-  height: 32px;
-}
-
-/* line 2324, ../scss/icons.scss */
-.s_web_folder_paper_team_32 {
-  background-position: left -750px;
-  width: 32px;
-  height: 32px;
-}
-
-/* line 2329, ../scss/icons.scss */
-.s_web_s_notifications_off {
-  background-position: left -9938px;
-  width: 17px;
-  height: 17px;
-}
-
-/* line 2334, ../scss/icons.scss */
-.s_web_banner_x {
-  background-position: left -5855px;
-  width: 20px;
-  height: 20px;
-}
-
-/* line 2339, ../scss/icons.scss */
-.s_web_s_sync {
-  background-position: left -10037px;
-}
-
-/* line 2342, ../scss/icons.scss */
-.s_web_page_white_illustrator_stack_32 {
-  background-position: left -2620px;
-  width: 32px;
-  height: 32px;
-}
-
-/* line 2347, ../scss/icons.scss */
-.s_web_user {
-  background-position: left -10139px;
-  width: 19px;
-  height: 19px;
-}
-
-/* line 2352, ../scss/icons.scss */
-.s_web_page_white_paper_32 {
-  background-position: left -2994px;
-  width: 32px;
-  height: 32px;
-}
-
-/* line 2357, ../scss/icons.scss */
-.s_web_xclose {
-  background-position: left -10244px;
-  width: 11px;
-  height: 11px;
-}
-
-/* line 2362, ../scss/icons.scss */
-.s_web_user_warn {
-  background-position: left -10223px;
-  width: 19px;
-  height: 19px;
-}
-
-/* line 2367, ../scss/icons.scss */
-.s_web_menu-right-arrow {
-  background-position: left -7317px;
-  width: 7px;
-  height: 10px;
-}
-
-/* line 2372, ../scss/icons.scss */
-.s_web_folder_user_add_32 {
-  background-position: left -1226px;
-  width: 32px;
-  height: 32px;
-}
-
-/* line 2377, ../scss/icons.scss */
-.s_web_magnifier {
-  background-position: left -7299px;
-  background-image: url(../img/web_sprites-normal.png);
-  background-size: auto auto;
-}
-
-/* line 2382, ../scss/icons.scss */
-.s_web_api_ios {
-  background-position: left -5455px;
-  background-image: url(../img/web_sprites-normal.png);
-  background-size: auto auto;
-}
-
-/* line 2387, ../scss/icons.scss */
-.s_web_left {
-  background-position: left -4967px;
-  width: 19px;
-  height: 19px;
-}
-
-/* line 2392, ../scss/icons.scss */
-.s_web_restore {
-  background-position: left -9486px;
-  width: 17px;
-  height: 17px;
-}
-
-/* line 2397, ../scss/icons.scss */
-.s_web_lightbox_next {
-  background-position: left -9164px;
-}
-
-/* line 2400, ../scss/icons.scss */
-.s_web_fb_20 {
-  background-position: left -8969px;
-  width: 20px;
-  height: 20px;
-}
-
-/* line 2405, ../scss/icons.scss */
-.s_web_money {
-  background-position: left -7347px;
-  background-image: url(../img/web_sprites-normal.png);
-  background-size: auto auto;
-}
-
-/* line 2410, ../scss/icons.scss */
-.s_web_s_device_linux {
-  background-position: left -7755px;
-  background-image: url(../img/web_sprites-normal.png);
-  background-size: auto auto;
-}
-
-/* line 2415, ../scss/icons.scss */
-.s_web_arrowright {
-  background-position: left -5811px;
-  width: 12px;
-  height: 12px;
-  background-image: url(../img/web_sprites-normal.png);
-  background-size: auto auto;
-}
-
-/* line 2422, ../scss/icons.scss */
-.s_web_s-link-blue {
-  background-position: left -7609px;
-  width: 19px;
-  height: 19px;
-}
-
-/* line 2427, ../scss/icons.scss */
-.s_web_api_php {
-  background-position: left -5599px;
-  background-image: url(../img/web_sprites-normal.png);
-  background-size: auto auto;
-}
-
-/* line 2432, ../scss/icons.scss */
-.s_web_page_white_keynote_gray_32 {
-  background-position: left -2688px;
-  width: 32px;
-  height: 32px;
-}
-
-/* line 2437, ../scss/icons.scss */
-.s_web_desktop {
-  background-position: left -6106px;
-  width: 36px;
-  height: 36px;
-  background-image: url(../img/web_sprites-normal.png);
-  background-size: auto auto;
-}
-
-/* line 2444, ../scss/icons.scss */
-.s_web_dropbox_gray {
-  background-position: left -6211px;
-}
-
-/* line 2447, ../scss/icons.scss */
-.s_web_add {
-  background-position: left -8424px;
-  width: 17px;
-  height: 17px;
-}
-
-/* line 2452, ../scss/icons.scss */
-.s_web_page_white_picture_32 {
-  background-position: left -3096px;
-  width: 32px;
-  height: 32px;
-}
-
-/* line 2457, ../scss/icons.scss */
-.s_web_powerpoint-40 {
-  background-position: left -4805px;
-  width: 40px;
-  height: 40px;
-}
-
-/* line 2462, ../scss/icons.scss */
-.s_web_page_white_32 {
-  background-position: left -1566px;
-  width: 32px;
-  height: 32px;
-}
-
-/* line 2467, ../scss/icons.scss */
-.s_web_rainbow_16_gray {
-  background-position: left -4446px;
-  width: 19px;
-  height: 19px;
-}
-
-/* line 2472, ../scss/icons.scss */
-.s_web_windows_xp_gray {
-  background-position: left -8318px;
-}
-
-/* line 2475, ../scss/icons.scss */
-.s_web_user_delete {
-  background-position: left -10181px;
-  width: 19px;
-  height: 19px;
-}
-
-/* line 2480, ../scss/icons.scss */
-.s_web_gift {
-  background-position: left -9025px;
-}
-
-/* line 2483, ../scss/icons.scss */
-.s_web_apple_gray {
-  background-position: left -5707px;
-}
-
-/* line 2486, ../scss/icons.scss */
-.s_web_api_js_disabled {
-  background-position: left -5545px;
-  background-image: url(../img/web_sprites-normal.png);
-  background-size: auto auto;
-}
-
-/* line 2491, ../scss/icons.scss */
-.s_web_s_greycheck {
-  background-position: left -9778px;
-  width: 20px;
-  height: 20px;
-}
-
-/* line 2496, ../scss/icons.scss */
-.s_web_lightbox_more {
-  background-position: left -9143px;
-  width: 19px;
-  height: 19px;
-}
-
-/* line 2501, ../scss/icons.scss */
-.s_web_page_white_playlist_stack_32 {
-  background-position: left -3266px;
-  width: 32px;
-  height: 32px;
-}
-
-/* line 2506, ../scss/icons.scss */
-.s_web_work_44 {
-  background-position: left -4569px;
-  width: 44px;
-  height: 44px;
-  background-image: url(../img/web_sprites-normal.png);
-  background-size: auto auto;
-}
-
-/* line 2513, ../scss/icons.scss */
-.s_web_page_white_paper_stack_32 {
-  background-position: left -3062px;
-  width: 32px;
-  height: 32px;
-}
-
-/* line 2518, ../scss/icons.scss */
-.s_web_arrow-down-gray {
-  background-position: left -8492px;
+/* line 2303, ../scss/icons.scss */
+.s_web_arrow-down-blue {
+  background-position: left -9160px;
   width: 9px;
   height: 5px;
 }
 
-/* line 2523, ../scss/icons.scss */
-.s_web_like_icon {
-  background-position: left -7013px;
-  width: 32px;
-  height: 32px;
-  background-image: url(../img/web_sprites-normal.png);
+/* line 2308, ../scss/icons.scss */
+.s_web_page_white_powerpoint {
+  background-position: left -270px;
+  background-image: url(../img/web_sprites-normal_n.png);
   background-size: auto auto;
 }
 
-/* line 2530, ../scss/icons.scss */
-.s_web_google {
-  background-position: left -6478px;
+/* line 2313, ../scss/icons.scss */
+.s_web_ic_comment_text {
+  background-position: left -7001px;
+  width: 20px;
+  height: 20px;
+}
+
+/* line 2318, ../scss/icons.scss */
+.s_web_s_comments_locked {
+  background-position: left -10281px;
+  width: 21px;
+  height: 21px;
+}
+
+/* line 2323, ../scss/icons.scss */
+.s_web_page_white_webcode_gray_32 {
+  background-position: left -4032px;
+  width: 32px;
+  height: 32px;
+}
+
+/* line 2328, ../scss/icons.scss */
+.s_web_Firefox {
+  background-position: left -5479px;
+  background-image: url(../img/web_sprites-normal_n.png);
+  background-size: auto auto;
+}
+
+/* line 2333, ../scss/icons.scss */
+.s_web_page_white_picture_gray_32 {
+  background-position: left -3182px;
+  width: 32px;
+  height: 32px;
+}
+
+/* line 2338, ../scss/icons.scss */
+.s_web_folder_user_locked {
+  background-position: left -4490px;
   width: 19px;
   height: 19px;
-  background-image: url(../img/web_sprites-normal.png);
+}
+
+/* line 2343, ../scss/icons.scss */
+.s_web_s_device_mobile_blackberry {
+  background-position: left -8366px;
+  background-image: url(../img/web_sprites-normal_n.png);
   background-size: auto auto;
+}
+
+/* line 2348, ../scss/icons.scss */
+.s_web_email_32 {
+  background-position: left -9512px;
+  width: 32px;
+  height: 32px;
+}
+
+/* line 2353, ../scss/icons.scss */
+.s_web_folder_camera_gray_32 {
+  background-position: left -564px;
+  width: 32px;
+  height: 32px;
+}
+
+/* line 2358, ../scss/icons.scss */
+.s_web_delete {
+  background-position: left -9365px;
+  width: 17px;
+  height: 17px;
+}
+
+/* line 2363, ../scss/icons.scss */
+.s_web_dropbox_gray {
+  background-position: left -6472px;
+}
+
+/* line 2366, ../scss/icons.scss */
+.s_web_s_briefcase {
+  background-position: left -10158px;
+  width: 19px;
+  height: 19px;
+}
+
+/* line 2371, ../scss/icons.scss */
+.s_web_invite_user {
+  background-position: left -7179px;
+  width: 22px;
+  height: 16px;
+}
+
+/* line 2376, ../scss/icons.scss */
+.s_web_s_lock_flat {
+  background-position: left -10535px;
+  width: 10px;
+  height: 12px;
+}
+
+/* line 2381, ../scss/icons.scss */
+.s_web_package_32 {
+  background-position: left -1516px;
+  width: 32px;
+  height: 32px;
+}
+
+/* line 2386, ../scss/icons.scss */
+.s_web_linux {
+  background-position: left -7704px;
+  background-image: url(../img/web_sprites-normal_n.png);
+  background-size: auto auto;
+}
+
+/* line 2391, ../scss/icons.scss */
+.s_web_cancel {
+  background-position: left -9281px;
+  width: 17px;
+  height: 17px;
+}
+
+/* line 2396, ../scss/icons.scss */
+.s_web_api_java_disabled {
+  background-position: left -5747px;
+  background-image: url(../img/web_sprites-normal_n.png);
+  background-size: auto auto;
+}
+
+/* line 2401, ../scss/icons.scss */
+.s_web_page_white_text {
+  background-position: left -306px;
+  background-image: url(../img/web_sprites-normal_n.png);
+  background-size: auto auto;
+}
+
+/* line 2406, ../scss/icons.scss */
+.s_web_image_placeholder {
+  background-position: left -7127px;
+  width: 32px;
+  height: 32px;
+  background-image: url(../img/web_sprites-normal_n.png);
+  background-size: auto auto;
+}
+
+/* line 2413, ../scss/icons.scss */
+.s_web_folder_add {
+  background-position: left -4325px;
+  width: 19px;
+  height: 19px;
+}
+
+/* line 2418, ../scss/icons.scss */
+.s_web_personal_44 {
+  background-position: left -4575px;
+  width: 44px;
+  height: 44px;
+  background-image: url(../img/web_sprites-normal_n.png);
+  background-size: auto auto;
+}
+
+/* line 2425, ../scss/icons.scss */
+.s_web_page_white_vector_32 {
+  background-position: left -3896px;
+  width: 32px;
+  height: 32px;
+}
+
+/* line 2430, ../scss/icons.scss */
+.s_web_page_white_premiere_gray_32 {
+  background-position: left -3488px;
+  width: 32px;
+  height: 32px;
+}
+
+/* line 2435, ../scss/icons.scss */
+.s_web_twitter_32 {
+  background-position: left -8867px;
+  width: 32px;
+  height: 32px;
+  background-image: url(../img/web_sprites-normal_n.png);
+  background-size: auto auto;
+}
+
+/* line 2442, ../scss/icons.scss */
+.s_web_shared_link_white {
+  background-position: left -5411px;
+  width: 14px;
+  height: 14px;
+}
+
+/* line 2447, ../scss/icons.scss */
+.s_web_lightbox_show_in_folder {
+  background-position: left -7448px;
+  width: 32px;
+  height: 32px;
+  background-image: url(../img/web_sprites-normal_n.png);
+  background-size: auto auto;
+}
+
+/* line 2454, ../scss/icons.scss */
+.s_web_s_browser_safari {
+  background-position: left -8258px;
+  background-image: url(../img/web_sprites-normal_n.png);
+  background-size: auto auto;
+}
+
+/* line 2459, ../scss/icons.scss */
+.s_web_toggle_list {
+  background-position: left -8765px;
+  width: 14px;
+  height: 14px;
+  background-image: url(../img/web_sprites-normal_n.png);
+  background-size: auto auto;
+}
+
+/* line 2466, ../scss/icons.scss */
+.s_web_page_white_compressed_gray_32 {
+  background-position: left -1992px;
+  width: 32px;
+  height: 32px;
+}
+
+/* line 2471, ../scss/icons.scss */
+.s_web_folder_public_gray_32 {
+  background-position: left -904px;
+  width: 32px;
+  height: 32px;
+}
+
+/* line 2476, ../scss/icons.scss */
+.s_web_yahoo_gray {
+  background-position: left -9060px;
+  width: 19px;
+  height: 19px;
+  background-image: url(../img/web_sprites-normal_n.png);
+  background-size: auto auto;
+}
+
+/* line 2483, ../scss/icons.scss */
+.s_web_folder_camera_32 {
+  background-position: left -530px;
+  width: 32px;
+  height: 32px;
+}
+
+/* line 2488, ../scss/icons.scss */
+.s_web_ic_comment_area_blue {
+  background-position: left -6909px;
+  width: 20px;
+  height: 20px;
+}
+
+/* line 2493, ../scss/icons.scss */
+.s_web_page_white_mp3_32 {
+  background-position: left -2842px;
+  width: 32px;
+  height: 32px;
+}
+
+/* line 2498, ../scss/icons.scss */
+.s_web_download_arrow {
+  background-position: left -9426px;
+  width: 19px;
+  height: 19px;
+}
+
+/* line 2503, ../scss/icons.scss */
+.s_web_api_android_disabled {
+  background-position: left -5639px;
+  background-image: url(../img/web_sprites-normal_n.png);
+  background-size: auto auto;
+}
+
+/* line 2508, ../scss/icons.scss */
+.s_web_request_notifications_icon {
+  background-position: left -10121px;
+  width: 14px;
+  height: 16px;
+}
+
+/* line 2513, ../scss/icons.scss */
+.s_web_view_original {
+  background-position: left -8901px;
+  width: 14px;
+  height: 14px;
+  background-image: url(../img/web_sprites-normal_n.png);
+  background-size: auto auto;
+}
+
+/* line 2520, ../scss/icons.scss */
+.s_web_rename {
+  background-position: left -10100px;
+  width: 19px;
+  height: 19px;
+}
+
+/* line 2525, ../scss/icons.scss */
+.s_web_file {
+  background-position: left -4553px;
+  width: 20px;
+  height: 20px;
+  background-image: url(../img/web_sprites-normal_n.png);
+  background-size: auto auto;
+}
+
+/* line 2532, ../scss/icons.scss */
+.s_web_folder_team_stack_32 {
+  background-position: left -1210px;
+  width: 32px;
+  height: 32px;
 }
 
 /* line 2537, ../scss/icons.scss */
-.s_web_move_16 {
-  background-position: left -9298px;
+.s_web_folder_user_20 {
+  background-position: left -6658px;
+  width: 20px;
+  height: 20px;
+  background-image: url(../img/web_sprites-normal_n.png);
+  background-size: auto auto;
+}
+
+/* line 2544, ../scss/icons.scss */
+.s_web_folder_camera {
+  background-position: left -4367px;
   width: 19px;
   height: 19px;
 }
 
-/* line 2542, ../scss/icons.scss */
-.s_web_word-40 {
-  background-position: left -4865px;
-  width: 40px;
-  height: 40px;
+/* line 2549, ../scss/icons.scss */
+.s_web_s_flip_right {
+  background-position: left -5264px;
+  width: 10px;
+  height: 18px;
 }
 
-/* line 2547, ../scss/icons.scss */
-.s_web_zoom {
-  background-position: left -5181px;
+/* line 2554, ../scss/icons.scss */
+.s_web_s_mailbox {
+  background-position: left -10549px;
   width: 19px;
   height: 19px;
 }
 
-/* line 2552, ../scss/icons.scss */
-.s_web_star {
-  background-position: left -8006px;
-  width: 13px;
-  height: 13px;
-}
-
-/* line 2557, ../scss/icons.scss */
-.s_web_page_white_premiere_32 {
-  background-position: left -3402px;
+/* line 2559, ../scss/icons.scss */
+.s_web_page_white_keynote_stack_32 {
+  background-position: left -2774px;
   width: 32px;
   height: 32px;
 }
 
-/* line 2562, ../scss/icons.scss */
-.s_web_page_white_acrobat {
-  background-position: left -72px;
-  background-image: url(../img/web_sprites-normal.png);
-  background-size: auto auto;
+/* line 2564, ../scss/icons.scss */
+.s_web_lightbox_open {
+  background-position: left -7378px;
 }
 
 /* line 2567, ../scss/icons.scss */
-.s_web_glyph {
-  background-position: left -6444px;
+.s_web_folder_public_32 {
+  background-position: left -870px;
   width: 32px;
   height: 32px;
 }
 
 /* line 2572, ../scss/icons.scss */
-.s_web_deselect {
-  background-position: left -6087px;
-  width: 17px;
-  height: 17px;
+.s_web_page_white_vector_stack_32 {
+  background-position: left -3964px;
+  width: 32px;
+  height: 32px;
 }
 
 /* line 2577, ../scss/icons.scss */
-.s_web_page_white_flash_32 {
-  background-position: left -2314px;
+.s_web_folder_paper_team_32 {
+  background-position: left -768px;
   width: 32px;
   height: 32px;
 }
 
 /* line 2582, ../scss/icons.scss */
-.s_web_s_browser_chrome {
-  background-position: left -7647px;
-  background-image: url(../img/web_sprites-normal.png);
-  background-size: auto auto;
+.s_web_page_white_compressed_32 {
+  background-position: left -1958px;
+  width: 32px;
+  height: 32px;
 }
 
 /* line 2587, ../scss/icons.scss */
-.s_web_s_link {
-  background-position: left -9861px;
-  width: 19px;
-  height: 19px;
+.s_web_banner_x {
+  background-position: left -6093px;
+  width: 20px;
+  height: 20px;
 }
 
 /* line 2592, ../scss/icons.scss */
-.s_web_page_white_linkfile {
-  background-position: left -198px;
-  background-image: url(../img/web_sprites-normal.png);
-  background-size: auto auto;
+.s_web_s_sync {
+  background-position: left -10711px;
 }
 
-/* line 2597, ../scss/icons.scss */
-.s_web_folder_32 {
-  background-position: left -376px;
+/* line 2595, ../scss/icons.scss */
+.s_web_page_white_illustrator_stack_32 {
+  background-position: left -2672px;
   width: 32px;
   height: 32px;
 }
 
-/* line 2602, ../scss/icons.scss */
-.s_web_comments {
-  background-position: left -5999px;
-  background-image: url(../img/web_sprites-normal.png);
-  background-size: auto auto;
-}
-
-/* line 2607, ../scss/icons.scss */
-.s_web_back_chevron {
-  background-position: left -5825px;
-  width: 6px;
-  height: 10px;
-}
-
-/* line 2612, ../scss/icons.scss */
-.s_web_dropbox_39x36 {
-  background-position: left -8794px;
-  width: 39px;
-  height: 36px;
-  background-image: url(../img/web_sprites-normal.png);
-  background-size: auto auto;
-}
-
-/* line 2619, ../scss/icons.scss */
-.s_web_page_white_powerpoint_gray_32 {
-  background-position: left -3334px;
-  width: 32px;
-  height: 32px;
-}
-
-/* line 2624, ../scss/icons.scss */
-.s_web_folder_team_gray_32 {
-  background-position: left -1022px;
-  width: 32px;
-  height: 32px;
-}
-
-/* line 2629, ../scss/icons.scss */
-.s_web_blackberry {
-  background-position: left -5877px;
-  background-image: url(../img/web_sprites-normal.png);
-  background-size: auto auto;
-}
-
-/* line 2634, ../scss/icons.scss */
-.s_web_iphone_small {
-  background-position: left -6699px;
-  background-image: url(../img/web_sprites-normal.png);
-  background-size: auto auto;
-}
-
-/* line 2639, ../scss/icons.scss */
-.s_web_packrat {
-  background-position: left -7365px;
-  background-image: url(../img/web_sprites-normal.png);
-  background-size: auto auto;
-}
-
-/* line 2644, ../scss/icons.scss */
-.s_web_api_python {
-  background-position: left -5635px;
-  background-image: url(../img/web_sprites-normal.png);
-  background-size: auto auto;
-}
-
-/* line 2649, ../scss/icons.scss */
-.s_web_onenote {
-  background-position: left -4751px;
-}
-
-/* line 2652, ../scss/icons.scss */
-.s_web_trash-can {
-  background-position: left -10097px;
+/* line 2600, ../scss/icons.scss */
+.s_web_user {
+  background-position: left -10813px;
   width: 19px;
   height: 19px;
 }
 
-/* line 2657, ../scss/icons.scss */
-.s_web_page_white_acrobat_stack_32 {
-  background-position: left -1668px;
+/* line 2605, ../scss/icons.scss */
+.s_web_page_white_paper_32 {
+  background-position: left -3046px;
   width: 32px;
   height: 32px;
 }
 
-/* line 2662, ../scss/icons.scss */
-.s_web_page_white_sound_stack_32 {
-  background-position: left -3674px;
-  width: 32px;
-  height: 32px;
+/* line 2610, ../scss/icons.scss */
+.s_web_xclose {
+  background-position: left -10918px;
+  width: 11px;
+  height: 11px;
 }
 
-/* line 2667, ../scss/icons.scss */
-.s_web_quota_almost_full_32 {
-  background-position: left -7459px;
-  width: 32px;
-  height: 32px;
-  background-image: url(../img/web_sprites-normal.png);
+/* line 2615, ../scss/icons.scss */
+.s_web_user_warn {
+  background-position: left -10897px;
+  width: 19px;
+  height: 19px;
+}
+
+/* line 2620, ../scss/icons.scss */
+.s_web_menu-right-arrow {
+  background-position: left -7838px;
+  width: 7px;
+  height: 10px;
+}
+
+/* line 2625, ../scss/icons.scss */
+.s_web_s-student-promo {
+  background-position: left -8151px;
+  width: 16px;
+  height: 15px;
+}
+
+/* line 2630, ../scss/icons.scss */
+.s_web_magnifier {
+  background-position: left -7820px;
+  background-image: url(../img/web_sprites-normal_n.png);
   background-size: auto auto;
 }
 
-/* line 2674, ../scss/icons.scss */
-.s_web_page_white_gear_stack_32 {
-  background-position: left -2484px;
-  width: 32px;
-  height: 32px;
+/* line 2635, ../scss/icons.scss */
+.s_web_api_ios {
+  background-position: left -5693px;
+  background-image: url(../img/web_sprites-normal_n.png);
+  background-size: auto auto;
 }
 
-/* line 2679, ../scss/icons.scss */
-.s_web_modal {
-  background-position: left -7329px;
+/* line 2640, ../scss/icons.scss */
+.s_web_left {
+  background-position: left -5139px;
+  width: 19px;
+  height: 19px;
 }
 
-/* line 2682, ../scss/icons.scss */
-.s_web_powerpoint {
-  background-position: left -4847px;
+/* line 2645, ../scss/icons.scss */
+.s_web_restore {
+  background-position: left -10139px;
+  width: 17px;
+  height: 17px;
+}
+
+/* line 2650, ../scss/icons.scss */
+.s_web_lightbox_next {
+  background-position: left -9801px;
+}
+
+/* line 2653, ../scss/icons.scss */
+.s_web_fb_20 {
+  background-position: left -9606px;
+  width: 20px;
+  height: 20px;
+}
+
+/* line 2658, ../scss/icons.scss */
+.s_web_money {
+  background-position: left -7868px;
+  background-image: url(../img/web_sprites-normal_n.png);
+  background-size: auto auto;
+}
+
+/* line 2663, ../scss/icons.scss */
+.s_web_s_device_linux {
+  background-position: left -8294px;
+  background-image: url(../img/web_sprites-normal_n.png);
+  background-size: auto auto;
+}
+
+/* line 2668, ../scss/icons.scss */
+.s_web_control_comments_on {
+  background-position: left -5061px;
+  width: 20px;
+  height: 20px;
+}
+
+/* line 2673, ../scss/icons.scss */
+.s_web_arrowright {
+  background-position: left -6049px;
+  width: 12px;
+  height: 12px;
+  background-image: url(../img/web_sprites-normal_n.png);
+  background-size: auto auto;
+}
+
+/* line 2680, ../scss/icons.scss */
+.s_web_s-link-blue {
+  background-position: left -8130px;
+  width: 19px;
+  height: 19px;
 }
 
 /* line 2685, ../scss/icons.scss */
-.s_web_playInactive {
-  background-position: left -5016px;
-  width: 10px;
-  height: 12px;
+.s_web_api_php {
+  background-position: left -5837px;
+  background-image: url(../img/web_sprites-normal_n.png);
+  background-size: auto auto;
 }
 
 /* line 2690, ../scss/icons.scss */
-.s_web_page_white_webcode_32 {
-  background-position: left -3946px;
+.s_web_page_white_keynote_gray_32 {
+  background-position: left -2740px;
   width: 32px;
   height: 32px;
 }
 
 /* line 2695, ../scss/icons.scss */
-.s_web_page_white_code {
-  background-position: left -90px;
-  background-image: url(../img/web_sprites-normal.png);
+.s_web_desktop {
+  background-position: left -6367px;
+  width: 36px;
+  height: 36px;
+  background-image: url(../img/web_sprites-normal_n.png);
   background-size: auto auto;
 }
 
-/* line 2700, ../scss/icons.scss */
-.s_web_page_white_audition_stack_32 {
-  background-position: left -1770px;
-  width: 32px;
-  height: 32px;
-}
-
-/* line 2705, ../scss/icons.scss */
-.s_web_down {
-  background-position: left -4925px;
-  width: 19px;
-  height: 19px;
-}
-
-/* line 2710, ../scss/icons.scss */
-.s_web_right {
-  background-position: left -5051px;
-  width: 19px;
-  height: 19px;
-}
-
-/* line 2715, ../scss/icons.scss */
-.s_web_api_http {
-  background-position: left -5419px;
-  background-image: url(../img/web_sprites-normal.png);
-  background-size: auto auto;
-}
-
-/* line 2720, ../scss/icons.scss */
-.s_web_s_device_mobile_ipad {
-  background-position: left -7827px;
-  background-image: url(../img/web_sprites-normal.png);
-  background-size: auto auto;
-}
-
-/* line 2725, ../scss/icons.scss */
-.s_web_s_browser_firefox {
-  background-position: left -7665px;
-  background-image: url(../img/web_sprites-normal.png);
-  background-size: auto auto;
-}
-
-/* line 2730, ../scss/icons.scss */
-.s_web_page_white_mp3_stack_32 {
-  background-position: left -2858px;
-  width: 32px;
-  height: 32px;
-}
-
-/* line 2735, ../scss/icons.scss */
-.s_web_chevron_long {
-  background-position: left -5950px;
+/* line 2702, ../scss/icons.scss */
+.s_web_arrow-down-white {
+  background-position: left -9174px;
   width: 9px;
-  height: 15px;
-}
-
-/* line 2740, ../scss/icons.scss */
-.s_web_s_device_mobile_iphone {
-  background-position: left -7845px;
-  background-image: url(../img/web_sprites-normal.png);
-  background-size: auto auto;
-}
-
-/* line 2745, ../scss/icons.scss */
-.s_web_email_20 {
-  background-position: left -8853px;
-  width: 20px;
-  height: 20px;
-}
-
-/* line 2750, ../scss/icons.scss */
-.s_web_arrow_refresh {
-  background-position: left -5779px;
-  background-image: url(../img/web_sprites-normal.png);
-  background-size: auto auto;
-}
-
-/* line 2755, ../scss/icons.scss */
-.s_web_lightbox_unselected {
-  background-position: left -6961px;
-  background-image: url(../img/web_sprites-normal.png);
-  background-size: auto auto;
-}
-
-/* line 2760, ../scss/icons.scss */
-.s_web_page_white_picture_stack_32 {
-  background-position: left -3164px;
-  width: 32px;
-  height: 32px;
-}
-
-/* line 2765, ../scss/icons.scss */
-.s_web_api_osx_disabled {
-  background-position: left -5581px;
-  background-image: url(../img/web_sprites-normal.png);
-  background-size: auto auto;
-}
-
-/* line 2770, ../scss/icons.scss */
-.s_web_rounded_tl {
-  background-position: left -7595px;
-  width: 5px;
   height: 5px;
-  background-image: url(../img/web_sprites-normal.png);
-  background-size: auto auto;
 }
 
-/* line 2777, ../scss/icons.scss */
-.s_web_volume {
-  background-position: left -5133px;
-  width: 16px;
-  height: 14px;
-}
-
-/* line 2782, ../scss/icons.scss */
-.s_web_s_mention_add {
-  background-position: left -9903px;
-  width: 16px;
-  height: 13px;
-}
-
-/* line 2787, ../scss/icons.scss */
-.s_web_page_white_flash_stack_32 {
-  background-position: left -2382px;
-  width: 32px;
-  height: 32px;
-}
-
-/* line 2792, ../scss/icons.scss */
-.s_web_rounded_tr {
-  background-position: left -7602px;
-  width: 5px;
-  height: 5px;
-  background-image: url(../img/web_sprites-normal.png);
-  background-size: auto auto;
-}
-
-/* line 2799, ../scss/icons.scss */
-.s_web_page_white_film_32 {
-  background-position: left -2212px;
-  width: 32px;
-  height: 32px;
-}
-
-/* line 2804, ../scss/icons.scss */
-.s_web_info {
-  background-position: left -9083px;
-  width: 19px;
-  height: 19px;
-}
-
-/* line 2809, ../scss/icons.scss */
-.s_web_arrowleft {
-  background-position: left -5797px;
-  width: 12px;
-  height: 12px;
-  background-image: url(../img/web_sprites-normal.png);
-  background-size: auto auto;
-}
-
-/* line 2816, ../scss/icons.scss */
-.s_web_downtick-spacer {
-  background-position: left -6180px;
-  width: 11px;
-  height: 11px;
-  background-image: url(../img/web_sprites-normal.png);
-  background-size: auto auto;
-}
-
-/* line 2823, ../scss/icons.scss */
-.s_web_share_facebook_icon {
-  background-position: left -7952px;
-  background-image: url(../img/web_sprites-normal.png);
-  background-size: auto auto;
-}
-
-/* line 2828, ../scss/icons.scss */
-.s_web_up {
-  background-position: left -5112px;
-  width: 19px;
-  height: 19px;
-}
-
-/* line 2833, ../scss/icons.scss */
-.s_web_lock_light {
-  background-position: left -7267px;
-  width: 10px;
-  height: 12px;
-  background-image: url(../img/web_sprites-normal.png);
-  background-size: auto auto;
-}
-
-/* line 2840, ../scss/icons.scss */
-.s_web_like_icon_selected {
-  background-position: left -7115px;
-  width: 32px;
-  height: 32px;
-  background-image: url(../img/web_sprites-normal.png);
-  background-size: auto auto;
-}
-
-/* line 2847, ../scss/icons.scss */
-.s_web_bulletpoint-check {
-  background-position: left -8549px;
-}
-
-/* line 2850, ../scss/icons.scss */
-.s_web_InternetExplorer {
-  background-position: left -5259px;
-  background-image: url(../img/web_sprites-normal.png);
-  background-size: auto auto;
-}
-
-/* line 2855, ../scss/icons.scss */
-.s_web_cake {
-  background-position: left -5928px;
-  width: 20px;
-  height: 20px;
-  background-image: url(../img/web_sprites-normal.png);
-  background-size: auto auto;
-}
-
-/* line 2862, ../scss/icons.scss */
-.s_web_page_white_picture_gray_32 {
-  background-position: left -3130px;
-  width: 32px;
-  height: 32px;
-}
-
-/* line 2867, ../scss/icons.scss */
-.s_web_icon_chat {
-  background-position: left -6590px;
-  width: 15px;
-  height: 14px;
-  background-image: url(../img/web_sprites-normal.png);
-  background-size: auto auto;
-}
-
-/* line 2874, ../scss/icons.scss */
-.s_web_folder_app_stack_32 {
-  background-position: left -478px;
-  width: 32px;
-  height: 32px;
-}
-
-/* line 2879, ../scss/icons.scss */
-.s_web_folder_user {
-  background-position: left -4344px;
-  width: 19px;
-  height: 19px;
-}
-
-/* line 2884, ../scss/icons.scss */
-.s_web_heart-broken {
-  background-position: left -9043px;
-  width: 19px;
-  height: 19px;
-}
-
-/* line 2889, ../scss/icons.scss */
-.s_web_exclamation-mark {
-  background-position: left -8951px;
-  background-image: url(../img/web_sprites-normal.png);
-  background-size: auto auto;
-}
-
-/* line 2894, ../scss/icons.scss */
-.s_web_email_add {
-  background-position: left -8909px;
-  width: 19px;
-  height: 19px;
-}
-
-/* line 2899, ../scss/icons.scss */
-.s_web_referral_completed_32 {
-  background-position: left -7527px;
-  width: 32px;
-  height: 32px;
-  background-image: url(../img/web_sprites-normal.png);
-  background-size: auto auto;
-}
-
-/* line 2906, ../scss/icons.scss */
-.s_web_page_white_acrobat_gray_32 {
-  background-position: left -1634px;
-  width: 32px;
-  height: 32px;
-}
-
-/* line 2911, ../scss/icons.scss */
-.s_web_link_white {
-  background-position: left -9200px;
-  width: 19px;
-  height: 19px;
-}
-
-/* line 2916, ../scss/icons.scss */
-.s_web_iphone_small_32 {
-  background-position: left -6717px;
-  width: 32px;
-  height: 32px;
-  background-image: url(../img/web_sprites-normal.png);
-  background-size: auto auto;
-}
-
-/* line 2923, ../scss/icons.scss */
-.s_web_folder_dropbox_gray_32 {
-  background-position: left -648px;
-  width: 32px;
-  height: 32px;
-}
-
-/* line 2928, ../scss/icons.scss */
-.s_web_star_upgrade {
-  background-position: left -8021px;
-}
-
-/* line 2931, ../scss/icons.scss */
-.s_web_excel {
-  background-position: left -4733px;
-}
-
-/* line 2934, ../scss/icons.scss */
-.s_web_folder_user_add {
-  background-position: left -4365px;
-  width: 19px;
-  height: 19px;
-}
-
-/* line 2939, ../scss/icons.scss */
-.s_web_page_white_sound_32 {
-  background-position: left -3606px;
-  width: 32px;
-  height: 32px;
-}
-
-/* line 2944, ../scss/icons.scss */
-.s_web_delete_32 {
-  background-position: left -6053px;
-  width: 32px;
-  height: 32px;
-  background-image: url(../img/web_sprites-normal.png);
-  background-size: auto auto;
-}
-
-/* line 2951, ../scss/icons.scss */
-.s_web_api_http_disabled {
-  background-position: left -5437px;
-  background-image: url(../img/web_sprites-normal.png);
-  background-size: auto auto;
-}
-
-/* line 2956, ../scss/icons.scss */
-.s_web_ow_folder {
-  background-position: left -4787px;
-}
-
-/* line 2959, ../scss/icons.scss */
-.s_web_ow_desktop {
-  background-position: left -4769px;
-}
-
-/* line 2962, ../scss/icons.scss */
-.s_web_dropbox {
-  background-position: left -6193px;
-}
-
-/* line 2965, ../scss/icons.scss */
-.s_web_page_white_gear_gray_32 {
-  background-position: left -2450px;
-  width: 32px;
-  height: 32px;
-}
-
-/* line 2970, ../scss/icons.scss */
-.s_web_user_gray {
-  background-position: left -10202px;
-  width: 19px;
-  height: 19px;
-}
-
-/* line 2975, ../scss/icons.scss */
-.s_web_package_stack_32 {
-  background-position: left -1532px;
-  width: 32px;
-  height: 32px;
-}
-
-/* line 2980, ../scss/icons.scss */
-.s_web_page_white_keynote_32 {
-  background-position: left -2654px;
-  width: 32px;
-  height: 32px;
-}
-
-/* line 2985, ../scss/icons.scss */
-.s_web_s_device_windows {
-  background-position: left -7863px;
-  background-image: url(../img/web_sprites-normal.png);
-  background-size: auto auto;
-}
-
-/* line 2990, ../scss/icons.scss */
-.s_web_page_white_film {
-  background-position: left -162px;
-  background-image: url(../img/web_sprites-normal.png);
-  background-size: auto auto;
-}
-
-/* line 2995, ../scss/icons.scss */
-.s_web_s_hide {
-  background-position: left -9800px;
+/* line 2707, ../scss/icons.scss */
+.s_web_add {
+  background-position: left -9099px;
   width: 17px;
   height: 17px;
 }
 
-/* line 3000, ../scss/icons.scss */
-.s_web_shared_folder_joined_32 {
-  background-position: left -4150px;
+/* line 2712, ../scss/icons.scss */
+.s_web_page_white_picture_32 {
+  background-position: left -3148px;
   width: 32px;
   height: 32px;
 }
 
-/* line 3005, ../scss/icons.scss */
-.s_web_s_rainbow {
-  background-position: left -9997px;
+/* line 2717, ../scss/icons.scss */
+.s_web_powerpoint-40 {
+  background-position: left -4891px;
+  width: 40px;
+  height: 40px;
+}
+
+/* line 2722, ../scss/icons.scss */
+.s_web_page_white_32 {
+  background-position: left -1618px;
+  width: 32px;
+  height: 32px;
+}
+
+/* line 2727, ../scss/icons.scss */
+.s_web_rainbow_16_gray {
+  background-position: left -4532px;
   width: 19px;
   height: 19px;
 }
 
-/* line 3010, ../scss/icons.scss */
+/* line 2732, ../scss/icons.scss */
+.s_web_s_star_32 {
+  background-position: left -5427px;
+  width: 32px;
+  height: 32px;
+}
+
+/* line 2737, ../scss/icons.scss */
+.s_web_windows_xp_gray {
+  background-position: left -8980px;
+}
+
+/* line 2740, ../scss/icons.scss */
+.s_web_user_delete {
+  background-position: left -10855px;
+  width: 19px;
+  height: 19px;
+}
+
+/* line 2745, ../scss/icons.scss */
+.s_web_gift {
+  background-position: left -9662px;
+}
+
+/* line 2748, ../scss/icons.scss */
+.s_web_apple_gray {
+  background-position: left -5945px;
+}
+
+/* line 2751, ../scss/icons.scss */
+.s_web_api_js_disabled {
+  background-position: left -5783px;
+  background-image: url(../img/web_sprites-normal_n.png);
+  background-size: auto auto;
+}
+
+/* line 2756, ../scss/icons.scss */
+.s_web_s_greycheck {
+  background-position: left -10431px;
+  width: 20px;
+  height: 20px;
+}
+
+/* line 2761, ../scss/icons.scss */
+.s_web_lightbox_more {
+  background-position: left -9780px;
+  width: 19px;
+  height: 19px;
+}
+
+/* line 2766, ../scss/icons.scss */
+.s_web_windows_gray {
+  background-position: left -8962px;
+}
+
+/* line 2769, ../scss/icons.scss */
+.s_web_work_44 {
+  background-position: left -4655px;
+  width: 44px;
+  height: 44px;
+  background-image: url(../img/web_sprites-normal_n.png);
+  background-size: auto auto;
+}
+
+/* line 2776, ../scss/icons.scss */
+.s_web_page_white_paper_stack_32 {
+  background-position: left -3114px;
+  width: 32px;
+  height: 32px;
+}
+
+/* line 2781, ../scss/icons.scss */
+.s_web_arrow-down-gray {
+  background-position: left -9167px;
+  width: 9px;
+  height: 5px;
+}
+
+/* line 2786, ../scss/icons.scss */
+.s_web_like_icon {
+  background-position: left -7534px;
+  width: 32px;
+  height: 32px;
+  background-image: url(../img/web_sprites-normal_n.png);
+  background-size: auto auto;
+}
+
+/* line 2793, ../scss/icons.scss */
+.s_web_google {
+  background-position: left -6773px;
+  width: 19px;
+  height: 19px;
+  background-image: url(../img/web_sprites-normal_n.png);
+  background-size: auto auto;
+}
+
+/* line 2800, ../scss/icons.scss */
+.s_web_s_device_laptop {
+  background-position: left -8276px;
+  background-image: url(../img/web_sprites-normal_n.png);
+  background-size: auto auto;
+}
+
+/* line 2805, ../scss/icons.scss */
+.s_web_word-40 {
+  background-position: left -4951px;
+  width: 40px;
+  height: 40px;
+}
+
+/* line 2810, ../scss/icons.scss */
+.s_web_zoom {
+  background-position: left -5353px;
+  width: 19px;
+  height: 19px;
+}
+
+/* line 2815, ../scss/icons.scss */
+.s_web_page_white_premiere_32 {
+  background-position: left -3454px;
+  width: 32px;
+  height: 32px;
+}
+
+/* line 2820, ../scss/icons.scss */
+.s_web_page_white_acrobat {
+  background-position: left -90px;
+  background-image: url(../img/web_sprites-normal_n.png);
+  background-size: auto auto;
+}
+
+/* line 2825, ../scss/icons.scss */
+.s_web_glyph {
+  background-position: left -6739px;
+  width: 32px;
+  height: 32px;
+}
+
+/* line 2830, ../scss/icons.scss */
+.s_web_deselect {
+  background-position: left -6348px;
+  width: 17px;
+  height: 17px;
+}
+
+/* line 2835, ../scss/icons.scss */
+.s_web_page_white_flash_32 {
+  background-position: left -2366px;
+  width: 32px;
+  height: 32px;
+}
+
+/* line 2840, ../scss/icons.scss */
+.s_web_s_browser_chrome {
+  background-position: left -8168px;
+  background-image: url(../img/web_sprites-normal_n.png);
+  background-size: auto auto;
+}
+
+/* line 2845, ../scss/icons.scss */
+.s_web_s_link {
+  background-position: left -10514px;
+  width: 19px;
+  height: 19px;
+}
+
+/* line 2850, ../scss/icons.scss */
+.s_web_page_white_linkfile {
+  background-position: left -216px;
+  background-image: url(../img/web_sprites-normal_n.png);
+  background-size: auto auto;
+}
+
+/* line 2855, ../scss/icons.scss */
+.s_web_folder_32 {
+  background-position: left -394px;
+  width: 32px;
+  height: 32px;
+}
+
+/* line 2860, ../scss/icons.scss */
+.s_web_comments {
+  background-position: left -6260px;
+  background-image: url(../img/web_sprites-normal_n.png);
+  background-size: auto auto;
+}
+
+/* line 2865, ../scss/icons.scss */
+.s_web_back_chevron {
+  background-position: left -6063px;
+  width: 6px;
+  height: 10px;
+}
+
+/* line 2870, ../scss/icons.scss */
+.s_web_page_white_powerpoint_gray_32 {
+  background-position: left -3386px;
+  width: 32px;
+  height: 32px;
+}
+
+/* line 2875, ../scss/icons.scss */
+.s_web_folder_team_gray_32 {
+  background-position: left -1040px;
+  width: 32px;
+  height: 32px;
+}
+
+/* line 2880, ../scss/icons.scss */
+.s_web_blackberry {
+  background-position: left -6115px;
+  background-image: url(../img/web_sprites-normal_n.png);
+  background-size: auto auto;
+}
+
+/* line 2885, ../scss/icons.scss */
+.s_web_iphone_small {
+  background-position: left -7220px;
+  background-image: url(../img/web_sprites-normal_n.png);
+  background-size: auto auto;
+}
+
+/* line 2890, ../scss/icons.scss */
+.s_web_packrat {
+  background-position: left -7886px;
+  background-image: url(../img/web_sprites-normal_n.png);
+  background-size: auto auto;
+}
+
+/* line 2895, ../scss/icons.scss */
+.s_web_api_python {
+  background-position: left -5873px;
+  background-image: url(../img/web_sprites-normal_n.png);
+  background-size: auto auto;
+}
+
+/* line 2900, ../scss/icons.scss */
+.s_web_onenote {
+  background-position: left -4837px;
+}
+
+/* line 2903, ../scss/icons.scss */
+.s_web_trash-can {
+  background-position: left -10771px;
+  width: 19px;
+  height: 19px;
+}
+
+/* line 2908, ../scss/icons.scss */
+.s_web_page_white_acrobat_stack_32 {
+  background-position: left -1720px;
+  width: 32px;
+  height: 32px;
+}
+
+/* line 2913, ../scss/icons.scss */
+.s_web_page_white_sound_stack_32 {
+  background-position: left -3726px;
+  width: 32px;
+  height: 32px;
+}
+
+/* line 2918, ../scss/icons.scss */
+.s_web_quota_almost_full_32 {
+  background-position: left -7980px;
+  width: 32px;
+  height: 32px;
+  background-image: url(../img/web_sprites-normal_n.png);
+  background-size: auto auto;
+}
+
+/* line 2925, ../scss/icons.scss */
+.s_web_page_white_gear_stack_32 {
+  background-position: left -2536px;
+  width: 32px;
+  height: 32px;
+}
+
+/* line 2930, ../scss/icons.scss */
+.s_web_modal {
+  background-position: left -7850px;
+}
+
+/* line 2933, ../scss/icons.scss */
+.s_web_powerpoint {
+  background-position: left -4933px;
+}
+
+/* line 2936, ../scss/icons.scss */
+.s_web_playInactive {
+  background-position: left -5188px;
+  width: 10px;
+  height: 12px;
+}
+
+/* line 2941, ../scss/icons.scss */
+.s_web_s_show_comments_grey {
+  background-position: left -8476px;
+  width: 18px;
+  height: 18px;
+}
+
+/* line 2946, ../scss/icons.scss */
+.s_web_page_white_code {
+  background-position: left -108px;
+  background-image: url(../img/web_sprites-normal_n.png);
+  background-size: auto auto;
+}
+
+/* line 2951, ../scss/icons.scss */
+.s_web_page_white_audition_stack_32 {
+  background-position: left -1822px;
+  width: 32px;
+  height: 32px;
+}
+
+/* line 2956, ../scss/icons.scss */
+.s_web_down {
+  background-position: left -5097px;
+  width: 19px;
+  height: 19px;
+}
+
+/* line 2961, ../scss/icons.scss */
+.s_web_right {
+  background-position: left -5223px;
+  width: 19px;
+  height: 19px;
+}
+
+/* line 2966, ../scss/icons.scss */
+.s_web_api_http {
+  background-position: left -5657px;
+  background-image: url(../img/web_sprites-normal_n.png);
+  background-size: auto auto;
+}
+
+/* line 2971, ../scss/icons.scss */
+.s_web_move_16 {
+  background-position: left -9951px;
+  width: 19px;
+  height: 19px;
+}
+
+/* line 2976, ../scss/icons.scss */
+.s_web_s_device_mobile_ipad {
+  background-position: left -8384px;
+  background-image: url(../img/web_sprites-normal_n.png);
+  background-size: auto auto;
+}
+
+/* line 2981, ../scss/icons.scss */
+.s_web_s_browser_firefox {
+  background-position: left -8186px;
+  background-image: url(../img/web_sprites-normal_n.png);
+  background-size: auto auto;
+}
+
+/* line 2986, ../scss/icons.scss */
+.s_web_page_white_mp3_stack_32 {
+  background-position: left -2910px;
+  width: 32px;
+  height: 32px;
+}
+
+/* line 2991, ../scss/icons.scss */
+.s_web_chevron_long {
+  background-position: left -6197px;
+  width: 9px;
+  height: 15px;
+}
+
+/* line 2996, ../scss/icons.scss */
+.s_web_s_device_mobile_iphone {
+  background-position: left -8402px;
+  background-image: url(../img/web_sprites-normal_n.png);
+  background-size: auto auto;
+}
+
+/* line 3001, ../scss/icons.scss */
+.s_web_email_20 {
+  background-position: left -9490px;
+  width: 20px;
+  height: 20px;
+}
+
+/* line 3006, ../scss/icons.scss */
+.s_web_arrow_refresh {
+  background-position: left -6017px;
+  background-image: url(../img/web_sprites-normal_n.png);
+  background-size: auto auto;
+}
+
+/* line 3011, ../scss/icons.scss */
+.s_web_lightbox_unselected {
+  background-position: left -7482px;
+  background-image: url(../img/web_sprites-normal_n.png);
+  background-size: auto auto;
+}
+
+/* line 3016, ../scss/icons.scss */
+.s_web_page_white_picture_stack_32 {
+  background-position: left -3216px;
+  width: 32px;
+  height: 32px;
+}
+
+/* line 3021, ../scss/icons.scss */
+.s_web_api_osx_disabled {
+  background-position: left -5819px;
+  background-image: url(../img/web_sprites-normal_n.png);
+  background-size: auto auto;
+}
+
+/* line 3026, ../scss/icons.scss */
+.s_web_rounded_tl {
+  background-position: left -8116px;
+  width: 5px;
+  height: 5px;
+  background-image: url(../img/web_sprites-normal_n.png);
+  background-size: auto auto;
+}
+
+/* line 3033, ../scss/icons.scss */
+.s_web_volume {
+  background-position: left -5305px;
+  width: 16px;
+  height: 14px;
+}
+
+/* line 3038, ../scss/icons.scss */
+.s_web_s_mention_add {
+  background-position: left -10570px;
+  width: 20px;
+  height: 20px;
+}
+
+/* line 3043, ../scss/icons.scss */
+.s_web_page_white_flash_stack_32 {
+  background-position: left -2434px;
+  width: 32px;
+  height: 32px;
+}
+
+/* line 3048, ../scss/icons.scss */
+.s_web_rounded_tr {
+  background-position: left -8123px;
+  width: 5px;
+  height: 5px;
+  background-image: url(../img/web_sprites-normal_n.png);
+  background-size: auto auto;
+}
+
+/* line 3055, ../scss/icons.scss */
+.s_web_page_white_film_32 {
+  background-position: left -2264px;
+  width: 32px;
+  height: 32px;
+}
+
+/* line 3060, ../scss/icons.scss */
+.s_web_info {
+  background-position: left -9720px;
+  width: 19px;
+  height: 19px;
+}
+
+/* line 3065, ../scss/icons.scss */
+.s_web_arrowleft {
+  background-position: left -6035px;
+  width: 12px;
+  height: 12px;
+  background-image: url(../img/web_sprites-normal_n.png);
+  background-size: auto auto;
+}
+
+/* line 3072, ../scss/icons.scss */
+.s_web_downtick-spacer {
+  background-position: left -6441px;
+  width: 11px;
+  height: 11px;
+  background-image: url(../img/web_sprites-normal_n.png);
+  background-size: auto auto;
+}
+
+/* line 3079, ../scss/icons.scss */
+.s_web_share_facebook_icon {
+  background-position: left -8565px;
+  background-image: url(../img/web_sprites-normal_n.png);
+  background-size: auto auto;
+}
+
+/* line 3084, ../scss/icons.scss */
+.s_web_up {
+  background-position: left -5284px;
+  width: 19px;
+  height: 19px;
+}
+
+/* line 3089, ../scss/icons.scss */
+.s_web_lock_light {
+  background-position: left -7788px;
+  width: 10px;
+  height: 12px;
+  background-image: url(../img/web_sprites-normal_n.png);
+  background-size: auto auto;
+}
+
+/* line 3096, ../scss/icons.scss */
+.s_web_like_icon_selected {
+  background-position: left -7636px;
+  width: 32px;
+  height: 32px;
+  background-image: url(../img/web_sprites-normal_n.png);
+  background-size: auto auto;
+}
+
+/* line 3103, ../scss/icons.scss */
+.s_web_bulletpoint-check {
+  background-position: left -9224px;
+}
+
+/* line 3106, ../scss/icons.scss */
+.s_web_InternetExplorer {
+  background-position: left -5497px;
+  background-image: url(../img/web_sprites-normal_n.png);
+  background-size: auto auto;
+}
+
+/* line 3111, ../scss/icons.scss */
+.s_web_cake {
+  background-position: left -6151px;
+  width: 20px;
+  height: 20px;
+  background-image: url(../img/web_sprites-normal_n.png);
+  background-size: auto auto;
+}
+
+/* line 3118, ../scss/icons.scss */
+.s_web_icon_delete {
+  background-position: left -7061px;
+  width: 22px;
+  height: 20px;
+  background-image: url(../img/web_sprites-normal_n.png);
+  background-size: auto auto;
+}
+
+/* line 3125, ../scss/icons.scss */
+.s_web_icon_chat {
+  background-position: left -7045px;
+  width: 15px;
+  height: 14px;
+  background-image: url(../img/web_sprites-normal_n.png);
+  background-size: auto auto;
+}
+
+/* line 3132, ../scss/icons.scss */
+.s_web_folder_app_stack_32 {
+  background-position: left -496px;
+  width: 32px;
+  height: 32px;
+}
+
+/* line 3137, ../scss/icons.scss */
+.s_web_folder_user {
+  background-position: left -4430px;
+  width: 19px;
+  height: 19px;
+}
+
+/* line 3142, ../scss/icons.scss */
+.s_web_heart-broken {
+  background-position: left -9680px;
+  width: 19px;
+  height: 19px;
+}
+
+/* line 3147, ../scss/icons.scss */
+.s_web_exclamation-mark {
+  background-position: left -9588px;
+  background-image: url(../img/web_sprites-normal_n.png);
+  background-size: auto auto;
+}
+
+/* line 3152, ../scss/icons.scss */
+.s_web_email_add {
+  background-position: left -9546px;
+  width: 19px;
+  height: 19px;
+}
+
+/* line 3157, ../scss/icons.scss */
+.s_web_referral_completed_32 {
+  background-position: left -8048px;
+  width: 32px;
+  height: 32px;
+  background-image: url(../img/web_sprites-normal_n.png);
+  background-size: auto auto;
+}
+
+/* line 3164, ../scss/icons.scss */
+.s_web_page_white_acrobat_gray_32 {
+  background-position: left -1686px;
+  width: 32px;
+  height: 32px;
+}
+
+/* line 3169, ../scss/icons.scss */
+.s_web_link_white {
+  background-position: left -9837px;
+  width: 19px;
+  height: 19px;
+}
+
+/* line 3174, ../scss/icons.scss */
+.s_web_iphone_small_32 {
+  background-position: left -7238px;
+  width: 32px;
+  height: 32px;
+  background-image: url(../img/web_sprites-normal_n.png);
+  background-size: auto auto;
+}
+
+/* line 3181, ../scss/icons.scss */
+.s_web_folder_dropbox_gray_32 {
+  background-position: left -666px;
+  width: 32px;
+  height: 32px;
+}
+
+/* line 3186, ../scss/icons.scss */
+.s_web_star_upgrade {
+  background-position: left -8619px;
+}
+
+/* line 3189, ../scss/icons.scss */
+.s_web_excel {
+  background-position: left -4819px;
+}
+
+/* line 3192, ../scss/icons.scss */
+.s_web_folder_user_add {
+  background-position: left -4451px;
+  width: 19px;
+  height: 19px;
+}
+
+/* line 3197, ../scss/icons.scss */
+.s_web_page_white_sound_32 {
+  background-position: left -3658px;
+  width: 32px;
+  height: 32px;
+}
+
+/* line 3202, ../scss/icons.scss */
+.s_web_control_back {
+  background-position: left -5011px;
+  width: 16px;
+  height: 12px;
+}
+
+/* line 3207, ../scss/icons.scss */
+.s_web_delete_32 {
+  background-position: left -6314px;
+  width: 32px;
+  height: 32px;
+  background-image: url(../img/web_sprites-normal_n.png);
+  background-size: auto auto;
+}
+
+/* line 3214, ../scss/icons.scss */
+.s_web_api_http_disabled {
+  background-position: left -5675px;
+  background-image: url(../img/web_sprites-normal_n.png);
+  background-size: auto auto;
+}
+
+/* line 3219, ../scss/icons.scss */
+.s_web_ow_folder {
+  background-position: left -4873px;
+}
+
+/* line 3222, ../scss/icons.scss */
+.s_web_ow_desktop {
+  background-position: left -4855px;
+}
+
+/* line 3225, ../scss/icons.scss */
+.s_web_xclose_light_gray {
+  background-position: left -9026px;
+  width: 11px;
+  height: 11px;
+}
+
+/* line 3230, ../scss/icons.scss */
+.s_web_dropbox {
+  background-position: left -6454px;
+}
+
+/* line 3233, ../scss/icons.scss */
+.s_web_page_white_gear_gray_32 {
+  background-position: left -2502px;
+  width: 32px;
+  height: 32px;
+}
+
+/* line 3238, ../scss/icons.scss */
+.s_web_user_gray {
+  background-position: left -10876px;
+  width: 19px;
+  height: 19px;
+}
+
+/* line 3243, ../scss/icons.scss */
+.s_web_package_stack_32 {
+  background-position: left -1584px;
+  width: 32px;
+  height: 32px;
+}
+
+/* line 3248, ../scss/icons.scss */
+.s_web_page_white_keynote_32 {
+  background-position: left -2706px;
+  width: 32px;
+  height: 32px;
+}
+
+/* line 3253, ../scss/icons.scss */
+.s_web_s_device_windows {
+  background-position: left -8420px;
+  background-image: url(../img/web_sprites-normal_n.png);
+  background-size: auto auto;
+}
+
+/* line 3258, ../scss/icons.scss */
+.s_web_page_white_film {
+  background-position: left -180px;
+  background-image: url(../img/web_sprites-normal_n.png);
+  background-size: auto auto;
+}
+
+/* line 3263, ../scss/icons.scss */
+.s_web_s_hide {
+  background-position: left -10453px;
+  width: 17px;
+  height: 17px;
+}
+
+/* line 3268, ../scss/icons.scss */
+.s_web_shared_folder_joined_32 {
+  background-position: left -4236px;
+  width: 32px;
+  height: 32px;
+}
+
+/* line 3273, ../scss/icons.scss */
+.s_web_s_rainbow {
+  background-position: left -10671px;
+  width: 19px;
+  height: 19px;
+}
+
+/* line 3278, ../scss/icons.scss */
 .s_web_group_warn {
-  background-position: left -6555px;
+  background-position: left -6850px;
   width: 19px;
   height: 15px;
 }
 
-/* line 3015, ../scss/icons.scss */
+/* line 3283, ../scss/icons.scss */
 .s_web_group_add {
-  background-position: left -6537px;
-  background-image: url(../img/web_sprites-normal.png);
+  background-position: left -6832px;
+  background-image: url(../img/web_sprites-normal_n.png);
   background-size: auto auto;
 }
