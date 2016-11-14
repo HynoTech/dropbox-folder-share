@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fb305141-13a9-487f-acac-a4e1d0422cae" name="Default" comment="" />
+    <list default="true" readonly="true" id="fb305141-13a9-487f-acac-a4e1d0422cae" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.travis.yml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dropbox-folder-share.php" afterPath="$PROJECT_DIR$/dropbox-folder-share.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/readme.txt" afterPath="$PROJECT_DIR$/readme.txt" />
+    </list>
     <ignored path="dropbox-folder-share.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -27,10 +31,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="dropbox-folder-share.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="dropbox-folder-share.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dropbox-folder-share.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4230">
+            <state relative-caret-position="4890">
               <caret line="473" column="0" selection-start-line="473" selection-start-column="0" selection-end-line="473" selection-end-column="0" />
               <folding>
                 <element signature="e#6#538#0#PHP" expanded="true" />
@@ -114,11 +118,34 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="readme.md" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/readme.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="248">
+                <caret line="48" column="41" selection-start-line="48" selection-start-column="41" selection-end-line="48" selection-end-column="41" />
+                <folding />
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".travis.yml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.travis.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="165">
+              <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="readme.txt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/readme.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1755">
-              <caret line="117" column="21" selection-start-line="117" selection-start-column="21" selection-end-line="117" selection-end-column="21" />
+            <state relative-caret-position="724">
+              <caret line="54" column="43" selection-start-line="54" selection-start-column="43" selection-end-line="54" selection-end-column="43" />
               <folding />
             </state>
           </provider>
@@ -149,6 +176,8 @@
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/readme.txt" />
         <option value="$PROJECT_DIR$/dropbox-folder-share.php" />
+        <option value="$PROJECT_DIR$/readme.md" />
+        <option value="$PROJECT_DIR$/.travis.yml" />
       </list>
     </option>
   </component>
@@ -220,7 +249,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -246,24 +275,6 @@
               <option name="myItemId" value="External Libraries" />
               <option name="myItemType" value="com.jetbrains.php.config.PhpExternalLibrariesNodePatcher$PatchedExternalLibrariesNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PHP" />
-              <option name="myItemType" value="com.jetbrains.php.config.PhpExternalLibrariesNodePatcher$PatchedLibraryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="composer" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dropbox-folder-share" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="External Libraries" />
-              <option name="myItemType" value="com.jetbrains.php.config.PhpExternalLibrariesNodePatcher$PatchedExternalLibrariesNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -299,17 +310,27 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="vendor" />
+              <option name="myItemId" value="languages" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dropbox-folder-share" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dropbox-folder-share" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="composer" />
+              <option name="myItemId" value="img" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -378,6 +399,7 @@
   </component>
   <component name="SvnConfiguration" myUseAcceleration="nothing" cleanupOnStartRun="true">
     <configuration useDefault="false">$PROJECT_DIR$/.svn</configuration>
+    <supportedVersion>125</supportedVersion>
   </component>
   <component name="SvnFileUrlMappingImpl">
     <option name="myMappingRoots">
@@ -417,6 +439,7 @@
       <workItem from="1478544749136" duration="647000" />
       <workItem from="1478665485296" duration="108000" />
       <workItem from="1479091633797" duration="3030000" />
+      <workItem from="1479098950318" duration="1831000" />
     </task>
     <task id="LOCAL-00001" summary="Solucion de listado de carpetas 1.7.1">
       <created>1479093868309</created>
@@ -429,33 +452,33 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="82916000" />
+    <option name="totallyTimeSpent" value="84747000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="eSnippet Pro" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25894135" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="DB Browser" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32891566" sideWeight="0.49427754" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="DB Execution Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32891566" sideWeight="0.50572246" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32891566" sideWeight="0.49427754" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32891566" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32891566" sideWeight="0.49427754" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2553648" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32891566" sideWeight="0.49427754" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32891566" sideWeight="0.49427754" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32891566" sideWeight="0.49427754" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32891566" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -513,6 +536,99 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/dropbox-folder-share.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#6#538#0#PHP" expanded="true" />
+            <element signature="e#9742#14759#0#PHP" expanded="false" />
+            <marker date="1479093358000" expanded="true" signature="6332:6350" ph="..." />
+            <marker date="1479093358000" expanded="true" signature="15592:15605" ph="..." />
+            <marker date="1479093358000" expanded="true" signature="15592:15624" ph="..." />
+            <marker date="1479093358000" expanded="true" signature="15625:15751" ph="..." />
+            <marker date="1479093358000" expanded="true" signature="15625:15785" ph="..." />
+            <marker date="1479093358000" expanded="true" signature="15625:15884" ph="..." />
+            <marker date="1479093358000" expanded="true" signature="20277:20344" ph="..." />
+            <marker date="1479093358000" expanded="true" signature="21401:21416" ph="..." />
+            <marker date="1479093358000" expanded="true" signature="24417:25104" ph="..." />
+            <marker date="1479093358000" expanded="true" signature="24417:25129" ph="..." />
+            <marker date="1479093358000" expanded="true" signature="24417:25322" ph="..." />
+            <marker date="1479093358000" expanded="true" signature="24489:24529" ph="..." />
+            <marker date="1479093358000" expanded="true" signature="24530:24992" ph="..." />
+            <marker date="1479093358000" expanded="true" signature="24618:24974" ph="..." />
+            <marker date="1479093358000" expanded="true" signature="24653:24957" ph="..." />
+            <marker date="1479093358000" expanded="true" signature="24703:24712" ph="..." />
+            <marker date="1479093358000" expanded="true" signature="24703:24727" ph="..." />
+            <marker date="1479093358000" expanded="true" signature="24728:24873" ph="..." />
+            <marker date="1479093358000" expanded="true" signature="25064:25104" ph="..." />
+            <marker date="1479093358000" expanded="true" signature="25105:25113" ph="..." />
+            <marker date="1479093358000" expanded="true" signature="25105:25114" ph="..." />
+            <marker date="1479093358000" expanded="true" signature="25105:25129" ph="..." />
+            <marker date="1479093358000" expanded="true" signature="25130:25149" ph="..." />
+            <marker date="1479093358000" expanded="true" signature="25221:25262" ph="..." />
+            <marker date="1479093358000" expanded="true" signature="25221:25271" ph="..." />
+            <marker date="1479093358000" expanded="true" signature="25221:25288" ph="..." />
+            <marker date="1479093358000" expanded="true" signature="25289:25308" ph="..." />
+            <marker date="1479093358000" expanded="true" signature="28259:29006" ph="..." />
+            <marker date="1479093358000" expanded="true" signature="28259:29229" ph="..." />
+            <marker date="1479093358000" expanded="true" signature="28259:29338" ph="..." />
+            <marker date="1479093358000" expanded="true" signature="28332:28339" ph="..." />
+            <marker date="1479093358000" expanded="true" signature="28332:28374" ph="..." />
+            <marker date="1479093358000" expanded="true" signature="28375:28443" ph="..." />
+            <marker date="1479093358000" expanded="true" signature="28375:28863" ph="..." />
+            <marker date="1479093358000" expanded="true" signature="28463:28846" ph="..." />
+            <marker date="1479093358000" expanded="true" signature="28498:28829" ph="..." />
+            <marker date="1479093358000" expanded="true" signature="28548:28556" ph="..." />
+            <marker date="1479093358000" expanded="true" signature="28548:28574" ph="..." />
+            <marker date="1479093358000" expanded="true" signature="28575:28741" ph="..." />
+            <marker date="1479093358000" expanded="true" signature="28935:28977" ph="..." />
+            <marker date="1479093358000" expanded="true" signature="28935:28986" ph="..." />
+            <marker date="1479093358000" expanded="true" signature="28978:28986" ph="..." />
+            <marker date="1479093358000" expanded="true" signature="29156:29198" ph="..." />
+            <marker date="1479093358000" expanded="true" signature="29156:29207" ph="..." />
+            <marker date="1479093358000" expanded="true" signature="29708:29781" ph="..." />
+            <marker date="1479093358000" expanded="true" signature="29708:29802" ph="..." />
+            <marker date="1479093358000" expanded="true" signature="29747:29772" ph="..." />
+            <marker date="1479093358000" expanded="true" signature="29872:30820" ph="..." />
+            <marker date="1479093358000" expanded="true" signature="29909:30820" ph="..." />
+            <marker date="1479093358000" expanded="true" signature="29945:30820" ph="..." />
+            <marker date="1479093358000" expanded="true" signature="29980:30628" ph="..." />
+            <marker date="1479093358000" expanded="true" signature="30023:30615" ph="..." />
+            <marker date="1479093358000" expanded="true" signature="30095:30102" ph="..." />
+            <marker date="1479093358000" expanded="true" signature="30095:30118" ph="..." />
+            <marker date="1479093358000" expanded="true" signature="30095:30135" ph="..." />
+            <marker date="1479093358000" expanded="true" signature="30136:30197" ph="..." />
+            <marker date="1479093358000" expanded="true" signature="30269:30334" ph="..." />
+            <marker date="1479093358000" expanded="true" signature="30310:30334" ph="..." />
+            <marker date="1479093358000" expanded="true" signature="30335:30396" ph="..." />
+            <marker date="1479093358000" expanded="true" signature="30460:30600" ph="..." />
+            <marker date="1479093358000" expanded="true" signature="30468:30508" ph="..." />
+            <marker date="1479093358000" expanded="true" signature="30468:30518" ph="..." />
+            <marker date="1479093358000" expanded="true" signature="30535:30600" ph="..." />
+            <marker date="1479093358000" expanded="true" signature="30698:30798" ph="..." />
+            <marker date="1479093358000" expanded="true" signature="30702:30798" ph="..." />
+            <marker date="1479093358000" expanded="true" signature="30799:30820" ph="..." />
+            <marker date="1479093358000" expanded="true" signature="31612:32185" ph="..." />
+            <marker date="1479093358000" expanded="true" signature="31673:31727" ph="..." />
+            <marker date="1479093358000" expanded="true" signature="31673:31728" ph="..." />
+            <marker date="1479093358000" expanded="true" signature="31673:31799" ph="..." />
+            <marker date="1479093358000" expanded="true" signature="31871:32053" ph="..." />
+            <marker date="1479093358000" expanded="true" signature="31871:32153" ph="..." />
+            <marker date="1479093358000" expanded="true" signature="32427:32459" ph="..." />
+            <marker date="1479093358000" expanded="true" signature="32460:32719" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/readme.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1755">
+          <caret line="117" column="21" selection-start-line="117" selection-start-column="21" selection-end-line="117" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/dropbox-folder-share.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1505,16 +1621,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/readme.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="0">
-            <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/dropbox-folder-share_BACKUP.php" />
     <entry file="file://$PROJECT_DIR$/class/admin.class.php">
       <provider selected="true" editor-type-id="text-editor">
@@ -1574,19 +1680,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/readme.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1755">
-          <caret line="117" column="21" selection-start-line="117" selection-start-column="21" selection-end-line="117" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/vendor/composer/autoload_real.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1608,7 +1705,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/dropbox-folder-share.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4230">
+        <state relative-caret-position="4890">
           <caret line="473" column="0" selection-start-line="473" selection-start-column="0" selection-end-line="473" selection-end-column="0" />
           <folding>
             <element signature="e#6#538#0#PHP" expanded="true" />
@@ -1688,6 +1785,33 @@
             <marker date="1479093358000" expanded="true" signature="32427:32459" ph="..." />
             <marker date="1479093358000" expanded="true" signature="32460:32719" ph="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/readme.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="724">
+          <caret line="54" column="43" selection-start-line="54" selection-start-column="43" selection-end-line="54" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/readme.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="248">
+            <caret line="48" column="41" selection-start-line="48" selection-start-column="41" selection-end-line="48" selection-end-column="41" />
+            <folding />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.travis.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
