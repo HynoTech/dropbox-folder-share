@@ -1,0 +1,15 @@
+{
+  "name": "HynoTech/dropbox-folder-share",
+  "description": "Compartir Carpetas de Dropbox",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "Antony Salas",
+      "email": "antony@hynotech.com"
+    }
+  ],
+  "require": {
+    "nesbot/carbon": "1.21.0"
+  }
+}
