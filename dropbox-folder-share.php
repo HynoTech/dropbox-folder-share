@@ -3,7 +3,7 @@
  * Plugin Name: DropBox Folder Share
  * Plugin URI: http://www.hynotech.com/wp-plugins/dropbox-folder-share/
  * Description: Plugin que permitira incluir carpetas de DropBox en nuestras entradas de blog.
- * Version: 1.7
+ * Version: 1.7.1
  * Author: Antonio Salas (Hyno)
  * Author URI: http://www.hynotech.com/
  * Twitter: _AntonySalas_
@@ -25,9 +25,9 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
     Class DropboxFolderSharePrincipal
     {
 
-        const _VERSION_GENERAL_ = "1.6.2";
-        const _VERSION_JS_ = "1.6.2";
-        const _VERSION_CSS_ = "1.6.2";
+        const _VERSION_GENERAL_ = "1.7.1";
+        const _VERSION_JS_ = "1.7";
+        const _VERSION_CSS_ = "1.7";
         const _VERSION_ADMIN_ = "2.0.2";
         const _VERSION_CSS_DROPBOX_ = "3.0";
 
@@ -459,21 +459,30 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
 
 
 
-                    $dataCarpeta = $objImportante2->modules->clean->init_react->components;
 
+                    $dataCarpeta = $objImportante2->modules->clean->init_react->components;
+/*
                     $patronScript = '|'.$dataScript[0].'(.*?)'.$dataScript[1].'|is';
 
                     preg_match_all($patronScript, $body->item(0)->ownerDocument->saveHTML(), $varTemp);
 
                     $objImportante = json_decode("{". $varTemp[0][0]. "}");
 
+	                echo "<pre>";
+	                echo "{". $varTemp[0][0]. "}";
+	                echo "</pre>";
+
 
                     $dataContents = $objImportante->contents;
 
 
-                    $archivosCarpeta = $dataContents->files;
-                    $carpetasCarpeta = $dataContents->folders;
+                    //$archivosCarpeta = $dataContents->files;
+                    //$carpetasCarpeta = $dataContents->folders;
 
+	                */
+
+                    $archivosCarpeta = $dataCarpeta[0]->props->contents->files;
+                    $carpetasCarpeta = $dataCarpeta[0]->props->contents->folders;
 
                     $datosCarpetaLocal = [
                         "nombre" => $dataCarpeta[0]->props->folderShareToken->displayName,

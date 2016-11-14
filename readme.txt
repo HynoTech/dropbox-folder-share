@@ -57,6 +57,9 @@ Leer **[Mas > Preguntas y Respuestas](http://www.hynotech.com/wp-plugins/dropbox
 
 == Changelog ==
 
+= 1.7.x =
+* Solucion errores de listado de carpetas
+
 = 1.7 =
 * Cambio en Nucleo.
 * Agregado ver imagenes en thickbox
@@ -110,6 +113,9 @@ Leer **[Mas > Preguntas y Respuestas](http://www.hynotech.com/wp-plugins/dropbox
 * Version inicial.
 
 == Upgrade Notice ==
+
+= 1.7.x =
+* Solucion de errores
 
 = 1.7 =
 * [Nueva Opcion] Extenciones en ThickBox (No todas las extensiones funcionan, tener cuidado)
