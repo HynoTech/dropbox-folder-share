@@ -162,16 +162,12 @@
                         <?php _e('Parametros de Shortcode', "dropbox-folder-share"); ?>
                     </h3>
                     <div class="inside">
-                        <p class="popular-tags"><em>[DFS link="LNK_FOLDER" ver_como='iconos']</em></p>
+                        <p class="popular-tags"><em>[DFS link="LNK_FOLDER"]</em></p>
                         <table cellpadding="0" class="links-table">
                             <tbody>
                             <tr>
                                 <th scope="row">link</th>
                                 <td><?php _e('URL de la carpeta compartida de DropBox.', "dropbox-folder-share"); ?></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">ver_como</th>
-                                <td><?php _e('Como se mostrara la carpeta (<b>iconos</b> o <b>lista</b>).', "dropbox-folder-share"); ?></td>
                             </tr>
                             </tbody>
                         </table>

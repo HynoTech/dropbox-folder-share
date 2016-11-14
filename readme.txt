@@ -2,7 +2,7 @@
 Contributors: Hyno, antony_salas
 Tags: Dropbox, Folder,Cloud, Folder Share, post, content, contenido, nube
 Requires at least: 3.0
-Tested up to: 4.5
+Tested up to: 4.6.1
 Stable tag: trunk
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -50,13 +50,24 @@ Leer **[Mas > Preguntas y Respuestas](http://www.hynotech.com/wp-plugins/dropbox
 == Screenshots ==
 
 1. Boton en el editor
-2. Contenido publicado en modo **lista**
-3. Contenido publicado en modo **iconos**
-4. Navegacion entre carpetas
-5. Popup de insercion de contenido en editor
-6. Configuracion general
+2. Contenido publicado
+3. Navegacion entre carpetas
+4. Popup de insercion de contenido en editor
+5. Configuracion general
 
 == Changelog ==
+
+= 1.7.x =
+* Solucion errores de listado de carpetas
+
+= 1.7 =
+* Cambio en Nucleo.
+* Agregado ver imagenes en thickbox
+* Agregado ver algunos archivos (segun lista) en thickbox
+* Agregado configurar altura maxima del contenedor de archivos.
+* Retiradondo opcion Ver como ICONOS (no es usado)
+* Agregado notificacion de carpeta vacia
+* Agregando notificacion de LINK incorrecto
 
 = 1.6.x =
 * Correccion de errores de idioma en barra de titulos
@@ -102,6 +113,16 @@ Leer **[Mas > Preguntas y Respuestas](http://www.hynotech.com/wp-plugins/dropbox
 * Version inicial.
 
 == Upgrade Notice ==
+
+= 1.7.x =
+* Solucion de errores
+
+= 1.7 =
+* [Nueva Opcion] Extenciones en ThickBox (No todas las extensiones funcionan, tener cuidado)
+* [Nueva Opcion] Altura maxima de contenedor (0 para desabilitar)
+* Retiradondo opcion Ver como ICONOS (no es usado)
+* Agregado notificacion de carpeta vacia
+* Agregando notificacion de LINK incorrecto
 
 = 1.6.x =
 * Correccion de errores de idioma en barra de titulos

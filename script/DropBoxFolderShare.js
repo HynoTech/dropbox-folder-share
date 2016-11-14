@@ -15,7 +15,7 @@
                 });
             });
             ed.addButton('DropBoxFolderShare', {
-                title: 'DropBoxFolderShare.descripcion',
+                title: 'Dropbox Folder Share',
                 image: url + '/DropBoxFolderShare.png',
                 cmd: 'mceDropBoxFolderShare'
             });

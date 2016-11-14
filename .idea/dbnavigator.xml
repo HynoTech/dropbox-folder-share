@@ -2,7 +2,7 @@
 <project version="4">
   <component name="DBNavigator.Project.DataEditorManager">
     <record-view-column-sorting-type value="BY_INDEX" />
-    <value-preview-text-wrapping value="false" />
+    <value-preview-text-wrapping value="true" />
     <value-preview-pinned value="false" />
   </component>
   <component name="DBNavigator.Project.DataExportManager">
@@ -16,7 +16,7 @@
       <scope value="GLOBAL" />
       <destination value="FILE" />
       <format value="EXCEL" />
-      <charset value="windows-1252" />
+      <charset value="UTF-8" />
     </export-instructions>
   </component>
   <component name="DBNavigator.Project.DatabaseBrowserManager">
@@ -24,6 +24,9 @@
     <autoscroll-from-editor value="true" />
     <show-object-properties value="true" />
     <loaded-nodes />
+  </component>
+  <component name="DBNavigator.Project.EditorStateManager">
+    <last-used-providers />
   </component>
   <component name="DBNavigator.Project.MethodExecutionManager">
     <method-browser />
@@ -60,20 +63,20 @@
           <object-type name="CHARSET" enabled="true" />
           <object-type name="TABLE" enabled="true" />
           <object-type name="VIEW" enabled="true" />
-          <object-type name="MATERIALIZED VIEW" enabled="true" />
-          <object-type name="NESTED TABLE" enabled="true" />
+          <object-type name="MATERIALIZED_VIEW" enabled="true" />
+          <object-type name="NESTED_TABLE" enabled="true" />
           <object-type name="COLUMN" enabled="true" />
           <object-type name="INDEX" enabled="true" />
           <object-type name="CONSTRAINT" enabled="true" />
-          <object-type name="TRIGGER" enabled="true" />
-          <object-type name="TRIGGER" enabled="true" />
+          <object-type name="DATASET_TRIGGER" enabled="true" />
+          <object-type name="DATABASE_TRIGGER" enabled="true" />
           <object-type name="SYNONYM" enabled="true" />
           <object-type name="SEQUENCE" enabled="true" />
           <object-type name="PROCEDURE" enabled="true" />
           <object-type name="FUNCTION" enabled="true" />
           <object-type name="PACKAGE" enabled="true" />
           <object-type name="TYPE" enabled="true" />
-          <object-type name="TYPE ATTRIBUTE" enabled="true" />
+          <object-type name="TYPE_ATTRIBUTE" enabled="true" />
           <object-type name="ARGUMENT" enabled="true" />
           <object-type name="DIMENSION" enabled="true" />
           <object-type name="CLUSTER" enabled="true" />
@@ -86,6 +89,11 @@
         <object-type name="PROCEDURE" sorting-type="NAME" />
         <object-type name="ARGUMENT" sorting-type="POSITION" />
       </sorting>
+      <default-editors>
+        <object-type name="VIEW" editor-type="SELECTION" />
+        <object-type name="PACKAGE" editor-type="SELECTION" />
+        <object-type name="TYPE" editor-type="SELECTION" />
+      </default-editors>
     </browser-settings>
     <navigation-settings>
       <lookup-filters>
@@ -102,8 +110,8 @@
           <object-type name="COLUMN" enabled="false" />
           <object-type name="INDEX" enabled="true" />
           <object-type name="CONSTRAINT" enabled="true" />
-          <object-type name="TRIGGER" enabled="true" />
-          <object-type name="TRIGGER" enabled="true" />
+          <object-type name="DATASET TRIGGER" enabled="true" />
+          <object-type name="DATABASE TRIGGER" enabled="true" />
           <object-type name="SYNONYM" enabled="false" />
           <object-type name="SEQUENCE" enabled="true" />
           <object-type name="PROCEDURE" enabled="true" />
@@ -154,7 +162,6 @@
         <convert-empty-strings-to-null value="true" />
         <select-content-on-cell-edit value="true" />
         <large-value-preview-active value="true" />
-        <load-view-data-active value="false" />
       </general>
       <filters>
         <prompt-filter-dialog value="true" />
@@ -172,8 +179,6 @@
           <content-type name="PL/SQL" enabled="true" />
           <content-type name="JavaScript" enabled="true" />
           <content-type name="PHP" enabled="true" />
-          <content-type name="JSP" enabled="true" />
-          <content-type name="JSPx" enabled="true" />
           <content-type name="ASP" enabled="true" />
           <content-type name="YAML" enabled="true" />
         </content-types>
@@ -196,8 +201,8 @@
       <filters>
         <basic-filter>
           <filter-element type="RESERVED_WORD" id="keyword" selected="true" />
-          <filter-element type="RESERVED_WORD" id="function" selected="false" />
-          <filter-element type="RESERVED_WORD" id="parameter" selected="false" />
+          <filter-element type="RESERVED_WORD" id="function" selected="true" />
+          <filter-element type="RESERVED_WORD" id="parameter" selected="true" />
           <filter-element type="RESERVED_WORD" id="datatype" selected="true" />
           <filter-element type="RESERVED_WORD" id="exception" selected="true" />
           <filter-element type="OBJECT" id="schema" selected="true" />
@@ -353,6 +358,7 @@
         <fetch-block-size value="100" />
         <execution-timeout value="20" />
         <debug-execution-timeout value="600" />
+        <focus-result value="false" />
         <prompt-execution value="false" />
       </statement-execution>
       <script-execution>
@@ -422,10 +428,10 @@
       </regional-settings>
       <environment>
         <environment-types>
-          <environment-type id="development" name="Development" description="Development environment" color="-2430209/-12296320" />
-          <environment-type id="integration" name="Integration" description="Integration environment" color="-2621494/-12163514" />
-          <environment-type id="production" name="Production" description="Productive environment" color="-11574/-10271420" />
-          <environment-type id="other" name="Other" description="" color="-1576/-10724543" />
+          <environment-type id="development" name="Development" description="Development environment" color="-2430209/-12296320" readonly-code="false" readonly-data="false" />
+          <environment-type id="integration" name="Integration" description="Integration environment" color="-2621494/-12163514" readonly-code="true" readonly-data="false" />
+          <environment-type id="production" name="Production" description="Productive environment" color="-11574/-10271420" readonly-code="true" readonly-data="true" />
+          <environment-type id="other" name="Other" description="" color="-1576/-10724543" readonly-code="false" readonly-data="false" />
         </environment-types>
         <visibility-settings>
           <connection-tabs value="true" />

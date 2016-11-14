@@ -1,5 +1,5 @@
 
-function loadContenDFS(link, ver_como, idContent){
+function loadContenDFS(link, idContent){
 
 
     jQuery.ajax({
@@ -7,7 +7,6 @@ function loadContenDFS(link, ver_como, idContent){
             action: 'getFolderContent',
             dfs_nonce: objDFS.dfs_nonce,
             link: link,
-            ver_como: ver_como,
             idContent: idContent,
             titleBar: jQuery('#Hyno_Header_'+idContent).html()
             //titleBar: ''

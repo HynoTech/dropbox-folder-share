@@ -27,6 +27,25 @@ $url_1: url(../img/ico-external-link.png);
 $url_2: url(../img/web_sprites-normal.png);
 $url_3: url(../img/icon_dropbox.png);
 
+
+
+//colors
+$color_waterloo__approx: #7b8994;
+$white: white;
+$color_botticelli_approx: #ccdbeb;
+$color_tapa_approx: #777;
+$color_fuscous_gray_approx: #555;
+$color_mystic_approx: #e2edf5;
+$color_black_haze_approx: #f6f6f6;
+$color_seagull_approx: #79bcea;
+$color_zircon_approx: #f3fafe;
+$color_celeste_approx: #ccc;
+$color_link_water_approx: #d9e7f0;
+$color_tiara_approx: #c4d0d9;
+
+//urls
+$url_0: url(/static/images/icons/video_overlay-vfld7VbHa.png);
+
 //@extend-elements
 //original selectors
 //.nav-header .buttons a.freshbutton-lightblue, .nav-header .buttons a.freshbutton-blue
@@ -56,6 +75,8 @@ $url_3: url(../img/icon_dropbox.png);
 }
 
 @import url(../css/icons.css);
+
+/*
 .externalIcon {
   width: 16px;
   height: 16px;
@@ -226,7 +247,7 @@ $url_3: url(../img/icon_dropbox.png);
     width: 135pt !important;
   }
 }
-
+*/
 .DropboxIcon {
   height: 20px;
   background-image: $url_2;
@@ -245,25 +266,16 @@ $url_3: url(../img/icon_dropbox.png);
   color: $color_azure_radiance_approx;
   width: 98%;
   margin: auto;
-  #list-view-header {
-    color: $color_tapa_approx;
-    margin: 4px 0 10px;
-  }
-  a {
-    color: $color_azure_radiance_approx !important;
-    text-decoration: none !important;
-    &:hover {
-      color: $color_azure_radiance_approx;
-      text-decoration: underline !important;
+
+  div[id^="Hyno_Header_"]{
+    .s_web_dropbox21x20, a, span{
+      float: left;
+    }
+    .lnkZIp{
+      float: right;
     }
   }
-  img {
-    display: inline !important;
-  }
-  .gallery-view-section {
-    height: 280px;
-    overflow: auto;
-  }
+
   #icon_folder {
     background-image: $url_3;
     background-repeat: no-repeat;
@@ -290,111 +302,625 @@ $url_3: url(../img/icon_dropbox.png);
     text-decoration: none;
     font-weight: 600;
   }
-  ol li {
-    /*font-size: small;*/
-  }
 
-  #list-view-container {
+
+
+
+
+
+
+
+  .sl-page-body {
+    /*width: 952px;*/
+    width: 100%;
+    margin: 49px auto 40px;
+    padding: 32px 10px;
+    font-size: 80%;
+  }
+  .sl-title {
+    font-size: 18px;
+    font-weight: normal;
+    display: inline;
+  }
+  .sl-list-container {
     margin: 13px 0;
-    padding-right: 16px;
-    #list-view-header {
-      color: $color_tapa_approx;
-      margin: 4px 0 10px;
-    }
-    .browse-file:first-child {
-      padding-top: 7px;
-    }
-    .browse-files .browse-file {
-      border-width: 1px 0 0 0;
-    }
-  }
-
-  .gallery-view-section {
+    padding: 16px;
     background-color: $white;
     border: 1px solid $color_botticelli_approx;
     //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
     border-radius: 2px;
-    padding-top: 16px;
-    padding-left: 16px;
   }
-
-  .clearfix::after {
-    content: ".";
+  .sl-list-header {
+    margin: 4px 0 10px;
+    .sl-list-column {
+      color: $color_tapa_approx;
+    }
+  }
+  .sl-list-column {
+    float: left;
     display: block;
-    clear: both;
-    visibility: hidden;
-    line-height: 0;
-    height: 0;
-  }
-
-  .list-view-cols {
-    .filename-col {
-      width: 70%;
-      font-size: smaller;
-    }
-    div {
-      display: block;
-      float: left;
-    }
-    .filesize-col {
-      width: 15%;
-      font-size: smaller;
-    }
-    .modified-col {
-      width: 15%;
-      float: left;
-      font-size: smaller;
-    }
-  }
-
-  ol {
-    display: block;
-    list-style-type: decimal;
-    &.browse-files {
-      padding: 0 0 9px;
-    }
-  }
-
-  .gallery-list-view {
-    margin: 0;
-    .browse-file {
-      padding: 7px 0;
-      margin: 0;
-      color: $color_fuscous_gray_approx;
-      border-width: 1px 0 0 0;
-      text-align: left;
-      line-height: 32px;
-      div {
-        display: block;
-        cursor: default;
-      }
-      img.icon {
-        float: left;
+    &.sl-list-column--filename {
+      /*width: 558px;*/
+      width: 58.6%;
+      .icon {
+        margin-right: 8px;
         width: 32px;
         height: 32px;
-        margin-right: 8px;
-        display: block;
-        overflow: hidden;
-        background-color: transparent;
-        vertical-align: bottom;
-        border: 1px solid transparent;
-        cursor: pointer;
+      }
+    }
+    &.sl-list-column--filesize {
+      /*width: 186px;*/
+      width: 19.5%;
+    }
+    &.sl-list-column--modified {
+      float: left;
+    }
+  }
+  .sl-list-body {
+    .sl-list-column {
+      color: $color_fuscous_gray_approx;
+    }
+    .sl-list-row {
+      line-height: 32px;
+      padding: 7px 0;
+      &:last-of-type {
+        padding-bottom: 0;
       }
     }
   }
-
-  li {
-    display: list-item;
-    &.browse-file {
-      @extend %extend_3;
+  .sl-list-row {
+    border-width: 1px 0 0 0;
+    text-align: left;
+    margin: 0;
+  }
+  .sl-folder-gallery-container {
+    .icon {
+      margin-right: 8px;
     }
-    &.browse-new-folder {
-      @extend %extend_3;
+    .sl-gallery-body {
+      margin: -8px;
+    }
+    .sl-gallery-cell {
+      width: 290px;
+      line-height: 32px;
+      margin: 8px;
+      white-space: nowrap;
+      overflow: hidden;
     }
   }
+  .sl-gallery-container {
+    margin: 13px 0;
+    padding: 16px;
+    background-color: $white;
+    border: 1px solid $color_botticelli_approx;
+    //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+    border-radius: 2px;
+  }
+  .sl-gallery-body {
+    margin: 0;
+    padding: 0;
+  }
+  .sl-file-gallery-container {
+    .sl-gallery-body {
+      margin: -2px;
+    }
+    .sl-gallery-cell {
+      position: relative;
+      width: 178px;
+      height: 178px;
+      border: 1px solid $color_mystic_approx;
+      background-color: $color_black_haze_approx;
+      margin: 2px;
+      > .sl-file-link {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+      }
+    }
+  }
+  .sl-gallery-cell {
+    display: block;
+    float: left;
+  }
+  .sl-view-toggle-container {
+    float: right;
+  }
+  .sl-view-toggle-option {
+    display: inline-block;
+    zoom: 1;
+    padding: 7px 9px;
+    border: 1px solid $color_seagull_approx;
+    background-color: $color_zircon_approx;
+    //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+    box-shadow: 0 1px 1px $color_celeste_approx,-1px 1px 1px $white;
+    text-decoration: none;
+    width: 14px;
+    height: 14px;
+    &:first-of-type {
+      //Instead of the line below you could use @include border-top-left-radius($radius)
+      border-top-left-radius: 2px;
+      //Instead of the line below you could use @include border-bottom-left-radius($radius)
+      border-bottom-left-radius: 2px;
+    }
+    &:last-of-type {
+      //Instead of the line below you could use @include border-top-right-radius($radius)
+      border-top-right-radius: 2px;
+      //Instead of the line below you could use @include border-bottom-right-radius($radius)
+      border-bottom-right-radius: 2px;
+    }
+    &.selected {
+      background-color: $color_link_water_approx;
+      //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+      box-shadow: inset 1px 1px 3px $color_tiara_approx;
+    }
+  }
+  .sl-file-gallery-thumbnail {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    //Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+    transform: translate(-50%, -50%);
+  }
+  .sl-empty-folder-icon {
+    margin: 80px auto 20px;
+  }
+  .sl-empty-folder-message {
+    color: $color_tapa_approx;
+    font-size: 24px;
+    font-weight: normal;
+  }
+  .sl-takedown-warning {
+    margin-bottom: 1.6em;
+    text-align: center;
+    .notify {
+      display: block;
+    }
+  }
+  .top-notification-bar-container + .preview-box {
+    .sl-page-header {
+      top: 52px;
+    }
+    .sl-page-body {
+      margin-top: 101px;
+    }
+  }
+  .sl-body.sl-body--empty-folder {
+    text-align: center;
+  }
+  .sl-file-gallery-thumbnail-container.sl-file-gallery-thumbnail-container--video:after {
+    content: $url_0;
+    position: absolute;
+    bottom: 5px;
+    left: 5px;
+  }
+
+
+
+
+
+
+
+
+  .o-list-ui {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+
+  $color_shark_10_approx: rgba(37,40,43,0.1);
+  .o-list-ui--dividers > li + li {
+    border-top: 1px solid;
+    border-color: $color_shark_10_approx;
+  }
+  .o-list-ui--inline > li {
+    display: inline-block;
+  }
+
+  .clearfix:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  .o-media {
+    display: block;
+    &:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+  }
+  .o-media__img {
+    margin-right: 12px;
+    float: left;
+    > img {
+      display: block;
+    }
+  }
+  .o-media__body {
+    display: block;
+    overflow: hidden;
+    margin-bottom: 0;
+    > :last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .o-flag {
+    display: table;
+    width: 100%;
+  }
+  .o-flag__fix {
+    display: table-cell;
+    vertical-align: middle;
+    white-space: nowrap;
+  }
+  .o-flag__flex {
+    display: table-cell;
+    vertical-align: middle;
+    width: 100%;
+  }
+  .o-flag--top {
+    .o-flag__fix {
+      vertical-align: top;
+    }
+    .o-flag__flex {
+      vertical-align: top;
+    }
+  }
+  .o-flag--bottom {
+    .o-flag__fix {
+      vertical-align: bottom;
+    }
+    .o-flag__flex {
+      vertical-align: bottom;
+    }
+  }
+  @supports(display: flex) {
+    .o-flag {
+      display: flex;
+      align-items: center;
+    }
+    .o-flag--top {
+      align-items: flex-start;
+    }
+    .o-flag--bottom {
+      align-items: flex-end;
+    }
+    .o-flag__fix {
+      display: inherit;
+      align-items: inherit;
+      flex: 0 0 auto;
+    }
+    .o-flag__flex {
+      display: initial;
+      min-width: 0;
+      width: auto;
+      flex: 1 1 auto;
+    }
+  }
+
+
+
+
+
 }
 
 div {
   display: block;
 }
+
+
+
+
+
+
+
+
+.sl-page-body {
+  /*width: 952px;*/
+  width: 100%;
+  margin: 49px auto 40px;
+  padding: 32px 10px;
+  font-size: 80%;
+}
+.sl-title {
+  font-size: 18px;
+  font-weight: normal;
+  display: inline;
+}
+.sl-list-container {
+  margin: 13px 0;
+  padding: 16px;
+  background-color: $white;
+  border: 1px solid $color_botticelli_approx;
+  //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+  border-radius: 2px;
+}
+.sl-list-header {
+  margin: 4px 0 10px;
+  .sl-list-column {
+    color: $color_tapa_approx;
+  }
+}
+.sl-list-column {
+  float: left;
+  display: block;
+  &.sl-list-column--filename {
+    /*width: 558px;*/
+    width: 58.6%;
+    .icon {
+      margin-right: 8px;
+      width: 32px;
+      height: 32px;
+    }
+  }
+  &.sl-list-column--filesize {
+    /*width: 186px;*/
+    width: 19.5%;
+  }
+  &.sl-list-column--modified {
+    float: left;
+  }
+}
+.sl-list-body {
+  .sl-list-column {
+    color: $color_fuscous_gray_approx;
+  }
+  .sl-list-row {
+    line-height: 32px;
+    padding: 7px 0;
+    &:last-of-type {
+      padding-bottom: 0;
+    }
+  }
+}
+.sl-list-row {
+  border-width: 1px 0 0 0;
+  text-align: left;
+  margin: 0;
+}
+.sl-folder-gallery-container {
+  .icon {
+    margin-right: 8px;
+  }
+  .sl-gallery-body {
+    margin: -8px;
+  }
+  .sl-gallery-cell {
+    width: 290px;
+    line-height: 32px;
+    margin: 8px;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+}
+.sl-gallery-container {
+  margin: 13px 0;
+  padding: 16px;
+  background-color: $white;
+  border: 1px solid $color_botticelli_approx;
+  //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+  border-radius: 2px;
+}
+.sl-gallery-body {
+  margin: 0;
+  padding: 0;
+}
+.sl-file-gallery-container {
+  .sl-gallery-body {
+    margin: -2px;
+  }
+  .sl-gallery-cell {
+    position: relative;
+    width: 178px;
+    height: 178px;
+    border: 1px solid $color_mystic_approx;
+    background-color: $color_black_haze_approx;
+    margin: 2px;
+    > .sl-file-link {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+    }
+  }
+}
+.sl-gallery-cell {
+  display: block;
+  float: left;
+}
+.sl-view-toggle-container {
+  float: right;
+}
+.sl-view-toggle-option {
+  display: inline-block;
+  zoom: 1;
+  padding: 7px 9px;
+  border: 1px solid $color_seagull_approx;
+  background-color: $color_zircon_approx;
+  //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+  box-shadow: 0 1px 1px $color_celeste_approx,-1px 1px 1px $white;
+  text-decoration: none;
+  width: 14px;
+  height: 14px;
+  &:first-of-type {
+    //Instead of the line below you could use @include border-top-left-radius($radius)
+    border-top-left-radius: 2px;
+    //Instead of the line below you could use @include border-bottom-left-radius($radius)
+    border-bottom-left-radius: 2px;
+  }
+  &:last-of-type {
+    //Instead of the line below you could use @include border-top-right-radius($radius)
+    border-top-right-radius: 2px;
+    //Instead of the line below you could use @include border-bottom-right-radius($radius)
+    border-bottom-right-radius: 2px;
+  }
+  &.selected {
+    background-color: $color_link_water_approx;
+    //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+    box-shadow: inset 1px 1px 3px $color_tiara_approx;
+  }
+}
+.sl-file-gallery-thumbnail {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  //Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+  transform: translate(-50%, -50%);
+}
+.sl-empty-folder-icon {
+  margin: 80px auto 20px;
+}
+.sl-empty-folder-message {
+  color: $color_tapa_approx;
+  font-size: 24px;
+  font-weight: normal;
+}
+.sl-takedown-warning {
+  margin-bottom: 1.6em;
+  text-align: center;
+  .notify {
+    display: block;
+  }
+}
+.top-notification-bar-container + .preview-box {
+  .sl-page-header {
+    top: 52px;
+  }
+  .sl-page-body {
+    margin-top: 101px;
+  }
+}
+.sl-body.sl-body--empty-folder {
+  text-align: center;
+}
+.sl-file-gallery-thumbnail-container.sl-file-gallery-thumbnail-container--video:after {
+  content: $url_0;
+  position: absolute;
+  bottom: 5px;
+  left: 5px;
+}
+
+
+
+
+
+
+
+
+.o-list-ui {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+
+$color_shark_10_approx: rgba(37,40,43,0.1);
+.o-list-ui--dividers > li + li {
+  border-top: 1px solid;
+  border-color: $color_shark_10_approx;
+}
+.o-list-ui--inline > li {
+  display: inline-block;
+}
+
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.o-media {
+  display: block;
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+.o-media__img {
+  margin-right: 12px;
+  float: left;
+  > img {
+    display: block;
+  }
+}
+.o-media__body {
+  display: block;
+  overflow: hidden;
+  margin-bottom: 0;
+  > :last-child {
+    margin-bottom: 0;
+  }
+}
+
+.o-flag {
+  display: table;
+  width: 100%;
+}
+.o-flag__fix {
+  display: table-cell;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+.o-flag__flex {
+  display: table-cell;
+  vertical-align: middle;
+  width: 100%;
+}
+.o-flag--top {
+  .o-flag__fix {
+    vertical-align: top;
+  }
+  .o-flag__flex {
+    vertical-align: top;
+  }
+}
+.o-flag--bottom {
+  .o-flag__fix {
+    vertical-align: bottom;
+  }
+  .o-flag__flex {
+    vertical-align: bottom;
+  }
+}
+@supports(display: flex) {
+  .o-flag {
+    display: flex;
+    align-items: center;
+  }
+  .o-flag--top {
+    align-items: flex-start;
+  }
+  .o-flag--bottom {
+    align-items: flex-end;
+  }
+  .o-flag__fix {
+    display: inherit;
+    align-items: inherit;
+    flex: 0 0 auto;
+  }
+  .o-flag__flex {
+    display: initial;
+    min-width: 0;
+    width: auto;
+    flex: 1 1 auto;
+  }
+}
+
+/* @import "_parcial"; */
+
+
+
+
+
+
+
+
+
 
