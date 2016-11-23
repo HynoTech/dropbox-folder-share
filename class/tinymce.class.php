@@ -12,8 +12,7 @@ class DFS_TinyMCE extends DropboxFolderSharePrincipal {
     }
 
     function dropboxfoldershare_register_button($plugin_array) {
-        $urlScriptMCE = $url_biblepost =  parent::$url . 'script/DropBoxFolderShare.js';
-        $plugin_array['DropBoxFolderShare'] = $url_biblepost;
+	    $plugin_array['DropBoxFolderShare'] = parent::$url . 'script/DropBoxFolderShare.js';
         return $plugin_array;
     }
 
@@ -25,6 +24,28 @@ class DFS_TinyMCE extends DropboxFolderSharePrincipal {
 
         return $mce_css;
     }
+	function dropboxfoldershare_add_tinymce_translations( $locales ) {
+
+		// Make sure the _WP_Editors exists, if not, load it
+		if ( ! class_exists( '_WP_Editors' ) ) {
+			require( ABSPATH . WPINC . '/class-wp-editor.php' );
+		}
+
+		$strings = array(
+			'titulo' => __( 'DropBox Folder Share WP', 'dropbox-folder-share' ),
+			'descripcion' => __( 'Carpeta Dropbox', 'dropbox-folder-share' ),
+			'txt_url' => __( 'URL de carpeta', 'dropbox-folder-share' ),
+			'txt_necesario' => __( 'Campos Obligatorios', 'dropbox-folder-share' ),
+		);
+
+		$locale = _WP_Editors::$mce_locale;
+		$translated = 'tinyMCE.addI18n("' . $locale . '.DropBoxFolderShare", ' . json_encode( $strings ) . ");\n";
+
+		//return $translated;
+
+		$locales['DropBoxFolderShare'] = $translated;
+		return $locales;
+	}
 
     function dropbox_foldershare_styles_and_scripts($posts) {
         if (empty($posts))
