@@ -3,7 +3,7 @@
  * Plugin Name: DropBox Folder Share
  * Plugin URI: http://www.hynotech.com/wp-plugins/dropbox-folder-share/
  * Description: Plugin que permitira incluir carpetas de DropBox en nuestras entradas de blog.
- * Version: 1.7.1
+ * Version: 1.7.2
  * Author: Antonio Salas (Hyno)
  * Author URI: http://www.hynotech.com/
  * Twitter: _AntonySalas_
@@ -25,7 +25,7 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
     Class DropboxFolderSharePrincipal
     {
 
-        const _VERSION_GENERAL_ = "1.7.1";
+        const _VERSION_GENERAL_ = "1.7.2";
         const _VERSION_JS_ = "1.7";
         const _VERSION_CSS_ = "1.7";
         const _VERSION_ADMIN_ = "2.0.2";
@@ -275,13 +275,13 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
 
 
 
-                    $varExt = [
-                        'acrobat' => [
+                    $varExt = array(
+                        'acrobat' => array(
                             "pdf",
                             "eps",
-                        ],
-                        'audition' => ["ai"],
-                        'code' => [
+                        ),
+                        'audition' => array("ai"),
+                        'code' => array(
                             "c",
                             "cpp",
                             "cs",
@@ -296,27 +296,27 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
                             "py",
                             "rb",
                             "xml",
-                        ],
-                        'compressed' => [
+                        ),
+                        'compressed' => array(
                             "bz2",
                             "gz",
                             "rar",
                             "zip",
                             "tar",
-                        ],
-                        'dvd' => [
+                        ),
+                        'dvd' => array(
                             "dmg",
                             "iso",
-                        ],
-                        'excel' => [
+                        ),
+                        'excel' => array(
                             "csv",
                             "ods",
                             "xls",
                             "xlsb",
                             "xlsm",
                             "xlsx",
-                        ],
-                        'film' => [
+                        ),
+                        'film' => array(
                             "3gp",
                             "3gpp",
                             "asf",
@@ -330,35 +330,35 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
                             "ogv",
                             "vob",
                             "wmv",
-                        ],
-                        'flash' => [
+                        ),
+                        'flash' => array(
                             "fla",
                             "swf",
-                        ],
-                        'gear' => [
+                        ),
+                        'gear' => array(
                             "exe",
                             "app",
                             "dll",
-                        ],
-                        'gray' => [],
-                        'illustrator' => [
+                        ),
+                        'gray' => array(),
+                        'illustrator' => array(
                             "ai",
-                        ],
-                        'keynote' => [
+                        ),
+                        'keynote' => array(
                             "key",
-                        ],
-                        'linkfile' => [
+                        ),
+                        'linkfile' => array(
                             "webloc",
                             "url",
-                        ],
-                        'mp3' => [
+                        ),
+                        'mp3' => array(
 
-                        ],
-                        'paint' => [
+                        ),
+                        'paint' => array(
                             "psd"
-                        ],
-                        'paper' => [],
-                        'picture' => [
+                        ),
+                        'paper' => array(),
+                        'picture' => array(
                             "dcr",
                             "r3d",
                             "bmp",
@@ -373,19 +373,19 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
                             "ptx",
                             "rwz",
                             "kdc",
-                        ],
-                        'playlist' => [],
-                        'powerpoint' => [
+                        ),
+                        'playlist' => array(),
+                        'powerpoint' => array(
                             "pps",
                             "ppsm",
                             "ppsx",
                             "ppt",
                             "pptm",
                             "pptx",
-                        ],
-                        'premiere' => [],
-                        'sketch' => [],
-                        'sound' => [
+                        ),
+                        'premiere' => array(),
+                        'sketch' => array(),
+                        'sound' => array(
                             "3ga",
                             "aac",
                             "aif",
@@ -403,101 +403,105 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
                             "ra",
                             "wav",
                             "wma",
-                        ],
-                        'stack' => [],
-                        'text' => [
+                        ),
+                        'stack' => array(),
+                        'text' => array(
                             "txt",
                             "wps",
-                        ],
-                        'vector' => [
+                        ),
+                        'vector' => array(
                             "ai",
-                        ],
-                        'webcode' => [],
-                        'word' => [
+                        ),
+                        'webcode' => array(),
+                        'word' => array(
                             "doc",
                             "docm",
                             "rtf",
                             "odt",
                             "pages",
                             "wpd",
-                        ]
-                    ];
+                        )
+                    );
 
 
-                    $dataScript[0] = '"contents"';
-                    $dataScript[1] = '}]}';
+	                $dataModule[0] = '"props": {';
+	                $dataModule[1] = '}, "elem_id":';
+
+	                $patronModule = '|'.$dataModule[0].'(.*?)'.$dataModule[1].'|is';
+	                preg_match_all($patronModule, $body->item(0)->ownerDocument->saveHTML(), $varTemp2);
 
 
-                    $dataModule[0] = 'window.MODULE_CONFIG = {';
-                    $dataModule[1] = '}}}};';
 
-                    $patronModule = '|'.$dataModule[0].'(.*?)'.$dataModule[1].'|is';
-                    preg_match_all($patronModule, $body->item(0)->ownerDocument->saveHTML(), $varTemp2);
-
-
+	                /*
                     $soloDataModule = str_replace('window.MODULE_CONFIG = ', '', $varTemp2[0][0]);
-
                     $soloDataModule = str_replace('}}}};', '}}}}', $soloDataModule);
+	                */
+
+	                $soloDataModule = str_replace('"props": {', '{', $varTemp2[0][0]);
+	                $soloDataModule = str_replace('}, "elem_id":', '}', $soloDataModule);
 
 
-                    $objImportante2 = json_decode( $soloDataModule );
 
+	                $objImportante2 = json_decode( $soloDataModule );
 
-
-
-                    if(isset($objImportante2->modules->dirty)){
-                        $retorno = '
+	                if ($objImportante2 == NULL){
+		                $retorno = '
                         <div class="err sl-list-container" style="width: 100%; text-align: center;">
                             <img src="'. self::$url .'/img/error_404.png" alt="" width="30%">
                             <h4 class="sl-empty-folder-message">'. __("No encontramos lo que buscas.", "dropbox-folder-share").'</h4>
                         </div>
                         ';
 
-                        return $retorno;
-
-                    }
-
+		                return $retorno;
+	                }
 
 
 
-                    $dataCarpeta = $objImportante2->modules->clean->init_react->components;
-/*
-                    $patronScript = '|'.$dataScript[0].'(.*?)'.$dataScript[1].'|is';
 
-                    preg_match_all($patronScript, $body->item(0)->ownerDocument->saveHTML(), $varTemp);
+	                //$dataCarpeta = $objImportante2->modules->clean->init_react->components;
+	                /*
+										$patronScript = '|'.$dataScript[0].'(.*?)'.$dataScript[1].'|is';
 
-                    $objImportante = json_decode("{". $varTemp[0][0]. "}");
+										preg_match_all($patronScript, $body->item(0)->ownerDocument->saveHTML(), $varTemp);
 
-	                echo "<pre>";
-	                echo "{". $varTemp[0][0]. "}";
-	                echo "</pre>";
+										$objImportante = json_decode("{". $varTemp[0][0]. "}");
 
-
-                    $dataContents = $objImportante->contents;
+										echo "<pre>";
+										echo "{". $varTemp[0][0]. "}";
+										echo "</pre>";
 
 
-                    //$archivosCarpeta = $dataContents->files;
-                    //$carpetasCarpeta = $dataContents->folders;
+										$dataContents = $objImportante->contents;
 
+
+										//$archivosCarpeta = $dataContents->files;
+										//$carpetasCarpeta = $dataContents->folders;
+
+										*/
+
+
+	                /*
+	                $archivosCarpeta = $dataCarpeta[0]->props->contents->files;
+	                $carpetasCarpeta = $dataCarpeta[0]->props->contents->folders;
 	                */
 
-                    $archivosCarpeta = $dataCarpeta[0]->props->contents->files;
-                    $carpetasCarpeta = $dataCarpeta[0]->props->contents->folders;
+	                $archivosCarpeta = $objImportante2->contents->files;
+	                $carpetasCarpeta = $objImportante2->contents->folders;
 
-                    $datosCarpetaLocal = [
-                        "nombre" => $dataCarpeta[0]->props->folderShareToken->displayName,
-                        "link" => $dataCarpeta[0]->props->folderSharedLinkInfo->url,
-                        "archivos" => $archivosCarpeta,
-                        "carpetas" => $carpetasCarpeta,
-                    ];
-
-
+	                $datosCarpetaLocal = array(
+		                "nombre" => $objImportante2->folderShareToken->displayName,
+		                "link" => $objImportante2->folderSharedLinkInfo->url,
+		                "archivos" => $archivosCarpeta,
+		                "carpetas" => $carpetasCarpeta,
+	                );
 
 
 
 
 
-                    $cantData = count($datosCarpetaLocal["carpetas"]) + count($datosCarpetaLocal["archivos"]);
+
+
+	                $cantData = count($datosCarpetaLocal["carpetas"]) + count($datosCarpetaLocal["archivos"]);
 
 
                     if($cantData > 0){
@@ -609,7 +613,7 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
                         }
 
 
-                        $seccionesLista = [58.6,19.5,21.9];
+                        $seccionesLista = array(58.6,19.5,21.9);
 
                         $displaySize = "auto";
                         if ($opcion['showSize'] != '1') {
@@ -682,7 +686,8 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
                             $thumb = $archivo->thumbnail_url_tmpl;
                             $link_descarga = $archivo->direct_blockserver_link;
 
-                            $dataArchivo = explode("?", pathinfo($file_link)["extension"]);
+                            $pathinfoTempArr = pathinfo($file_link);
+                            $dataArchivo = explode("?", $pathinfoTempArr["extension"]);
                             $typeIcon = "";
                             $displayIcon = "auto";
                             if ($opcion['showIcons'] === '1') {
@@ -899,7 +904,9 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
         add_filter("mce_css", array(&$objDFS_TinyMCE, "dropboxfoldershare_plugin_mce_css"));
         add_filter("mce_external_plugins", array(&$objDFS_TinyMCE, "dropboxfoldershare_register_button"));
         add_filter("mce_buttons", array(&$objDFS_TinyMCE, "dropboxfoldershare_add_button"), 0);
-        add_filter("the_posts", array(&$objDFS_TinyMCE, "dropbox_foldershare_styles_and_scripts"));
+	    add_filter( 'mce_external_languages', array( &$objDFS_TinyMCE, 'dropboxfoldershare_add_tinymce_translations' ) );
+
+	    add_filter("the_posts", array(&$objDFS_TinyMCE, "dropbox_foldershare_styles_and_scripts"));
     }
 
     add_shortcode('dropbox-foldershare-hyno', array(&$objDropboxFolderSharePrincipal, 'replace_shortcode'));
