@@ -57,3 +57,16 @@ gen
 Extras/
 _gsdata_/
 scss/
+/vendor/php-curl-class/php-curl-class/tests/
+/vendor/php-curl-class/php-curl-class/www/
+/vendor/php-curl-class/php-curl-class/examples/
+/vendor/php-curl-class/php-curl-class/scripts/
+/vendor/php-curl-class/php-curl-class/.github/
+/vendor/php-curl-class/php-curl-class/docs/
+/vendor/php-curl-class/php-curl-class/SECURITY.md
+/vendor/php-curl-class/php-curl-class/README.md
+/vendor/php-curl-class/php-curl-class/composer.json
+/vendor/php-curl-class/php-curl-class/.travis.yml
+/vendor/php-curl-class/php-curl-class/LICENSE
+!/vendor/php-curl-class/php-curl-class/composer.json
+/vendor/

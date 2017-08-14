@@ -2,60 +2,73 @@
 Contributors: Hyno, antony_salas
 Tags: Dropbox, Folder,Cloud, Folder Share, post, content, contenido, nube
 Requires at least: 3.0
-Tested up to: 4.6.1
+Tested up to: 4.8.1
 Stable tag: trunk
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Donate link:  http://goo.gl/EeMhVd
 
-Permite incluir nuestra carpeta compartida de Dropbox en nuestras publicaciones.
-Allow to include our dropbox shared folders in content.
+If you want to share a folder on your Dropbox account along with all the content, then this plugin will do it for you only with Dropbox shared URL.
 
 == Description ==
 
-Muchas veces es necesario poder compartir contenido de nuestra carpeta en la nube con nuestros lectores, y por la necesidad de esto es que nacio este plugin.
+Many times it is necessary to be able to share content of our folder in the cloud with our readers, and the necessity of this is that this plugin was born.
 
-Con este Plugin podras:
+With this plugin you can:
 
-*   Incluir contenido de una carpeta compartida de Dropbox.
-*   Usar modos de vista de nuestros archivos.
-*   Navegar entre sub carpetas.
-*   ShortCode y boton en el editor
+*   Include content from a Dropbox shared folder.
+*   Navigate between sub folders.
+*   Thumbnails for preview images
+*   ShortCode and button in the editor.
 
-Leer **[Mas > Descripcion](http://www.hynotech.com/wp-plugins/dropbox-folder-share/ "Dropbox Folder Share")**
+
+Read **[More](http://www.hynotech.com/wp-plugins/dropbox-folder-share/ "Dropbox Folder Share")**
     
-Pueden ver el proyecto en **[GitHub](https://github.com/HynoTech/dropbox-folder-share/ "Dropbox Folder Share en GitHub")** 
+Project in **[GitHub](https://github.com/HynoTech/dropbox-folder-share/ "Dropbox Folder Share in GitHub")**
 
 == Installation ==
 
-1. Descomprimir el plugin a la carpeta `wp-content\plugins\`.
-2. Activarlo entrando a "Plugins Instalados" (AdminPanel/Plugins).
-3. Podras usar el Plugin con el ShortCode (DFS) o con el boton en editor de Wordpress:
+= Minimum Requirements =
 
-PD. Habilitar la extension **php_openssl.dll** en **php.ini**.
+*   Enabled **php_openssl** in php.ini
+*   PHP version 5.3.3 or greater
+*   PHP **cURL** module installed
 
-Leer **[Mas > Instalacion](http://www.hynotech.com/wp-plugins/dropbox-folder-share/)**
+= Manual installation =
+
+1. Upload the contents of `dropbox-folder-share.zip` to the `/wp-content/plugins/` directory or use WordPress’ built-in plugin install tool
+2. If you installed manually, enable it
+3. Once installed, you can access the plugins settings page.
+
+Read **[More](http://www.hynotech.com/wp-plugins/dropbox-folder-share/#installation "Dropbox Folder Share")**
 
 == Frequently Asked Questions ==
 
-= ¿Error con el plugin? =
+= ¿Error? =
 
-Reportalo en la pagina del autor.
+Report it to author.
 
-** Si tiene alguna pregunta sobre este plugin, estaremos encantados de resolverlo **
-Puede visitar nuestra pagina para saber mas respecto a este plugin.
+** If you have any questions about this plugin, we will be happy to solve it **
 
-Leer **[Mas > Preguntas y Respuestas](http://www.hynotech.com/wp-plugins/dropbox-folder-share/)**
+Read **[More](http://www.hynotech.com/wp-plugins/dropbox-folder-share/#faq "Dropbox Folder Share")**
 
 == Screenshots ==
 
-1. Boton en el editor
-2. Contenido publicado
-3. Navegacion entre carpetas
-4. Popup de insercion de contenido en editor
-5. Configuracion general
+1. Button in editor
+2. Section in editor
+3. Widget window
+4. Editable section
+5. Editor windows
+6. Content published in subfolder
+5. General settings
 
 == Changelog ==
+
+= 1.8 =
+* Added thumbnails
+* Added Witdget module
+* Added widget in editor
+* Using Dropbox native viewer
 
 = 1.7.x =
 * Solucion errores de listado de carpetas
@@ -113,6 +126,11 @@ Leer **[Mas > Preguntas y Respuestas](http://www.hynotech.com/wp-plugins/dropbox
 * Version inicial.
 
 == Upgrade Notice ==
+
+= 1.8 =
+* [New] Now thumbnails can be showed in content
+* [New] Widget module can be used.
+* [New] Editor widget for Dropbox Folder Share
 
 = 1.7.x =
 * Solucion de errores

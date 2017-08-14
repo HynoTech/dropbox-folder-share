@@ -22,12 +22,12 @@
                 </li>
                 <li><?php _e('Autor', "dropbox-folder-share"); ?>
                     : <?php echo !empty($plugin_data['AuthorName']) ? $plugin_data['AuthorName'] : ''; ?></li>
-                <li><?php _e('Website', "dropbox-folder-share"); ?>
-                    : <?php echo !empty($plugin_data['PluginURI']) ? '<a href="' . $plugin_data['PluginURI'] . '" target="_blank">' . $plugin_data['AuthorName'] . '</a>' : ''; ?></li>
-                <li><?php _e('Twitter', "dropbox-folder-share"); ?>
-                    : <?php echo !empty($plugin_data['Twitter']) ? '<a href="http://twitter.com/' . $plugin_data['Twitter'] . '" target="_blank">@' . $plugin_data['Twitter'] . '</a>' : ''; ?></li>
-                <li><?php _e('GitHub', "dropbox-folder-share"); ?>
-                    : <?php echo !empty($plugin_data['GitHub URI']) ? '<a href="' . $plugin_data['GitHub URI'] . '" target="_blank">' . basename($plugin_data['GitHub URI']) . '</a>' : ''; ?></li>
+                <li>
+                    Website: <?php echo ! empty( $plugin_data['PluginURI'] ) ? '<a href="' . $plugin_data['PluginURI'] . '" target="_blank">' . $plugin_data['AuthorName'] . '</a>' : ''; ?></li>
+                <li>
+                    Twitter: <?php echo ! empty( $plugin_data['Twitter'] ) ? '<a href="http://twitter.com/' . $plugin_data['Twitter'] . '" target="_blank">@' . $plugin_data['Twitter'] . '</a>' : ''; ?></li>
+                <li>
+                    GitHub: <?php echo ! empty( $plugin_data['GitHub URI'] ) ? '<a href="' . $plugin_data['GitHub URI'] . '" target="_blank">' . basename( $plugin_data['GitHub URI'] ) . '</a>' : ''; ?></li>
             </ul>
         </div>
     </div>

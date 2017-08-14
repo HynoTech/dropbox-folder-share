@@ -1,3 +1,5 @@
+# /usr/local/bin/compass (Mac) - config en Proyecto buscando compass
+
 require 'compass/import-once/activate'
 # Require any additional compass plugins here.
 

@@ -1,61 +1,53 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: DropBox Folder Share\n"
-"POT-Creation-Date: 2016-11-06 22:41-0500\n"
-"PO-Revision-Date: 2016-11-06 22:42-0500\n"
-"Last-Translator: Antonio Salas <antony.salas@gmail.com>\n"
-"Language-Team: Antonio Salas <antony.salas@gmail.com>\n"
-"Language: en\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.11\n"
-"X-Poedit-Basepath: ..\n"
-"X-Poedit-WPHeader: dropbox-folder-share.php\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Poedit-SourceCharset: UTF-8\n"
-"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
-"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
-"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
-"X-Poedit-SearchPath-0: .\n"
-"X-Poedit-SearchPathExcluded-0: *.js\n"
+"X-Generator: POEditor.com\n"
+"Project-Id-Version: dropbox-folder-share\n"
+"Language: en\n"
 
 #: admin/admin_page.php:136
 msgid "Configuraciones guardadas."
 msgstr "Settings saved."
 
-#: admin/admin_page.php:162
+#: admin/admin_page.php:163
 msgid "Parametros de Shortcode"
 msgstr "Shortcode Parameters"
 
-#: admin/admin_page.php:170
+#: admin/admin_page.php:171
 msgid "URL de la carpeta compartida de DropBox."
 msgstr "Dropbox shared folder URL"
 
-#: admin/admin_page.php:181
-msgid ""
-"Gracias por Utilizar este plugin. Me gustaria leer sugerencias u opiniones "
-"para que juntos mejoremos esta herramienta, cualquier sugerencia para "
-"mejorar el plugin o reportar algun error nos ayuda muchisimo, no duden en "
-"hacernoslo saber. "
-msgstr ""
-"Thank Use this plugin. I like to read suggestions and opinions so that "
-"together we improve this tool, any suggestions to improve the plugin or "
-"report any errors helps us a lot, do not hesitate us know. "
+#: admin/admin_page.php:175
+msgid "Mostrar iconos en la visualizacion."
+msgstr "Show icons"
 
-#: admin/admin_page.php:183
-msgid ""
-"Pueden hacernos llegar sus sugerencias, opiniones y/o criticas a travez del "
-"formulario de contactos de"
-msgstr ""
-"You can send us your suggestions, opinions and / or criticism through the "
-"contact form in"
+#: admin/admin_page.php:179
+msgid "Mostrar tamaño de archivos."
+msgstr "Show file size"
+
+#: admin/admin_page.php:183 dropbox-folder-share.php:1461
+msgid "Mostrar fecha de modificacion."
+msgstr "Show last edited date "
+
+#: admin/admin_page.php:187
+msgid "Titulo de la seccion (solo para ver en editor)."
+msgstr "Title (only for editor)"
+
+#: admin/admin_page.php:201 dropbox-folder-share.php:1208
+msgid "Gracias por Utilizar este plugin. Me gustaria leer sugerencias u opiniones para que juntos mejoremos esta herramienta, cualquier sugerencia para mejorar el plugin o reportar algun error nos ayuda muchisimo, no duden en hacernoslo saber. "
+msgstr "Thank Use this plugin. I like to read suggestions and opinions so that together we improve this tool, any suggestions to improve the plugin or report any errors helps us a lot, do not hesitate us know. "
+
+#: admin/admin_page.php:203 dropbox-folder-share.php:1209
+msgid "Pueden hacernos llegar sus sugerencias, opiniones y/o criticas a travez del formulario de contactos de"
+msgstr "You can send us your suggestions, opinions and / or criticism through the contact form in"
 
 #: admin/sidebar.php:12
 msgid "Informacion del Plugin"
 msgstr "Plugin Info"
 
-#: admin/sidebar.php:17 dropbox-folder-share.php:770
+#: admin/sidebar.php:17 dropbox-folder-share.php:988
 msgid "Nombre"
 msgstr "Name"
 
@@ -63,28 +55,9 @@ msgstr "Name"
 msgid "Autor"
 msgstr "Author"
 
-#: admin/sidebar.php:25
-msgid "Website"
-msgstr "Website"
-
-#: admin/sidebar.php:27
-msgid "Twitter"
-msgstr "Twitter"
-
-#: admin/sidebar.php:29
-msgid "GitHub"
-msgstr "GitHub"
-
-#: admin/sidebar.php:37
-msgid ""
-"Hola, espero que disfruten de mi plugin. Me llevó un montón de horas para "
-"hacerlo. Una gran cantidad de galletas y jugo de uva que se derramó sobre el "
-"teclado en la creación de este plugin. Si te gusta, me podrías ayudar "
-"invitandome un café recién hecho."
-msgstr ""
-"Hello, I hope you enjoy my plugin. It took a lot of hours to do. A lot of "
-"crackers and grape juice spilled on the keyboard in the creation of this "
-"plugin. If you like, you could help me inviting me freshly brewed coffee."
+#: admin/sidebar.php:34
+msgid "Hola, espero que disfruten de mi plugin. Me llevó un montón de horas para hacerlo. Una gran cantidad de galletas y jugo de uva que se derramó sobre el teclado en la creación de este plugin. Si te gusta, me podrías ayudar invitandome un café recién hecho."
+msgstr "Hello, I hope you enjoy my plugin. It took a lot of hours to do. A lot of crackers and grape juice spilled on the keyboard in the creation of this plugin. If you like, you could help me inviting me freshly brewed coffee."
 
 #: class/admin.class.php:39
 msgid "Visualizacion"
@@ -107,131 +80,215 @@ msgid "Mostrar Fecha de Modificacion"
 msgstr "Show Date Modification"
 
 #: class/admin.class.php:45
+msgid "Mostrar Miniaturas"
+msgstr "Show Thumbnails"
+
+#: class/admin.class.php:46
+msgid "Usar visualizador de archivos Nativo de Dropbox"
+msgstr "Use native Dropbox file viewer"
+
+#: class/admin.class.php:47
 msgid "Mostrar imagenes usando ThickBox"
 msgstr "Show images using ThickBox"
 
-#: class/admin.class.php:46
+#: class/admin.class.php:48
 msgid "Extensiones adicionales en ThickBox"
 msgstr "Aditional extensions in ThickBox"
 
-#: class/admin.class.php:47
+#: class/admin.class.php:49
 msgid "Altura maxima del contenedor"
 msgstr "Content max height"
 
+#: class/admin.class.php:50
+msgid "Mostrar bloque en el editor"
+msgstr "Show block in editor"
+
 #: class/admin.class.php:51
+msgid "Formato de fecha y hora"
+msgstr "Datetime format"
+
+#: class/admin.class.php:55
 msgid "Vinculacion"
 msgstr "Entailment"
 
-#: class/admin.class.php:53
+#: class/admin.class.php:57
 msgid "Permitir Descarga de Archivos"
 msgstr "Allow File Downloads"
 
-#: class/admin.class.php:54
+#: class/admin.class.php:58
 msgid "Permitir Descarga de Carpeta (comprimido)"
 msgstr "Allow Folder Downloads (compresed)"
 
-#: class/admin.class.php:55
+#: class/admin.class.php:59
 msgid "Permitir Navegacion entre Carpetas"
 msgstr "Allow Navigation between Folders"
 
-#: class/admin.class.php:56
+#: class/admin.class.php:60
 msgid "Dejar Link de Carpeta Compartida"
 msgstr "Leave Shared Folder Link"
 
-#: class/admin.class.php:60
+#: class/admin.class.php:64
 msgid "Conexion"
 msgstr "Connection"
 
-#: class/admin.class.php:62
+#: class/admin.class.php:66
 msgid "Tipo de Conexion a Usar"
 msgstr "Connection Type to Use"
 
-#: class/admin.class.php:185
+#: class/admin.class.php:224
 msgid "Separado por comas"
 msgstr "Separated by commas"
 
-#: class/admin.class.php:200
+#: class/admin.class.php:239
 msgid "0 para desabilitar y dejar altura automatica"
 msgstr "0 to disable and automatic height"
 
-#: dropbox-folder-share.php:158
+#: class/admin.class.php:255
+msgid "Permite visualizar un bloque en el editor cuando se visualiza una carpeta compartida"
+msgstr "View a block in the editor when a shared folder is displayed"
+
+#: class/tinymce.class.php:36
+msgid "Carpeta Dropbox"
+msgstr "Dropbox Folder"
+
+#: class/tinymce.class.php:37
+msgid "URL de carpeta"
+msgstr "Folder URL"
+
+#: class/tinymce.class.php:38
+msgid "Campos Obligatorios"
+msgstr "Required fields"
+
+#: dropbox-folder-share.php:184
 msgid "Error de seguridad"
 msgstr "Security error"
 
-#: dropbox-folder-share.php:452 dropbox-folder-share.php:835
+#: dropbox-folder-share.php:532 dropbox-folder-share.php:1086
 msgid "No encontramos lo que buscas."
 msgstr "Content not found"
 
-#: dropbox-folder-share.php:521
+#: dropbox-folder-share.php:576
 msgid "Descargar carpeta actual (zip)"
 msgstr "Download current folder (zip)"
 
-#: dropbox-folder-share.php:772
+#: dropbox-folder-share.php:992
 msgid "Tamaño"
 msgstr "Size"
 
-#: dropbox-folder-share.php:774
+#: dropbox-folder-share.php:996
 msgid "Modificado"
 msgstr "Modified"
 
-#: dropbox-folder-share.php:814
+#: dropbox-folder-share.php:1058
 msgid "Esta carpeta está vacía"
 msgstr "This folder is empty"
 
-#: dropbox-folder-share.php:843
+#: dropbox-folder-share.php:1094
 msgid "No encontrado"
 msgstr "Not found"
 
-#: dropbox-folder-share.php:861
+#: dropbox-folder-share.php:1113
 msgid "Dropbox Folder Share - Configuracion"
 msgstr "Dropbox Folder Share - Configuration"
 
-#: dropbox-folder-share.php:861
+#: dropbox-folder-share.php:1113
 msgid "Configurar"
 msgstr "Set"
 
+#: dropbox-folder-share.php:1205
+msgid "Dropbox Folder Share ha mejorado!"
+msgstr "Dropbox Folder Share has improved"
+
+#: dropbox-folder-share.php:1206
+msgid "Seccion en editor."
+msgstr "Editor seleccion"
+
+#: dropbox-folder-share.php:1206
+msgid "Añadido la posibilidad de Widget"
+msgstr "Widget added"
+
+#: dropbox-folder-share.php:1207
+msgid "Por favor <a href=\"%s\">revisa las configuraciones</a> para asegurarte de que todo esta bien."
+msgstr "Please <a href=\"%s\">review settings</a> to check that all is right"
+
+#: dropbox-folder-share.php:1211
+msgid "Considera hacer una donacion para ayudarnos con el proyecto. Lo tendremos en gran valor."
+msgstr "Consider making a donation to help us with the project. We will have it in great value."
+
+#: dropbox-folder-share.php:1231
+msgid "Dropbox Folder Share NECESITA TU AYUDA!"
+msgstr "Dropbox Folder Share NEED YOUR HELP!"
+
+#: dropbox-folder-share.php:1232
+msgid "Es muy dificil escribir este mensaje, pero es necesario hacerlo."
+msgstr "It is very difficult to write this message, but it is necessary to do so."
+
+#: dropbox-folder-share.php:1233
+msgid "Dropbox Folder Share lleva siendo actualizada de manera casi continua e inmediata ya mas de 4 años. Lamentablemente el HOST y DOMINIO estan por caducar y hace falta de sus donaciones para poder pagarlos. Lamentablemente no puedo seguir pagando estos servicios por mi cuenta por lo que recurro a ustedes a que puedan ayudarme con esto."
+msgstr "Dropbox Folder Share has been updated almost continuously and immediately for more than 4 years. Unfortunately the HOST and DOMINIO are about to expire and you need your donations to be able to pay them. Unfortunately, I can not continue to pay for these services on my own, so I appeal to you to help me with this."
+
+#: dropbox-folder-share.php:1234
+msgid "Cualquier donacion que puedan hacer sera muy bien recibido y estare muy agradecido por ello."
+msgstr "Any donations you can make will be very well received and I will be very grateful for it."
+
+#: dropbox-folder-share.php:1235
+msgid "No quiero dejar pasar esta oportunidad de dar gracias a los 2 amigos de FRANCIA que tuvieron a bien donar el año 2014. MUCHAS GRACIAS"
+msgstr "I do not want to miss this opportunity to thank the 2 friends of FRANCE who had to donate the year 2014. THANK YOU"
+
+#: dropbox-folder-share.php:1246
+msgid "Donaciones"
+msgstr "Donations"
+
+#: dropbox-folder-share.php:1438
+msgid "URL de carpeta compartida de dropbox."
+msgstr "Dropbox Folder Shared URL"
+
+#: dropbox-folder-share.php:1439
+msgid "URL de Dropbox."
+msgstr "Dropbox URL"
+
+#: dropbox-folder-share.php:1445
+msgid "Mostrar iconos."
+msgstr "Show Icons"
+
+#: dropbox-folder-share.php:1446
+msgid "Ver Iconos."
+msgstr "View icons"
+
+#: dropbox-folder-share.php:1453
+msgid "Mostrar Tamaño."
+msgstr "Show Size"
+
+#: dropbox-folder-share.php:1454
+msgid "Ver Tamaño."
+msgstr "View Size"
+
+#: dropbox-folder-share.php:1462
+msgid "Ver Modificado."
+msgstr "View Edited"
+
 #. Plugin Name of the plugin/theme
+#: 
 msgid "DropBox Folder Share"
 msgstr "DropBox Folder Share"
 
 #. Plugin URI of the plugin/theme
+#: 
 msgid "http://www.hynotech.com/wp-plugins/dropbox-folder-share/"
 msgstr "http://www.hynotech.com/wp-plugins/dropbox-folder-share/"
 
 #. Description of the plugin/theme
-msgid ""
-"Plugin que permitira incluir carpetas de DropBox en nuestras entradas de "
-"blog."
+#: 
+msgid "Plugin que permitira incluir carpetas de DropBox en nuestras entradas de blog."
 msgstr "Plugin that will allow DropBox folders include in our posts."
 
 #. Author of the plugin/theme
+#: 
 msgid "Antonio Salas (Hyno)"
 msgstr "Antonio Salas (Hyno)"
 
 #. Author URI of the plugin/theme
+#: 
 msgid "http://www.hynotech.com/"
 msgstr "http://www.hynotech.com/"
 
-#~ msgid "Extensiones adicionales en Lightbox"
-#~ msgstr "Aditional extensions in ThickBox"
-
-#~ msgid "Como se mostrara la carpeta (<b>iconos</b> o <b>lista</b>)."
-#~ msgstr "How the folder is displayed? (<b> icons </ b> or <b> list </ b>)."
-
-#~ msgid "Modo de Visualizacion"
-#~ msgstr "Visualization Mode"
-
-#~ msgid "Mostrar imagenes usando Lightbox"
-#~ msgstr "Show images with Lightbox (popup)"
-
-#~ msgid "Lista"
-#~ msgstr "List"
-
-#~ msgid "Iconos"
-#~ msgstr "Icons"
-
-#~ msgid "Error de parametros"
-#~ msgstr "Parameter Error"
-
-#~ msgid "No se puede leer carpeta compartida"
-#~ msgstr "Can not read shared folder"

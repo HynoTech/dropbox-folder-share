@@ -142,11 +142,12 @@
             <div class="nav-tab-wrapper">
                 <a class="nav-tab" href="#configuraciones">Configuraciones</a>
                 <a class="nav-tab" href="#parametros">Parametros</a>
+                <a class="nav-tab" href="#donaciones" style="background-color: darkred; color: white;">Donaciones</a>
             </div>
 
             <div class="tabs-content stuffbox">
-                <div id="tab-configuraciones" class="">
-                    <form action="options.php" method="post">
+                <div id="tab-configuraciones" class="stuff hidden">
+                    <form action="options.php#configuraciones" method="post">
                         <?php
                         settings_fields(parent::_OPT_SEETINGS_ . '-group');
                         do_settings_sections(parent::$nombre);
@@ -162,16 +163,36 @@
                         <?php _e('Parametros de Shortcode', "dropbox-folder-share"); ?>
                     </h3>
                     <div class="inside">
-                        <p class="popular-tags"><em>[DFS link="LNK_FOLDER"]</em></p>
+                        <p class="popular-tags"><em>[DFS link="LNK_FOLDER" show_icon="true" show_size="true"
+                                show_change="true" titulo="_TITULO_"]</em></p>
                         <table cellpadding="0" class="links-table">
                             <tbody>
                             <tr>
                                 <th scope="row">link</th>
                                 <td><?php _e('URL de la carpeta compartida de DropBox.', "dropbox-folder-share"); ?></td>
                             </tr>
+                            <tr>
+                                <th scope="row">show_icon <code>(true/false)</code></th>
+                                <td><?php _e( 'Mostrar iconos en la visualizacion.', "dropbox-folder-share" ); ?></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">show_size <code>(true/false)</code></th>
+                                <td><?php _e( 'Mostrar tamaño de archivos.', "dropbox-folder-share" ); ?></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">show_change <code>(true/false)</code></th>
+                                <td><?php _e( 'Mostrar fecha de modificacion.', "dropbox-folder-share" ); ?></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">titulo</th>
+                                <td><?php _e( 'Titulo de la seccion (solo para ver en editor).', "dropbox-folder-share" ); ?></td>
+                            </tr>
                             </tbody>
                         </table>
                     </div>
+                </div>
+                <div id="tab-donaciones" class="">
+		            <?php echo parent::nota_donacion(); ?>
                 </div>
 
 
