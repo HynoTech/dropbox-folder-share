@@ -8,6 +8,7 @@ class ComposerStaticInit58e5e7fadbd129b0c2840b8105cdf83c
 {
     public static $files = array (
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
+        '8372d8a4086b1ef22e65ef9236116971' => __DIR__ . '/..' . '/askupa-software/amarkal-admin-notification/composer.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -16,9 +17,18 @@ class ComposerStaticInit58e5e7fadbd129b0c2840b8105cdf83c
             'Symfony\\Polyfill\\Mbstring\\' => 26,
             'Symfony\\Component\\Translation\\' => 30,
         ),
+        'H' => 
+        array (
+            'HynoTech\\UsosGenerales\\' => 23,
+        ),
         'C' => 
         array (
+            'Curl\\' => 5,
             'Carbon\\' => 7,
+        ),
+        'A' => 
+        array (
+            'Amarkal\\Admin\\' => 14,
         ),
     );
 
@@ -31,9 +41,21 @@ class ComposerStaticInit58e5e7fadbd129b0c2840b8105cdf83c
         array (
             0 => __DIR__ . '/..' . '/symfony/translation',
         ),
+        'HynoTech\\UsosGenerales\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/hynotech/usos-generales/src',
+        ),
+        'Curl\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/php-curl-class/php-curl-class/src/Curl',
+        ),
         'Carbon\\' => 
         array (
             0 => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon',
+        ),
+        'Amarkal\\Admin\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/askupa-software/amarkal-admin-notification',
         ),
     );
 

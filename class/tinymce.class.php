@@ -32,9 +32,9 @@ class DFS_TinyMCE extends DropboxFolderSharePrincipal {
 		}
 
 		$strings = array(
-			'titulo' => __( 'DropBox Folder Share WP', 'dropbox-folder-share' ),
-			'descripcion' => __( 'Carpeta Dropbox', 'dropbox-folder-share' ),
-			'txt_url' => __( 'URL de carpeta', 'dropbox-folder-share' ),
+			'titulo'        => 'DropBox Folder Share WP',
+			'descripcion'   => __( 'Carpeta Dropbox', 'dropbox-folder-share' ),
+			'txt_url'       => __( 'URL de carpeta', 'dropbox-folder-share' ),
 			'txt_necesario' => __( 'Campos Obligatorios', 'dropbox-folder-share' ),
 		);
 
@@ -51,23 +51,43 @@ class DFS_TinyMCE extends DropboxFolderSharePrincipal {
         if (empty($posts))
             return $posts;
         $shortcode_found = false; // usamos shortcode_found para saber si nuestro plugin esta siendo utilizado
-        foreach ($posts as $post) {
 
-            if (stripos($post->post_content, 'dropbox-foldershare-hyno')) { //shortcode a buscar
-                $shortcode_found = true; // bingo!
-                break;
-            }
-            if (stripos($post->post_content, 'DFS')) { //shortcode a buscar
-                $shortcode_found = true; // bingo!
-                break;
-            }
+	    //var_dump(count($posts));
 
-            if (stripos($post->post_content, 'hyno_learn_more')) { //cambiamos testiy por cualquier shortcode
-                $shortcode_found = true; // bingo!
-                break;
-            }
-        }
+	    if ( is_array( $posts ) ) {
+		    foreach ( $posts as $post ) {
+
+			    if ( stripos( $post->post_content, 'dropbox-foldershare-hyno' ) ) { //shortcode a buscar
+				    $shortcode_found = true; // bingo!
+				    break;
+			    }
+			    if ( stripos( $post->post_content, 'DFS' ) ) { //shortcode a buscar
+				    $shortcode_found = true; // bingo!
+				    break;
+			    }
+
+			    if ( stripos( $post->post_content, 'hyno_learn_more' ) ) { //cambiamos testiy por cualquier shortcode
+				    $shortcode_found = true; // bingo!
+				    break;
+			    }
+		    }
+	    } else {
+		    echo "<pre>";
+		    echo $posts;
+		    echo "----";
+		    echo stripos( $posts, 'DFS' );
+		    echo "</pre>";
+		    if ( stripos( $posts, 'DFS' ) ) { //shortcode a buscar
+			    $shortcode_found = true; // bingo!
+
+			    $posts = do_shortcode( $posts );
+		    }
+		    echo "<h3> $shortcode_found </h3>";
+	    }
+
+
         if ($shortcode_found) {
+	        echo "<h3> $shortcode_found -- ESTA AQUI</h3>";
             // enqueue
             wp_enqueue_script('jquery');
             wp_enqueue_script('thickbox');
