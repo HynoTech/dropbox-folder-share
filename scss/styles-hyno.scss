@@ -75,179 +75,8 @@ $url_0: url(/static/images/icons/video_overlay-vfld7VbHa.png);
 }
 
 @import url(../css/icons.css);
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
 
-/*
-.externalIcon {
-  width: 16px;
-  height: 16px;
-  background-image: $url_1;
-  background-repeat: no-repeat;
-  position: relative;
-}
-
-.nav-header {
-  padding: 10px;
-  border-bottom: 1px solid $mercury;
-  height: 30px;
-  top: 0;
-  right: 0;
-  left: 0;
-  background-color: $white;
-  z-index: 10;
-  border-bottom: 1px solid $color_spindle_approx;
-  vertical-align: middle;
-  &:before {
-    content: "";
-    display: block;
-    position: absolute;
-    bottom: -1px;
-    left: 0;
-    width: 100%;
-    zpadding-bottom: 12px;
-    height: 1px;
-    z-index: 10;
-  }
-  .logo {
-    line-height: 30px;
-    display: inline-block;
-    img {
-      max-width: 140px;
-      max-height: 30px;
-      vertical-align: middle;
-      display: inline;
-      &.big {
-        display: none;
-      }
-      &.custom-team-logo {
-        vertical-align: top;
-      }
-    }
-  }
-  .filename {
-    font-size: 14px;
-    color: $color_tundora_approx;
-    margin-left: 10px;
-    line-height: 30px;
-    vertical-align: top;
-  }
-  #shmodel-owner {
-    margin-left: 5px;
-    font-size: 13px;
-  }
-  .nav-close {
-    float: right;
-    position: absolute;
-    right: 9px;
-    top: 15px;
-    cursor: pointer;
-  }
-  .buttons {
-    position: absolute;
-    right: 29px;
-    top: 8px;
-    #account-header {
-      padding-top: 0;
-    }
-    a {
-      &.freshbutton-lightblue {
-        @extend %extend_1;
-      }
-      &.freshbutton-blue {
-        @extend %extend_1;
-      }
-      &.disabled-button {
-        opacity: .4;
-        cursor: default;
-      }
-    }
-    .link-wrapper {
-      display: inline-block;
-      vertical-align: middle;
-      //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
-      border-radius: 3px;
-      border: 1px solid $color_silver_approx;
-      top: -2px;
-      position: relative;
-      .copy-icon {
-        height: 18px;
-        padding: 5px;
-        border-right: 1px solid $color_silver_approx;
-        vertical-align: middle;
-        img {
-          vertical-align: -3px;
-          margin-left: 3px;
-        }
-      }
-      .short-link {
-        border-width: 0;
-        width: 120px;
-        text-align: right;
-        padding: 5px;
-        height: 18px;
-        //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
-        box-shadow: 0 3px 3px $color_gallery_approx;
-      }
-    }
-  }
-  #account-header {
-    display: inline-block;
-    float: none;
-    vertical-align: top;
-    line-height: 30px;
-    .sub-nav {
-      right: 10px;
-      margin-top: 20px;
-      line-height: normal;
-      &#notification-nav-link {
-        margin-top: 17px;
-        right: 0;
-      }
-    }
-    .bubble-dropdown {
-      line-height: normal;
-    }
-    ul.nav {
-      padding-left: 0;
-      #login-hover-link {
-        padding: 0 !important;
-        margin: 0 0 0 20px;
-      }
-      #login-hover-cont {
-        line-height: normal;
-      }
-      #notification-feed-nav-link .header-nav-link span.freshbubble#new-notification-count {
-        top: 0;
-      }
-      .header-nav-link:not(.sprite-button) {
-        margin: 0;
-      }
-    }
-  }
-  #owner-menu-button {
-    padding: 4px 6px;
-    .sprite {
-      margin-right: 0;
-    }
-  }
-  #non-owner-menu-button {
-    padding: 4px 6px;
-    .sprite {
-      margin-right: 0;
-    }
-  }
-  #owner-menu {
-    width: auto;
-  }
-  #download-menu {
-    width: auto;
-  }
-  .download-menu-team-assume-user-offset {
-    top: 36pt !important;
-    left: -30pt !important;
-    width: 135pt !important;
-  }
-}
-*/
 .DropboxIcon {
   height: 20px;
   background-image: $url_2;
@@ -267,6 +96,37 @@ $url_0: url(/static/images/icons/video_overlay-vfld7VbHa.png);
   width: 98%;
   margin: auto;
 
+  font-family: "Open Sans","lucida grande","Segoe UI",arial,verdana,"lucida sans unicode",tahoma,sans-serif;
+  font-weight: normal;
+  font-size: 13px;
+
+  .fa-dropbox{
+    color: $color_azure_radiance_approx !important;
+  }
+
+  .breadcrumb > li > i{
+    font-size: 21px;
+    vertical-align: middle;
+  }
+  .breadcrumb a:link{
+    text-decoration: none;
+    box-shadow: none !important;
+  }
+
+  .breadcrumb img{
+    display: inline;
+    margin-left: 5px;
+    box-shadow: none !important;
+  }
+
+
+  .breadcrumb > li + li::before{
+    content: "\f054";
+    font-family: FontAwesome;
+    vertical-align: middle;
+    font-size: 8px;
+  }
+
   div[id^="Hyno_Header_"]{
     .s_web_dropbox21x20, a, span{
       float: left;
@@ -274,343 +134,23 @@ $url_0: url(/static/images/icons/video_overlay-vfld7VbHa.png);
     .lnkZIp{
       float: right;
     }
-  }
-
-  #icon_folder {
-    background-image: $url_3;
-    background-repeat: no-repeat;
-    position: relative;
-    float: left;
-    width: 30px;
-    height: 27px;
-  }
-  .header_1 {
-    font-size: 16px;
-    font-weight: bold;
-  }
-  .iconos {
-    width: 90px;
-
-    display: inline-block;
-    text-align: center;
-    line-height: 100%;
-    border: none;
-    padding: 6px;
-  }
-  #folder-title a {
-    color: $color_fuscous_gray_approx;
-    text-decoration: none;
-    font-weight: 600;
-  }
-
-
-
-
-
-
-
-
-  .sl-page-body {
-    /*width: 952px;*/
-    width: 100%;
-    margin: 49px auto 40px;
-    padding: 32px 10px;
-    font-size: 80%;
-  }
-  .sl-title {
-    font-size: 18px;
-    font-weight: normal;
-    display: inline;
-  }
-  .sl-list-container {
-    margin: 13px 0;
-    padding: 16px;
-    background-color: $white;
-    border: 1px solid $color_botticelli_approx;
-    //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
-    border-radius: 2px;
-  }
-  .sl-list-header {
-    margin: 4px 0 10px;
-    .sl-list-column {
-      color: $color_tapa_approx;
-    }
-  }
-  .sl-list-column {
-    float: left;
-    display: block;
-    &.sl-list-column--filename {
-      /*width: 558px;*/
-      width: 58.6%;
-      .icon {
-        margin-right: 8px;
-        width: 32px;
-        height: 32px;
+    div{
+      font-size: 16px;
+      color: #1B2733;
+      font-weight: 500;
+      span{
+        font-style: italic;
       }
     }
-    &.sl-list-column--filesize {
-      /*width: 186px;*/
-      width: 19.5%;
-    }
-    &.sl-list-column--modified {
-      float: left;
-    }
-  }
-  .sl-list-body {
-    .sl-list-column {
-      color: $color_fuscous_gray_approx;
-    }
-    .sl-list-row {
-      line-height: 32px;
-      padding: 7px 0;
-      &:last-of-type {
-        padding-bottom: 0;
-      }
-    }
-  }
-  .sl-list-row {
-    border-width: 1px 0 0 0;
-    text-align: left;
-    margin: 0;
-  }
-  .sl-folder-gallery-container {
-    .icon {
-      margin-right: 8px;
-    }
-    .sl-gallery-body {
-      margin: -8px;
-    }
-    .sl-gallery-cell {
-      width: 290px;
-      line-height: 32px;
-      margin: 8px;
-      white-space: nowrap;
-      overflow: hidden;
-    }
-  }
-  .sl-gallery-container {
-    margin: 13px 0;
-    padding: 16px;
-    background-color: $white;
-    border: 1px solid $color_botticelli_approx;
-    //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
-    border-radius: 2px;
-  }
-  .sl-gallery-body {
-    margin: 0;
-    padding: 0;
-  }
-  .sl-file-gallery-container {
-    .sl-gallery-body {
-      margin: -2px;
-    }
-    .sl-gallery-cell {
-      position: relative;
-      width: 178px;
-      height: 178px;
-      border: 1px solid $color_mystic_approx;
-      background-color: $color_black_haze_approx;
-      margin: 2px;
-      > .sl-file-link {
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-      }
-    }
-  }
-  .sl-gallery-cell {
-    display: block;
-    float: left;
-  }
-  .sl-view-toggle-container {
-    float: right;
-  }
-  .sl-view-toggle-option {
-    display: inline-block;
-    zoom: 1;
-    padding: 7px 9px;
-    border: 1px solid $color_seagull_approx;
-    background-color: $color_zircon_approx;
-    //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
-    box-shadow: 0 1px 1px $color_celeste_approx,-1px 1px 1px $white;
-    text-decoration: none;
-    width: 14px;
-    height: 14px;
-    &:first-of-type {
-      //Instead of the line below you could use @include border-top-left-radius($radius)
-      border-top-left-radius: 2px;
-      //Instead of the line below you could use @include border-bottom-left-radius($radius)
-      border-bottom-left-radius: 2px;
-    }
-    &:last-of-type {
-      //Instead of the line below you could use @include border-top-right-radius($radius)
-      border-top-right-radius: 2px;
-      //Instead of the line below you could use @include border-bottom-right-radius($radius)
-      border-bottom-right-radius: 2px;
-    }
-    &.selected {
-      background-color: $color_link_water_approx;
-      //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
-      box-shadow: inset 1px 1px 3px $color_tiara_approx;
-    }
-  }
-  .sl-file-gallery-thumbnail {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    //Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
-    transform: translate(-50%, -50%);
-  }
-  .sl-empty-folder-icon {
-    margin: 80px auto 20px;
-  }
-  .sl-empty-folder-message {
-    color: $color_tapa_approx;
-    font-size: 24px;
-    font-weight: normal;
-  }
-  .sl-takedown-warning {
-    margin-bottom: 1.6em;
-    text-align: center;
-    .notify {
-      display: block;
-    }
-  }
-  .top-notification-bar-container + .preview-box {
-    .sl-page-header {
-      top: 52px;
-    }
-    .sl-page-body {
-      margin-top: 101px;
-    }
-  }
-  .sl-body.sl-body--empty-folder {
-    text-align: center;
-  }
-  .sl-file-gallery-thumbnail-container.sl-file-gallery-thumbnail-container--video:after {
-    content: $url_0;
-    position: absolute;
-    bottom: 5px;
-    left: 5px;
-  }
 
-
-
-
-
-
-
-
-  .o-list-ui {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-
-
-  $color_shark_10_approx: rgba(37,40,43,0.1);
-  .o-list-ui--dividers > li + li {
-    border-top: 1px solid;
-    border-color: $color_shark_10_approx;
-  }
-  .o-list-ui--inline > li {
-    display: inline-block;
-  }
-
-  .clearfix:after {
-    content: "";
-    display: table;
-    clear: both;
-  }
-
-  .o-media {
-    display: block;
-    &:after {
-      content: "";
-      display: table;
-      clear: both;
-    }
-  }
-  .o-media__img {
-    margin-right: 12px;
-    float: left;
-    > img {
-      display: block;
-    }
-  }
-  .o-media__body {
-    display: block;
-    overflow: hidden;
-    margin-bottom: 0;
-    > :last-child {
-      margin-bottom: 0;
-    }
-  }
-
-  .o-flag {
-    display: table;
-    width: 100%;
-  }
-  .o-flag__fix {
-    display: table-cell;
-    vertical-align: middle;
-    white-space: nowrap;
-  }
-  .o-flag__flex {
-    display: table-cell;
-    vertical-align: middle;
-    width: 100%;
-  }
-  .o-flag--top {
-    .o-flag__fix {
-      vertical-align: top;
-    }
-    .o-flag__flex {
-      vertical-align: top;
-    }
-  }
-  .o-flag--bottom {
-    .o-flag__fix {
-      vertical-align: bottom;
-    }
-    .o-flag__flex {
-      vertical-align: bottom;
-    }
-  }
-  @supports(display: flex) {
-    .o-flag {
-      display: flex;
-      align-items: center;
-    }
-    .o-flag--top {
-      align-items: flex-start;
-    }
-    .o-flag--bottom {
-      align-items: flex-end;
-    }
-    .o-flag__fix {
-      display: inherit;
-      align-items: inherit;
-      flex: 0 0 auto;
-    }
-    .o-flag__flex {
-      display: initial;
-      min-width: 0;
-      width: auto;
-      flex: 1 1 auto;
+    a:link, a:visited{
+      text-decoration:none;
+      border:0;
     }
   }
 
 
 
-
-
-}
-
-div {
-  display: block;
 }
 
 
@@ -620,17 +160,64 @@ div {
 
 
 
-.sl-page-body {
-  /*width: 952px;*/
-  width: 100%;
-  margin: 49px auto 40px;
-  padding: 32px 10px;
-  font-size: 80%;
+
+/* @import "_parcial"; */
+
+
+
+
+
+
+
+
+
+
+
+
+
+//colors
+$color_waterloo__approx: #7b8994;
+$white: white;
+$color_botticelli_approx: #ccdbeb;
+$color_shark_10_approx: rgba(37,40,43,0.1);
+$color_pale_sky_approx: #637282;
+$color_fuscous_gray_approx: #555;
+$color_comet_approx: #536170;
+$color_seagull_approx: #79bcea;
+$color_zircon_approx: #f3fafe;
+$color_celeste_approx: #ccc;
+$color_link_water_approx: #d9e7f0;
+$color_tiara_approx: #c4d0d9;
+$color_steel_gray_approx: #1b2733;
+$color_science_blue_approx: #0070e0;
+$black_60: rgba(0,0,0,0.6);
+$color_tapa_approx: #777;
+
+
+
+//@extend-elements
+//original selectors
+//.maestro .sl-view-toggle-option, .maestro .sl-view-toggle-option:first-of-type, .maestro .sl-view-toggle-option:last-of-type, .maestro .sl-view-toggle-option.selected
+%extend_1 {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 24px;
+  height: 24px;
+  padding: 3px;
+  border: 0;
+  background-color: $white;
+  //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+  box-shadow: none;
 }
-.sl-title {
-  font-size: 18px;
-  font-weight: normal;
-  display: inline;
+
+
+
+.sl-body {
+  position: relative;
+  &.sl-body--empty-folder {
+    text-align: center;
+  }
 }
 .sl-list-container {
   margin: 13px 0;
@@ -640,18 +227,58 @@ div {
   //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
   border-radius: 2px;
 }
+.maestro {
+  .sl-list-container {
+    border: 0;
+    padding: 0;
+  }
+  .sl-list-header {
+    margin: 0;
+    font-size: 12px;
+    border-bottom: 1px solid $color_shark_10_approx;
+    line-height: 39px;
+  }
+  .sl-list-body {
+    .sl-list-column {
+      color: $color_comet_approx;
+    }
+    .sl-list-row {
+      line-height: 49px;
+    }
+  }
+  .sl-view-toggle-option {
+    @extend %extend_1;
+    &:first-of-type {
+      @extend %extend_1;
+    }
+    &:last-of-type {
+      @extend %extend_1;
+    }
+    &.selected {
+      @extend %extend_1;
+    }
+  }
+  .sl-file-link {
+    color: $color_steel_gray_approx;
+    &:hover {
+      color: $color_science_blue_approx;
+    }
+  }
+  .sl-list-column.sl-list-column--filename {
+    width: 744px;
+  }
+}
 .sl-list-header {
   margin: 4px 0 10px;
   .sl-list-column {
-    color: $color_tapa_approx;
+    color: $color_pale_sky_approx;
   }
 }
 .sl-list-column {
   float: left;
   display: block;
   &.sl-list-column--filename {
-    /*width: 558px;*/
-    width: 58.6%;
+    width: 558px;
     .icon {
       margin-right: 8px;
       width: 32px;
@@ -659,14 +286,14 @@ div {
     }
   }
   &.sl-list-column--filesize {
-    /*width: 186px;*/
-    width: 19.5%;
+    width: 186px;
   }
   &.sl-list-column--modified {
     float: left;
   }
 }
 .sl-list-body {
+  padding: 0px;
   .sl-list-column {
     color: $color_fuscous_gray_approx;
   }
@@ -682,72 +309,19 @@ div {
   border-width: 1px 0 0 0;
   text-align: left;
   margin: 0;
-}
-.sl-folder-gallery-container {
-  .icon {
-    margin-right: 8px;
-  }
-  .sl-gallery-body {
-    margin: -8px;
-  }
-  .sl-gallery-cell {
-    width: 290px;
-    line-height: 32px;
-    margin: 8px;
-    white-space: nowrap;
-    overflow: hidden;
-  }
-}
-.sl-gallery-container {
-  margin: 13px 0;
-  padding: 16px;
-  background-color: $white;
-  border: 1px solid $color_botticelli_approx;
-  //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
-  border-radius: 2px;
-}
-.sl-gallery-body {
-  margin: 0;
-  padding: 0;
-}
-.sl-file-gallery-container {
-  .sl-gallery-body {
-    margin: -2px;
-  }
-  .sl-gallery-cell {
-    position: relative;
-    width: 178px;
-    height: 178px;
-    border: 1px solid $color_mystic_approx;
-    background-color: $color_black_haze_approx;
-    margin: 2px;
-    > .sl-file-link {
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-    }
-  }
-}
-.sl-gallery-cell {
-  display: block;
-  float: left;
-}
-.sl-view-toggle-container {
-  float: right;
+  list-style-type: none;
 }
 .sl-view-toggle-option {
   display: inline-block;
   zoom: 1;
+  text-decoration: none;
+  width: 14px;
+  height: 14px;
   padding: 7px 9px;
   border: 1px solid $color_seagull_approx;
   background-color: $color_zircon_approx;
   //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
-  box-shadow: 0 1px 1px $color_celeste_approx,-1px 1px 1px $white;
-  text-decoration: none;
-  width: 14px;
-  height: 14px;
+  box-shadow: 0 1px 1px $color_celeste_approx, -1px 1px 1px $white;
   &:first-of-type {
     //Instead of the line below you could use @include border-top-left-radius($radius)
     border-top-left-radius: 2px;
@@ -766,98 +340,8 @@ div {
     box-shadow: inset 1px 1px 3px $color_tiara_approx;
   }
 }
-.sl-file-gallery-thumbnail {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  //Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
-  transform: translate(-50%, -50%);
-}
-.sl-empty-folder-icon {
-  margin: 80px auto 20px;
-}
-.sl-empty-folder-message {
-  color: $color_tapa_approx;
-  font-size: 24px;
-  font-weight: normal;
-}
-.sl-takedown-warning {
-  margin-bottom: 1.6em;
-  text-align: center;
-  .notify {
-    display: block;
-  }
-}
-.top-notification-bar-container + .preview-box {
-  .sl-page-header {
-    top: 52px;
-  }
-  .sl-page-body {
-    margin-top: 101px;
-  }
-}
-.sl-body.sl-body--empty-folder {
-  text-align: center;
-}
-.sl-file-gallery-thumbnail-container.sl-file-gallery-thumbnail-container--video:after {
-  content: $url_0;
-  position: absolute;
-  bottom: 5px;
-  left: 5px;
-}
 
 
-
-
-
-
-
-
-.o-list-ui {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-
-$color_shark_10_approx: rgba(37,40,43,0.1);
-.o-list-ui--dividers > li + li {
-  border-top: 1px solid;
-  border-color: $color_shark_10_approx;
-}
-.o-list-ui--inline > li {
-  display: inline-block;
-}
-
-.clearfix:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-.o-media {
-  display: block;
-  &:after {
-    content: "";
-    display: table;
-    clear: both;
-  }
-}
-.o-media__img {
-  margin-right: 12px;
-  float: left;
-  > img {
-    display: block;
-  }
-}
-.o-media__body {
-  display: block;
-  overflow: hidden;
-  margin-bottom: 0;
-  > :last-child {
-    margin-bottom: 0;
-  }
-}
 
 .o-flag {
   display: table;
@@ -912,15 +396,3 @@ $color_shark_10_approx: rgba(37,40,43,0.1);
     flex: 1 1 auto;
   }
 }
-
-/* @import "_parcial"; */
-
-
-
-
-
-
-
-
-
-

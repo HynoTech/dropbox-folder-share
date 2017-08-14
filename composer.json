@@ -9,7 +9,19 @@
       "email": "antony@hynotech.com"
     }
   ],
+  "repositories": [
+    {
+      "type": "git",
+      "url": "https://AntonySalas@bitbucket.org/hynotech/usos-generales.git"
+    }
+  ],
   "require": {
-    "nesbot/carbon": "1.21.0"
+    "nesbot/carbon": "dev-master",
+    "hynotech/usos-generales": "dev-master",
+    "askupa-software/amarkal-admin-notification": "dev-master",
+    "php-curl-class/php-curl-class": "^7.3"
+  },
+  "require-dev": {
+    "kint-php/kint": "dev-master"
   }
 }

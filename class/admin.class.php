@@ -38,13 +38,17 @@ class DFS_Admin extends DropboxFolderSharePrincipal
             "visualizacion" => array(
                 'titulo' => __("Visualizacion", "dropbox-folder-share"),
                 'campos' => array(
-                    'UseAjax' => __('Usar Ajax', "dropbox-folder-share"),
-                    'ShowIcons' => __('Mostrar Iconos', "dropbox-folder-share"),
-                    'ShowSize' => __('Mostrar Tamaño de Archivo', "dropbox-folder-share"),
-                    'ShowChange' => __('Mostrar Fecha de Modificacion', "dropbox-folder-share"),
-                    'imagesPopup' => __('Mostrar imagenes usando ThickBox', "dropbox-folder-share"),
-                    'thickboxTypesPopup' => __('Extensiones adicionales en ThickBox', "dropbox-folder-share"),
-                    'defaultHeightBox' => __('Altura maxima del contenedor', "dropbox-folder-share")
+	                'UseAjax'            => __('Usar Ajax', "dropbox-folder-share"),
+	                'ShowIcons'          => __('Mostrar Iconos', "dropbox-folder-share"),
+	                'ShowSize'           => __('Mostrar Tamaño de Archivo', "dropbox-folder-share"),
+	                'ShowChange'         => __('Mostrar Fecha de Modificacion', "dropbox-folder-share"),
+	                'ShowThumbnail'      => __( 'Mostrar Miniaturas', "dropbox-folder-share" ),
+	                'dbNativeViewer'     => __( 'Usar visualizador de archivos Nativo de Dropbox', "dropbox-folder-share" ),
+	                'imagesPopup'        => __('Mostrar imagenes usando ThickBox', "dropbox-folder-share"),
+	                'thickboxTypesPopup' => __('Extensiones adicionales en ThickBox', "dropbox-folder-share"),
+	                'defaultHeightBox'   => __( 'Altura maxima del contenedor', "dropbox-folder-share" ),
+	                'showInEditor'       => __( 'Mostrar bloque en el editor', "dropbox-folder-share" ),
+	                'datetimeFormat'     => __( 'Formato de fecha y hora', "dropbox-folder-share" )
                 )
             ),
             "vinculacion" => array(
@@ -156,6 +160,24 @@ class DFS_Admin extends DropboxFolderSharePrincipal
         <?php
     }
 
+	//Campo showThumbnail
+	function print_visualizacion_ShowThumbnailInput() {
+		$options = get_option( parent::_OPT_SEETINGS_ );
+		if ( ! isset( $options['showThumbnail'] ) ) {
+			$options['showThumbnail'] = 1;
+		}
+		?>
+        <input
+                id="id_visualizacion_ShowThumbnail"
+                type="checkbox"
+                name="<?php echo parent::_OPT_SEETINGS_; ?>[showThumbnail]"
+                value="1"
+			<?php echo checked( 1, $options['showThumbnail'], false ); ?>
+        />
+        <br/><br/>
+		<?php
+	}
+
     //Campo imagesPopup
     function print_visualizacion_imagesPopupInput()
     {
@@ -171,13 +193,31 @@ class DFS_Admin extends DropboxFolderSharePrincipal
         <br/><br/>
         <?php
     }
+
+	//Campo
+	function print_visualizacion_dbNativeViewerInput() {
+		$options = get_option( parent::_OPT_SEETINGS_ );
+		if ( ! isset( $options['dbNativeViewer'] ) ) {
+			$options['dbNativeViewer'] = 1;
+		}
+		?>
+        <input
+                id="id_visualizacion_dbNativeViewer"
+                type="checkbox"
+                name="<?php echo parent::_OPT_SEETINGS_; ?>[dbNativeViewer]"
+                value="1"
+			<?php echo checked( 1, $options['dbNativeViewer'], false ); ?>
+        />
+        <br/><br/>
+		<?php
+	}
     //Campo thickboxTypesPopup
     function print_visualizacion_thickboxTypesPopupInput()
     {
         $options = get_option(parent::_OPT_SEETINGS_);
         ?>
         <input
-            id="id_visualizacion_thickboxTypesPopup"
+                id="id_visualizacion_thickboxTypes"
             type="text"
             name="<?php echo parent::_OPT_SEETINGS_; ?>[thickboxTypes]"
             value="<?php echo $options['thickboxTypes']; ?>"
@@ -201,6 +241,37 @@ class DFS_Admin extends DropboxFolderSharePrincipal
         <br/><br/>
         <?php
     }
+
+	function print_visualizacion_showInEditorInput() {
+		$options = get_option( parent::_OPT_SEETINGS_ );
+		?>
+        <input
+                id="id_visualizacion_showInEditor"
+                type="checkbox"
+                name="<?php echo parent::_OPT_SEETINGS_; ?>[showInEditor]"
+                value="1"
+			<?php echo checked( 1, $options['showInEditor'], false ); ?>
+        />
+        <p class="description"><?php _e( "Permite visualizar un bloque en el editor cuando se visualiza una carpeta compartida", "dropbox-folder-share" ); ?></p>
+        <br/><br/>
+		<?php
+	}
+
+	function print_visualizacion_datetimeFormatInput() {
+		$options = get_option( parent::_OPT_SEETINGS_ );
+		if ( ! isset( $options['datetimeFormat'] ) ) {
+			$options['datetimeFormat'] = get_option( 'date_format' ) . " " . get_option( 'time_format' );
+		}
+		?>
+        <input
+                id="id_visualizacion_datetimeFormat"
+                type="text"
+                name="<?php echo parent::_OPT_SEETINGS_; ?>[datetimeFormat]"
+                value="<?php echo $options['datetimeFormat']; ?>"
+        />
+        <br/><br/>
+		<?php
+	}
     //FIN SECCION VISUALIZACION
 
     //HTML DE SECCION VINCULACION
@@ -303,10 +374,14 @@ class DFS_Admin extends DropboxFolderSharePrincipal
         $options['UseAjax'] = trim($input['UseAjax']);
         $options['showIcons'] = trim($input['showIcons']);
         $options['showSize'] = trim($input['showSize']);
-        $options['showChange'] = trim($input['showChange']);
+        $options['showChange'] = trim($input['showChange'] );
+	    $options['showThumbnail'] = trim( $input['showThumbnail'] );
+	    $options['dbNativeViewer'] = trim( $input['dbNativeViewer']);
         $options['imagesPopup'] = trim($input['imagesPopup']);
         $options['thickboxTypes'] = trim($input['thickboxTypes']);
-        $options['defaultHeight'] = trim($input['defaultHeight']);
+        $options['defaultHeight'] = trim($input['defaultHeight'] );
+	    $options['showInEditor'] = trim( $input['showInEditor']);
+	    $options['datetimeFormat'] = trim( $input['datetimeFormat'] );
 
         $options['allowDownload'] = trim($input['allowDownload']);
         $options['allowDownloadFolder'] = trim($input['allowDownloadFolder']);

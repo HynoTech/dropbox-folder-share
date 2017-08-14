@@ -28,20 +28,27 @@ Con este Plugin podras:
 
 ## Screenshots
 
+
 ![screenshot-01](Extras/assets/screenshot-1.png 'screenshot-01')
 > Boton en el editor grafico
 
 ![screenshot-02](Extras/assets/screenshot-2.png 'screenshot-02')
-> Contenido Publicado
+> Bloque en el Editor
 
 ![screenshot-03](Extras/assets/screenshot-3.png 'screenshot-03')
-> Navegacion entre carpetas
+> Bloque editable
 
-![screenshot-05](Extras/assets/screenshot-4.png 'screenshot-05')
+![screenshot-04](Extras/assets/screenshot-4.png 'screenshot-04')
+> Configuraciones del Widget
+
+![screenshot-05](Extras/assets/screenshot-5.png 'screenshot-05')
 > Popup de insercion de contenido en editor
 
-![screenshot-06](Extras/assets/screenshot-5.png 'screenshot-06')
-> Configuracion general
+![screenshot-06](Extras/assets/screenshot-6.png 'screenshot-06')
+> Contenido Publicado
+
+![screenshot-07](Extras/assets/screenshot-7.png 'screenshot-07')
+> Configuraciones
 
 ## Webs del autor
 
