@@ -6,7 +6,7 @@
     <option name="compassSupportEnabled" value="true" />
     <option name="importPaths">
       <list>
-        <option value="/Library/Ruby/Gems/2.0.0/gems/compass-core-1.0.3/stylesheets" />
+        <option value="/usr/local/lib/ruby/gems/2.4.0/gems/compass-core-1.0.3/stylesheets" />
       </list>
     </option>
   </component>

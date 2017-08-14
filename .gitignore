@@ -54,6 +54,7 @@ out
 gen
 .idea/
 .svn/
-Extras/
+## Extras/
 _gsdata_/
 scss/
+vendor
