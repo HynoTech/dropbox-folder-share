@@ -1,0 +1,155 @@
+/* line 1, ../scss/styles-hyno-admin.scss */
+#version_defecto .form-table {
+  margin-left: 2em;
+}
+
+/* line 7, ../scss/styles-hyno-admin.scss */
+h2.wpmm-title {
+  background: url("../images/icon-48.png") no-repeat left center;
+  line-height: 42px;
+  margin-bottom: 30px;
+  height: 48px;
+  padding-left: 55px;
+}
+
+/* WRAP*/
+/* line 16, ../scss/styles-hyno-admin.scss */
+.wpmm-wrapper {
+  display: table;
+  width: 100%;
+}
+
+/*
+.wpmm-wrapper #content {
+    min-width: 800px;
+}
+*/
+/* line 27, ../scss/styles-hyno-admin.scss */
+.wpmm-wrapper #sidebar {
+  padding: 0 0 0 20px;
+  width: 280px;
+}
+
+/* line 32, ../scss/styles-hyno-admin.scss */
+.wpmm-wrapper #sidebar .sidebar_box {
+  background: none repeat scroll 0 0 #fff;
+  border: 1px solid #e5e5e5;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
+  min-width: 255px;
+  line-height: 1;
+  margin-bottom: 20px;
+  padding: 0;
+}
+
+/* line 42, ../scss/styles-hyno-admin.scss */
+.wpmm-wrapper #sidebar .sidebar_box h3 {
+  margin: 0;
+  padding: 8px 12px;
+  border-bottom: 1px solid #ececec;
+}
+
+/* line 48, ../scss/styles-hyno-admin.scss */
+.wpmm-wrapper #sidebar .sidebar_box .inside {
+  margin: 6px 0 0;
+  font-size: 13px;
+  line-height: 1.4em;
+  padding: 0 12px 12px;
+}
+
+/* line 55, ../scss/styles-hyno-admin.scss */
+.wpmm-wrapper .wrapper-cell {
+  display: table-cell;
+}
+
+/* line 59, ../scss/styles-hyno-admin.scss */
+.wpmm-wrapper .hidden {
+  display: none;
+}
+
+/* TABS */
+/* line 64, ../scss/styles-hyno-admin.scss */
+.nav-tab-wrapper {
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 0;
+  padding-left: 10px;
+}
+
+/* line 70, ../scss/styles-hyno-admin.scss */
+.nav-tab-wrapper a {
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 24px;
+  padding: 6px 10px;
+}
+
+/* TABS CONTENT */
+/* line 78, ../scss/styles-hyno-admin.scss */
+.tabs-content {
+  /*margin-top: 20px;*/
+  padding-left: 10px;
+}
+
+/* line 83, ../scss/styles-hyno-admin.scss */
+.tabs-content .wp-color-result {
+  margin-bottom: -2px;
+}
+
+/* line 87, ../scss/styles-hyno-admin.scss */
+.tabs-content ul.bg_list {
+  float: left;
+}
+
+/* line 91, ../scss/styles-hyno-admin.scss */
+.tabs-content ul.bg_list li {
+  float: left;
+  margin-right: 7px;
+  opacity: 0.4;
+}
+
+/* line 97, ../scss/styles-hyno-admin.scss */
+.tabs-content ul.bg_list li.active {
+  opacity: 1;
+}
+
+/* line 101, ../scss/styles-hyno-admin.scss */
+.tabs-content ul.bg_list li input {
+  display: none;
+}
+
+/* line 105, ../scss/styles-hyno-admin.scss */
+.tabs-content .countdown_details input {
+  width: 70px;
+}
+
+/* line 109, ../scss/styles-hyno-admin.scss */
+.tabs-content .countdown_details .margin_left {
+  margin-left: 30px;
+}
+
+/* SIDEBARS */
+/* line 114, ../scss/styles-hyno-admin.scss */
+#sidebar .info_box ul {
+  margin-top: 10px;
+  margin-bottom: -5px;
+}
+
+/* line 119, ../scss/styles-hyno-admin.scss */
+#sidebar .resources_box ul, #sidebar .themes_box ul {
+  margin-top: 10px;
+  margin-bottom: -15px;
+}
+
+/* line 124, ../scss/styles-hyno-admin.scss */
+#sidebar .resources_box li, #sidebar .themes_box li {
+  margin-bottom: 10px;
+}
+
+/* line 127, ../scss/styles-hyno-admin.scss */
+.center {
+  text-align: center;
+}
+
+/* line 130, ../scss/styles-hyno-admin.scss */
+.center input[type=image] {
+  width: 150px;
+}
