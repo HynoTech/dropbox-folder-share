@@ -381,6 +381,7 @@ class DFS_Admin extends DropboxFolderSharePrincipal
         $options['thickboxTypes'] = trim($input['thickboxTypes']);
         $options['defaultHeight'] = trim($input['defaultHeight'] );
 	    $options['showInEditor'] = trim( $input['showInEditor']);
+	    $options['datetimeFormat'] = trim( $input['datetimeFormat'] );
 
         $options['allowDownload'] = trim($input['allowDownload']);
         $options['allowDownloadFolder'] = trim($input['allowDownloadFolder']);
