@@ -51,6 +51,7 @@ caption, th, td {
 q, blockquote {
   quotes: none;
 }
+
 /* line 103, ../../../../../../../usr/local/lib/ruby/gems/2.4.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 q:before, q:after, blockquote:before, blockquote:after {
   content: "";

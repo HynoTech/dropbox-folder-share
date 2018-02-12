@@ -3,7 +3,7 @@
  * Plugin Name: DropBox Folder Share
  * Plugin URI: http://www.hynotech.com/wp-plugins/dropbox-folder-share/
  * Description: Plugin que permitira incluir carpetas de DropBox en nuestras entradas de blog.
- * Version: 1.8
+ * Version: 1.8.1
  * Author: Antonio Salas (Hyno)
  * Author URI: http://www.hynotech.com/
  * Twitter: AntonySH_
@@ -22,7 +22,7 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
     Class DropboxFolderSharePrincipal
     {
 
-		const _VERSION_GENERAL_ = "1.8";
+		const _VERSION_GENERAL_ = "1.8.1";
 		const _VERSION_JS_ = "1.8";
 		const _VERSION_CSS_ = "1.8";
 		const _VERSION_ADMIN_ = "3.0";
@@ -51,7 +51,6 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
 	        "dbNativeViewer"      => '1',
 	        "imagesPopup"         => '1',
 	        "link2Folder"         => '1',
-	        "tipoConexion"        => 'fopen',
 	        "datetimeFormat"      => 'd/m/Y H:i',
 	        "thickboxTypes"       => 'txt,html,htm',
 	        "defaultHeight"       => '300px'
@@ -79,13 +78,6 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
             //echo "<h1>" . get_locale() . "</h1>";
 
 	        $this->asignar_variables_estaticas();
-
-
-
-
-
-
-
 
             load_plugin_textdomain("dropbox-folder-share", false, "dropbox-folder-share" . '/languages/');
 
@@ -255,41 +247,47 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
 
         }
 
-		function fetch_url( $url, $headers = false)
-        {
-            $opcion = get_option(self::_OPT_SEETINGS_);
-            switch ($opcion['tipoConexion']) {
-                case "curl":
-	                if (function_exists("curl_init")) {
-		                /*
-						if (!class_exists("Curl")) {
-							include "class/Curl.class.php";
-						}*/
-		                $txtLocale = str_replace("_", "-", get_locale());
-		                $curl      = new \Curl\Curl();
-		                $curl->setopt(CURLOPT_RETURNTRANSFER, TRUE);
-		                $curl->setopt(CURLOPT_SSL_VERIFYPEER, FALSE);
-		                if ( $headers ) {
-			                $curl->setopt( CURLOPT_HEADER, true );
-			                $curl->setopt( CURLOPT_NOBODY, true );
-			                $curl->setopt( CURLOPT_FOLLOWLOCATION, true );
-		                }
-		                $curl->setHeader('Accept-Language', $txtLocale);
-		                $curl->get($url);
+		function fetch_url( $url, $headers = false,$tipo = 'get',$data = [],$cookies = []){
 
+            if (function_exists("curl_init")) {
 
-		                //kint::dump($curl);
+                $txtLocale = str_replace("_", "-", get_locale());
 
+                $curl = new \Curl\Curl();
+                $curl->setopt(CURLOPT_RETURNTRANSFER, TRUE);
+                $curl->setopt(CURLOPT_SSL_VERIFYPEER, FALSE);
 
-		                return ( $headers ) ? $curl->responseHeaders : $curl->response;
-	                } else {
-                        return "NADA";
-                    }
-                    break;
-                case "fopen": // falls through
-                default:
-                    return ($fp = fopen($url, 'r')) ? stream_get_contents($fp) : false;
-                    break;
+                if(wp_is_mobile()){
+                    $curl->setUserAgent('Mozilla/5.0 (Linux; U; Android 4.0.3; ko-kr; LG-L160L Build/IML74K) AppleWebkit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30');
+                }
+
+                if ( $headers ) {
+                    $curl->setopt( CURLOPT_HEADER, true );
+                    $curl->setopt( CURLOPT_NOBODY, true );
+                    $curl->setopt( CURLOPT_FOLLOWLOCATION, true );
+                }
+                $curl->setHeader('Accept-Language', $txtLocale);
+
+                //$curl->setCookie('key', 'value');
+                $curl->setCookies($cookies);
+
+                switch ($tipo){
+                    case 'post':
+                        $curl->post($url, $data);
+                        break;
+                    case 'options':
+                        $curl->options($url, $data);
+                        break;
+                    default:
+                        $curl->get($url);
+                        break;
+                }
+
+                return ( $headers ) ? $curl->responseHeaders : $curl;
+            }
+            else{
+                echo "<h3>ERROR: curl disabled</h3>";
+                return false;
             }
 
             return false;
@@ -301,780 +299,614 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
 
 	        $link = $opciones_shortcode['link'];
 
-	        /*
-			echo "<pre>";
-			print_r([$opcion,$opciones_shortcode]);
-			echo "</pre>";
-			*/
-
-
 	        $opcion = array_merge( $opcion, $opciones_shortcode);
 
             $url_data = $link;
-            $content = $this->fetch_url($url_data);
+
+
+
+            $response = $this->fetch_url($url_data);
+            //archivo prueba en carpeta _apoyo_
 
 	        $data = json_encode( $opciones_shortcode );
 	        $data = str_replace( "\"", "\\'", $data );
 	        $data = 'rev_' . $data;
 
-            if ($content != "") {
+            if ($response->response != "") {
 
-//kint::dump( $this->generateUpToDateMimeArray('http://svn.apache.org/repos/asf/httpd/httpd/trunk/docs/conf/mime.types'));
+                $cookies = $response->responseCookies;
 
-                $dom = new \DOMDocument();
-                libxml_use_internal_errors(true);
-                $dom->loadHTML(mb_convert_encoding($content, 'HTML-ENTITIES', 'UTF-8'));
-                libxml_use_internal_errors(false);
-                $dom->preserveWhiteSpace = false;
+                $dataModule[0] = '"props": {';
+                $dataModule[1] = '}, "elem_id":';
 
+                $patronModule = '|'.$dataModule[0].'(.*?)'.$dataModule[1].'|is';
+                preg_match_all($patronModule, $response->response, $varTemp2);
 
-                $body = $dom->getElementsByTagName('body');
+                $soloDataModule = str_replace( '"props": {', '{', ( isset( $varTemp2[0][0] ) ) ? $varTemp2[0][0] : '');
+                $soloDataModule = str_replace('}, "elem_id":', '}', $soloDataModule);
 
+                $objImportante = json_decode( $soloDataModule );
 
-                if ($body->length > 0) {
-
-	                $domRetorno = new \DOMDocument( '1.0', 'UTF-8');
-
-                    foreach( $dom->getElementsByTagName('meta') as $meta ) {
-                        if($meta->getAttribute('property') != "")
-                        $metaData[$meta->getAttribute('property')] = $meta->getAttribute('content');
-
-                    }
-
-	                //d($metaData);
-
-                    /**
-                     * V 1.6.2
-                     * NewForma
-                     */
-
-	                //acrobat, audition, code, compressed, dvd, excel, film,flash,gear,keynote,linkfile,picture
-	                $varExt = array(
-		                'acrobat'     => array(
-                            "pdf",
-                            "eps",
-		                ),
-		                'audition'    => array( "ai" ),
-		                'code'        => array(
-                            "c",
-                            "cpp",
-                            "cs",
-                            "css",
-                            "h",
-                            "htm",
-                            "html",
-                            "java",
-                            "js",
-                            "php",
-                            "pl",
-                            "py",
-                            "rb",
-                            "xml",
-		                ),
-		                'compressed'  => array(
-                            "bz2",
-                            "gz",
-                            "rar",
-                            "zip",
-                            "tar",
-		                ),
-		                'dvd'         => array(
-                            "dmg",
-                            "iso",
-		                ),
-		                'excel'       => array(
-                            "csv",
-                            "ods",
-                            "xls",
-                            "xlsb",
-                            "xlsm",
-                            "xlsx",
-		                ),
-		                'film'        => array(
-                            "3gp",
-                            "3gpp",
-                            "asf",
-                            "avi",
-                            "flv",
-                            "m4v",
-                            "mkv",
-                            "mov",
-                            "mp4",
-                            "mpg",
-                            "ogv",
-                            "vob",
-                            "wmv",
-		                ),
-		                'flash'       => array(
-                            "fla",
-                            "swf",
-		                ),
-		                'gear'        => array(
-                            "exe",
-                            "app",
-                            "dll",
-		                ),
-		                'gray'        => array(),
-		                'illustrator' => array(
-                            "ai",
-		                ),
-		                'keynote'     => array(
-                            "key",
-		                ),
-		                'linkfile'    => array(
-                            "webloc",
-                            "url",
-		                ),
-		                'mp3'         => array(),
-		                'paint'       => array(
-                            "psd"
-		                ),
-		                'paper'       => array(),
-		                'picture'     => array(
-                            "dcr",
-                            "r3d",
-                            "bmp",
-                            "dcs",
-                            "gif",
-                            "jpeg",
-                            "jpg",
-                            "png",
-                            "svg",
-                            "tif",
-                            "tiff",
-                            "ptx",
-                            "rwz",
-                            "kdc",
-		                ),
-		                'playlist'    => array(),
-		                'powerpoint'  => array(
-                            "pps",
-                            "ppsm",
-                            "ppsx",
-                            "ppt",
-                            "pptm",
-                            "pptx",
-		                ),
-		                'premiere'    => array(),
-		                'sketch'      => array(),
-		                'sound'       => array(
-                            "3ga",
-                            "aac",
-                            "aif",
-                            "aiff",
-                            "amr",
-                            "au",
-                            "iff",
-                            "m3u",
-                            "m4a",
-                            "mid",
-                            "mp3",
-                            "mpa",
-                            "oga",
-                            "ogg",
-                            "ra",
-                            "wav",
-                            "wma",
-		                ),
-		                'stack'       => array(),
-		                'text'        => array(
-                            "txt",
-                            "wps",
-		                ),
-		                'vector'      => array(
-                            "ai",
-		                ),
-		                'webcode'     => array(),
-		                'word'        => array(
-                            "doc",
-			                "docx",
-                            "docm",
-                            "rtf",
-                            "odt",
-                            "pages",
-                            "wpd",
-		                )
-	                );
-
-
-	                $dataModule[0] = '"props": {';
-	                $dataModule[1] = '}, "elem_id":';
-
-	                $patronModule = '|'.$dataModule[0].'(.*?)'.$dataModule[1].'|is';
-	                preg_match_all($patronModule, $body->item(0)->ownerDocument->saveHTML(), $varTemp2);
-
-
-
-	                /*
-                    $soloDataModule = str_replace('window.MODULE_CONFIG = ', '', $varTemp2[0][0]);
-                    $soloDataModule = str_replace('}}}};', '}}}}', $soloDataModule);
-	                */
-
-	                //if(isset($varTemp2[0][0]))
-	                $soloDataModule = str_replace( '"props": {', '{', ( isset( $varTemp2[0][0] ) ) ? $varTemp2[0][0] : '');
-	                $soloDataModule = str_replace('}, "elem_id":', '}', $soloDataModule);
-
-	                //Kint::dump($soloDataModule);
-
-
-	                $objImportante = json_decode( $soloDataModule );
-
-	                //https://www.dropbox.com/sh/fb8o9xy0vyy3pju/AAAiA-IK8SLTP9PU51ZPQqO4a/Act%20SEACE%202016/ACC%20ENE%20OKC-16.xls?dl=0
-	                //bajo $objImportante->contents
-	                //https://www.dropbox.com/sh/{fileShareTokens->linkKey}/{fileShareTokens->secureHash}/{fileShareTokens->subPath}?dl=0
-
-	                if ( $objImportante == null){
-		                $retorno = '
-                        <div class="err sl-list-container" style="width: 100%; text-align: center;">
-                            <img src="'. self::$url .'/img/error_404.png" alt="" width="30%">
-                            <h4 class="sl-empty-folder-message">'. __("No encontramos lo que buscas.", "dropbox-folder-share").'</h4>
-                        </div>
-                        ';
-		                return $retorno;
-	                }
-
-	                $archivosCarpeta = $objImportante->contents->files;
-	                $carpetasCarpeta = $objImportante->contents->folders;
-
-	                $datosCarpetaLocal = [
-		                "nombre"      => $objImportante->folderShareToken->displayName,
-		                "path"        => $objImportante->folderShareToken->subPath,
-		                "linkKey"     => $objImportante->folderShareToken->linkKey,
-		                "secureHash"  => $objImportante->folderShareToken->secureHash,
-		                "link"        => $objImportante->folderSharedLinkInfo->url,
-		                "propietario" => $objImportante->folderSharedLinkInfo->ownerName,
-		                "archivos" => $archivosCarpeta,
-		                "carpetas" => $carpetasCarpeta,
-	                ];
-
-
-	                $detalleURL = parse_url( $datosCarpetaLocal["link"] );
-
-
-	                $html_ol['breadcrumb'] = $domRetorno->createElement( 'ol' );
-	                $html_ol['breadcrumb']->setAttribute( 'class', 'breadcrumb' );
-	                $html_ol['breadcrumb']->setAttribute( 'style', 'font-size: 16px; margin:0px;' );
-
-
-	                $addLIZip = $domRetorno->createElement( 'li' );
-	                if ( $opcion['allowDownloadFolder'] === '1' ) {
-
-		                $query_params['dl']  = 1;
-		                $detalleURL['query'] = http_build_query( $query_params );
-
-		                $lnkDescarga = http_build_url( $link,
-			                $detalleURL,
-			                HTTP_URL_STRIP_AUTH | HTTP_URL_JOIN_PATH | HTTP_URL_JOIN_QUERY | HTTP_URL_STRIP_FRAGMENT
-		                );
-
-		                //$docZip = new \DOMDocument;
-
-		                $addIMGZip = $domRetorno->createElement( 'img' );
-		                $addIMGZip->setAttribute( 'src', self::$url . 'img/zip.png' );
-		                $addIMGZip->setAttribute( 'title', __( 'Descargar carpeta actual (zip)', 'dropbox-folder-share' ) );
-
-		                $addAZip = $domRetorno->createElement( 'a' );
-		                $addAZip->setAttribute( 'href', $lnkDescarga );
-		                $addAZip->setAttribute( 'target', "_blank" );
-		                $addAZip->appendChild( $addIMGZip );
-
-		                $addLIZip->setAttribute( 'class', 'pull-right' ); //creado fuera del IF
-		                $addLIZip->appendChild( $addAZip );
-
-	                }
-
-	                //solo entra si existe una barra de titulo, es decir si es sub carpeta
-	                if ( $titleBar != null ) {
-		                $titleBar = str_replace( '\\"', '"', $titleBar );
-		                $titleBar = str_replace( "\\'", "'", $titleBar );
-		                $titleBar = str_replace( "\\\\", "\\", $titleBar );
-
-		                $titleBar = $this->limpiahtml( $titleBar );
-
-		                $doc = new \DOMDocument();
-
-		                $doc->loadHTML( mb_convert_encoding( $titleBar, 'HTML-ENTITIES', 'UTF-8' ) );
-
-		                $elemLiBreadcrumb = $doc->getElementsByTagName( 'li' );
-
-		                $elemOlBreadcrumb = $doc->getElementsByTagName( 'ol' );
-
-		                $lnkSup = false;
-		                foreach ( $elemLiBreadcrumb as $li ) {
-
-			                if ( $li->getAttribute( 'class' ) == 'pull-right' ) {
-				                $li->parentNode->removeChild( $li);
-			                } else {
-				                $html_ol['breadcrumb']->appendChild( $domRetorno->importNode( $li, true ) );
-				                if ( $li->getAttribute( 'data-id' ) == $datosCarpetaLocal["secureHash"] ) {
-					                $lnkSup = true;
-					                break;
-				                }
-			                }
-		                }
-
-		                $elemA_1 = $domRetorno->createElement( 'a', $metaData["og:title"] );
-		                $elemA_1->setAttribute( 'href', $link );
-		                $elemA_1->setAttribute( 'onclick', "loadContenDFS('{$data}', '{$id_content}'); varTitulo = 1; return false;" );
-		                $elemA_1->setAttribute( 'data-titulo', '1' );
-
-		                $elemIMG_2 = $domRetorno->createElement( 'img' );
-		                $elemIMG_2->setAttribute( 'width', '12px' );
-		                $elemIMG_2->setAttribute( 'src', self::$url . '/img/ico-external-link.png' );
-
-		                $elemA_2 = $domRetorno->createElement( 'a' );
-		                $elemA_2->setAttribute( 'href', $link );
-		                $elemA_2->setAttribute( 'target', '_blank' );
-		                $elemA_2->appendChild( $elemIMG_2 );
-
-		                $elemLi = $domRetorno->createElement( 'li' );
-		                $elemLi->setAttribute( 'data-id', $datosCarpetaLocal["secureHash"] );
-		                $elemLi->appendChild( $elemA_1 );
-		                $elemLi->appendChild( $elemA_2 );
-
-		                if ( ! $lnkSup ) {
-			                $html_ol['breadcrumb']->appendChild( $elemLi );
-		                }
-
-
-		                //$elemOlBreadcrumb->item(0)->appendChild($elemLi);
-
-		                if ( $opcion['allowDownloadFolder'] === '1' ) {
-			                $html_ol['breadcrumb']->appendChild( $addLIZip );
-			                //$elemOlBreadcrumb->item(0)->appendChild($doc->importNode( $addLIZip, true ));
-		                }
-
-		                //d($doc->saveHTML($elemOlBreadcrumb->item(0)));
-
-
-	                } else {
-		                $html_i['fa-dropbox'] = $domRetorno->createElement( 'i' );
-		                $html_i['fa-dropbox']->setAttribute( 'class', 'fa fa-dropbox' );
-		                $html_i['fa-dropbox']->setAttribute( 'style', 'color: #0082E6;' );
-
-		                $html_li[0] = $domRetorno->createElement( 'li' );
-		                $html_li[0]->appendChild( $html_i['fa-dropbox'] );
-
-		                $html_a['ajax'] = $domRetorno->createElement( 'a', $datosCarpetaLocal["nombre"] );
-		                $html_a['ajax']->setAttribute( 'href', $link );
-		                $html_a['ajax']->setAttribute( 'data-titulo', '1' );
-		                $html_a['ajax']->setAttribute( 'onclick', "loadContenDFS('{$data}', '{$id_content}'); varTitulo = 1; return false;" );
-
-		                $html_img['ext_icon'] = $domRetorno->createElement( 'img' );
-		                $html_img['ext_icon']->setAttribute( 'width', '12px' );
-		                $html_img['ext_icon']->setAttribute( 'src', self::$url . "img/ico-external-link.png" );
-
-		                $html_a['blank'] = $domRetorno->createElement( 'a' );
-		                $html_a['blank']->setAttribute( 'href', $link );
-		                $html_a['blank']->setAttribute( 'target', '_blank' );
-		                $html_a['blank']->appendChild( $html_img['ext_icon'] );
-
-		                $html_li[1] = $domRetorno->createElement( 'li' );
-		                $html_li[1]->setAttribute( 'data-id', $datosCarpetaLocal["secureHash"] );
-		                $html_li[1]->appendChild( $html_a['ajax'] );
-		                $html_li[1]->appendChild( $html_a['blank'] );
-
-		                //$html_ol['breadcrumb'] creado al inicio del if de este else y superior
-		                $html_ol['breadcrumb']->appendChild( $html_li[0] );
-		                $html_ol['breadcrumb']->appendChild( $html_li[1] );
-		                if ( $opcion['allowDownloadFolder'] === '1' ) {
-			                $html_ol['breadcrumb']->appendChild( $addLIZip );
-		                }
-
-	                }
-
-
-	                $cantData = count( $datosCarpetaLocal["carpetas"] ) + count( $datosCarpetaLocal["archivos"] );
-
-	                if ( $cantData > 0 ) {
-
-
-		                if ( $opcion['link2Folder'] != '1' ) {
-
-			                $domRetorno->appendChild( $html_ol['breadcrumb'] );
-
-			                $this->EliminarTAG( $domRetorno, '//a' );
-			                $this->EliminarTAG( $domRetorno, '//img[@width="12px"]');
-
-                        }
-
-
-                        $seccionesLista = [58.6,19.5,21.9];
-
-                        $displaySize = "auto";
-                        if ($opcion['showSize'] != '1') {
-                            $displaySize = "none";
-                            $seccionesLista[0] += $seccionesLista[1];
-                            $seccionesLista[1] = 0;
-                        }
-
-                        $displayChange = "auto";
-                        if ($opcion['showChange'] != '1') {
-                            $displayChange = "none";
-                            $seccionesLista[0] += $seccionesLista[2];
-                            $seccionesLista[2] = 0;
-                        }
-
-		                $html_ol['sl-list-body'] = $domRetorno->createElement( 'ol' );//revisar separacion
-		                $html_ol['sl-list-body']->setAttribute( 'class', 'sl-list-body o-list-ui o-list-ui--dividers' );
-		                $html_ol['sl-list-body']->setAttribute( 'style', "max-height:" . ( ( $opcion['defaultHeight'] != '0' ) ? $opcion['defaultHeight'] : 'auto' ) . "; overflow:auto;");
-                        foreach ($datosCarpetaLocal["carpetas"] as $carpeta) {
-                            $folderName = $carpeta->filename;
-                            $folderHref = $carpeta->href;
-	                        $opciones_shortcode['link'] = $folderHref;
-
-	                        $data = json_encode( $opciones_shortcode );
-	                        $data = str_replace( "\"", "\\'", $data );
-	                        $data = 'rev_' . $data;
-
-                            $displayIcon = "auto";
-                            if ($opcion['showIcons'] != '1') {
-                                $displayIcon = "none";
-                            }
-
-
-	                        $html_li_div_a_div_div_img_lista = $domRetorno->createElement( 'img' );
-	                        $html_li_div_a_div_div_img_lista->setAttribute( 'class', 'sprite sprite_web s_web_folder_32 icon' );
-	                        $html_li_div_a_div_div_img_lista->setAttribute( 'src', self::$url . 'img/icon_spacer.gif' );
-
-	                        $html_li_div_a_div_div_lista = $domRetorno->createElement( 'div' );
-	                        $html_li_div_a_div_div_lista->setAttribute( 'class', 'o-flag__fix' );
-	                        $html_li_div_a_div_div_lista->setAttribute( 'style', "display: {$displayIcon} " );
-	                        $html_li_div_a_div_div_lista->appendChild( $html_li_div_a_div_div_img_lista );
-
-	                        $html_li_div_a_div_div2_lista = $domRetorno->createElement( 'div', $folderName );
-	                        $html_li_div_a_div_div2_lista->setAttribute( 'class', 'o-flag__flex' );
-	                        //$html_li_div_a_div_div2_lista->setAttribute('style',"display: {$displayIcon} ");
-
-	                        $html_li_div_a_div_lista = $domRetorno->createElement( 'div' );
-	                        $html_li_div_a_div_lista->setAttribute( 'class', 'o-flag' );
-	                        $html_li_div_a_div_lista->appendChild( $html_li_div_a_div_div_lista );
-	                        $html_li_div_a_div_lista->appendChild( $html_li_div_a_div_div2_lista );
-
-	                        $html_li_div_a_lista = $domRetorno->createElement( 'a' );
-	                        $html_li_div_a_lista->setAttribute( 'href', $folderHref );
-	                        $html_li_div_a_lista->setAttribute( 'data-titulo', '1');
-                            if ($opcion['allowBrowseFolder'] == '1' ) {
-	                            $html_li_div_a_lista->setAttribute( 'onclick', "loadContenDFS('{$data}', '{$id_content}'); varTitulo = 1; return false;");
-                            } else {
-	                            $html_li_div_a_lista->setAttribute( 'onclick', "return false;" );
-                            }
-	                        $html_li_div_a_lista->setAttribute( 'class', 'sl-file-link' );
-	                        $html_li_div_a_lista->appendChild( $html_li_div_a_div_lista );
-
-	                        $html_li_div_lista = $domRetorno->createElement( 'div' );
-	                        $html_li_div_lista->setAttribute( 'class', 'sl-list-column sl-list-column--filename' );
-	                        $html_li_div_lista->setAttribute( 'style', "width: {$seccionesLista[0]}% !important;" );
-	                        $html_li_div_lista->appendChild( $html_li_div_a_lista );
-
-	                        $html_li_div2_lista = $domRetorno->createElement( 'div', '--' );
-	                        $html_li_div2_lista->setAttribute( 'class', 'sl-list-column sl-list-column--filesize' );
-	                        $html_li_div2_lista->setAttribute( 'style', "width: {$seccionesLista[1]}% !important;; display: {$displaySize} " );
-
-	                        $html_li_div3_lista = $domRetorno->createElement( 'div', '--' );
-	                        $html_li_div3_lista->setAttribute( 'class', 'sl-list-column sl-list-column--modified' );
-	                        $html_li_div3_lista->setAttribute( 'style', "width: {$seccionesLista[2]}% !important;; display: {$displayChange} " );
-
-	                        $html_li_lista = $domRetorno->createElement( 'li' );
-	                        $html_li_lista->setAttribute( 'class', 'sl-list-row clearfix' );
-	                        $html_li_lista->appendChild( $html_li_div_lista );
-	                        $html_li_lista->appendChild( $html_li_div2_lista );
-	                        $html_li_lista->appendChild( $html_li_div3_lista );
-
-	                        $html_ol['sl-list-body']->appendChild( $html_li_lista);
-
-                        }
-
-
-                        $htmlArchivos = '';
-
-		                foreach ($datosCarpetaLocal["archivos"] as $archivo ) {
-
-			                //d($archivo);
-
-			                $fileCode = ( isset( $archivo->htmlified_link ) ) ? $archivo->htmlified_link : ( isset( $archivo->direct_blockserver_link ) ) ? $archivo->direct_blockserver_link:'';
-
-			                $previsualizacion = $archivo->preview_url;
-			                //$lnkThumbnail = $archivo->thumbnail_url_tmpl;
-			                $lnkThumbnail = $this->downloadLinkGenerator( $archivo->thumbnail_url_tmpl, array(
-				                'size'      => '32x32',
-				                'size_mode' => '1'
-			                ) );
-//https://photos-1.dropbox.com/t/2/AABpcRRa9-szXO86wYQd_9D4swB2a6t27uVGAqfu8vFahw/12/34022148/png/32x32/3/1499155200/0/2/Moquegua%20copia.svg/ELPV5xkY7OsPIAIoAg/uynCf0GA6KbIf2laTx_8uTLgxpINAA9AhRgHeI03FeQ?size=178x178&size_mode=3
-//https://photos-1.dropbox.com/t/2/AADIsyR3bGVG9hjPPuVemTqb6nVqbxcM8yQjW3ZYNaTvvg/12/34022148/jpeg/32x32/3/1499155200/0/2/Moquegua.ai/ELPV5xkY7OsPIAIoAg/H9gDaPbdXrlkEOBcJd5vV1Lwt14f5FktYzxclzFEC8E?size=178x178&size_mode=3
-
-
-			                $file_link = $archivo->href;
-
-			                $is_dir    = $archivo->is_dir;
-			                $file_name = $archivo->filename;
-
-			                $bytes    = $archivo->bytes;
-			                $creado   = $archivo->ts;
-			                $prevType = $archivo->preview_type;
-
-			                $dataArchivo    = explode( "?", ( isset( pathinfo( $file_link )["extension"] ) ) ? pathinfo( $file_link )["extension"] : 'none' );
-			                $dataArchivo[0] = strtolower( $dataArchivo[0]);
-			                $typeIcon       = "";
-			                $displayIcon    = "auto";
-			                if ( $opcion['showIcons'] === '1') {
-				                foreach ($varExt as $fileType => $ext ) {
-					                if ( in_array( $dataArchivo[0], $ext)) {
-						                $typeIcon = "_" . $fileType;
-						                break;
-					                }
-				                }
-			                } else{
-				                $displayIcon = "none";
-			                }
-
-			                $fileLinkMostrar = $file_link;
-			                if( $opcion['allowDownload'] === '1'){
-				                $fileLinkMostrar = $this->downloadLinkGenerator($file_link);
-			                }
-
-			                $arrayExtThickbox = explode(",",$opcion['thickboxTypes'] );
-			                $classThickBox    = "";
-			                $relThickBox      = "";
-
-
-			                $infoFile = wp_check_filetype( $file_name);
-			                if(in_array($dataArchivo[0], $arrayExtThickbox)) {
-
-				                $classThickBox   = "lightbox";
-				                $fileLinkMostrar = $this->downloadLinkGenerator($file_link );
-				                $fileLinkMostrar = "https://docs.google.com/viewer?url=" . $fileLinkMostrar . "&embedded=true&KeepThis=true&TB_iframe=true&height=400&width=800";
-
-				                $dataWidth = "1000";
-
-				                //https://docs.google.com/gview?url=http://infolab.stanford.edu/pub/papers/google.pdf&embedded=true
-			                }
-			                //elseif (($prevType === 'text') && ($infoFile['ext'] !== 'txt')){
-			                if ( ( ! is_null( $fileCode ) ) && ( $opcion['dbNativeViewer'] === '1' ) ) {
-				                $classThickBox = "lightbox";
-				                //$fileLinkMostrar = $this->downloadLinkGenerator($file_link);
-				                $fileLinkMostrar = $fileCode;//"https://docs.google.com/viewer?url=".$fileLinkMostrar."&embedded=true&KeepThis=true&TB_iframe=true&height=400&width=800";
-
-				                $dataWidth = "1000";
-			                }
-
-
-			                $esImg = str_replace( "_", "", $typeIcon );
-			                if ( ( $opcion['imagesPopup'] === '1' ) || ( in_array( $dataArchivo[0], $arrayExtThickbox ) ) ) {
-
-
-				                if ( $esImg == 'picture' ) {
-					                $classThickBox = "lightbox";
-					                $relThickBox   = "gal_" . $id_content;
-
-
-					                $fileLinkMostrar = $this->downloadLinkGenerator( $file_link );
-
-					                //$fileLinkMostrar = $this->downloadLinkGenerator($archivo->thumbnail_url_tmpl,array('size_mode'=>'5'));;
-				                }
-			                }
-
-
-			                if ( ( $esImg === 'picture' ) && ( $opcion['showThumbnail'] === '1' ) && ( $_imgContent = @file_get_contents( $lnkThumbnail ) ) ) {
-				                //data:image/png;base64,
-				                //Kint::dump([$file_link,wp_check_filetype($file_name),wp_check_filetype($this->downloadLinkGenerator($file_link)),$b64image]);
-
-				                $b64image = base64_encode( $_imgContent );
-
-
-				                $_urlImg64                       = "data:" . $infoFile['type'] . ";base64," . $b64image;
-				                $html_li_div_a_div_div_img_lista = $domRetorno->createElement( 'img' );
-				                $html_li_div_a_div_div_img_lista->setAttribute( 'class', "icon thumbnail-image--loaded" );
-				                $html_li_div_a_div_div_img_lista->setAttribute( 'src', $_urlImg64 );
-			                } else {
-				                $html_li_div_a_div_div_img_lista = $domRetorno->createElement( 'img' );
-				                $html_li_div_a_div_div_img_lista->setAttribute( 'class', "sprite sprite_web s_web_page_white" . $typeIcon . "_32 icon" );
-				                $html_li_div_a_div_div_img_lista->setAttribute( 'src', self::$url . 'img/icon_spacer.gif' );
-			                }
-
-
-			                $html_li_div_a_div_div_lista = $domRetorno->createElement( 'div' );
-			                $html_li_div_a_div_div_lista->setAttribute( 'class', 'o-flag__fix' );
-			                $html_li_div_a_div_div_lista->setAttribute( 'style', "display: {$displayIcon} " );
-			                $html_li_div_a_div_div_lista->appendChild( $html_li_div_a_div_div_img_lista );
-
-			                $html_li_div_a_div_div2_lista = $domRetorno->createElement( 'div', $file_name );
-			                $html_li_div_a_div_div2_lista->setAttribute( 'class', 'o-flag__flex' );
-
-			                $html_li_div_a_div_lista = $domRetorno->createElement( 'div' );
-			                $html_li_div_a_div_lista->setAttribute( 'class', 'o-flag' );
-			                $html_li_div_a_div_lista->appendChild( $html_li_div_a_div_div_lista );
-			                $html_li_div_a_div_lista->appendChild( $html_li_div_a_div_div2_lista );
-
-			                $html_li_div_a_lista = $domRetorno->createElement( 'a' );
-			                $html_li_div_a_lista->setAttribute( 'href', $fileLinkMostrar );
-			                //$html_li_div_a_lista->setAttribute('class','sl-file-link '.$classThickBox);
-			                $html_li_div_a_lista->setAttribute( 'class', 'sl-file-link ' );
-			                $html_li_div_a_lista->setAttribute( 'title', $file_name );
-			                if ( $relThickBox != "" ) {
-				                $html_li_div_a_lista->setAttribute( 'data-gallery', $relThickBox );
-			                }
-			                $html_li_div_a_lista->setAttribute( 'data-title', $file_name );
-			                $html_li_div_a_lista->setAttribute( 'data-toggle', $classThickBox );
-			                if ( isset( $dataWidth ) ) {
-				                $html_li_div_a_lista->setAttribute( 'data-width', $dataWidth );
-			                }
-			                //$html_li_div_a_lista->setAttribute('data-remote', $fileLinkMostrar);
-			                //$html_li_div_a_lista->setAttribute('rel',$relThickBox);
-			                $html_li_div_a_lista->appendChild( $html_li_div_a_div_lista );
-
-			                $html_li_div_lista = $domRetorno->createElement( 'div' );
-			                $html_li_div_lista->setAttribute( 'class', 'sl-list-column sl-list-column--filename' );
-			                $html_li_div_lista->setAttribute( 'style', "width: {$seccionesLista[0]}% !important;" );
-			                $html_li_div_lista->appendChild( $html_li_div_a_lista );
-
-			                $html_li_div2_lista = $domRetorno->createElement( 'div', ( ( $opcion['showSize'] != '1' ) ? "" : self::formatSizeUnits( $bytes ) ) );
-			                $html_li_div2_lista->setAttribute( 'class', 'sl-list-column sl-list-column--filesize' );
-			                $html_li_div2_lista->setAttribute( 'style', "width: {$seccionesLista[1]}% !important;; display: {$displaySize} " );
-
-			                $strFecha = \Carbon\Carbon::createFromTimestamp( $creado )->format( isset( $opcion['datetimeFormat'] ) ? $opcion['datetimeFormat'] : get_option( 'date_format' ) . " " . get_option( 'time_format' ) );
-			                //$strFecha = \Carbon\Carbon::createFromTimestamp($creado)->format(get_option('date_format')." ". get_option('time_format'));
-			                if ( ( \Carbon\Carbon::createFromTimestamp( $creado )->diffInDays() ) <= 30 ) {
-				                $strFecha = \Carbon\Carbon::createFromTimestamp( $creado )->diffForHumans();
-			                }
-
-			                $html_li_div3_lista = $domRetorno->createElement( 'div', $strFecha );
-			                $html_li_div3_lista->setAttribute( 'class', 'sl-list-column sl-list-column--modified' );
-			                $html_li_div3_lista->setAttribute( 'style', "width: {$seccionesLista[2]}% !important;; display: {$displayChange} " );
-
-			                $html_li_lista = $domRetorno->createElement( 'li' );
-			                $html_li_lista->setAttribute( 'class', 'sl-list-row clearfix' );
-			                $html_li_lista->appendChild( $html_li_div_lista );
-			                $html_li_lista->appendChild( $html_li_div2_lista );
-			                $html_li_lista->appendChild( $html_li_div3_lista );
-
-			                $domRetorno->appendChild( $html_li_lista );
-
-			                //d($domRetorno->saveHTML($html_li_lista));
-
-			                $html_ol['sl-list-body']->appendChild( $html_li_lista );
-
-		                }
-		                //d($domRetorno->saveHTML($html_ol_lista));
-		                //d($datosCarpetaLocal);
-
-
-                        /**
-                         * DATOS NECESARIOS
-                         */
-
-
-		                $html_div['Hyno_Breadcrumbs'] = $domRetorno->createElement( 'div' );//content $txtNavegacion
-		                $html_div['Hyno_Breadcrumbs']->setAttribute( 'class', 'row' );
-		                $html_div['Hyno_Breadcrumbs']->setAttribute( 'id', "Hyno_Breadcrumbs_{$id_content}" );
-		                $html_div['Hyno_Breadcrumbs']->appendChild( $domRetorno->importNode( $html_ol['breadcrumb'] ) );
-
-		                $html_div['Hyno_Header'] = $domRetorno->createElement( 'div' );//contenido $txtCarpeta
-		                $html_div['Hyno_Header']->setAttribute( 'class', 'sl-header clearfix' );
-		                $html_div['Hyno_Header']->setAttribute( 'id', "Hyno_Header_{$id_content}" );
-		                //$html_div['Hyno_Header']->appendChild($domRetorno->importNode($elemOlBreadcrumbPrincipal, true));
-
-		                //-----bloque grande ---
-		                $html_div['filename'] = $domRetorno->createElement( 'div', __( 'Nombre', 'dropbox-folder-share' ) );
-		                $html_div['filename']->setAttribute( 'class', 'sl-list-column sl-list-column--filename' );
-		                $html_div['filename']->setAttribute( 'style', "width: {$seccionesLista[0]}% !important;" );
-
-		                $html_div['filesize'] = $domRetorno->createElement( 'div', __( 'Tamaño', 'dropbox-folder-share' ) );
-		                $html_div['filesize']->setAttribute( 'class', 'sl-list-column sl-list-column--filesize' );
-		                $html_div['filesize']->setAttribute( 'style', "width: {$seccionesLista[1]}% !important; display: {$displaySize} " );
-
-		                $html_div['modified'] = $domRetorno->createElement( 'div', __( 'Modificado', 'dropbox-folder-share' ) );
-		                $html_div['modified']->setAttribute( 'class', 'sl-list-column sl-list-column--modified' );
-		                $html_div['modified']->setAttribute( 'style', "width: {$seccionesLista[2]}% !important; display: {$displayChange} " );
-
-		                $html_div['sl-list-row'] = $domRetorno->createElement( 'div' );
-		                $html_div['sl-list-row']->setAttribute( 'class', 'sl-list-row clearfix' );
-		                $html_div['sl-list-row']->appendChild( $html_div['filename'] );
-		                $html_div['sl-list-row']->appendChild( $html_div['filesize'] );
-		                $html_div['sl-list-row']->appendChild( $html_div['modified'] );
-
-		                $html_div['sl-list-header'] = $domRetorno->createElement( 'div' );
-		                $html_div['sl-list-header']->setAttribute( 'class', 'sl-list-header' );
-		                $html_div['sl-list-header']->appendChild( $html_div['sl-list-row'] );
-
-		                $html_div['sl-list-container'] = $domRetorno->createElement( 'div' );
-		                $html_div['sl-list-container']->setAttribute( 'class', 'sl-list-container' );
-		                $html_div['sl-list-container']->appendChild( $html_div['sl-list-header'] );
-		                $html_div['sl-list-container']->appendChild( $html_ol['sl-list-body'] );
-
-		                $html_div['sl-body'] = $domRetorno->createElement( 'div' );
-		                $html_div['sl-body']->setAttribute( 'class', 'sl-body' );
-		                $html_div['sl-body']->appendChild( $html_div['sl-list-container'] );
-		                //---------------------------------------------------------
-
-		                $html_div['sl-page-body'] = $domRetorno->createElement( 'div' );//content $txtNavegacion
-		                $html_div['sl-page-body']->setAttribute( 'class', 'sl-page-body' );
-		                $html_div['sl-page-body']->appendChild( $html_div['Hyno_Breadcrumbs'] );
-		                $html_div['sl-page-body']->appendChild( $html_div['Hyno_Header'] );
-		                $html_div['sl-page-body']->appendChild( $html_div['sl-body'] );
-
-		                $html_div['sl-body']->setAttribute( 'class', 'sl-body' );
-
-
-		                $html_div['Hyno_ContenFolder'] = $domRetorno->createElement( 'div' );
-		                $html_div['Hyno_ContenFolder']->setAttribute( 'class', 'Hyno_ContenFolder' );
-		                $html_div['Hyno_ContenFolder']->appendChild( $html_div['sl-page-body'] );
-
-		                /*PROBABLEMENTE NO NECESARIO
-						$html_div['idContent'] = $domRetorno->createElement('div');
-						$html_div['idContent']->setAttribute('id',$id_content);
-						$html_div['idContent']->appendChild($html_div['Hyno_ContenFolder']);
-						*/
-
-
-		                $retorno = $domRetorno->saveHTML( $html_div['Hyno_ContenFolder']);
-                    } else {
-
-		                $html_div['Hyno_Breadcrumbs'] = $domRetorno->createElement( 'div' );//content $txtNavegacion
-		                $html_div['Hyno_Breadcrumbs']->setAttribute( 'class', 'row' );
-		                $html_div['Hyno_Breadcrumbs']->setAttribute( 'id', "Hyno_Breadcrumbs_{$id_content}" );
-		                $html_div['Hyno_Breadcrumbs']->appendChild( $domRetorno->importNode( $html_ol['breadcrumb'] ) );
-
-		                $html_div['Hyno_Header'] = $domRetorno->createElement( 'div' );//contenido $txtCarpeta
-		                $html_div['Hyno_Header']->setAttribute( 'class', 'sl-header clearfix' );
-		                $html_div['Hyno_Header']->setAttribute( 'id', "Hyno_Header_{$id_content}" );
-
-		                $html_img['sl-empty'] = $domRetorno->createElement( 'img' );
-		                $html_img['sl-empty']->setAttribute( 'class', 'sl-empty-folder-icon' );
-		                $html_img['sl-empty']->setAttribute( 'src', self::$url . 'img/carpeta.png' );
-
-		                $html_h4['sl-empty'] = $domRetorno->createElement( 'h4', __( "Esta carpeta está vacía", "dropbox-folder-share" ) );
-		                $html_h4['sl-empty']->setAttribute( 'class', 'sl-empty-folder-message' );
-
-		                $html_div['sl-body'] = $domRetorno->createElement( 'div' );
-		                $html_div['sl-body']->setAttribute( 'class', 'sl-body sl-body--empty-folder' );
-		                $html_div['sl-body']->appendChild( $html_img['sl-empty'] );
-		                $html_div['sl-body']->appendChild( $html_h4['sl-empty'] );
-
-		                $html_div['sl-page-body'] = $domRetorno->createElement( 'div' );//content $txtNavegacion
-		                $html_div['sl-page-body']->setAttribute( 'class', 'sl-page-body sl-list-container' );
-		                $html_div['sl-page-body']->appendChild( $html_div['Hyno_Breadcrumbs'] );
-		                $html_div['sl-page-body']->appendChild( $html_div['Hyno_Header'] );
-		                $html_div['sl-page-body']->appendChild( $html_div['sl-body'] );
-
-		                $html_div['Hyno_ContenFolder'] = $domRetorno->createElement( 'div' );
-		                $html_div['Hyno_ContenFolder']->setAttribute( 'class', 'Hyno_ContenFolder' );
-		                $html_div['Hyno_ContenFolder']->appendChild( $html_div['sl-page-body'] );
-
-		                $retorno = $domRetorno->saveHTML( $html_div['Hyno_ContenFolder']);
-
-                        return $retorno;
-                    }
-
-                }
-                else {
+                if ( $objImportante == null){
                     $retorno = '
                         <div class="err sl-list-container" style="width: 100%; text-align: center;">
                             <img src="'. self::$url .'/img/error_404.png" alt="" width="30%">
                             <h4 class="sl-empty-folder-message">'. __("No encontramos lo que buscas.", "dropbox-folder-share").'</h4>
                         </div>
                         ';
+                    return $retorno;
                 }
+
+                $postValues = [
+                    'is_xhr' => 'true',
+                    'link_key' => $objImportante->folderShareToken->linkKey,
+                    'secure_hash' => $objImportante->folderShareToken->secureHash,
+                    'link_type' => $objImportante->folderShareToken->linkType,
+                    'sub_path' => $objImportante->folderShareToken->subPath,
+                    't' => $cookies['t']
+                ];
+                $responseData = $this->fetch_url('https://www.dropbox.com/list_shared_link_folder_entries',false,'post',$postValues,$cookies);
+                //archivo prueba en carpeta _apoyo_
+
+                $carpetasCarpeta = array();
+                $archivosCarpeta = array();
+                foreach ($responseData->response->entries as $item){
+
+                    if($item->is_dir){
+                        //CARPETAS
+                        $carpetasCarpeta[] = $item;
+                    }
+                    else{
+                        //ARCHIVOS
+                        $archivosCarpeta[] = $item;
+                    }
+                }
+
+
+                //Incluir Extensiones
+                include_once (__DIR__.'/extensiones.php');
+
+
+
+
+                //$archivosCarpeta = $objImportante->contents->files;
+                //$carpetasCarpeta = $objImportante->contents->folders;
+
+                $domRetorno = new \DOMDocument( '1.0', 'UTF-8');
+
+                $datosCarpetaLocal = [
+                    "nombre"      => $objImportante->folderShareToken->displayName,
+                    "path"        => $objImportante->folderShareToken->subPath,
+                    "linkKey"     => $objImportante->folderShareToken->linkKey,
+                    "secureHash"  => $objImportante->folderShareToken->secureHash,
+                    "link"        => $objImportante->folderSharedLinkInfo->url,
+                    "propietario" => $objImportante->folderSharedLinkInfo->ownerName,
+                    "archivos" => $archivosCarpeta,
+                    "carpetas" => $carpetasCarpeta,
+                ];
+
+
+                $detalleURL = parse_url( $datosCarpetaLocal["link"] );
+
+
+                $html_ol['breadcrumb'] = $domRetorno->createElement( 'ol' );
+                $html_ol['breadcrumb']->setAttribute( 'class', 'breadcrumb' );
+                $html_ol['breadcrumb']->setAttribute( 'style', 'font-size: 16px; margin:0px;' );
+
+
+                $addLIZip = $domRetorno->createElement( 'li' );
+                if ( $opcion['allowDownloadFolder'] === '1' ) {
+
+                    $query_params['dl']  = 1;
+                    $detalleURL['query'] = http_build_query( $query_params );
+
+                    $lnkDescarga = http_build_url( $link,
+                        $detalleURL,
+                        HTTP_URL_STRIP_AUTH | HTTP_URL_JOIN_PATH | HTTP_URL_JOIN_QUERY | HTTP_URL_STRIP_FRAGMENT
+                    );
+
+                    //$docZip = new \DOMDocument;
+
+                    $addIMGZip = $domRetorno->createElement( 'img' );
+                    $addIMGZip->setAttribute( 'src', self::$url . 'img/zip.png' );
+                    $addIMGZip->setAttribute( 'title', __( 'Descargar carpeta actual (zip)', 'dropbox-folder-share' ) );
+
+                    $addAZip = $domRetorno->createElement( 'a' );
+                    $addAZip->setAttribute( 'href', $lnkDescarga );
+                    $addAZip->setAttribute( 'target', "_blank" );
+                    $addAZip->appendChild( $addIMGZip );
+
+                    $addLIZip->setAttribute( 'class', 'pull-right' ); //creado fuera del IF
+                    $addLIZip->appendChild( $addAZip );
+
+                }
+
+                //solo entra si existe una barra de titulo, es decir si es sub carpeta
+                if ( $titleBar != null ) {
+                    $titleBar = str_replace( '\\"', '"', $titleBar );
+                    $titleBar = str_replace( "\\'", "'", $titleBar );
+                    $titleBar = str_replace( "\\\\", "\\", $titleBar );
+
+                    $titleBar = $this->limpiahtml( $titleBar );
+
+                    $doc = new \DOMDocument();
+
+                    $doc->loadHTML( mb_convert_encoding( $titleBar, 'HTML-ENTITIES', 'UTF-8' ) );
+
+                    $elemLiBreadcrumb = $doc->getElementsByTagName( 'li' );
+
+                    $elemOlBreadcrumb = $doc->getElementsByTagName( 'ol' );
+
+                    $lnkSup = false;
+                    foreach ( $elemLiBreadcrumb as $li ) {
+
+                        if ( $li->getAttribute( 'class' ) == 'pull-right' ) {
+                            $li->parentNode->removeChild( $li);
+                        } else {
+                            $html_ol['breadcrumb']->appendChild( $domRetorno->importNode( $li, true ) );
+                            if ( $li->getAttribute( 'data-id' ) == $datosCarpetaLocal["secureHash"] ) {
+                                $lnkSup = true;
+                                break;
+                            }
+                        }
+                    }
+
+                    $elemA_1 = $domRetorno->createElement( 'a', $datosCarpetaLocal["nombre"] );
+                    $elemA_1->setAttribute( 'href', $link );
+                    $elemA_1->setAttribute( 'onclick', "loadContenDFS('{$data}', '{$id_content}'); varTitulo = 1; return false;" );
+                    $elemA_1->setAttribute( 'data-titulo', '1' );
+
+                    $elemIMG_2 = $domRetorno->createElement( 'img' );
+                    $elemIMG_2->setAttribute( 'width', '12px' );
+                    $elemIMG_2->setAttribute( 'src', self::$url . '/img/ico-external-link.png' );
+
+                    $elemA_2 = $domRetorno->createElement( 'a' );
+                    $elemA_2->setAttribute( 'href', $link );
+                    $elemA_2->setAttribute( 'target', '_blank' );
+                    $elemA_2->appendChild( $elemIMG_2 );
+
+                    $elemLi = $domRetorno->createElement( 'li' );
+                    $elemLi->setAttribute( 'data-id', $datosCarpetaLocal["secureHash"] );
+                    $elemLi->appendChild( $elemA_1 );
+                    $elemLi->appendChild( $elemA_2 );
+
+                    if ( ! $lnkSup ) {
+                        $html_ol['breadcrumb']->appendChild( $elemLi );
+                    }
+
+
+                    //$elemOlBreadcrumb->item(0)->appendChild($elemLi);
+
+                    if ( $opcion['allowDownloadFolder'] === '1' ) {
+                        $html_ol['breadcrumb']->appendChild( $addLIZip );
+                        //$elemOlBreadcrumb->item(0)->appendChild($doc->importNode( $addLIZip, true ));
+                    }
+
+                    //d($doc->saveHTML($elemOlBreadcrumb->item(0)));
+
+
+                }
+                else {
+                    $html_i['fa-dropbox'] = $domRetorno->createElement( 'i' );
+                    $html_i['fa-dropbox']->setAttribute( 'class', 'fa fa-dropbox' );
+                    $html_i['fa-dropbox']->setAttribute( 'style', 'color: #0082E6;' );
+
+                    $html_li[0] = $domRetorno->createElement( 'li' );
+                    $html_li[0]->appendChild( $html_i['fa-dropbox'] );
+
+                    $html_a['ajax'] = $domRetorno->createElement( 'a', $datosCarpetaLocal["nombre"] );
+                    $html_a['ajax']->setAttribute( 'href', $link );
+                    $html_a['ajax']->setAttribute( 'data-titulo', '1' );
+                    $html_a['ajax']->setAttribute( 'onclick', "loadContenDFS('{$data}', '{$id_content}'); varTitulo = 1; return false;" );
+
+                    $html_img['ext_icon'] = $domRetorno->createElement( 'img' );
+                    $html_img['ext_icon']->setAttribute( 'width', '12px' );
+                    $html_img['ext_icon']->setAttribute( 'src', self::$url . "img/ico-external-link.png" );
+
+                    $html_a['blank'] = $domRetorno->createElement( 'a' );
+                    $html_a['blank']->setAttribute( 'href', $link );
+                    $html_a['blank']->setAttribute( 'target', '_blank' );
+                    $html_a['blank']->appendChild( $html_img['ext_icon'] );
+
+                    $html_li[1] = $domRetorno->createElement( 'li' );
+                    $html_li[1]->setAttribute( 'data-id', $datosCarpetaLocal["secureHash"] );
+                    $html_li[1]->appendChild( $html_a['ajax'] );
+                    $html_li[1]->appendChild( $html_a['blank'] );
+
+                    //$html_ol['breadcrumb'] creado al inicio del if de este else y superior
+                    $html_ol['breadcrumb']->appendChild( $html_li[0] );
+                    $html_ol['breadcrumb']->appendChild( $html_li[1] );
+                    if ( $opcion['allowDownloadFolder'] === '1' ) {
+                        $html_ol['breadcrumb']->appendChild( $addLIZip );
+                    }
+
+                }
+
+
+                $cantData = count( $datosCarpetaLocal["carpetas"] ) + count( $datosCarpetaLocal["archivos"] );
+
+                if ( $cantData > 0 ) {
+
+
+                    if ( $opcion['link2Folder'] != '1' ) {
+
+                        $domRetorno->appendChild( $html_ol['breadcrumb'] );
+
+                        $this->EliminarTAG( $domRetorno, '//a' );
+                        $this->EliminarTAG( $domRetorno, '//img[@width="12px"]');
+
+                    }
+
+
+                    $seccionesLista = [58.6,19.5,21.9];
+
+                    $displaySize = "auto";
+                    if ($opcion['showSize'] != '1') {
+                        $displaySize = "none";
+                        $seccionesLista[0] += $seccionesLista[1];
+                        $seccionesLista[1] = 0;
+                    }
+
+                    $displayChange = "auto";
+                    if ($opcion['showChange'] != '1') {
+                        $displayChange = "none";
+                        $seccionesLista[0] += $seccionesLista[2];
+                        $seccionesLista[2] = 0;
+                    }
+
+                    $html_ol['sl-list-body'] = $domRetorno->createElement( 'ol' );//revisar separacion
+                    $html_ol['sl-list-body']->setAttribute( 'class', 'sl-list-body o-list-ui o-list-ui--dividers' );
+                    $html_ol['sl-list-body']->setAttribute( 'style', "max-height:" . ( ( $opcion['defaultHeight'] != '0' ) ? $opcion['defaultHeight'] : 'auto' ) . "; overflow:auto;");
+                    foreach ($datosCarpetaLocal["carpetas"] as $carpeta) {
+                        $folderName = $carpeta->filename;
+                        $folderHref = $carpeta->href;
+                        $opciones_shortcode['link'] = $folderHref;
+
+                        $data = json_encode( $opciones_shortcode );
+                        $data = str_replace( "\"", "\\'", $data );
+                        $data = 'rev_' . $data;
+
+                        $displayIcon = "auto";
+                        if ($opcion['showIcons'] != '1') {
+                            $displayIcon = "none";
+                        }
+
+
+                        $html_li_div_a_div_div_img_lista = $domRetorno->createElement( 'img' );
+                        $html_li_div_a_div_div_img_lista->setAttribute( 'class', 'sprite sprite_web s_web_folder_32 icon' );
+                        $html_li_div_a_div_div_img_lista->setAttribute( 'src', self::$url . 'img/icon_spacer.gif' );
+
+                        $html_li_div_a_div_div_lista = $domRetorno->createElement( 'div' );
+                        $html_li_div_a_div_div_lista->setAttribute( 'class', 'o-flag__fix' );
+                        $html_li_div_a_div_div_lista->setAttribute( 'style', "display: {$displayIcon} " );
+                        $html_li_div_a_div_div_lista->appendChild( $html_li_div_a_div_div_img_lista );
+
+                        $html_li_div_a_div_div2_lista = $domRetorno->createElement( 'div', $folderName );
+                        $html_li_div_a_div_div2_lista->setAttribute( 'class', 'o-flag__flex' );
+                        //$html_li_div_a_div_div2_lista->setAttribute('style',"display: {$displayIcon} ");
+
+                        $html_li_div_a_div_lista = $domRetorno->createElement( 'div' );
+                        $html_li_div_a_div_lista->setAttribute( 'class', 'o-flag' );
+                        $html_li_div_a_div_lista->appendChild( $html_li_div_a_div_div_lista );
+                        $html_li_div_a_div_lista->appendChild( $html_li_div_a_div_div2_lista );
+
+                        $html_li_div_a_lista = $domRetorno->createElement( 'a' );
+                        $html_li_div_a_lista->setAttribute( 'href', $folderHref );
+                        $html_li_div_a_lista->setAttribute( 'data-titulo', '1');
+                        if ($opcion['allowBrowseFolder'] == '1' ) {
+                            $html_li_div_a_lista->setAttribute( 'onclick', "loadContenDFS('{$data}', '{$id_content}'); varTitulo = 1; return false;");
+                        } else {
+                            $html_li_div_a_lista->setAttribute( 'onclick', "return false;" );
+                        }
+                        $html_li_div_a_lista->setAttribute( 'class', 'sl-file-link' );
+                        $html_li_div_a_lista->appendChild( $html_li_div_a_div_lista );
+
+                        $html_li_div_lista = $domRetorno->createElement( 'div' );
+                        $html_li_div_lista->setAttribute( 'class', 'sl-list-column sl-list-column--filename' );
+                        $html_li_div_lista->setAttribute( 'style', "width: {$seccionesLista[0]}% !important;" );
+                        $html_li_div_lista->appendChild( $html_li_div_a_lista );
+
+                        $html_li_div2_lista = $domRetorno->createElement( 'div', '--' );
+                        $html_li_div2_lista->setAttribute( 'class', 'sl-list-column sl-list-column--filesize' );
+                        $html_li_div2_lista->setAttribute( 'style', "width: {$seccionesLista[1]}% !important;; display: {$displaySize} " );
+
+                        $html_li_div3_lista = $domRetorno->createElement( 'div', '--' );
+                        $html_li_div3_lista->setAttribute( 'class', 'sl-list-column sl-list-column--modified' );
+                        $html_li_div3_lista->setAttribute( 'style', "width: {$seccionesLista[2]}% !important;; display: {$displayChange} " );
+
+                        $html_li_lista = $domRetorno->createElement( 'li' );
+                        $html_li_lista->setAttribute( 'class', 'sl-list-row clearfix' );
+                        $html_li_lista->appendChild( $html_li_div_lista );
+                        $html_li_lista->appendChild( $html_li_div2_lista );
+                        $html_li_lista->appendChild( $html_li_div3_lista );
+
+                        $html_ol['sl-list-body']->appendChild( $html_li_lista);
+
+                    }
+
+
+                    $htmlArchivos = '';
+
+                    foreach ($datosCarpetaLocal["archivos"] as $archivo ) {
+
+                        //d($archivo);
+
+                        $fileCode = ( isset( $archivo->htmlified_link ) ) ? $archivo->htmlified_link : ( isset( $archivo->direct_blockserver_link ) ) ? $archivo->direct_blockserver_link:'';
+
+                        $previsualizacion = $archivo->preview_url;
+                        //$lnkThumbnail = $archivo->thumbnail_url_tmpl;
+                        $lnkThumbnail = $this->downloadLinkGenerator( $archivo->thumbnail_url_tmpl, array(
+                            'size'      => '32x32',
+                            'size_mode' => '1'
+                        ) );
+//https://photos-1.dropbox.com/t/2/AABpcRRa9-szXO86wYQd_9D4swB2a6t27uVGAqfu8vFahw/12/34022148/png/32x32/3/1499155200/0/2/Moquegua%20copia.svg/ELPV5xkY7OsPIAIoAg/uynCf0GA6KbIf2laTx_8uTLgxpINAA9AhRgHeI03FeQ?size=178x178&size_mode=3
+//https://photos-1.dropbox.com/t/2/AADIsyR3bGVG9hjPPuVemTqb6nVqbxcM8yQjW3ZYNaTvvg/12/34022148/jpeg/32x32/3/1499155200/0/2/Moquegua.ai/ELPV5xkY7OsPIAIoAg/H9gDaPbdXrlkEOBcJd5vV1Lwt14f5FktYzxclzFEC8E?size=178x178&size_mode=3
+
+
+                        $file_link = $archivo->href;
+
+                        $is_dir    = $archivo->is_dir;
+                        $file_name = $archivo->filename;
+
+                        $bytes    = $archivo->bytes;
+                        $creado   = $archivo->ts;
+                        $prevType = $archivo->preview_type;
+
+                        $dataArchivo    = explode( "?", ( isset( pathinfo( $file_link )["extension"] ) ) ? pathinfo( $file_link )["extension"] : 'none' );
+                        $dataArchivo[0] = strtolower( $dataArchivo[0]);
+                        $typeIcon       = "";
+                        $displayIcon    = "auto";
+                        if ( $opcion['showIcons'] === '1') {
+                            foreach ($varExt as $fileType => $ext ) {
+                                if ( in_array( $dataArchivo[0], $ext)) {
+                                    $typeIcon = "_" . $fileType;
+                                    break;
+                                }
+                            }
+                        } else{
+                            $displayIcon = "none";
+                        }
+
+                        $fileLinkMostrar = $file_link;
+                        if( $opcion['allowDownload'] === '1'){
+                            $fileLinkMostrar = $this->downloadLinkGenerator($file_link);
+                        }
+
+                        $arrayExtThickbox = explode(",",$opcion['thickboxTypes'] );
+                        $classThickBox    = "";
+                        $relThickBox      = "";
+
+
+                        $infoFile = wp_check_filetype( $file_name);
+                        if(in_array($dataArchivo[0], $arrayExtThickbox)) {
+
+                            $classThickBox   = "lightbox";
+                            $fileLinkMostrar = $this->downloadLinkGenerator($file_link );
+                            $fileLinkMostrar = "https://docs.google.com/viewer?url=" . $fileLinkMostrar . "&embedded=true&KeepThis=true&TB_iframe=true&height=400&width=800";
+
+                            $dataWidth = "1000";
+
+                            //https://docs.google.com/gview?url=http://infolab.stanford.edu/pub/papers/google.pdf&embedded=true
+                        }
+                        //elseif (($prevType === 'text') && ($infoFile['ext'] !== 'txt')){
+                        if ( ( ! is_null( $fileCode ) ) && ( $opcion['dbNativeViewer'] === '1' ) ) {
+                            $classThickBox = "lightbox";
+                            //$fileLinkMostrar = $this->downloadLinkGenerator($file_link);
+                            $fileLinkMostrar = $fileCode;//"https://docs.google.com/viewer?url=".$fileLinkMostrar."&embedded=true&KeepThis=true&TB_iframe=true&height=400&width=800";
+
+                            $dataWidth = "1000";
+                        }
+
+
+                        $esImg = str_replace( "_", "", $typeIcon );
+                        if ( ( $opcion['imagesPopup'] === '1' ) || ( in_array( $dataArchivo[0], $arrayExtThickbox ) ) ) {
+
+
+                            if ( $esImg == 'picture' ) {
+                                $classThickBox = "lightbox";
+                                $relThickBox   = "gal_" . $id_content;
+
+
+                                $fileLinkMostrar = $this->downloadLinkGenerator( $file_link );
+
+                                //$fileLinkMostrar = $this->downloadLinkGenerator($archivo->thumbnail_url_tmpl,array('size_mode'=>'5'));;
+                            }
+                        }
+
+
+                        if ( ( $esImg === 'picture' ) && ( $opcion['showThumbnail'] === '1' ) && ( $_imgContent = @file_get_contents( $lnkThumbnail ) ) ) {
+                            //data:image/png;base64,
+                            //Kint::dump([$file_link,wp_check_filetype($file_name),wp_check_filetype($this->downloadLinkGenerator($file_link)),$b64image]);
+
+                            $b64image = base64_encode( $_imgContent );
+
+
+                            $_urlImg64                       = "data:" . $infoFile['type'] . ";base64," . $b64image;
+                            $html_li_div_a_div_div_img_lista = $domRetorno->createElement( 'img' );
+                            $html_li_div_a_div_div_img_lista->setAttribute( 'class', "icon thumbnail-image--loaded" );
+                            $html_li_div_a_div_div_img_lista->setAttribute( 'src', $_urlImg64 );
+                        } else {
+                            $html_li_div_a_div_div_img_lista = $domRetorno->createElement( 'img' );
+                            $html_li_div_a_div_div_img_lista->setAttribute( 'class', "sprite sprite_web s_web_page_white" . $typeIcon . "_32 icon" );
+                            $html_li_div_a_div_div_img_lista->setAttribute( 'src', self::$url . 'img/icon_spacer.gif' );
+                        }
+
+
+                        $html_li_div_a_div_div_lista = $domRetorno->createElement( 'div' );
+                        $html_li_div_a_div_div_lista->setAttribute( 'class', 'o-flag__fix' );
+                        $html_li_div_a_div_div_lista->setAttribute( 'style', "display: {$displayIcon} " );
+                        $html_li_div_a_div_div_lista->appendChild( $html_li_div_a_div_div_img_lista );
+
+                        $html_li_div_a_div_div2_lista = $domRetorno->createElement( 'div', $file_name );
+                        $html_li_div_a_div_div2_lista->setAttribute( 'class', 'o-flag__flex' );
+
+                        $html_li_div_a_div_lista = $domRetorno->createElement( 'div' );
+                        $html_li_div_a_div_lista->setAttribute( 'class', 'o-flag' );
+                        $html_li_div_a_div_lista->appendChild( $html_li_div_a_div_div_lista );
+                        $html_li_div_a_div_lista->appendChild( $html_li_div_a_div_div2_lista );
+
+                        $html_li_div_a_lista = $domRetorno->createElement( 'a' );
+                        $html_li_div_a_lista->setAttribute( 'href', $fileLinkMostrar );
+                        //$html_li_div_a_lista->setAttribute('class','sl-file-link '.$classThickBox);
+                        $html_li_div_a_lista->setAttribute( 'class', 'sl-file-link ' );
+                        $html_li_div_a_lista->setAttribute( 'title', $file_name );
+                        if ( $relThickBox != "" ) {
+                            $html_li_div_a_lista->setAttribute( 'data-gallery', $relThickBox );
+                        }
+                        $html_li_div_a_lista->setAttribute( 'data-title', $file_name );
+                        $html_li_div_a_lista->setAttribute( 'data-toggle', $classThickBox );
+                        if ( isset( $dataWidth ) ) {
+                            $html_li_div_a_lista->setAttribute( 'data-width', $dataWidth );
+                        }
+                        //$html_li_div_a_lista->setAttribute('data-remote', $fileLinkMostrar);
+                        //$html_li_div_a_lista->setAttribute('rel',$relThickBox);
+                        $html_li_div_a_lista->appendChild( $html_li_div_a_div_lista );
+
+                        $html_li_div_lista = $domRetorno->createElement( 'div' );
+                        $html_li_div_lista->setAttribute( 'class', 'sl-list-column sl-list-column--filename' );
+                        $html_li_div_lista->setAttribute( 'style', "width: {$seccionesLista[0]}% !important;" );
+                        $html_li_div_lista->appendChild( $html_li_div_a_lista );
+
+                        $html_li_div2_lista = $domRetorno->createElement( 'div', ( ( $opcion['showSize'] != '1' ) ? "" : self::formatSizeUnits( $bytes ) ) );
+                        $html_li_div2_lista->setAttribute( 'class', 'sl-list-column sl-list-column--filesize' );
+                        $html_li_div2_lista->setAttribute( 'style', "width: {$seccionesLista[1]}% !important;; display: {$displaySize} " );
+
+                        $strFecha = \Carbon\Carbon::createFromTimestamp( $creado )->format( isset( $opcion['datetimeFormat'] ) ? $opcion['datetimeFormat'] : get_option( 'date_format' ) . " " . get_option( 'time_format' ) );
+                        //$strFecha = \Carbon\Carbon::createFromTimestamp($creado)->format(get_option('date_format')." ". get_option('time_format'));
+                        if ( ( \Carbon\Carbon::createFromTimestamp( $creado )->diffInDays() ) <= 30 ) {
+                            $strFecha = \Carbon\Carbon::createFromTimestamp( $creado )->diffForHumans();
+                        }
+
+                        $html_li_div3_lista = $domRetorno->createElement( 'div', $strFecha );
+                        $html_li_div3_lista->setAttribute( 'class', 'sl-list-column sl-list-column--modified' );
+                        $html_li_div3_lista->setAttribute( 'style', "width: {$seccionesLista[2]}% !important;; display: {$displayChange} " );
+
+                        $html_li_lista = $domRetorno->createElement( 'li' );
+                        $html_li_lista->setAttribute( 'class', 'sl-list-row clearfix' );
+                        $html_li_lista->appendChild( $html_li_div_lista );
+                        $html_li_lista->appendChild( $html_li_div2_lista );
+                        $html_li_lista->appendChild( $html_li_div3_lista );
+
+                        $domRetorno->appendChild( $html_li_lista );
+
+                        //d($domRetorno->saveHTML($html_li_lista));
+
+                        $html_ol['sl-list-body']->appendChild( $html_li_lista );
+
+                    }
+                    //d($domRetorno->saveHTML($html_ol_lista));
+                    //d($datosCarpetaLocal);
+
+
+                    /**
+                     * DATOS NECESARIOS
+                     */
+
+
+                    $html_div['Hyno_Breadcrumbs'] = $domRetorno->createElement( 'div' );//content $txtNavegacion
+                    $html_div['Hyno_Breadcrumbs']->setAttribute( 'class', 'row' );
+                    $html_div['Hyno_Breadcrumbs']->setAttribute( 'id', "Hyno_Breadcrumbs_{$id_content}" );
+                    $html_div['Hyno_Breadcrumbs']->appendChild( $domRetorno->importNode( $html_ol['breadcrumb'] ) );
+
+                    $html_div['Hyno_Header'] = $domRetorno->createElement( 'div' );//contenido $txtCarpeta
+                    $html_div['Hyno_Header']->setAttribute( 'class', 'sl-header clearfix' );
+                    $html_div['Hyno_Header']->setAttribute( 'id', "Hyno_Header_{$id_content}" );
+                    //$html_div['Hyno_Header']->appendChild($domRetorno->importNode($elemOlBreadcrumbPrincipal, true));
+
+                    //-----bloque grande ---
+                    $html_div['filename'] = $domRetorno->createElement( 'div', __( 'Nombre', 'dropbox-folder-share' ) );
+                    $html_div['filename']->setAttribute( 'class', 'sl-list-column sl-list-column--filename' );
+                    $html_div['filename']->setAttribute( 'style', "width: {$seccionesLista[0]}% !important;" );
+
+                    $html_div['filesize'] = $domRetorno->createElement( 'div', __( 'Tamaño', 'dropbox-folder-share' ) );
+                    $html_div['filesize']->setAttribute( 'class', 'sl-list-column sl-list-column--filesize' );
+                    $html_div['filesize']->setAttribute( 'style', "width: {$seccionesLista[1]}% !important; display: {$displaySize} " );
+
+                    $html_div['modified'] = $domRetorno->createElement( 'div', __( 'Modificado', 'dropbox-folder-share' ) );
+                    $html_div['modified']->setAttribute( 'class', 'sl-list-column sl-list-column--modified' );
+                    $html_div['modified']->setAttribute( 'style', "width: {$seccionesLista[2]}% !important; display: {$displayChange} " );
+
+                    $html_div['sl-list-row'] = $domRetorno->createElement( 'div' );
+                    $html_div['sl-list-row']->setAttribute( 'class', 'sl-list-row clearfix' );
+                    $html_div['sl-list-row']->appendChild( $html_div['filename'] );
+                    $html_div['sl-list-row']->appendChild( $html_div['filesize'] );
+                    $html_div['sl-list-row']->appendChild( $html_div['modified'] );
+
+                    $html_div['sl-list-header'] = $domRetorno->createElement( 'div' );
+                    $html_div['sl-list-header']->setAttribute( 'class', 'sl-list-header' );
+                    $html_div['sl-list-header']->appendChild( $html_div['sl-list-row'] );
+
+                    $html_div['sl-list-container'] = $domRetorno->createElement( 'div' );
+                    $html_div['sl-list-container']->setAttribute( 'class', 'sl-list-container' );
+                    $html_div['sl-list-container']->appendChild( $html_div['sl-list-header'] );
+                    $html_div['sl-list-container']->appendChild( $html_ol['sl-list-body'] );
+
+                    $html_div['sl-body'] = $domRetorno->createElement( 'div' );
+                    $html_div['sl-body']->setAttribute( 'class', 'sl-body' );
+                    $html_div['sl-body']->appendChild( $html_div['sl-list-container'] );
+                    //---------------------------------------------------------
+
+                    $html_div['sl-page-body'] = $domRetorno->createElement( 'div' );//content $txtNavegacion
+                    $html_div['sl-page-body']->setAttribute( 'class', 'sl-page-body' );
+                    $html_div['sl-page-body']->appendChild( $html_div['Hyno_Breadcrumbs'] );
+                    $html_div['sl-page-body']->appendChild( $html_div['Hyno_Header'] );
+                    $html_div['sl-page-body']->appendChild( $html_div['sl-body'] );
+
+                    $html_div['sl-body']->setAttribute( 'class', 'sl-body' );
+
+
+                    $html_div['Hyno_ContenFolder'] = $domRetorno->createElement( 'div' );
+                    $html_div['Hyno_ContenFolder']->setAttribute( 'class', 'Hyno_ContenFolder' );
+                    $html_div['Hyno_ContenFolder']->appendChild( $html_div['sl-page-body'] );
+
+                    /*PROBABLEMENTE NO NECESARIO
+                    $html_div['idContent'] = $domRetorno->createElement('div');
+                    $html_div['idContent']->setAttribute('id',$id_content);
+                    $html_div['idContent']->appendChild($html_div['Hyno_ContenFolder']);
+                    */
+
+
+                    $retorno = $domRetorno->saveHTML( $html_div['Hyno_ContenFolder']);
+                }
+                else {
+
+                    $html_div['Hyno_Breadcrumbs'] = $domRetorno->createElement( 'div' );//content $txtNavegacion
+                    $html_div['Hyno_Breadcrumbs']->setAttribute( 'class', 'row' );
+                    $html_div['Hyno_Breadcrumbs']->setAttribute( 'id', "Hyno_Breadcrumbs_{$id_content}" );
+                    $html_div['Hyno_Breadcrumbs']->appendChild( $domRetorno->importNode( $html_ol['breadcrumb'] ) );
+
+                    $html_div['Hyno_Header'] = $domRetorno->createElement( 'div' );//contenido $txtCarpeta
+                    $html_div['Hyno_Header']->setAttribute( 'class', 'sl-header clearfix' );
+                    $html_div['Hyno_Header']->setAttribute( 'id', "Hyno_Header_{$id_content}" );
+
+                    $html_img['sl-empty'] = $domRetorno->createElement( 'img' );
+                    $html_img['sl-empty']->setAttribute( 'class', 'sl-empty-folder-icon' );
+                    $html_img['sl-empty']->setAttribute( 'src', self::$url . 'img/carpeta.png' );
+
+                    $html_h4['sl-empty'] = $domRetorno->createElement( 'h4', __( "Esta carpeta está vacía", "dropbox-folder-share" ) );
+                    $html_h4['sl-empty']->setAttribute( 'class', 'sl-empty-folder-message' );
+
+                    $html_div['sl-body'] = $domRetorno->createElement( 'div' );
+                    $html_div['sl-body']->setAttribute( 'class', 'sl-body sl-body--empty-folder' );
+                    $html_div['sl-body']->appendChild( $html_img['sl-empty'] );
+                    $html_div['sl-body']->appendChild( $html_h4['sl-empty'] );
+
+                    $html_div['sl-page-body'] = $domRetorno->createElement( 'div' );//content $txtNavegacion
+                    $html_div['sl-page-body']->setAttribute( 'class', 'sl-page-body sl-list-container' );
+                    $html_div['sl-page-body']->appendChild( $html_div['Hyno_Breadcrumbs'] );
+                    $html_div['sl-page-body']->appendChild( $html_div['Hyno_Header'] );
+                    $html_div['sl-page-body']->appendChild( $html_div['sl-body'] );
+
+                    $html_div['Hyno_ContenFolder'] = $domRetorno->createElement( 'div' );
+                    $html_div['Hyno_ContenFolder']->setAttribute( 'class', 'Hyno_ContenFolder' );
+                    $html_div['Hyno_ContenFolder']->appendChild( $html_div['sl-page-body'] );
+
+                    $retorno = $domRetorno->saveHTML( $html_div['Hyno_ContenFolder']);
+
+
+
+                }
+
 
                 return $retorno;
             }
@@ -1319,29 +1151,29 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
 			// Mostramos el formulario
 			?>
             <p>
-                Titulo
+                <?php  _e( 'Titulo', 'dropbox-folder-share' ) ?>
                 <input class="widefat" type="text" name="<?php echo $this->get_field_name( 'titulo' ); ?>"
                        value="<?php echo esc_attr( $titulo ); ?>"/>
             </p>
             <p>
-                URL de Dropbox
+                <?php  _e( 'URL de Dropbox', 'dropbox-folder-share' ) ?>
                 <input class="widefat" type="text" name="<?php echo $this->get_field_name( 'link' ); ?>"
                        value="<?php echo esc_attr( $link ); ?>"/>
             </p>
             <p>
-                Iconos
+                <?php  _e( 'Iconos', 'dropbox-folder-share' ) ?>
                 <input type="checkbox"
                        name="<?php echo $this->get_field_name( 'show_icon' ); ?>" <?php echo checked( 1, $show_icon, false ); ?>
                        value="1">
             </p>
             <p>
-                Tamaño
+                <?php  _e( 'Tamaño', 'dropbox-folder-share' ) ?>
                 <input type="checkbox"
                        name="<?php echo $this->get_field_name( 'show_size' ); ?>" <?php echo checked( 1, $show_size, false ); ?>
                        value="1">
             </p>
             <p>
-                Modificado
+                <?php  _e( 'Modificado', 'dropbox-folder-share' ) ?>
                 <input type="checkbox"
                        name="<?php echo $this->get_field_name( 'show_change' ); ?>" <?php echo checked( 1, $show_change, false ); ?>
                        value="1">

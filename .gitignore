@@ -58,3 +58,4 @@ gen
 _gsdata_/
 scss/
 vendor
+/vendor/*
