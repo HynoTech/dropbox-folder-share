@@ -59,12 +59,6 @@ class DFS_Admin extends DropboxFolderSharePrincipal
                     'allowBrowseFolder' => __('Permitir Navegacion entre Carpetas', "dropbox-folder-share"),
                     'link2Folder' => __('Dejar Link de Carpeta Compartida', "dropbox-folder-share"),
                 )
-            ),
-            "conexion" => array(
-                'titulo' => __("Conexion", "dropbox-folder-share"),
-                'campos' => array(
-                    'tipoConexion' => __('Tipo de Conexion a Usar', "dropbox-folder-share")
-                )
             )
         );
 
@@ -269,6 +263,8 @@ class DFS_Admin extends DropboxFolderSharePrincipal
                 name="<?php echo parent::_OPT_SEETINGS_; ?>[datetimeFormat]"
                 value="<?php echo $options['datetimeFormat']; ?>"
         />
+        <p class="description">
+            <a href="https://codex.wordpress.org/Formatting_Date_and_Time" target="_blank"><?php _e( "Documentación sobre formatos de fecha y hora", "dropbox-folder-share" ); ?></a>
         <br/><br/>
 		<?php
 	}
@@ -347,24 +343,7 @@ class DFS_Admin extends DropboxFolderSharePrincipal
     }
     //FIN SECCION VINCULACION
 
-    //HTML SECCION CONEXION
-    function printSeccion_conexion()
-    {
-        echo '';
-    }
 
-    //Seccion tipoConexion
-    function print_conexion_tipoConexionInput()
-    {
-        $options = get_option(parent::_OPT_SEETINGS_);
-        ?>
-        <select id="id_conexion_tipoConexion" name="<?php echo parent::_OPT_SEETINGS_; ?>[tipoConexion]">
-            <option value="fopen" <?php echo selected($options['tipoConexion'], "fopen", false); ?>>fopen</option>
-            <option value="curl" <?php echo selected($options['tipoConexion'], "curl", false); ?>>cURL</option>
-        </select>
-        <br/><br/>
-        <?php
-    }
 
     //FUNCION DE VALIDACION DE DATOS
     function validate_options($input)
@@ -388,7 +367,6 @@ class DFS_Admin extends DropboxFolderSharePrincipal
         $options['allowBrowseFolder'] = trim($input['allowBrowseFolder']);
         $options['link2Folder'] = trim($input['link2Folder']);
 
-        $options['tipoConexion'] = trim($input['tipoConexion']);
 
         /* if (!preg_match('/^[a-z0-9]{32}$/i', $options['text_string'])) {
           $options['text_string'] = '';

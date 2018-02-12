@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "7e4fa5d143f4b7de7440e735ea44b6bb",
+    "content-hash": "2584dbea6c3371fc4fd9c5e16c4131a1",
     "packages": [
         {
             "name": "askupa-software/amarkal-admin-notification",
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/askupasoftware/amarkal-admin-notification.git",
-                "reference": "ecb93059997bb1d174823114d6b9767f39a9e117"
+                "url": "https://github.com/amarkal/amarkal-admin-notification.git",
+                "reference": "c8869f12628a9a57dbc972de64a5f6e0e4cc9fed"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/askupasoftware/amarkal-admin-notification/zipball/ecb93059997bb1d174823114d6b9767f39a9e117",
-                "reference": "ecb93059997bb1d174823114d6b9767f39a9e117",
+                "url": "https://api.github.com/repos/amarkal/amarkal-admin-notification/zipball/c8869f12628a9a57dbc972de64a5f6e0e4cc9fed",
+                "reference": "c8869f12628a9a57dbc972de64a5f6e0e4cc9fed",
                 "shasum": ""
             },
             "require": {
@@ -43,13 +43,13 @@
                 }
             ],
             "description": "Add static/dismissible admin notifications to WordPress",
-            "homepage": "https://github.com/askupasoftware/amarkal-admin-notification",
+            "homepage": "https://github.com/amarkal/amarkal-admin-notification",
             "keywords": [
                 "framework",
                 "notices",
                 "wordpress"
             ],
-            "time": "2017-03-27 20:07:53"
+            "time": "2017-12-24T21:40:31+00:00"
         },
         {
             "name": "hynotech/usos-generales",
@@ -95,7 +95,7 @@
                 "web service",
                 "xml"
             ],
-            "time": "2017-03-21 05:47:57"
+            "time": "2017-03-21T05:47:57+00:00"
         },
         {
             "name": "nesbot/carbon",
@@ -148,20 +148,20 @@
                 "datetime",
                 "time"
             ],
-            "time": "2017-02-06 22:02:47"
+            "time": "2017-02-06T22:02:47+00:00"
         },
         {
             "name": "php-curl-class/php-curl-class",
-            "version": "7.3.1",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-curl-class/php-curl-class.git",
-                "reference": "0dcf0230ef7b1cc49d5f8c1a3457acb325ab3707"
+                "reference": "6efebcdcdf5ed7fcb6ccc54e5f3c35be13d11c69"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-curl-class/php-curl-class/zipball/0dcf0230ef7b1cc49d5f8c1a3457acb325ab3707",
-                "reference": "0dcf0230ef7b1cc49d5f8c1a3457acb325ab3707",
+                "url": "https://api.github.com/repos/php-curl-class/php-curl-class/zipball/6efebcdcdf5ed7fcb6ccc54e5f3c35be13d11c69",
+                "reference": "6efebcdcdf5ed7fcb6ccc54e5f3c35be13d11c69",
                 "shasum": ""
             },
             "require": {
@@ -205,20 +205,20 @@
                 "web service",
                 "xml"
             ],
-            "time": "2017-06-27T23:57:16+00:00"
+            "time": "2018-02-08T16:12:58+00:00"
         },
         {
             "name": "symfony/polyfill-mbstring",
-            "version": "v1.4.0",
+            "version": "v1.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-mbstring.git",
-                "reference": "f29dca382a6485c3cbe6379f0c61230167681937"
+                "reference": "78be803ce01e55d3491c1397cf1c64beb9c1b63b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/f29dca382a6485c3cbe6379f0c61230167681937",
-                "reference": "f29dca382a6485c3cbe6379f0c61230167681937",
+                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/78be803ce01e55d3491c1397cf1c64beb9c1b63b",
+                "reference": "78be803ce01e55d3491c1397cf1c64beb9c1b63b",
                 "shasum": ""
             },
             "require": {
@@ -230,7 +230,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.4-dev"
+                    "dev-master": "1.7-dev"
                 }
             },
             "autoload": {
@@ -264,35 +264,38 @@
                 "portable",
                 "shim"
             ],
-            "time": "2017-06-09T14:24:12+00:00"
+            "time": "2018-01-30T19:27:44+00:00"
         },
         {
             "name": "symfony/translation",
-            "version": "v3.3.5",
+            "version": "v3.4.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/translation.git",
-                "reference": "35dd5fb003c90e8bd4d8cabdf94bf9c96d06fdc3"
+                "reference": "10b32cf0eae28b9b39fe26c456c42b19854c4b84"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/translation/zipball/35dd5fb003c90e8bd4d8cabdf94bf9c96d06fdc3",
-                "reference": "35dd5fb003c90e8bd4d8cabdf94bf9c96d06fdc3",
+                "url": "https://api.github.com/repos/symfony/translation/zipball/10b32cf0eae28b9b39fe26c456c42b19854c4b84",
+                "reference": "10b32cf0eae28b9b39fe26c456c42b19854c4b84",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.5.9",
+                "php": "^5.5.9|>=7.0.8",
                 "symfony/polyfill-mbstring": "~1.0"
             },
             "conflict": {
                 "symfony/config": "<2.8",
-                "symfony/yaml": "<3.3"
+                "symfony/dependency-injection": "<3.4",
+                "symfony/yaml": "<3.4"
             },
             "require-dev": {
                 "psr/log": "~1.0",
-                "symfony/config": "~2.8|~3.0",
-                "symfony/intl": "^2.8.18|^3.2.5",
-                "symfony/yaml": "~3.3"
+                "symfony/config": "~2.8|~3.0|~4.0",
+                "symfony/dependency-injection": "~3.4|~4.0",
+                "symfony/finder": "~2.8|~3.0|~4.0",
+                "symfony/intl": "^2.8.18|^3.2.5|~4.0",
+                "symfony/yaml": "~3.4|~4.0"
             },
             "suggest": {
                 "psr/log": "To use logging capability in translator",
@@ -302,7 +305,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.3-dev"
+                    "dev-master": "3.4-dev"
                 }
             },
             "autoload": {
@@ -329,7 +332,7 @@
             ],
             "description": "Symfony Translation Component",
             "homepage": "https://symfony.com",
-            "time": "2017-06-24T16:45:30+00:00"
+            "time": "2018-01-18T22:16:57+00:00"
         }
     ],
     "packages-dev": [
@@ -339,12 +342,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kint-php/kint.git",
-                "reference": "27457efb00017400818deb3216f9bc7255bdeff2"
+                "reference": "528f9195d44637c83b64d7ed58dcf17e9c1027c5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kint-php/kint/zipball/27457efb00017400818deb3216f9bc7255bdeff2",
-                "reference": "27457efb00017400818deb3216f9bc7255bdeff2",
+                "url": "https://api.github.com/repos/kint-php/kint/zipball/528f9195d44637c83b64d7ed58dcf17e9c1027c5",
+                "reference": "528f9195d44637c83b64d7ed58dcf17e9c1027c5",
                 "shasum": ""
             },
             "require": {
@@ -389,7 +392,7 @@
                 "kint",
                 "php"
             ],
-            "time": "2017-07-14T16:10:48+00:00"
+            "time": "2018-01-09T18:09:44+00:00"
         }
     ],
     "aliases": [],
@@ -398,6 +401,7 @@
         "nesbot/carbon": 20,
         "hynotech/usos-generales": 20,
         "askupa-software/amarkal-admin-notification": 20,
+        "php-curl-class/php-curl-class": 20,
         "kint-php/kint": 20
     },
     "prefer-stable": false,

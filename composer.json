@@ -19,7 +19,7 @@
     "nesbot/carbon": "dev-master",
     "hynotech/usos-generales": "dev-master",
     "askupa-software/amarkal-admin-notification": "dev-master",
-    "php-curl-class/php-curl-class": "^7.3"
+    "php-curl-class/php-curl-class": "dev-master"
   },
   "require-dev": {
     "kint-php/kint": "dev-master"

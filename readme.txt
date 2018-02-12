@@ -64,6 +64,10 @@ Read **[More](http://www.hynotech.com/wp-plugins/dropbox-folder-share/#faq "Drop
 
 == Changelog ==
 
+= 1.8.1 =
+* FIX some errors
+* FOPEN is deprecated, now only work with CURL
+
 = 1.8 =
 * Added thumbnails
 * Added Witdget module
@@ -126,6 +130,10 @@ Read **[More](http://www.hynotech.com/wp-plugins/dropbox-folder-share/#faq "Drop
 * Version inicial.
 
 == Upgrade Notice ==
+
+= 1.8.1 =
+* [-] fopen option is deprecated, now use curl.
+* [+] Fix
 
 = 1.8 =
 * [New] Now thumbnails can be showed in content
