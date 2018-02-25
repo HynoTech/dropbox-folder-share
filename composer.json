@@ -16,7 +16,7 @@
     }
   ],
   "require": {
-    "nesbot/carbon": "dev-master",
+    "nesbot/carbon": "1.19",
     "hynotech/usos-generales": "dev-master",
     "askupa-software/amarkal-admin-notification": "dev-master",
     "php-curl-class/php-curl-class": "dev-master"

@@ -2,7 +2,7 @@
 Contributors: Hyno, antony_salas
 Tags: Dropbox, Folder,Cloud, Folder Share, post, content, contenido, nube
 Requires at least: 3.0
-Tested up to: 4.8.1
+Tested up to: 4.9.4
 Stable tag: trunk
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -31,7 +31,7 @@ Project in **[GitHub](https://github.com/HynoTech/dropbox-folder-share/ "Dropbox
 = Minimum Requirements =
 
 *   Enabled **php_openssl** in php.ini
-*   PHP version 5.3.3 or greater
+*   PHP version 5.4 or greater
 *   PHP **cURL** module installed
 
 = Manual installation =
@@ -63,6 +63,10 @@ Read **[More](http://www.hynotech.com/wp-plugins/dropbox-folder-share/#faq "Drop
 5. General settings
 
 == Changelog ==
+
+= 1.8.2 =
+* FIX errors
+* Added download button in file viewer.
 
 = 1.8.1 =
 * FIX some errors
@@ -130,6 +134,10 @@ Read **[More](http://www.hynotech.com/wp-plugins/dropbox-folder-share/#faq "Drop
 * Version inicial.
 
 == Upgrade Notice ==
+
+= 1.8.2 =
+* [+] Added download button in file viewer.
+* Fix bugs.
 
 = 1.8.1 =
 * [-] fopen option is deprecated, now use curl.

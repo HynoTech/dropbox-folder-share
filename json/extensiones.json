@@ -1,0 +1,148 @@
+{
+  "acrobat": [
+    "pdf",
+    "eps"
+  ],
+  "audition": [
+    "ai"
+  ],
+  "code": [
+    "c",
+    "cpp",
+    "cs",
+    "css",
+    "h",
+    "htm",
+    "html",
+    "java",
+    "js",
+    "php",
+    "pl",
+    "py",
+    "rb",
+    "xml"
+  ],
+  "compressed": [
+    "bz2",
+    "gz",
+    "rar",
+    "zip",
+    "tar"
+  ],
+  "dvd": [
+    "dmg",
+    "iso"
+  ],
+  "excel": [
+    "csv",
+    "ods",
+    "xls",
+    "xlsb",
+    "xlsm",
+    "xlsx"
+  ],
+  "film": [
+    "3gp",
+    "3gpp",
+    "asf",
+    "avi",
+    "flv",
+    "m4v",
+    "mkv",
+    "mov",
+    "mp4",
+    "mpg",
+    "ogv",
+    "vob",
+    "wmv"
+  ],
+  "flash": [
+    "fla",
+    "swf"
+  ],
+  "gear": [
+    "exe",
+    "app",
+    "dll"
+  ],
+  "gray": [],
+  "illustrator": [
+    "ai"
+  ],
+  "keynote": [
+    "key"
+  ],
+  "linkfile": [
+    "webloc",
+    "url"
+  ],
+  "mp3": [],
+  "paint": [
+    "psd"
+  ],
+  "paper": [],
+  "picture": [
+    "dcr",
+    "r3d",
+    "bmp",
+    "dcs",
+    "gif",
+    "jpeg",
+    "jpg",
+    "png",
+    "svg",
+    "tif",
+    "tiff",
+    "ptx",
+    "rwz",
+    "kdc"
+  ],
+  "playlist": [],
+  "powerpoint": [
+    "pps",
+    "ppsm",
+    "ppsx",
+    "ppt",
+    "pptm",
+    "pptx"
+  ],
+  "premiere": [],
+  "sketch": [],
+  "sound": [
+    "3ga",
+    "aac",
+    "aif",
+    "aiff",
+    "amr",
+    "au",
+    "iff",
+    "m3u",
+    "m4a",
+    "mid",
+    "mp3",
+    "mpa",
+    "oga",
+    "ogg",
+    "ra",
+    "wav",
+    "wma"
+  ],
+  "stack": [],
+  "text": [
+    "txt",
+    "wps"
+  ],
+  "vector": [
+    "ai"
+  ],
+  "webcode": [],
+  "word": [
+    "doc",
+    "docx",
+    "docm",
+    "rtf",
+    "odt",
+    "pages",
+    "wpd"
+  ]
+}

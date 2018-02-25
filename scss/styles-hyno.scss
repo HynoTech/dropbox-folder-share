@@ -28,7 +28,6 @@ $url_2: url(../img/web_sprites-normal.png);
 $url_3: url(../img/icon_dropbox.png);
 
 
-
 //colors
 $color_waterloo__approx: #7b8994;
 $white: white;
@@ -42,6 +41,16 @@ $color_zircon_approx: #f3fafe;
 $color_celeste_approx: #ccc;
 $color_link_water_approx: #d9e7f0;
 $color_tiara_approx: #c4d0d9;
+
+
+//colors
+$color_shark_10_approx: rgba(37,40,43,0.1);
+$color_pale_sky_approx: #637282;
+$color_comet_approx: #536170;
+$color_steel_gray_approx: #1b2733;
+$color_science_blue_approx: #0070e0;
+$black_60: rgba(0,0,0,0.6);
+$color_tapa_approx: #777;
 
 //urls
 $url_0: url(/static/images/icons/video_overlay-vfld7VbHa.png);
@@ -74,23 +83,49 @@ $url_0: url(/static/images/icons/video_overlay-vfld7VbHa.png);
   font-size: 13px;
 }
 
+
+
+
+//@extend-elements
+//original selectors
+//.maestro .sl-view-toggle-option, .maestro .sl-view-toggle-option:first-of-type, .maestro .sl-view-toggle-option:last-of-type, .maestro .sl-view-toggle-option.selected
+%extend_4 {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 24px;
+  height: 24px;
+  padding: 3px;
+  border: 0;
+  background-color: $white;
+  //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+  box-shadow: none;
+}
+
+
 @import url(../css/icons.css);
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
 
-.DropboxIcon {
-  height: 20px;
-  background-image: $url_2;
-  background-repeat: no-repeat;
-  background-position: 0 -8772px;
-  display: inline-block;
-  position: relative;
-  padding: 0 30px;
-  font-size: 16px;
-  font-weight: 500;
-  color: $color_tundora_approx;
-}
+
 
 .Hyno_ContenFolder {
+
+
+  .DropboxIcon {
+    height: 20px;
+    background-image: $url_2;
+    background-repeat: no-repeat;
+    background-position: 0 -8772px;
+    display: inline-block;
+    position: relative;
+    padding: 0 30px;
+    font-size: 16px;
+    font-weight: 500;
+    color: $color_tundora_approx;
+  }
+
+
+
   background-color: $white;
   color: $color_azure_radiance_approx;
   width: 98%;
@@ -151,6 +186,207 @@ $url_0: url(/static/images/icons/video_overlay-vfld7VbHa.png);
 
 
 
+
+
+
+
+
+  .sl-body {
+    position: relative;
+    &.sl-body--empty-folder {
+      text-align: center;
+    }
+  }
+  .sl-list-container {
+    margin: 13px 0;
+    padding: 16px;
+    background-color: $white;
+    border: 1px solid $color_botticelli_approx;
+    //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+    border-radius: 2px;
+  }
+  .maestro {
+    .sl-list-container {
+      border: 0;
+      padding: 0;
+    }
+    .sl-list-header {
+      margin: 0;
+      font-size: 12px;
+      border-bottom: 1px solid $color_shark_10_approx;
+      line-height: 39px;
+    }
+    .sl-list-body {
+      .sl-list-column {
+        color: $color_comet_approx;
+      }
+      .sl-list-row {
+        line-height: 49px;
+      }
+    }
+    .sl-view-toggle-option {
+      @extend %extend_4;
+      &:first-of-type {
+        @extend %extend_4;
+      }
+      &:last-of-type {
+        @extend %extend_4;
+      }
+      &.selected {
+        @extend %extend_4;
+      }
+    }
+    .sl-file-link {
+      color: $color_steel_gray_approx;
+      &:hover {
+        color: $color_science_blue_approx;
+      }
+    }
+    .sl-list-column.sl-list-column--filename {
+      width: 744px;
+    }
+  }
+  .sl-list-header {
+    margin: 4px 0 10px;
+    .sl-list-column {
+      color: $color_pale_sky_approx;
+    }
+  }
+  .sl-list-column {
+    float: left;
+    display: block;
+    &.sl-list-column--filename {
+      width: 558px;
+      .icon {
+        margin-right: 8px;
+        width: 32px;
+        height: 32px;
+      }
+    }
+    &.sl-list-column--filesize {
+      width: 186px;
+    }
+    &.sl-list-column--modified {
+      float: left;
+    }
+  }
+  .sl-list-body {
+    padding: 0px;
+    .sl-list-column {
+      color: $color_fuscous_gray_approx;
+    }
+    .sl-list-row {
+      line-height: 32px;
+      padding: 7px 0;
+      &:last-of-type {
+        padding-bottom: 0;
+      }
+    }
+  }
+  .sl-list-row {
+    border-width: 1px 0 0 0;
+    text-align: left;
+    margin: 0;
+    list-style-type: none;
+  }
+  .sl-view-toggle-option {
+    display: inline-block;
+    zoom: 1;
+    text-decoration: none;
+    width: 14px;
+    height: 14px;
+    padding: 7px 9px;
+    border: 1px solid $color_seagull_approx;
+    background-color: $color_zircon_approx;
+    //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+    box-shadow: 0 1px 1px $color_celeste_approx, -1px 1px 1px $white;
+    &:first-of-type {
+      //Instead of the line below you could use @include border-top-left-radius($radius)
+      border-top-left-radius: 2px;
+      //Instead of the line below you could use @include border-bottom-left-radius($radius)
+      border-bottom-left-radius: 2px;
+    }
+    &:last-of-type {
+      //Instead of the line below you could use @include border-top-right-radius($radius)
+      border-top-right-radius: 2px;
+      //Instead of the line below you could use @include border-bottom-right-radius($radius)
+      border-bottom-right-radius: 2px;
+    }
+    &.selected {
+      background-color: $color_link_water_approx;
+      //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+      box-shadow: inset 1px 1px 3px $color_tiara_approx;
+    }
+  }
+
+
+
+  .o-flag {
+    display: table;
+    width: 100%;
+  }
+  .o-flag__fix {
+    display: table-cell;
+    vertical-align: middle;
+    white-space: nowrap;
+  }
+  .o-flag__flex {
+    display: table-cell;
+    vertical-align: middle;
+    width: 100%;
+  }
+  .o-flag--top {
+    .o-flag__fix {
+      vertical-align: top;
+    }
+    .o-flag__flex {
+      vertical-align: top;
+    }
+  }
+  .o-flag--bottom {
+    .o-flag__fix {
+      vertical-align: bottom;
+    }
+    .o-flag__flex {
+      vertical-align: bottom;
+    }
+  }
+  @supports(display: flex) {
+    .o-flag {
+      display: flex;
+      align-items: center;
+    }
+    .o-flag--top {
+      align-items: flex-start;
+    }
+    .o-flag--bottom {
+      align-items: flex-end;
+    }
+    .o-flag__fix {
+      display: inherit;
+      align-items: inherit;
+      flex: 0 0 auto;
+    }
+    .o-flag__flex {
+      display: initial;
+      min-width: 0;
+      width: auto;
+      flex: 1 1 auto;
+    }
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 
@@ -175,224 +411,7 @@ $url_0: url(/static/images/icons/video_overlay-vfld7VbHa.png);
 
 
 
-//colors
-$color_waterloo__approx: #7b8994;
-$white: white;
-$color_botticelli_approx: #ccdbeb;
-$color_shark_10_approx: rgba(37,40,43,0.1);
-$color_pale_sky_approx: #637282;
-$color_fuscous_gray_approx: #555;
-$color_comet_approx: #536170;
-$color_seagull_approx: #79bcea;
-$color_zircon_approx: #f3fafe;
-$color_celeste_approx: #ccc;
-$color_link_water_approx: #d9e7f0;
-$color_tiara_approx: #c4d0d9;
-$color_steel_gray_approx: #1b2733;
-$color_science_blue_approx: #0070e0;
-$black_60: rgba(0,0,0,0.6);
-$color_tapa_approx: #777;
 
 
 
-//@extend-elements
-//original selectors
-//.maestro .sl-view-toggle-option, .maestro .sl-view-toggle-option:first-of-type, .maestro .sl-view-toggle-option:last-of-type, .maestro .sl-view-toggle-option.selected
-%extend_1 {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 24px;
-  height: 24px;
-  padding: 3px;
-  border: 0;
-  background-color: $white;
-  //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
-  box-shadow: none;
-}
 
-
-
-.sl-body {
-  position: relative;
-  &.sl-body--empty-folder {
-    text-align: center;
-  }
-}
-.sl-list-container {
-  margin: 13px 0;
-  padding: 16px;
-  background-color: $white;
-  border: 1px solid $color_botticelli_approx;
-  //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
-  border-radius: 2px;
-}
-.maestro {
-  .sl-list-container {
-    border: 0;
-    padding: 0;
-  }
-  .sl-list-header {
-    margin: 0;
-    font-size: 12px;
-    border-bottom: 1px solid $color_shark_10_approx;
-    line-height: 39px;
-  }
-  .sl-list-body {
-    .sl-list-column {
-      color: $color_comet_approx;
-    }
-    .sl-list-row {
-      line-height: 49px;
-    }
-  }
-  .sl-view-toggle-option {
-    @extend %extend_1;
-    &:first-of-type {
-      @extend %extend_1;
-    }
-    &:last-of-type {
-      @extend %extend_1;
-    }
-    &.selected {
-      @extend %extend_1;
-    }
-  }
-  .sl-file-link {
-    color: $color_steel_gray_approx;
-    &:hover {
-      color: $color_science_blue_approx;
-    }
-  }
-  .sl-list-column.sl-list-column--filename {
-    width: 744px;
-  }
-}
-.sl-list-header {
-  margin: 4px 0 10px;
-  .sl-list-column {
-    color: $color_pale_sky_approx;
-  }
-}
-.sl-list-column {
-  float: left;
-  display: block;
-  &.sl-list-column--filename {
-    width: 558px;
-    .icon {
-      margin-right: 8px;
-      width: 32px;
-      height: 32px;
-    }
-  }
-  &.sl-list-column--filesize {
-    width: 186px;
-  }
-  &.sl-list-column--modified {
-    float: left;
-  }
-}
-.sl-list-body {
-  padding: 0px;
-  .sl-list-column {
-    color: $color_fuscous_gray_approx;
-  }
-  .sl-list-row {
-    line-height: 32px;
-    padding: 7px 0;
-    &:last-of-type {
-      padding-bottom: 0;
-    }
-  }
-}
-.sl-list-row {
-  border-width: 1px 0 0 0;
-  text-align: left;
-  margin: 0;
-  list-style-type: none;
-}
-.sl-view-toggle-option {
-  display: inline-block;
-  zoom: 1;
-  text-decoration: none;
-  width: 14px;
-  height: 14px;
-  padding: 7px 9px;
-  border: 1px solid $color_seagull_approx;
-  background-color: $color_zircon_approx;
-  //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
-  box-shadow: 0 1px 1px $color_celeste_approx, -1px 1px 1px $white;
-  &:first-of-type {
-    //Instead of the line below you could use @include border-top-left-radius($radius)
-    border-top-left-radius: 2px;
-    //Instead of the line below you could use @include border-bottom-left-radius($radius)
-    border-bottom-left-radius: 2px;
-  }
-  &:last-of-type {
-    //Instead of the line below you could use @include border-top-right-radius($radius)
-    border-top-right-radius: 2px;
-    //Instead of the line below you could use @include border-bottom-right-radius($radius)
-    border-bottom-right-radius: 2px;
-  }
-  &.selected {
-    background-color: $color_link_water_approx;
-    //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
-    box-shadow: inset 1px 1px 3px $color_tiara_approx;
-  }
-}
-
-
-
-.o-flag {
-  display: table;
-  width: 100%;
-}
-.o-flag__fix {
-  display: table-cell;
-  vertical-align: middle;
-  white-space: nowrap;
-}
-.o-flag__flex {
-  display: table-cell;
-  vertical-align: middle;
-  width: 100%;
-}
-.o-flag--top {
-  .o-flag__fix {
-    vertical-align: top;
-  }
-  .o-flag__flex {
-    vertical-align: top;
-  }
-}
-.o-flag--bottom {
-  .o-flag__fix {
-    vertical-align: bottom;
-  }
-  .o-flag__flex {
-    vertical-align: bottom;
-  }
-}
-@supports(display: flex) {
-  .o-flag {
-    display: flex;
-    align-items: center;
-  }
-  .o-flag--top {
-    align-items: flex-start;
-  }
-  .o-flag--bottom {
-    align-items: flex-end;
-  }
-  .o-flag__fix {
-    display: inherit;
-    align-items: inherit;
-    flex: 0 0 auto;
-  }
-  .o-flag__flex {
-    display: initial;
-    min-width: 0;
-    width: auto;
-    flex: 1 1 auto;
-  }
-}
