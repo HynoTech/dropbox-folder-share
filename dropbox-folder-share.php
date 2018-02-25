@@ -3,7 +3,7 @@
  * Plugin Name: DropBox Folder Share
  * Plugin URI: http://www.hynotech.com/wp-plugins/dropbox-folder-share/
  * Description: Plugin que permitira incluir carpetas de DropBox en nuestras entradas de blog.
- * Version: 1.8.1
+ * Version: 1.8.2
  * Author: Antonio Salas (Hyno)
  * Author URI: http://www.hynotech.com/
  * Twitter: AntonySH_
@@ -22,10 +22,10 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
     Class DropboxFolderSharePrincipal
     {
 
-		const _VERSION_GENERAL_ = "1.8.1";
-		const _VERSION_JS_ = "1.8";
-		const _VERSION_CSS_ = "1.8";
-		const _VERSION_ADMIN_ = "3.0";
+        const _VERSION_GENERAL_ = "1.8.2";
+        const _VERSION_JS_ = "1.8";
+        const _VERSION_CSS_ = "1.8";
+        const _VERSION_ADMIN_ = "3.0";
         const _VERSION_CSS_DROPBOX_ = "3.0";
 
         const _PARENT_PAGE_ = "options-general.php";
@@ -39,29 +39,29 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
         var $formSections = array();
         var $settings = array(); //Almacena los opciones actuales del Plugin
         var $opcDefault = array(
-	        "UseAjax"             => '1',
-	        "showIcons"           => '1',
-	        "showSize"            => '1',
-	        "showChange"          => '1',
-	        "showThumbnail"       => '1',
-	        "allowDownload"       => '1',
-	        "allowBrowseFolder"   => '1',
-	        "allowDownloadFolder" => '1',
-	        "showInEditor"        => '1',
-	        "dbNativeViewer"      => '1',
-	        "imagesPopup"         => '1',
-	        "link2Folder"         => '1',
-	        "datetimeFormat"      => 'd/m/Y H:i',
-	        "thickboxTypes"       => 'txt,html,htm',
-	        "defaultHeight"       => '300px'
+            "UseAjax"             => '1',
+            "showIcons"           => '1',
+            "showSize"            => '1',
+            "showChange"          => '1',
+            "showThumbnail"       => '1',
+            "allowDownload"       => '1',
+            "allowBrowseFolder"   => '1',
+            "allowDownloadFolder" => '1',
+            "showInEditor"        => '1',
+            "dbNativeViewer"      => '1',
+            "imagesPopup"         => '1',
+            "link2Folder"         => '1',
+            "datetimeFormat"      => 'd/m/Y H:i',
+            "thickboxTypes"       => 'txt,html,htm',
+            "defaultHeight"       => '300px'
         );
 
         public function __construct()
         {
-	        //ini_set('display_errors', 1);
-	        //ini_set('display_startup_errors', 1);
-	        //error_reporting(E_ALL);
-	        //Kint::$enabled_mode = false; // Disable kint
+            //ini_set('display_errors', 1);
+            //ini_set('display_startup_errors', 1);
+            //error_reporting(E_ALL);
+            //Kint::$enabled_mode = false; // Disable kint
 
             require __DIR__.'/vendor/autoload.php';
             include_once __DIR__.'/class/admin.class.php';
@@ -73,11 +73,11 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
 
             \Carbon\Carbon::setLocale($zone[0]);
 
-	        \Carbon\Carbon::setToStringFormat( get_option( 'date_format' ) . " " . get_option( 'time_format' ) );
+            \Carbon\Carbon::setToStringFormat( get_option( 'date_format' ) . " " . get_option( 'time_format' ) );
 
             //echo "<h1>" . get_locale() . "</h1>";
 
-	        $this->asignar_variables_estaticas();
+            $this->asignar_variables_estaticas();
 
             load_plugin_textdomain("dropbox-folder-share", false, "dropbox-folder-share" . '/languages/');
 
@@ -87,13 +87,13 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
 
             add_filter('plugin_action_links_' . self::$basename, array(&$this, 'add_settings_link'), 10, 2);
 
-	        $this->inicializarVariables();
+            $this->inicializarVariables();
         }
 
-		public function inicializarVariables() {
-			if ( get_option( self::_OPT_SEETINGS_ ) == null ) {
-				update_option( self::_OPT_SEETINGS_, $this->opcDefault );
-			}
+        public function inicializarVariables() {
+            if ( get_option( self::_OPT_SEETINGS_ ) == null ) {
+                update_option( self::_OPT_SEETINGS_, $this->opcDefault );
+            }
         }
 
         public function formatSizeUnits($bytes)
@@ -135,9 +135,9 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
         }
 
 
-		function getMetaTags( $str )
+        function getMetaTags( $str )
         {
-	        $pattern = '
+            $pattern = '
   ~<\s*meta\s
 
   # using lookahead to capture type to $1
@@ -155,21 +155,33 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
 
   ~ix';
 
-	        if ( preg_match_all( $pattern, $str, $out ) ) {
-		        return array_combine( $out[1], $out[2] );
-	        }
+            if ( preg_match_all( $pattern, $str, $out ) ) {
+                return array_combine( $out[1], $out[2] );
+            }
 
-	        return array();
+            return array();
         }
 
-		function ajaxGetHeaders() {
-			$content = $this->fetch_url( $_POST['link'] );
+        function ajaxGetHeaders() {
+            $content = $this->fetch_url( $_POST['link'] );
 
-			$content = $this->getMetaTags( $content );
+            $content = $this->getMetaTags( $content->response );
 
-			header( 'Content-type: application/json; charset=utf-8' );
-			echo json_encode( $content );
-			exit();
+            header( 'Content-type: application/json; charset=utf-8' );
+            echo json_encode( $content );
+            exit();
+        }
+
+        function ajaxGetImgBase64(){
+
+            $tipo = $_POST["tipo"];
+            $imgURLContent = $this->fetch_url( $_POST['img_url'] );
+
+            $b64image = base64_encode($imgURLContent->response);
+
+            $_urlImg64 = "data:" . $tipo . ";base64," . $b64image;
+            echo $_urlImg64;
+            exit();
         }
 
         function ajaxReplaceShortcode($atts){
@@ -187,32 +199,32 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
                 'show_change' => $_POST['showChange']
             ), $atts));
 
-	        $opciones_shortcode = array(
-		        'link'       => $link,
-		        'showIcons'  => $show_icon,
-		        'showSize'   => $show_size,
-		        'showChange' => $show_change
-	        );
+            $opciones_shortcode = array(
+                'link'       => $link,
+                'showIcons'  => $show_icon,
+                'showSize'   => $show_size,
+                'showChange' => $show_change
+            );
 
             $idContent = $_POST['idContent'];
-	        $titleBar  = @$_POST["titleBar"];
+            $titleBar  = @$_POST["titleBar"];
 
-	        echo $this->get_folder( $opciones_shortcode, $idContent, $titleBar);
+            echo $this->get_folder( $opciones_shortcode, $idContent, $titleBar);
             die();
         }
 
-		function scriptAjax( $opciones_shortcode, $idContent){
+        function scriptAjax( $opciones_shortcode, $idContent){
             //$idContent = "DFS".rand(1,99999);
             $url_imgLoader = self::$url."/img/gears.svg";
 
-			$data = json_encode( $opciones_shortcode);
+            $data = json_encode( $opciones_shortcode);
 
             $regresarScript = "<div id='$idContent'>";
             //$regresarScript .= "<div class=\"loader\">Loading...</div>";
             $regresarScript .= "<div style='text-align: center'><img src=\"{$url_imgLoader}\"></div>";
             $regresarScript .= "</div>";
             $regresarScript .= "<script>";
-			$regresarScript .= "loadContenDFS('$data', '$idContent')";
+            $regresarScript .= "loadContenDFS('$data', '$idContent')";
             $regresarScript .= "</script>";
             return $regresarScript;
         }
@@ -229,25 +241,25 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
                 'show_change' => $opciones['showChange']
             ), $atts));
 
-	        $opciones_shortcode = array(
-		        'link'       => $link,
-		        'showIcons'  => ( ( $show_icon === 'true' ) || ( $show_icon === '1' ) ) ? '1' : '',
-		        'showSize'   => ( ( $show_size === 'true' ) || ( $show_size === '1' ) ) ? '1' : '',
-		        'showChange' => ( ( $show_change === 'true' ) || ( $show_change === '1' ) ) ? '1' : ''
-	        );
+            $opciones_shortcode = array(
+                'link'       => $link,
+                'showIcons'  => ( ( $show_icon === 'true' ) || ( $show_icon === '1' ) ) ? '1' : '',
+                'showSize'   => ( ( $show_size === 'true' ) || ( $show_size === '1' ) ) ? '1' : '',
+                'showChange' => ( ( $show_change === 'true' ) || ( $show_change === '1' ) ) ? '1' : ''
+            );
             if ($opciones['UseAjax'] === '1') {
-	            //return $this->scriptAjax($link, $idContent);
-	            return $this->scriptAjax( $opciones_shortcode, $idContent);
+                //return $this->scriptAjax($link, $idContent);
+                return $this->scriptAjax( $opciones_shortcode, $idContent);
             }
             else {
-	            return $this->get_folder( $opciones_shortcode, $idContent);
+                return $this->get_folder( $opciones_shortcode, $idContent);
             }
 
             //
 
         }
 
-		function fetch_url( $url, $headers = false,$tipo = 'get',$data = [],$cookies = []){
+        function fetch_url( $url, $headers = false,$tipo = 'get',$data = [],$cookies = []){
 
             if (function_exists("curl_init")) {
 
@@ -257,10 +269,11 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
                 $curl->setopt(CURLOPT_RETURNTRANSFER, TRUE);
                 $curl->setopt(CURLOPT_SSL_VERIFYPEER, FALSE);
 
+                /*
                 if(wp_is_mobile()){
                     $curl->setUserAgent('Mozilla/5.0 (Linux; U; Android 4.0.3; ko-kr; LG-L160L Build/IML74K) AppleWebkit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30');
                 }
-
+                */
                 if ( $headers ) {
                     $curl->setopt( CURLOPT_HEADER, true );
                     $curl->setopt( CURLOPT_NOBODY, true );
@@ -293,13 +306,13 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
             return false;
         }
 
-		function get_folder( $opciones_shortcode, $id_content = null, $titleBar = null)
+        function get_folder( $opciones_shortcode, $id_content = null, $titleBar = null)
         {
             $opcion = get_option(self::_OPT_SEETINGS_);
 
-	        $link = $opciones_shortcode['link'];
+            $link = $opciones_shortcode['link'];
 
-	        $opcion = array_merge( $opcion, $opciones_shortcode);
+            $opcion = array_merge( $opcion, $opciones_shortcode);
 
             $url_data = $link;
 
@@ -308,9 +321,11 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
             $response = $this->fetch_url($url_data);
             //archivo prueba en carpeta _apoyo_
 
-	        $data = json_encode( $opciones_shortcode );
-	        $data = str_replace( "\"", "\\'", $data );
-	        $data = 'rev_' . $data;
+            $data = json_encode( $opciones_shortcode );
+            $data = str_replace( "\"", "\\'", $data );
+            $data = 'rev_' . $data;
+
+
 
             if ($response->response != "") {
 
@@ -334,7 +349,7 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
                             <h4 class="sl-empty-folder-message">'. __("No encontramos lo que buscas.", "dropbox-folder-share").'</h4>
                         </div>
                         ';
-                    return $retorno;
+                    return json_encode(['html'=>$retorno,'imgs'=>[]]);
                 }
 
                 $postValues = [
@@ -345,26 +360,45 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
                     'sub_path' => $objImportante->folderShareToken->subPath,
                     't' => $cookies['t']
                 ];
-                $responseData = $this->fetch_url('https://www.dropbox.com/list_shared_link_folder_entries',false,'post',$postValues,$cookies);
+                //$responseData = $this->fetch_url('https://www.dropbox.com/list_shared_link_folder_entries',false,'post',$postValues,$cookies);
                 //archivo prueba en carpeta _apoyo_
+
+
 
                 $carpetasCarpeta = array();
                 $archivosCarpeta = array();
-                foreach ($responseData->response->entries as $item){
+                $masArchivos = false;
+                do{
+                    $responseData = $this->fetch_url('https://www.dropbox.com/list_shared_link_folder_entries',false,'post',$postValues,$cookies);
+                    foreach ($responseData->response->entries as $item){
 
-                    if($item->is_dir){
-                        //CARPETAS
-                        $carpetasCarpeta[] = $item;
+                        if($item->is_dir){
+                            //CARPETAS
+                            $carpetasCarpeta[] = $item;
+                        }
+                        else{
+                            //ARCHIVOS
+                            $archivosCarpeta[] = $item;
+                        }
                     }
-                    else{
-                        //ARCHIVOS
-                        $archivosCarpeta[] = $item;
+
+                    if($responseData->response->has_more_entries){
+                        $postValues["voucher"] = $responseData->response->next_request_voucher;
                     }
-                }
+
+                }while($responseData->response->has_more_entries);
+
+
 
 
                 //Incluir Extensiones
-                include_once (__DIR__.'/extensiones.php');
+                //include_once (__DIR__.'/extensiones.php');
+                //d(json_encode($varExt));
+
+
+                $jsonExtensiones = file_get_contents(__DIR__.'/json/extensiones.json');
+
+                $varExt = json_decode($jsonExtensiones);
 
 
 
@@ -385,9 +419,7 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
                     "carpetas" => $carpetasCarpeta,
                 ];
 
-
                 $detalleURL = parse_url( $datosCarpetaLocal["link"] );
-
 
                 $html_ol['breadcrumb'] = $domRetorno->createElement( 'ol' );
                 $html_ol['breadcrumb']->setAttribute( 'class', 'breadcrumb' );
@@ -405,7 +437,7 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
                         HTTP_URL_STRIP_AUTH | HTTP_URL_JOIN_PATH | HTTP_URL_JOIN_QUERY | HTTP_URL_STRIP_FRAGMENT
                     );
 
-                    //$docZip = new \DOMDocument;
+
 
                     $addIMGZip = $domRetorno->createElement( 'img' );
                     $addIMGZip->setAttribute( 'src', self::$url . 'img/zip.png' );
@@ -420,6 +452,7 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
                     $addLIZip->appendChild( $addAZip );
 
                 }
+
 
                 //solo entra si existe una barra de titulo, es decir si es sub carpeta
                 if ( $titleBar != null ) {
@@ -571,6 +604,7 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
                             $displayIcon = "none";
                         }
 
+                        $iconSpacer = self::$url . 'img/icon_spacer.gif';
 
                         $html_li_div_a_div_div_img_lista = $domRetorno->createElement( 'img' );
                         $html_li_div_a_div_div_img_lista->setAttribute( 'class', 'sprite sprite_web s_web_folder_32 icon' );
@@ -589,6 +623,7 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
                         $html_li_div_a_div_lista->setAttribute( 'class', 'o-flag' );
                         $html_li_div_a_div_lista->appendChild( $html_li_div_a_div_div_lista );
                         $html_li_div_a_div_lista->appendChild( $html_li_div_a_div_div2_lista );
+
 
                         $html_li_div_a_lista = $domRetorno->createElement( 'a' );
                         $html_li_div_a_lista->setAttribute( 'href', $folderHref );
@@ -626,10 +661,9 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
 
 
                     $htmlArchivos = '';
+                    $arrayIMG = array();
 
                     foreach ($datosCarpetaLocal["archivos"] as $archivo ) {
-
-                        //d($archivo);
 
                         $fileCode = ( isset( $archivo->htmlified_link ) ) ? $archivo->htmlified_link : ( isset( $archivo->direct_blockserver_link ) ) ? $archivo->direct_blockserver_link:'';
 
@@ -668,15 +702,18 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
                         }
 
                         $fileLinkMostrar = $file_link;
+
+                        $lnkOrigDescarga = "";
                         if( $opcion['allowDownload'] === '1'){
                             $fileLinkMostrar = $this->downloadLinkGenerator($file_link);
+                            $lnkOrigDescarga = $fileLinkMostrar;
                         }
 
                         $arrayExtThickbox = explode(",",$opcion['thickboxTypes'] );
                         $classThickBox    = "";
                         $relThickBox      = "";
 
-
+//d([$arrayExtThickbox,$dataArchivo[0]]);
                         $infoFile = wp_check_filetype( $file_name);
                         if(in_array($dataArchivo[0], $arrayExtThickbox)) {
 
@@ -688,8 +725,9 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
 
                             //https://docs.google.com/gview?url=http://infolab.stanford.edu/pub/papers/google.pdf&embedded=true
                         }
+
                         //elseif (($prevType === 'text') && ($infoFile['ext'] !== 'txt')){
-                        if ( ( ! is_null( $fileCode ) ) && ( $opcion['dbNativeViewer'] === '1' ) ) {
+                        if ( ( ! is_null( $fileCode ) ) && (  $fileCode != "" ) && ( $opcion['dbNativeViewer'] === '1' ) ) {
                             $classThickBox = "lightbox";
                             //$fileLinkMostrar = $this->downloadLinkGenerator($file_link);
                             $fileLinkMostrar = $fileCode;//"https://docs.google.com/viewer?url=".$fileLinkMostrar."&embedded=true&KeepThis=true&TB_iframe=true&height=400&width=800";
@@ -698,38 +736,48 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
                         }
 
 
-                        $esImg = str_replace( "_", "", $typeIcon );
-                        if ( ( $opcion['imagesPopup'] === '1' ) || ( in_array( $dataArchivo[0], $arrayExtThickbox ) ) ) {
+                        if($typeIcon != "") {
+
+                            $esImg = str_replace("_", "", $typeIcon);
+                            if (($opcion['imagesPopup'] === '1') || (in_array($dataArchivo[0], $arrayExtThickbox))) {
 
 
-                            if ( $esImg == 'picture' ) {
-                                $classThickBox = "lightbox";
-                                $relThickBox   = "gal_" . $id_content;
+                                if ($esImg == 'picture') {
+                                    $classThickBox = "lightbox";
+                                    $relThickBox = "gal_" . $id_content;
 
 
-                                $fileLinkMostrar = $this->downloadLinkGenerator( $file_link );
+                                    $fileLinkMostrar = $this->downloadLinkGenerator($file_link);
 
-                                //$fileLinkMostrar = $this->downloadLinkGenerator($archivo->thumbnail_url_tmpl,array('size_mode'=>'5'));;
+                                    //$fileLinkMostrar = $this->downloadLinkGenerator($archivo->thumbnail_url_tmpl,array('size_mode'=>'5'));;
+                                }
                             }
                         }
 
+                        //if (($esImg === 'picture') && ($opcion['showThumbnail'] === '1') && ($_imgContent = @file_get_contents($lnkThumbnail))) {
+                        if (($esImg === 'picture') && ($opcion['showThumbnail'] === '1')) {
 
-                        if ( ( $esImg === 'picture' ) && ( $opcion['showThumbnail'] === '1' ) && ( $_imgContent = @file_get_contents( $lnkThumbnail ) ) ) {
                             //data:image/png;base64,
                             //Kint::dump([$file_link,wp_check_filetype($file_name),wp_check_filetype($this->downloadLinkGenerator($file_link)),$b64image]);
 
-                            $b64image = base64_encode( $_imgContent );
+                            //$b64image = base64_encode($_imgContent);
 
 
-                            $_urlImg64                       = "data:" . $infoFile['type'] . ";base64," . $b64image;
-                            $html_li_div_a_div_div_img_lista = $domRetorno->createElement( 'img' );
-                            $html_li_div_a_div_div_img_lista->setAttribute( 'class', "icon thumbnail-image--loaded" );
-                            $html_li_div_a_div_div_img_lista->setAttribute( 'src', $_urlImg64 );
-                        } else {
-                            $html_li_div_a_div_div_img_lista = $domRetorno->createElement( 'img' );
-                            $html_li_div_a_div_div_img_lista->setAttribute( 'class', "sprite sprite_web s_web_page_white" . $typeIcon . "_32 icon" );
-                            $html_li_div_a_div_div_img_lista->setAttribute( 'src', self::$url . 'img/icon_spacer.gif' );
-                        }
+
+
+                            //$_urlImg64 = "data:" . $infoFile['type'] . ";base64," . $b64image;
+
+                            $arrayIMG[] = ['img_id'=>$archivo->sjid,'type'=>$infoFile['type'],'img_url'=>$lnkThumbnail];
+                            /*
+                            $html_li_div_a_div_div_img_lista = $domRetorno->createElement('img');
+                            $html_li_div_a_div_div_img_lista->setAttribute('class', "icon thumbnail-image--loaded");
+                            $html_li_div_a_div_div_img_lista->setAttribute('src', $_urlImg64);*/
+                        } /*else {*/
+                            $html_li_div_a_div_div_img_lista = $domRetorno->createElement('img');
+                            $html_li_div_a_div_div_img_lista->setAttribute('class', "sprite sprite_web s_web_page_white" . $typeIcon . "_32 icon");
+                            $html_li_div_a_div_div_img_lista->setAttribute('id', $archivo->sjid);
+                            $html_li_div_a_div_div_img_lista->setAttribute('src', self::$url . 'img/icon_spacer.gif');
+                        /*}*/
 
 
                         $html_li_div_a_div_div_lista = $domRetorno->createElement( 'div' );
@@ -747,6 +795,7 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
 
                         $html_li_div_a_lista = $domRetorno->createElement( 'a' );
                         $html_li_div_a_lista->setAttribute( 'href', $fileLinkMostrar );
+                        $html_li_div_a_lista->setAttribute( 'data-orighref', $lnkOrigDescarga);
                         //$html_li_div_a_lista->setAttribute('class','sl-file-link '.$classThickBox);
                         $html_li_div_a_lista->setAttribute( 'class', 'sl-file-link ' );
                         $html_li_div_a_lista->setAttribute( 'title', $file_name );
@@ -859,14 +908,8 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
                     $html_div['Hyno_ContenFolder']->setAttribute( 'class', 'Hyno_ContenFolder' );
                     $html_div['Hyno_ContenFolder']->appendChild( $html_div['sl-page-body'] );
 
-                    /*PROBABLEMENTE NO NECESARIO
-                    $html_div['idContent'] = $domRetorno->createElement('div');
-                    $html_div['idContent']->setAttribute('id',$id_content);
-                    $html_div['idContent']->appendChild($html_div['Hyno_ContenFolder']);
-                    */
 
-
-                    $retorno = $domRetorno->saveHTML( $html_div['Hyno_ContenFolder']);
+                    $retorno = json_encode(['html'=>$domRetorno->saveHTML( $html_div['Hyno_ContenFolder']),'imgs'=>$arrayIMG]);
                 }
                 else {
 
@@ -901,7 +944,7 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
                     $html_div['Hyno_ContenFolder']->setAttribute( 'class', 'Hyno_ContenFolder' );
                     $html_div['Hyno_ContenFolder']->appendChild( $html_div['sl-page-body'] );
 
-                    $retorno = $domRetorno->saveHTML( $html_div['Hyno_ContenFolder']);
+                    $retorno = json_encode(['html'=>$domRetorno->saveHTML( $html_div['Hyno_ContenFolder']),'imgs'=>[]]);
 
 
 
@@ -915,9 +958,9 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
             }
         }
 
-		function downloadLinkGenerator( $link, $query_params = array() ) {
-			if ( count( $query_params) === 0)
-            $query_params['dl'] = 1;
+        function downloadLinkGenerator( $link, $query_params = array() ) {
+            if ( count( $query_params) === 0)
+                $query_params['dl'] = 1;
             $detalleURL['query'] = http_build_query($query_params);
 
             $newUrl = http_build_url($link,
@@ -940,98 +983,98 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
             return add_query_arg('page', self::$nombre, admin_url(self::_PARENT_PAGE_));
         }
 
-		function EliminarTAG( DOMDocument $dom, $query_xpath ) {
-			$xpath = new DOMXPath( $dom );
-			foreach ( $xpath->query( $query_xpath ) as $link ) {
-				// Move all link tag content to its parent node just before it.
-				while ( $link->hasChildNodes() ) {
-					$child = $link->removeChild( $link->firstChild );
-					$link->parentNode->insertBefore( $child, $link );
-				}
-				// Remove the link tag.
-				$link->parentNode->removeChild( $link );
-			}
-		}
+        function EliminarTAG( DOMDocument $dom, $query_xpath ) {
+            $xpath = new DOMXPath( $dom );
+            foreach ( $xpath->query( $query_xpath ) as $link ) {
+                // Move all link tag content to its parent node just before it.
+                while ( $link->hasChildNodes() ) {
+                    $child = $link->removeChild( $link->firstChild );
+                    $link->parentNode->insertBefore( $child, $link );
+                }
+                // Remove the link tag.
+                $link->parentNode->removeChild( $link );
+            }
+        }
 
-		function dropbox_foldershare_styles_and_scripts( $posts ) {
-			if ( empty( $posts ) ) {
-				return $posts;
-			}
-			$shortcode_found = false; // usamos shortcode_found para saber si nuestro plugin esta siendo utilizado
-			foreach ( $posts as $post ) {
+        function dropbox_foldershare_styles_and_scripts( $posts ) {
+            if ( empty( $posts ) ) {
+                return $posts;
+            }
+            $shortcode_found = false; // usamos shortcode_found para saber si nuestro plugin esta siendo utilizado
+            foreach ( $posts as $post ) {
 
-				if ( stripos( $post->post_content, 'dropbox-foldershare-hyno' ) ) { //shortcode a buscar
-					$shortcode_found = true; // bingo!
-					break;
-				}
-				if ( stripos( $post->post_content, 'DFS' ) ) { //shortcode a buscar
-					$shortcode_found = true; // bingo!
-					break;
-				}
+                if ( stripos( $post->post_content, 'dropbox-foldershare-hyno' ) ) { //shortcode a buscar
+                    $shortcode_found = true; // bingo!
+                    break;
+                }
+                if ( stripos( $post->post_content, 'DFS' ) ) { //shortcode a buscar
+                    $shortcode_found = true; // bingo!
+                    break;
+                }
 
-				if ( stripos( $post->post_content, 'hyno_learn_more' ) ) { //cambiamos testiy por cualquier shortcode
-					$shortcode_found = true; // bingo!
-					break;
-				}
-			}
-			if ( $shortcode_found ) {
+                if ( stripos( $post->post_content, 'hyno_learn_more' ) ) { //cambiamos testiy por cualquier shortcode
+                    $shortcode_found = true; // bingo!
+                    break;
+                }
+            }
+            if ( $shortcode_found ) {
 
-				self::incluir_JS_CSS();
+                self::incluir_JS_CSS();
 
-				//wp_enqueue_script('bible-post-script', plugins_url('scripts-hyno.js', __FILE__)); //en caso de necesitar la ruta de nuestro script js
-			}
+                //wp_enqueue_script('bible-post-script', plugins_url('scripts-hyno.js', __FILE__)); //en caso de necesitar la ruta de nuestro script js
+            }
 
-			return $posts;
-		}
+            return $posts;
+        }
 
-		function incluir_JS_CSS() {
-			// enqueue
-			wp_enqueue_script( 'jquery' );
-			wp_enqueue_script( 'thickbox' );
-			wp_enqueue_script( 'jquery-ui-tooltip' );
+        function incluir_JS_CSS() {
+            // enqueue
+            wp_enqueue_script( 'jquery' );
+            //wp_enqueue_script( 'thickbox' );
+            wp_enqueue_script( 'jquery-ui-tooltip' );
 
-			wp_enqueue_script( 'bootstrap-js', '//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js', array( 'jquery' ), true ); // all the bootstrap javascript goodness
-			wp_enqueue_script( 'ekko-lightbox', 'https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.1.1/ekko-lightbox.js', array( 'jquery' ), true ); // all the bootstrap javascript goodness
-			wp_enqueue_script( 'DFS-Script', self::$url . 'scripts-hyno.js', array( 'jquery' ) );
+            wp_enqueue_script( 'bootstrap-js', '//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js', array( 'jquery' ), true ); // all the bootstrap javascript goodness
+            wp_enqueue_script( 'ekko-lightbox', 'https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.js', array( 'jquery' ), true ); // all the bootstrap javascript goodness
+            wp_enqueue_script( 'DFS-Script', self::$url . 'scripts-hyno.js', array( 'jquery' ) );
 
-			$url_imgLoader = self::$url . "/img/gears.svg";
+            $url_imgLoader = self::$url . "/img/gears.svg";
 
-			wp_localize_script( 'DFS-Script', 'objDFS',
-				array(
-					'ajax_url'      => admin_url( 'admin-ajax.php' ),
-					'dfs_nonce'     => wp_create_nonce( 'dfs_nonce' ),
-					'url_imgLoader' => $url_imgLoader
-				)
-			);
+            wp_localize_script( 'DFS-Script', 'objDFS',
+                array(
+                    'ajax_url'      => admin_url( 'admin-ajax.php' ),
+                    'dfs_nonce'     => wp_create_nonce( 'dfs_nonce' ),
+                    'url_imgLoader' => $url_imgLoader
+                )
+            );
 
-			wp_enqueue_style( 'thickbox' );
-			wp_enqueue_style( 'bootstrap', '//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' );
-			wp_enqueue_style( 'ekko-lightbox', 'https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.1.1/ekko-lightbox.css' );
-			wp_enqueue_style( 'font-awesome', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' );
-			wp_enqueue_style( 'DFS-Style', self::$url . 'css/styles-hyno.css' ); //la ruta de nuestro css
-		}
+            //wp_enqueue_style( 'thickbox' );
+            wp_enqueue_style( 'bootstrap', '//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' );
+            wp_enqueue_style( 'ekko-lightbox', 'https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.css' );
+            wp_enqueue_style( 'font-awesome', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' );
+            wp_enqueue_style( 'DFS-Style', self::$url . 'css/styles-hyno.css' ); //la ruta de nuestro css
+        }
 
-		function limpiahtml( $codigo ) {
-			$buscar     = array( '/\>[^\S ]+/s', '/[^\S ]+\</s', '/(\s)+/s' );
-			$reemplazar = array( '>', '<', '\\1' );
-			$codigo     = preg_replace( $buscar, $reemplazar, $codigo );
-			$codigo     = str_replace( "> <", "><", $codigo );
+        function limpiahtml( $codigo ) {
+            $buscar     = array( '/\>[^\S ]+/s', '/[^\S ]+\</s', '/(\s)+/s' );
+            $reemplazar = array( '>', '<', '\\1' );
+            $codigo     = preg_replace( $buscar, $reemplazar, $codigo );
+            $codigo     = str_replace( "> <", "><", $codigo );
 
-			return $codigo;
-		}
+            return $codigo;
+        }
 
 
-		function nota_actualizacion() {
-			//if(!current_user_can( 'manage_options')) return;
-			//$class = 'notice updated is-dismissible';
-			$message = '<strong>' . esc_html__( 'Dropbox Folder Share ha mejorado!', 'dropbox-folder-share' ) . '</strong><br/>';
-			$message .= '<em>' . esc_html__( 'Seccion en editor.', 'dropbox-folder-share' ) . ' — ' . esc_html__( 'Añadido la posibilidad de Widget', 'dropbox-folder-share' ) . '</em><br/>';
-			$message .= sprintf( __( 'Por favor <a href="%s">revisa las configuraciones</a> para asegurarte de que todo esta bien.', 'dropbox-folder-share' ), admin_url( 'options-general.php?page=dropbox-folder-share' ) ) . '<br/>';
-			$message .= '<em>' . esc_html__( 'Gracias por Utilizar este plugin. Me gustaria leer sugerencias u opiniones para que juntos mejoremos esta herramienta, cualquier sugerencia para mejorar el plugin o reportar algun error nos ayuda muchisimo, no duden en hacernoslo saber. ', "dropbox-folder-share" ) . '</em>';
-			$message .= '<em>' . esc_html__( 'Pueden hacernos llegar sus sugerencias, opiniones y/o criticas a travez del formulario de contactos de', "dropbox-folder-share" ) . '<a href="http://www.hynotech.com"> HynoTech.com</a></em>';
-			$message .= '<br>';
-			$message .= '<em>' . esc_html__( 'Considera hacer una donacion para ayudarnos con el proyecto. Lo tendremos en gran valor.', "dropbox-folder-share" ) . '</em>';
-			$message .= '<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+        function nota_actualizacion() {
+            //if(!current_user_can( 'manage_options')) return;
+            //$class = 'notice updated is-dismissible';
+            $message = '<strong>' . esc_html__( 'Dropbox Folder Share ha mejorado!', 'dropbox-folder-share' ) . '</strong><br/>';
+            $message .= '<em>' . esc_html__( 'Seccion en editor.', 'dropbox-folder-share' ) . ' — ' . esc_html__( 'Añadido la posibilidad de Widget', 'dropbox-folder-share' ) . '</em><br/>';
+            $message .= sprintf( __( 'Por favor <a href="%s">revisa las configuraciones</a> para asegurarte de que todo esta bien.', 'dropbox-folder-share' ), admin_url( 'options-general.php?page=dropbox-folder-share' ) ) . '<br/>';
+            $message .= '<em>' . esc_html__( 'Gracias por Utilizar este plugin. Me gustaria leer sugerencias u opiniones para que juntos mejoremos esta herramienta, cualquier sugerencia para mejorar el plugin o reportar algun error nos ayuda muchisimo, no duden en hacernoslo saber. ', "dropbox-folder-share" ) . '</em>';
+            $message .= '<em>' . esc_html__( 'Pueden hacernos llegar sus sugerencias, opiniones y/o criticas a travez del formulario de contactos de', "dropbox-folder-share" ) . '<a href="http://www.hynotech.com"> HynoTech.com</a></em>';
+            $message .= '<br>';
+            $message .= '<em>' . esc_html__( 'Considera hacer una donacion para ayudarnos con el proyecto. Lo tendremos en gran valor.', "dropbox-folder-share" ) . '</em>';
+            $message .= '<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
 <input type="hidden" name="cmd" value="_s-xclick">
 <input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----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-----END PKCS7-----
 ">
@@ -1040,14 +1083,14 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
 </form>
 ';
 
-			return $message;
-			//echo '<div data-tipo="actualizacion" class="'.$class.'"><p>'.$message.'</p></div>';
-		}
+            return $message;
+            //echo '<div data-tipo="actualizacion" class="'.$class.'"><p>'.$message.'</p></div>';
+        }
 
 //https://premium.wpmudev.org/blog/adding-admin-notices/?utm_expid=3606929-101._J2UGKNuQ6e7Of8gblmOTA.0&utm_referrer=https%3A%2F%2Fwww.google.com.pe%2F
-		function nota_donacion() {
+        function nota_donacion() {
 
-			$message = "<div class='wrap'>
+            $message = "<div class='wrap'>
                     <div class='wpmm-wrapper'>
                         <div class='wrapper-cell'>
                             <div id='SugerenciasComments' class='stuffbox' style='border: 0px;'>
@@ -1095,61 +1138,61 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
                 </div>";
 
 
-			return $message;
+            return $message;
 
-		}
+        }
 
-		function nota_assets() {
-			//ddd("HOLAAAAA");
-			//wp_enqueue_script( 'my-notice-update', plugins_url( '/js/notice-update.js', __FILE__ ), array( 'jquery' ), '1.0', true  );
-			wp_enqueue_script( 'DFS-Script-Admin', self::$url . 'scripts-hyno.js', array( 'jquery' ) );
-			wp_enqueue_style( 'DFS-Style-Admin', self::$url . 'css/styles-hyno-admin.css' ); //la ruta de nuestro css
-		}
-
-
-	}
+        function nota_assets() {
+            //ddd("HOLAAAAA");
+            //wp_enqueue_script( 'my-notice-update', plugins_url( '/js/notice-update.js', __FILE__ ), array( 'jquery' ), '1.0', true  );
+            wp_enqueue_script( 'DFS-Script-Admin', self::$url . 'scripts-hyno.js', array( 'jquery' ) );
+            wp_enqueue_style( 'DFS-Style-Admin', self::$url . 'css/styles-hyno-admin.css' ); //la ruta de nuestro css
+        }
 
 
-	class DropboxFolderShareWidget extends WP_Widget {
+    }
 
-		protected static $did_script = false;
 
-		function registrarWidget() {
-			register_widget( 'DropboxFolderShareWidget' );
-		}
+    class DropboxFolderShareWidget extends WP_Widget {
 
-		function __construct() {
-			// Constructor del Widget
-			$options = array(
-				/*'classname' => 'mi-estilo',*/
-				'description' => 'Compartir carpeta de dropbox.'
-			);
-			$this->WP_Widget( 'DropboxFolderShareWidget', 'Dropbox Folder Share', $options );
+        protected static $did_script = false;
 
-			add_action( 'wp_enqueue_scripts', array( $this, 'scripts' ) );
-		}
+        function registrarWidget() {
+            register_widget( 'DropboxFolderShareWidget' );
+        }
 
-		function form( $instance ) {
-			// Construye el formulario de administración
-			// Valores por defecto
-			$options  = get_option( DropboxFolderSharePrincipal::_OPT_SEETINGS_ );
-			$defaults = array(
-				'titulo'      => 'Dropbox Folder Share',
-				'link'        => '',
-				'show_icon'   => $options['showIcons'],
-				'show_size'   => $options['showSize'],
-				'show_change' => $options['showChange']
-			);
-			// Se hace un merge, en $instance quedan los valores actualizados
-			$instance = wp_parse_args( (array) $instance, $defaults );
-			// Cogemos los valores
-			$titulo      = $instance['titulo'];
-			$link        = $instance['link'];
-			$show_icon   = $instance['show_icon'];
-			$show_size   = $instance['show_size'];
-			$show_change = $instance['show_change'];
-			// Mostramos el formulario
-			?>
+        function __construct() {
+            // Constructor del Widget
+            $options = array(
+                /*'classname' => 'mi-estilo',*/
+                'description' => 'Compartir carpeta de dropbox.'
+            );
+            $this->WP_Widget( 'DropboxFolderShareWidget', 'Dropbox Folder Share', $options );
+
+            add_action( 'wp_enqueue_scripts', array( $this, 'scripts' ) );
+        }
+
+        function form( $instance ) {
+            // Construye el formulario de administración
+            // Valores por defecto
+            $options  = get_option( DropboxFolderSharePrincipal::_OPT_SEETINGS_ );
+            $defaults = array(
+                'titulo'      => 'Dropbox Folder Share',
+                'link'        => '',
+                'show_icon'   => $options['showIcons'],
+                'show_size'   => $options['showSize'],
+                'show_change' => $options['showChange']
+            );
+            // Se hace un merge, en $instance quedan los valores actualizados
+            $instance = wp_parse_args( (array) $instance, $defaults );
+            // Cogemos los valores
+            $titulo      = $instance['titulo'];
+            $link        = $instance['link'];
+            $show_icon   = $instance['show_icon'];
+            $show_size   = $instance['show_size'];
+            $show_change = $instance['show_change'];
+            // Mostramos el formulario
+            ?>
             <p>
                 <?php  _e( 'Titulo', 'dropbox-folder-share' ) ?>
                 <input class="widefat" type="text" name="<?php echo $this->get_field_name( 'titulo' ); ?>"
@@ -1178,43 +1221,43 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
                        name="<?php echo $this->get_field_name( 'show_change' ); ?>" <?php echo checked( 1, $show_change, false ); ?>
                        value="1">
             </p>
-			<?php
-		}
+            <?php
+        }
 
-		function update( $new_instance, $old_instance ) {
-			// Guarda las opciones del Widget
-			$instance = $old_instance;
-			// Con sanitize_text_field elimiamos HTML de los campos
-			$instance['titulo']      = sanitize_text_field( $new_instance['titulo'] );
-			$instance['link']        = sanitize_text_field( $new_instance['link'] );
-			$instance['show_icon']   = $new_instance['show_icon'];
-			$instance['show_size']   = $new_instance['show_size'];
-			$instance['show_change'] = $new_instance['show_change'];
+        function update( $new_instance, $old_instance ) {
+            // Guarda las opciones del Widget
+            $instance = $old_instance;
+            // Con sanitize_text_field elimiamos HTML de los campos
+            $instance['titulo']      = sanitize_text_field( $new_instance['titulo'] );
+            $instance['link']        = sanitize_text_field( $new_instance['link'] );
+            $instance['show_icon']   = $new_instance['show_icon'];
+            $instance['show_size']   = $new_instance['show_size'];
+            $instance['show_change'] = $new_instance['show_change'];
 
-			return $instance;
-		}
+            return $instance;
+        }
 
-		function widget( $args, $instance ) {
-			// Construye el código para mostrar el widget públicamente
-			// Extraemos los argumentos del area de widgets
+        function widget( $args, $instance ) {
+            // Construye el código para mostrar el widget públicamente
+            // Extraemos los argumentos del area de widgets
 
-			extract( $args );
-			$titulo      = apply_filters( 'widget_title', $instance['titulo'] );
-			$link        = $instance['link'];
-			$show_icon   = $instance['show_icon'];
-			$show_size   = $instance['show_size'];
-			$show_change = $instance['show_change'];
-			echo $before_widget;
-			echo $before_title;
-			echo $titulo;
-			echo $after_title;
-			//echo '<p>'.$link.'</p>';
-			echo do_shortcode( "[DFS link='$link' show_icon='$show_icon' show_size='$show_size' show_change='$show_change']" );
-			echo $after_widget;
-		}
+            extract( $args );
+            $titulo      = apply_filters( 'widget_title', $instance['titulo'] );
+            $link        = $instance['link'];
+            $show_icon   = $instance['show_icon'];
+            $show_size   = $instance['show_size'];
+            $show_change = $instance['show_change'];
+            echo $before_widget;
+            echo $before_title;
+            echo $titulo;
+            echo $after_title;
+            //echo '<p>'.$link.'</p>';
+            echo do_shortcode( "[DFS link='$link' show_icon='$show_icon' show_size='$show_size' show_change='$show_change']" );
+            echo $after_widget;
+        }
 
-		function add_icon_to_custom_widget() {
-			?>
+        function add_icon_to_custom_widget() {
+            ?>
             <style>
                 *[id*="_dropboxfoldersharewidget"] > div.widget-top > div.widget-title > h3:before {
                     content: url(' ');
@@ -1225,17 +1268,17 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
                     background-repeat: no-repeat;
                 }
             </style>
-			<?php
-		}
+            <?php
+        }
 
-		function scripts() {
+        function scripts() {
 
-			if ( ! self::$did_script && is_active_widget( false, false, $this->id_base, true ) ) {
+            if ( ! self::$did_script && is_active_widget( false, false, $this->id_base, true ) ) {
 
-				$objDFSPrincipal = new DropboxFolderSharePrincipal;
-				$objDFSPrincipal->incluir_JS_CSS();
-				self::$did_script = true;
-			}
+                $objDFSPrincipal = new DropboxFolderSharePrincipal;
+                $objDFSPrincipal->incluir_JS_CSS();
+                self::$did_script = true;
+            }
 
         }
 
@@ -1247,114 +1290,121 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
         include_once 'class/tinymce.class.php';
         $objDFS_TinyMCE = new DFS_TinyMCE();
 
-	    add_filter( "the_posts", array( &$objDropboxFolderSharePrincipal, "dropbox_foldershare_styles_and_scripts" ) );
-	    //add_filter("widget_text", array(&$objDropboxFolderSharePrincipal, "dropbox_foldershare_styles_and_scripts"));
+        add_filter( "the_posts", array( &$objDropboxFolderSharePrincipal, "dropbox_foldershare_styles_and_scripts" ) );
+        //add_filter("widget_text", array(&$objDropboxFolderSharePrincipal, "dropbox_foldershare_styles_and_scripts"));
     }
 
-	$objDropboxFolderShareWidget = new DropboxFolderShareWidget;
+    $objDropboxFolderShareWidget = new DropboxFolderShareWidget;
 
-	add_action( 'widgets_init', array( &$objDropboxFolderShareWidget, 'registrarWidget' ) );
-	add_action( 'admin_head-widgets.php', array( &$objDropboxFolderShareWidget, 'add_icon_to_custom_widget' ) );
+    add_action( 'widgets_init', array( &$objDropboxFolderShareWidget, 'registrarWidget' ) );
+    add_action( 'admin_head-widgets.php', array( &$objDropboxFolderShareWidget, 'add_icon_to_custom_widget' ) );
 
-	// TinyMCE desde Repo Composer
+    // TinyMCE desde Repo Composer
 
-	$opcion = get_option( $objDropboxFolderSharePrincipal::_OPT_SEETINGS_ );
-
-
-	$dataShortcode = array(
-		'Nombre'     => 'DFS',
-		'Tipo'       => 'SinContenido',
-		'Editor'     => array(
-			'ver' => true
-		),
-		'Boton'      => array(
-			'imgUrl'    => plugins_url( 'img/TinyMCE_Button.png', __FILE__ ),
-			'title'     => 'Dropbox Folder Share',
-			'controles' => array(
-				array(
-					'type'    => 'textbox',
-					'name'    => 'link',
-					'classes' => '',
-					//'multiline' => 'true',
-					'tooltip' => __( "URL de carpeta compartida de dropbox.", "dropbox-folder-share" ),
-					'label'   => __( "URL de Dropbox.", "dropbox-folder-share" )
-				),
-				array(
-					'type'    => 'checkbox',
-					'name'    => 'show_icon',
-					'classes' => '',
-					'tooltip' => __( "Mostrar iconos.", "dropbox-folder-share" ),
-					'label'   => __( "Ver Iconos.", "dropbox-folder-share" ),
-					'checked' => ( $opcion['showIcons'] == 1 ) ? 'checked' : ''
-				),
-				array(
-					'type'    => 'checkbox',
-					'name'    => 'show_size',
-					'classes' => '',
-					'tooltip' => __( "Mostrar Tamaño.", "dropbox-folder-share" ),
-					'label'   => __( "Ver Tamaño.", "dropbox-folder-share" ),
-					'checked' => ( $opcion['showSize'] == 1 ) ? 'checked' : ''
-				),
-				array(
-					'type'    => 'checkbox',
-					'name'    => 'show_change',
-					'classes' => '',
-					'tooltip' => __( "Mostrar fecha de modificacion.", "dropbox-folder-share" ),
-					'label'   => __( "Ver Modificado.", "dropbox-folder-share" ),
-					'checked' => ( $opcion['showChange'] == 1 ) ? 'checked' : ''
-				)
-			)
-		),
-		'Template'   => dirname( __FILE__ ) . "/template/editorTemplate.php",
-		'TemplateJs' => dirname( __FILE__ ) . "/template/TinyEditorConfig.js",
-		'ajax'       => array(
-			'object'       => 'objDFS',
-			'array_values' => array()
-		)
-	);
-
-	$dataShortcode2           = $dataShortcode;
-	$dataShortcode2["Nombre"] = "dropbox-foldershare-hyno";
+    $opcion = get_option( $objDropboxFolderSharePrincipal::_OPT_SEETINGS_ );
 
 
-	$objTinyMCE = new TinyMce;
+    $dataShortcode = array(
+        'Nombre'     => 'DFS',
+        'Tipo'       => 'SinContenido',
+        'Editor'     => array(
+            'ver' => true,
+            'verBoton' => true
+        ),
+        'Boton'      => array(
+            'imgUrl'    => plugins_url( 'img/TinyMCE_Button.png', __FILE__ ),
+            'title'     => 'Dropbox Folder Share',
+            'controles' => array(
+                array(
+                    'type'    => 'textbox',
+                    'name'    => 'link',
+                    'classes' => '',
+                    //'multiline' => 'true',
+                    'tooltip' => __( "URL de carpeta compartida de dropbox.", "dropbox-folder-share" ),
+                    'label'   => __( "URL de Dropbox.", "dropbox-folder-share" )
+                ),
+                array(
+                    'type'    => 'checkbox',
+                    'name'    => 'show_icon',
+                    'classes' => '',
+                    'tooltip' => __( "Mostrar iconos.", "dropbox-folder-share" ),
+                    'label'   => __( "Ver Iconos.", "dropbox-folder-share" ),
+                    'checked' => ( $opcion['showIcons'] == 1 ) ? 'checked' : ''
+                ),
+                array(
+                    'type'    => 'checkbox',
+                    'name'    => 'show_size',
+                    'classes' => '',
+                    'tooltip' => __( "Mostrar Tamaño.", "dropbox-folder-share" ),
+                    'label'   => __( "Ver Tamaño.", "dropbox-folder-share" ),
+                    'checked' => ( $opcion['showSize'] == 1 ) ? 'checked' : ''
+                ),
+                array(
+                    'type'    => 'checkbox',
+                    'name'    => 'show_change',
+                    'classes' => '',
+                    'tooltip' => __( "Mostrar fecha de modificacion.", "dropbox-folder-share" ),
+                    'label'   => __( "Ver Modificado.", "dropbox-folder-share" ),
+                    'checked' => ( $opcion['showChange'] == 1 ) ? 'checked' : ''
+                )
+            )
+        ),
+        'Template'   => dirname( __FILE__ ) . "/template/editorTemplate.php",
+        'TemplateJs' => dirname( __FILE__ ) . "/template/TinyEditorConfig.js",
+        'ajax'       => array(
+            'object'       => 'objDFS',
+            'array_values' => array()
+        )
+    );
 
-	$objTinyMCE::get_instance()->init( $dataShortcode, array( &$objDropboxFolderSharePrincipal, 'replace_shortcode' ) );
-	$objTinyMCE::get_instance()->init( $dataShortcode2, array(
-		&$objDropboxFolderSharePrincipal,
-		'replace_shortcode'
-	) );
+    $dataShortcode2           = $dataShortcode;
+    $dataShortcode2["Nombre"] = "dropbox-foldershare-hyno";
+    //$dataShortcode2['Editor']['ver'] = false;
+    $dataShortcode2['Editor']['verBoton'] = false;
 
 
-	//add_action( 'admin_init', array( &$objDropboxFolderSharePrincipal, 'my_detect_acf' ) );
+    $objTinyMCE = new TinyMce;
 
-	add_action( 'admin_head', array( &$objDropboxFolderSharePrincipal, 'nota_assets' ) );
-	//amarkal_reset_admin_notification($objDropboxFolderSharePrincipal::_OPT_SEETINGS_. "-nota-nota_actualizacion");
-	//amarkal_reset_admin_notification($objDropboxFolderSharePrincipal::_OPT_SEETINGS_. "-nota-donacion");
+    $objTinyMCE::get_instance()->init( $dataShortcode, array( &$objDropboxFolderSharePrincipal, 'replace_shortcode' ) );
 
-	amarkal_admin_notification(
-		$objDropboxFolderSharePrincipal::_OPT_SEETINGS_ . "-nota-nota_actualizacion",
-		$objDropboxFolderSharePrincipal->nota_actualizacion(),
-		'success',
-		true
-	);
-	amarkal_admin_notification(
-		$objDropboxFolderSharePrincipal::_OPT_SEETINGS_ . "-nota-donacion",
-		//__('Listen carefully, this is an <strong>warning</strong> message.','slug'),
-		$objDropboxFolderSharePrincipal->nota_donacion(),
-		'error',
-		true
-	);
+    $objTinyMCE::get_instance()->init( $dataShortcode2, array(
+        &$objDropboxFolderSharePrincipal,
+        'replace_shortcode'
+    ) );
 
 
-	//add_shortcode('dropbox-foldershare-hyno', array(&$objDropboxFolderSharePrincipal, 'replace_shortcode'));
-	//add_shortcode('DFS', array(&$objDropboxFolderSharePrincipal, 'replace_shortcode'));
+    //add_action( 'admin_init', array( &$objDropboxFolderSharePrincipal, 'my_detect_acf' ) );
+
+    add_action( 'admin_head', array( &$objDropboxFolderSharePrincipal, 'nota_assets' ) );
+    //amarkal_reset_admin_notification($objDropboxFolderSharePrincipal::_OPT_SEETINGS_. "-nota-nota_actualizacion");
+    //amarkal_reset_admin_notification($objDropboxFolderSharePrincipal::_OPT_SEETINGS_. "-nota-donacion");
+
+    amarkal_admin_notification(
+        $objDropboxFolderSharePrincipal::_OPT_SEETINGS_ . "-nota-nota_actualizacion",
+        $objDropboxFolderSharePrincipal->nota_actualizacion(),
+        'success',
+        true
+    );
+    amarkal_admin_notification(
+        $objDropboxFolderSharePrincipal::_OPT_SEETINGS_ . "-nota-donacion",
+        //__('Listen carefully, this is an <strong>warning</strong> message.','slug'),
+        $objDropboxFolderSharePrincipal->nota_donacion(),
+        'error',
+        true
+    );
+
+
+    //add_shortcode('dropbox-foldershare-hyno', array(&$objDropboxFolderSharePrincipal, 'replace_shortcode'));
+    //add_shortcode('DFS', array(&$objDropboxFolderSharePrincipal, 'replace_shortcode'));
 
     //AJAX
     add_action( 'wp_ajax_getFolderContent', array(&$objDropboxFolderSharePrincipal, 'ajaxReplaceShortcode') );
     add_action( 'wp_ajax_nopriv_getFolderContent', array(&$objDropboxFolderSharePrincipal, 'ajaxReplaceShortcode' ) );
 
-	add_action( 'wp_ajax_getFolderHeaders', array( &$objDropboxFolderSharePrincipal, 'ajaxGetHeaders' ) );
-	add_action( 'wp_ajax_nopriv_getFolderHeaders', array( &$objDropboxFolderSharePrincipal, 'ajaxGetHeaders') );
+    add_action( 'wp_ajax_getFolderHeaders', array( &$objDropboxFolderSharePrincipal, 'ajaxGetHeaders' ) );
+    add_action( 'wp_ajax_nopriv_getFolderHeaders', array( &$objDropboxFolderSharePrincipal, 'ajaxGetHeaders') );
+
+    add_action( 'wp_ajax_getImgBase64', array( &$objDropboxFolderSharePrincipal, 'ajaxGetImgBase64' ) );
+    add_action( 'wp_ajax_nopriv_getImgBase64', array( &$objDropboxFolderSharePrincipal, 'ajaxGetImgBase64') );
 
 }

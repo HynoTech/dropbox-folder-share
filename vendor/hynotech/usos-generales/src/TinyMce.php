@@ -37,8 +37,10 @@ class TinyMce{
                 add_action( 'print_media_templates', array( $this, 'print_media_templates' ) );
                 add_action( 'admin_head', array( $this, 'admin_head' ) );
             }
-            add_filter("mce_external_plugins", array($this, 'mce_plugin'));
-            add_filter("mce_buttons", array($this, 'mce_button'));
+            if ($this->dataShortcode['Editor']['verBoton']){
+                add_filter("mce_external_plugins", array($this, 'mce_plugin'));
+                add_filter("mce_buttons", array($this, 'mce_button'));
+            }
         }
     }
 

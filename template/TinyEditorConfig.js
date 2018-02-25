@@ -84,7 +84,7 @@ popupwindow: function (editor, values) {
             //return onsubmit_callback;
         },
         body: [
-            <;?php
+            <?php
 $lastElement = end($dataShortcode["Boton"]["controles"]);
                 foreach($dataShortcode["Boton"]["controles"] as $clave => $valor){
                     echo "{type: '".$valor['type']."', name: '".$valor['name']."', label: '".$valor['label']."', value: values.".$valor['name'].", tooltip: '".$valor['tooltip']."', classes:'".$valor['classes']."'";

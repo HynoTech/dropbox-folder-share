@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit58e5e7fadbd129b0c2840b8105cdf83c
+class ComposerStaticInitf992473bbd3ca3e817c4434735b956ff
 {
     public static $files = array (
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
@@ -24,7 +24,6 @@ class ComposerStaticInit58e5e7fadbd129b0c2840b8105cdf83c
         'C' => 
         array (
             'Curl\\' => 5,
-            'Carbon\\' => 7,
         ),
         'A' => 
         array (
@@ -49,21 +48,28 @@ class ComposerStaticInit58e5e7fadbd129b0c2840b8105cdf83c
         array (
             0 => __DIR__ . '/..' . '/php-curl-class/php-curl-class/src/Curl',
         ),
-        'Carbon\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon',
-        ),
         'Amarkal\\Admin\\' => 
         array (
             0 => __DIR__ . '/..' . '/askupa-software/amarkal-admin-notification',
         ),
     );
 
+    public static $prefixesPsr0 = array (
+        'C' => 
+        array (
+            'Carbon' => 
+            array (
+                0 => __DIR__ . '/..' . '/nesbot/carbon/src',
+            ),
+        ),
+    );
+
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit58e5e7fadbd129b0c2840b8105cdf83c::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit58e5e7fadbd129b0c2840b8105cdf83c::$prefixDirsPsr4;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitf992473bbd3ca3e817c4434735b956ff::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitf992473bbd3ca3e817c4434735b956ff::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInitf992473bbd3ca3e817c4434735b956ff::$prefixesPsr0;
 
         }, null, ClassLoader::class);
     }

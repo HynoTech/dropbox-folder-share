@@ -1,100 +1,7 @@
 @import url(../css/icons.css);
 @import url("https://fonts.googleapis.com/css?family=Open+Sans");
-/* line 52, ../scss/styles-hyno.scss */
-.maestro .sl-view-toggle-option, .maestro .sl-view-toggle-option:first-of-type, .maestro .sl-view-toggle-option:last-of-type, .maestro .sl-view-toggle-option.selected {
-  display: inline-block;
-  vertical-align: middle;
-  margin-left: 8px;
-}
-
-/* line 80, ../scss/styles-hyno.scss */
-.DropboxIcon {
-  height: 20px;
-  background-image: url(../img/web_sprites-normal.png);
-  background-repeat: no-repeat;
-  background-position: 0 -8772px;
-  display: inline-block;
-  position: relative;
-  padding: 0 30px;
-  font-size: 16px;
-  font-weight: 500;
-  color: #444;
-}
-
-/* line 93, ../scss/styles-hyno.scss */
-.Hyno_ContenFolder {
-  background-color: white;
-  color: #007ee5;
-  width: 98%;
-  margin: auto;
-  font-family: "Open Sans", "lucida grande", "Segoe UI", arial, verdana, "lucida sans unicode", tahoma, sans-serif;
-  font-weight: normal;
-  font-size: 13px;
-}
-
-/* line 103, ../scss/styles-hyno.scss */
-.Hyno_ContenFolder .fa-dropbox {
-  color: #007ee5 !important;
-}
-
-/* line 107, ../scss/styles-hyno.scss */
-.Hyno_ContenFolder .breadcrumb > li > i {
-  font-size: 21px;
-  vertical-align: middle;
-}
-
-/* line 111, ../scss/styles-hyno.scss */
-.Hyno_ContenFolder .breadcrumb a:link {
-  text-decoration: none;
-  box-shadow: none !important;
-}
-
-/* line 116, ../scss/styles-hyno.scss */
-.Hyno_ContenFolder .breadcrumb img {
-  display: inline;
-  margin-left: 5px;
-  box-shadow: none !important;
-}
-
-/* line 123, ../scss/styles-hyno.scss */
-.Hyno_ContenFolder .breadcrumb > li + li::before {
-  content: "\f054";
-  font-family: FontAwesome;
-  vertical-align: middle;
-  font-size: 8px;
-}
-
-/* line 131, ../scss/styles-hyno.scss */
-.Hyno_ContenFolder div[id^="Hyno_Header_"] .s_web_dropbox21x20, .Hyno_ContenFolder div[id^="Hyno_Header_"] a, .Hyno_ContenFolder div[id^="Hyno_Header_"] span {
-  float: left;
-}
-
-/* line 134, ../scss/styles-hyno.scss */
-.Hyno_ContenFolder div[id^="Hyno_Header_"] .lnkZIp {
-  float: right;
-}
-
-/* line 137, ../scss/styles-hyno.scss */
-.Hyno_ContenFolder div[id^="Hyno_Header_"] div {
-  font-size: 16px;
-  color: #1B2733;
-  font-weight: 500;
-}
-
-/* line 141, ../scss/styles-hyno.scss */
-.Hyno_ContenFolder div[id^="Hyno_Header_"] div span {
-  font-style: italic;
-}
-
-/* line 146, ../scss/styles-hyno.scss */
-.Hyno_ContenFolder div[id^="Hyno_Header_"] a:link, .Hyno_ContenFolder div[id^="Hyno_Header_"] a:visited {
-  text-decoration: none;
-  border: 0;
-}
-
-/* @import "_parcial"; */
-/* line 201, ../scss/styles-hyno.scss */
-.maestro .sl-view-toggle-option, .maestro .sl-view-toggle-option:first-of-type, .maestro .sl-view-toggle-option:last-of-type, .maestro .sl-view-toggle-option.selected {
+/* line 92, ../scss/styles-hyno.scss */
+.Hyno_ContenFolder .maestro .sl-view-toggle-option, .Hyno_ContenFolder .maestro .sl-view-toggle-option:first-of-type, .Hyno_ContenFolder .maestro .sl-view-toggle-option:last-of-type, .Hyno_ContenFolder .maestro .sl-view-toggle-option.selected {
   position: absolute;
   top: 0;
   right: 0;
@@ -106,133 +13,184 @@
   box-shadow: none;
 }
 
-/* line 216, ../scss/styles-hyno.scss */
-.sl-body {
+/* line 111, ../scss/styles-hyno.scss */
+.Hyno_ContenFolder {
+  background-color: white;
+  color: #007ee5;
+  width: 98%;
+  margin: auto;
+  font-family: "Open Sans","lucida grande","Segoe UI",arial,verdana,"lucida sans unicode",tahoma,sans-serif;
+  font-weight: normal;
+  font-size: 13px;
+}
+/* line 114, ../scss/styles-hyno.scss */
+.Hyno_ContenFolder .DropboxIcon {
+  height: 20px;
+  background-image: url(../img/web_sprites-normal.png);
+  background-repeat: no-repeat;
+  background-position: 0 -8772px;
+  display: inline-block;
+  position: relative;
+  padding: 0 30px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #444;
+}
+/* line 138, ../scss/styles-hyno.scss */
+.Hyno_ContenFolder .fa-dropbox {
+  color: #007ee5 !important;
+}
+/* line 142, ../scss/styles-hyno.scss */
+.Hyno_ContenFolder .breadcrumb > li > i {
+  font-size: 21px;
+  vertical-align: middle;
+}
+/* line 146, ../scss/styles-hyno.scss */
+.Hyno_ContenFolder .breadcrumb a:link {
+  text-decoration: none;
+  box-shadow: none !important;
+}
+/* line 151, ../scss/styles-hyno.scss */
+.Hyno_ContenFolder .breadcrumb img {
+  display: inline;
+  margin-left: 5px;
+  box-shadow: none !important;
+}
+/* line 158, ../scss/styles-hyno.scss */
+.Hyno_ContenFolder .breadcrumb > li + li::before {
+  content: "\f054";
+  font-family: FontAwesome;
+  vertical-align: middle;
+  font-size: 8px;
+}
+/* line 166, ../scss/styles-hyno.scss */
+.Hyno_ContenFolder div[id^="Hyno_Header_"] .s_web_dropbox21x20, .Hyno_ContenFolder div[id^="Hyno_Header_"] a, .Hyno_ContenFolder div[id^="Hyno_Header_"] span {
+  float: left;
+}
+/* line 169, ../scss/styles-hyno.scss */
+.Hyno_ContenFolder div[id^="Hyno_Header_"] .lnkZIp {
+  float: right;
+}
+/* line 172, ../scss/styles-hyno.scss */
+.Hyno_ContenFolder div[id^="Hyno_Header_"] div {
+  font-size: 16px;
+  color: #1B2733;
+  font-weight: 500;
+}
+/* line 176, ../scss/styles-hyno.scss */
+.Hyno_ContenFolder div[id^="Hyno_Header_"] div span {
+  font-style: italic;
+}
+/* line 181, ../scss/styles-hyno.scss */
+.Hyno_ContenFolder div[id^="Hyno_Header_"] a:link, .Hyno_ContenFolder div[id^="Hyno_Header_"] a:visited {
+  text-decoration: none;
+  border: 0;
+}
+/* line 194, ../scss/styles-hyno.scss */
+.Hyno_ContenFolder .sl-body {
   position: relative;
 }
-
-/* line 218, ../scss/styles-hyno.scss */
-.sl-body.sl-body--empty-folder {
+/* line 196, ../scss/styles-hyno.scss */
+.Hyno_ContenFolder .sl-body.sl-body--empty-folder {
   text-align: center;
 }
-
-/* line 222, ../scss/styles-hyno.scss */
-.sl-list-container {
+/* line 200, ../scss/styles-hyno.scss */
+.Hyno_ContenFolder .sl-list-container {
   margin: 13px 0;
   padding: 16px;
   background-color: white;
   border: 1px solid #ccdbeb;
   border-radius: 2px;
 }
-
-/* line 231, ../scss/styles-hyno.scss */
-.maestro .sl-list-container {
+/* line 209, ../scss/styles-hyno.scss */
+.Hyno_ContenFolder .maestro .sl-list-container {
   border: 0;
   padding: 0;
 }
-
-/* line 235, ../scss/styles-hyno.scss */
-.maestro .sl-list-header {
+/* line 213, ../scss/styles-hyno.scss */
+.Hyno_ContenFolder .maestro .sl-list-header {
   margin: 0;
   font-size: 12px;
   border-bottom: 1px solid rgba(37, 40, 43, 0.1);
   line-height: 39px;
 }
-
-/* line 242, ../scss/styles-hyno.scss */
-.maestro .sl-list-body .sl-list-column {
+/* line 220, ../scss/styles-hyno.scss */
+.Hyno_ContenFolder .maestro .sl-list-body .sl-list-column {
   color: #536170;
 }
-
-/* line 245, ../scss/styles-hyno.scss */
-.maestro .sl-list-body .sl-list-row {
+/* line 223, ../scss/styles-hyno.scss */
+.Hyno_ContenFolder .maestro .sl-list-body .sl-list-row {
   line-height: 49px;
 }
-
-/* line 261, ../scss/styles-hyno.scss */
-.maestro .sl-file-link {
+/* line 239, ../scss/styles-hyno.scss */
+.Hyno_ContenFolder .maestro .sl-file-link {
   color: #1b2733;
 }
-
-/* line 263, ../scss/styles-hyno.scss */
-.maestro .sl-file-link:hover {
+/* line 241, ../scss/styles-hyno.scss */
+.Hyno_ContenFolder .maestro .sl-file-link:hover {
   color: #0070e0;
 }
-
-/* line 267, ../scss/styles-hyno.scss */
-.maestro .sl-list-column.sl-list-column--filename {
+/* line 245, ../scss/styles-hyno.scss */
+.Hyno_ContenFolder .maestro .sl-list-column.sl-list-column--filename {
   width: 744px;
 }
-
-/* line 271, ../scss/styles-hyno.scss */
-.sl-list-header {
+/* line 249, ../scss/styles-hyno.scss */
+.Hyno_ContenFolder .sl-list-header {
   margin: 4px 0 10px;
 }
-
-/* line 273, ../scss/styles-hyno.scss */
-.sl-list-header .sl-list-column {
+/* line 251, ../scss/styles-hyno.scss */
+.Hyno_ContenFolder .sl-list-header .sl-list-column {
   color: #637282;
 }
-
-/* line 277, ../scss/styles-hyno.scss */
-.sl-list-column {
+/* line 255, ../scss/styles-hyno.scss */
+.Hyno_ContenFolder .sl-list-column {
   float: left;
   display: block;
 }
-
-/* line 280, ../scss/styles-hyno.scss */
-.sl-list-column.sl-list-column--filename {
+/* line 258, ../scss/styles-hyno.scss */
+.Hyno_ContenFolder .sl-list-column.sl-list-column--filename {
   width: 558px;
 }
-
-/* line 282, ../scss/styles-hyno.scss */
-.sl-list-column.sl-list-column--filename .icon {
+/* line 260, ../scss/styles-hyno.scss */
+.Hyno_ContenFolder .sl-list-column.sl-list-column--filename .icon {
   margin-right: 8px;
   width: 32px;
   height: 32px;
 }
-
-/* line 288, ../scss/styles-hyno.scss */
-.sl-list-column.sl-list-column--filesize {
+/* line 266, ../scss/styles-hyno.scss */
+.Hyno_ContenFolder .sl-list-column.sl-list-column--filesize {
   width: 186px;
 }
-
-/* line 291, ../scss/styles-hyno.scss */
-.sl-list-column.sl-list-column--modified {
+/* line 269, ../scss/styles-hyno.scss */
+.Hyno_ContenFolder .sl-list-column.sl-list-column--modified {
   float: left;
 }
-
-/* line 295, ../scss/styles-hyno.scss */
-.sl-list-body {
+/* line 273, ../scss/styles-hyno.scss */
+.Hyno_ContenFolder .sl-list-body {
   padding: 0px;
 }
-
-/* line 297, ../scss/styles-hyno.scss */
-.sl-list-body .sl-list-column {
+/* line 275, ../scss/styles-hyno.scss */
+.Hyno_ContenFolder .sl-list-body .sl-list-column {
   color: #555;
 }
-
-/* line 300, ../scss/styles-hyno.scss */
-.sl-list-body .sl-list-row {
+/* line 278, ../scss/styles-hyno.scss */
+.Hyno_ContenFolder .sl-list-body .sl-list-row {
   line-height: 32px;
   padding: 7px 0;
 }
-
-/* line 303, ../scss/styles-hyno.scss */
-.sl-list-body .sl-list-row:last-of-type {
+/* line 281, ../scss/styles-hyno.scss */
+.Hyno_ContenFolder .sl-list-body .sl-list-row:last-of-type {
   padding-bottom: 0;
 }
-
-/* line 308, ../scss/styles-hyno.scss */
-.sl-list-row {
+/* line 286, ../scss/styles-hyno.scss */
+.Hyno_ContenFolder .sl-list-row {
   border-width: 1px 0 0 0;
   text-align: left;
   margin: 0;
   list-style-type: none;
 }
-
-/* line 314, ../scss/styles-hyno.scss */
-.sl-view-toggle-option {
+/* line 292, ../scss/styles-hyno.scss */
+.Hyno_ContenFolder .sl-view-toggle-option {
   display: inline-block;
   zoom: 1;
   text-decoration: none;
@@ -243,94 +201,81 @@
   background-color: #f3fafe;
   box-shadow: 0 1px 1px #ccc, -1px 1px 1px white;
 }
-
-/* line 325, ../scss/styles-hyno.scss */
-.sl-view-toggle-option:first-of-type {
+/* line 303, ../scss/styles-hyno.scss */
+.Hyno_ContenFolder .sl-view-toggle-option:first-of-type {
   border-top-left-radius: 2px;
   border-bottom-left-radius: 2px;
 }
-
-/* line 331, ../scss/styles-hyno.scss */
-.sl-view-toggle-option:last-of-type {
+/* line 309, ../scss/styles-hyno.scss */
+.Hyno_ContenFolder .sl-view-toggle-option:last-of-type {
   border-top-right-radius: 2px;
   border-bottom-right-radius: 2px;
 }
-
-/* line 337, ../scss/styles-hyno.scss */
-.sl-view-toggle-option.selected {
+/* line 315, ../scss/styles-hyno.scss */
+.Hyno_ContenFolder .sl-view-toggle-option.selected {
   background-color: #d9e7f0;
   box-shadow: inset 1px 1px 3px #c4d0d9;
 }
-
-/* line 346, ../scss/styles-hyno.scss */
-.o-flag {
+/* line 324, ../scss/styles-hyno.scss */
+.Hyno_ContenFolder .o-flag {
   display: table;
   width: 100%;
 }
-
-/* line 350, ../scss/styles-hyno.scss */
-.o-flag__fix {
+/* line 328, ../scss/styles-hyno.scss */
+.Hyno_ContenFolder .o-flag__fix {
   display: table-cell;
   vertical-align: middle;
   white-space: nowrap;
 }
-
-/* line 355, ../scss/styles-hyno.scss */
-.o-flag__flex {
+/* line 333, ../scss/styles-hyno.scss */
+.Hyno_ContenFolder .o-flag__flex {
   display: table-cell;
   vertical-align: middle;
   width: 100%;
 }
-
-/* line 361, ../scss/styles-hyno.scss */
-.o-flag--top .o-flag__fix {
+/* line 339, ../scss/styles-hyno.scss */
+.Hyno_ContenFolder .o-flag--top .o-flag__fix {
   vertical-align: top;
 }
-
-/* line 364, ../scss/styles-hyno.scss */
-.o-flag--top .o-flag__flex {
+/* line 342, ../scss/styles-hyno.scss */
+.Hyno_ContenFolder .o-flag--top .o-flag__flex {
   vertical-align: top;
 }
-
-/* line 369, ../scss/styles-hyno.scss */
-.o-flag--bottom .o-flag__fix {
+/* line 347, ../scss/styles-hyno.scss */
+.Hyno_ContenFolder .o-flag--bottom .o-flag__fix {
   vertical-align: bottom;
 }
-
-/* line 372, ../scss/styles-hyno.scss */
-.o-flag--bottom .o-flag__flex {
+/* line 350, ../scss/styles-hyno.scss */
+.Hyno_ContenFolder .o-flag--bottom .o-flag__flex {
   vertical-align: bottom;
 }
-
 @supports (display: flex) {
-  /* line 377, ../scss/styles-hyno.scss */
-  .o-flag {
+  /* line 355, ../scss/styles-hyno.scss */
+  .Hyno_ContenFolder .o-flag {
     display: flex;
     align-items: center;
   }
-
-  /* line 381, ../scss/styles-hyno.scss */
-  .o-flag--top {
+  /* line 359, ../scss/styles-hyno.scss */
+  .Hyno_ContenFolder .o-flag--top {
     align-items: flex-start;
   }
-
-  /* line 384, ../scss/styles-hyno.scss */
-  .o-flag--bottom {
+  /* line 362, ../scss/styles-hyno.scss */
+  .Hyno_ContenFolder .o-flag--bottom {
     align-items: flex-end;
   }
-
-  /* line 387, ../scss/styles-hyno.scss */
-  .o-flag__fix {
+  /* line 365, ../scss/styles-hyno.scss */
+  .Hyno_ContenFolder .o-flag__fix {
     display: inherit;
     align-items: inherit;
     flex: 0 0 auto;
   }
-
-  /* line 392, ../scss/styles-hyno.scss */
-  .o-flag__flex {
+  /* line 370, ../scss/styles-hyno.scss */
+  .Hyno_ContenFolder .o-flag__flex {
     display: initial;
     min-width: 0;
     width: auto;
     flex: 1 1 auto;
   }
 }
+
+/* @import "_parcial"; */
