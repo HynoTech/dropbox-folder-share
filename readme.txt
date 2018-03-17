@@ -64,6 +64,9 @@ Read **[More](http://www.hynotech.com/wp-plugins/dropbox-folder-share/#faq "Drop
 
 == Changelog ==
 
+= 1.8.3 =
+* FIX errors
+
 = 1.8.2 =
 * FIX errors
 * Added download button in file viewer.
@@ -134,6 +137,10 @@ Read **[More](http://www.hynotech.com/wp-plugins/dropbox-folder-share/#faq "Drop
 * Version inicial.
 
 == Upgrade Notice ==
+
+= 1.8.3 =
+* Works only using AJAX (Remove Use Ajax in configuration page).
+* Fix bugs.
 
 = 1.8.2 =
 * [+] Added download button in file viewer.

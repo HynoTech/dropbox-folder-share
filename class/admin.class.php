@@ -38,7 +38,6 @@ class DFS_Admin extends DropboxFolderSharePrincipal
             "visualizacion" => array(
                 'titulo' => __("Visualizacion", "dropbox-folder-share"),
                 'campos' => array(
-	                'UseAjax'            => __('Usar Ajax', "dropbox-folder-share"),
 	                'ShowIcons'          => __('Mostrar Iconos', "dropbox-folder-share"),
 	                'ShowSize'           => __('Mostrar Tamaño de Archivo', "dropbox-folder-share"),
 	                'ShowChange'         => __('Mostrar Fecha de Modificacion', "dropbox-folder-share"),
@@ -90,20 +89,6 @@ class DFS_Admin extends DropboxFolderSharePrincipal
         echo '';
     }
 
-    //campo ShowIcon
-    function print_visualizacion_UseAjaxInput()
-    {
-        $options = get_option(parent::_OPT_SEETINGS_);
-        ?>
-        <input
-            id="id_visualizacion_UseAjax"
-            type="checkbox"
-            name="<?php echo parent::_OPT_SEETINGS_; ?>[UseAjax]"
-            value="1"
-            <?php echo checked(1, $options['UseAjax'], false); ?>
-        />
-        <?php
-    }
 
     //campo ShowIcon
     function print_visualizacion_ShowIconsInput()
@@ -350,7 +335,6 @@ class DFS_Admin extends DropboxFolderSharePrincipal
     {
 
         $options = get_option(parent::_OPT_SEETINGS_);
-        $options['UseAjax'] = trim($input['UseAjax']);
         $options['showIcons'] = trim($input['showIcons']);
         $options['showSize'] = trim($input['showSize']);
         $options['showChange'] = trim($input['showChange'] );

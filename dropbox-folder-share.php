@@ -3,7 +3,7 @@
  * Plugin Name: DropBox Folder Share
  * Plugin URI: http://www.hynotech.com/wp-plugins/dropbox-folder-share/
  * Description: Plugin que permitira incluir carpetas de DropBox en nuestras entradas de blog.
- * Version: 1.8.2
+ * Version: 1.8.3
  * Author: Antonio Salas (Hyno)
  * Author URI: http://www.hynotech.com/
  * Twitter: AntonySH_
@@ -22,7 +22,7 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
     Class DropboxFolderSharePrincipal
     {
 
-        const _VERSION_GENERAL_ = "1.8.2";
+        const _VERSION_GENERAL_ = "1.8.3";
         const _VERSION_JS_ = "1.8";
         const _VERSION_CSS_ = "1.8";
         const _VERSION_ADMIN_ = "3.0";
@@ -39,7 +39,6 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
         var $formSections = array();
         var $settings = array(); //Almacena los opciones actuales del Plugin
         var $opcDefault = array(
-            "UseAjax"             => '1',
             "showIcons"           => '1',
             "showSize"            => '1',
             "showChange"          => '1',
@@ -247,13 +246,7 @@ if (!\class_exists("DropboxFolderSharePrincipal")) {
                 'showSize'   => ( ( $show_size === 'true' ) || ( $show_size === '1' ) ) ? '1' : '',
                 'showChange' => ( ( $show_change === 'true' ) || ( $show_change === '1' ) ) ? '1' : ''
             );
-            if ($opciones['UseAjax'] === '1') {
-                //return $this->scriptAjax($link, $idContent);
-                return $this->scriptAjax( $opciones_shortcode, $idContent);
-            }
-            else {
-                return $this->get_folder( $opciones_shortcode, $idContent);
-            }
+            return $this->scriptAjax( $opciones_shortcode, $idContent);
 
             //
 
