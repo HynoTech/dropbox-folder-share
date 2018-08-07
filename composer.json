@@ -15,11 +15,18 @@
       "url": "https://AntonySalas@bitbucket.org/hynotech/usos-generales.git"
     }
   ],
+  "autoload" : {
+    "psr-4": {
+      "HynoTech\\DropboxFolderShare\\": "src/"
+    },
+    "files": ["src/function/http_build_url.php"]
+  },
   "require": {
     "nesbot/carbon": "1.19",
     "hynotech/usos-generales": "dev-master",
     "askupa-software/amarkal-admin-notification": "dev-master",
     "php-curl-class/php-curl-class": "dev-master"
+
   },
   "require-dev": {
     "kint-php/kint": "dev-master"

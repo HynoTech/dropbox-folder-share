@@ -183,12 +183,17 @@ class MultiCurl
             $data = $url;
             $url = $this->baseUrl;
         }
+
         $curl = new Curl();
+
+        if (is_array($data) && empty($data)) {
+            $curl->removeHeader('Content-Length');
+        }
+
         $this->queueHandle($curl);
         $curl->setUrl($url);
-        $curl->removeHeader('Content-Length');
         $curl->setOpt(CURLOPT_CUSTOMREQUEST, 'PATCH');
-        $curl->setOpt(CURLOPT_POSTFIELDS, $data);
+        $curl->setOpt(CURLOPT_POSTFIELDS, $curl->buildPostData($data));
         return $curl;
     }
 
@@ -204,7 +209,7 @@ class MultiCurl
      *
      * @return object
      */
-    public function addPost($url, $data = array(), $follow_303_with_post = false)
+    public function addPost($url, $data = '', $follow_303_with_post = false)
     {
         if (is_array($url)) {
             $follow_303_with_post = (bool)$data;
@@ -695,8 +700,8 @@ class MultiCurl
                                 // Remove completed instance from active curls.
                                 unset($this->activeCurls[$key]);
 
-                                // Start a new request before removing the handle of the completed one.
-                                if (count($this->curls) >= 1) {
+                                // Start new requests before removing the handle of the completed one.
+                                while (count($this->curls) >= 1 && count($this->activeCurls) < $this->concurrency) {
                                     $this->initHandle(array_shift($this->curls));
                                 }
                                 curl_multi_remove_handle($this->multiCurl, $curl->curl);
@@ -807,7 +812,7 @@ class MultiCurl
     {
         // Use sequential ids to allow for ordered post processing.
         $curl->id = $this->nextCurlId++;
-        $curl->isChildOfMultiCurl = true;
+        $curl->childOfMultiCurl = true;
         $this->curls[$curl->id] = $curl;
 
         $curl->setHeaders($this->headers);

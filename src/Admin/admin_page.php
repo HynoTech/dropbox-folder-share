@@ -129,7 +129,7 @@
 
 
 <div class="wrap">
-    <img src="<?php echo parent::$url . 'img/logo.png'; ?>" />
+    <img src="<?php echo DROPBOX_FOLDER_SHARE_PLUGIN_URL . 'src/img/logo.png'; ?>" />
 
     <?php if (!empty($_POST)) { ?>
         <div class="updated settings-error" id="setting-error-settings_updated">
@@ -150,7 +150,7 @@
                     <form action="options.php#configuraciones" method="post">
                         <?php
                         settings_fields(parent::_OPT_SEETINGS_ . '-group');
-                        do_settings_sections(parent::$nombre);
+                        do_settings_sections(DROPBOX_FOLDER_SHARE_PLUGIN_NOMBRE);
                         //wp_nonce_field('tab-configuraciones');
                         ?>
                         <div class="inside">
