@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: DropBox Folder Share\n"
-"POT-Creation-Date: 2018-02-25 01:39-0500\n"
+"POT-Creation-Date: 2018-10-06 01:47-0500\n"
 "PO-Revision-Date: 2017-08-13 21:31-0500\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -20,35 +20,145 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 
-#: admin/admin_page.php:136
-msgid "Configuraciones guardadas."
+#: dropbox-folder-share.php:86
+msgid "URL de carpeta compartida de dropbox."
 msgstr ""
 
-#: admin/admin_page.php:163
-msgid "Parametros de Shortcode"
+#: dropbox-folder-share.php:87
+msgid "URL de Dropbox."
 msgstr ""
 
-#: admin/admin_page.php:172
-msgid "URL de la carpeta compartida de DropBox."
+#: dropbox-folder-share.php:93
+msgid "Mostrar iconos."
 msgstr ""
 
-#: admin/admin_page.php:176
-msgid "Mostrar iconos en la visualizacion."
+#: dropbox-folder-share.php:94
+msgid "Ver Iconos."
 msgstr ""
 
-#: admin/admin_page.php:180
-msgid "Mostrar tamaño de archivos."
+#: dropbox-folder-share.php:101
+msgid "Mostrar Tamaño."
 msgstr ""
 
-#: admin/admin_page.php:184 dropbox-folder-share.php:1346
+#: dropbox-folder-share.php:102
+msgid "Ver Tamaño."
+msgstr ""
+
+#: dropbox-folder-share.php:109 src/Admin/admin_page.php:184
 msgid "Mostrar fecha de modificacion."
 msgstr ""
 
-#: admin/admin_page.php:188
+#: dropbox-folder-share.php:110
+msgid "Ver Modificado."
+msgstr ""
+
+#: src/Admin.php:48
+msgid "Visualizacion"
+msgstr ""
+
+#: src/Admin.php:50
+msgid "Mostrar Iconos"
+msgstr ""
+
+#: src/Admin.php:51
+msgid "Mostrar Tamaño de Archivo"
+msgstr ""
+
+#: src/Admin.php:52
+msgid "Mostrar Fecha de Modificacion"
+msgstr ""
+
+#: src/Admin.php:53
+msgid "Mostrar Miniaturas"
+msgstr ""
+
+#: src/Admin.php:54
+msgid "Usar visualizador de archivos Nativo de Dropbox"
+msgstr ""
+
+#: src/Admin.php:55
+msgid "Mostrar imagenes usando ThickBox"
+msgstr ""
+
+#: src/Admin.php:56
+msgid "Extensiones adicionales en ThickBox"
+msgstr ""
+
+#: src/Admin.php:57
+msgid "Altura maxima del contenedor"
+msgstr ""
+
+#: src/Admin.php:58
+msgid "Mostrar bloque en el editor"
+msgstr ""
+
+#: src/Admin.php:59
+msgid "Formato de fecha y hora"
+msgstr ""
+
+#: src/Admin.php:63
+msgid "Vinculacion"
+msgstr ""
+
+#: src/Admin.php:65
+msgid "Permitir Descarga de Archivos"
+msgstr ""
+
+#: src/Admin.php:66
+msgid "Permitir Descarga de Carpeta (comprimido)"
+msgstr ""
+
+#: src/Admin.php:67
+msgid "Permitir Navegacion entre Carpetas"
+msgstr ""
+
+#: src/Admin.php:68
+msgid "Dejar Link de Carpeta Compartida"
+msgstr ""
+
+#: src/Admin.php:213
+msgid "Separado por comas"
+msgstr ""
+
+#: src/Admin.php:228
+msgid "0 para desabilitar y dejar altura automatica"
+msgstr ""
+
+#: src/Admin.php:243
+msgid ""
+"Permite visualizar un bloque en el editor cuando se visualiza una carpeta "
+"compartida"
+msgstr ""
+
+#: src/Admin.php:261
+msgid "Documentación sobre formatos de fecha y hora"
+msgstr ""
+
+#: src/Admin/admin_page.php:136
+msgid "Configuraciones guardadas."
+msgstr ""
+
+#: src/Admin/admin_page.php:163
+msgid "Parametros de Shortcode"
+msgstr ""
+
+#: src/Admin/admin_page.php:172
+msgid "URL de la carpeta compartida de DropBox."
+msgstr ""
+
+#: src/Admin/admin_page.php:176
+msgid "Mostrar iconos en la visualizacion."
+msgstr ""
+
+#: src/Admin/admin_page.php:180
+msgid "Mostrar tamaño de archivos."
+msgstr ""
+
+#: src/Admin/admin_page.php:188
 msgid "Titulo de la seccion (solo para ver en editor)."
 msgstr ""
 
-#: admin/admin_page.php:202 dropbox-folder-share.php:1073
+#: src/Admin/admin_page.php:202 src/Principal.php:1070
 msgid ""
 "Gracias por Utilizar este plugin. Me gustaria leer sugerencias u opiniones "
 "para que juntos mejoremos esta herramienta, cualquier sugerencia para "
@@ -56,25 +166,25 @@ msgid ""
 "hacernoslo saber. "
 msgstr ""
 
-#: admin/admin_page.php:204 dropbox-folder-share.php:1074
+#: src/Admin/admin_page.php:204 src/Principal.php:1071
 msgid ""
 "Pueden hacernos llegar sus sugerencias, opiniones y/o criticas a travez del "
 "formulario de contactos de"
 msgstr ""
 
-#: admin/sidebar.php:12
+#: src/Admin/sidebar.php:12
 msgid "Informacion del Plugin"
 msgstr ""
 
-#: admin/sidebar.php:17 dropbox-folder-share.php:866
+#: src/Admin/sidebar.php:17 src/Principal.php:857
 msgid "Nombre"
 msgstr ""
 
-#: admin/sidebar.php:23
+#: src/Admin/sidebar.php:23
 msgid "Autor"
 msgstr ""
 
-#: admin/sidebar.php:37
+#: src/Admin/sidebar.php:37
 msgid ""
 "Hola, espero que disfruten de mi plugin. Me llevó un montón de horas para "
 "hacerlo. Una gran cantidad de galletas y jugo de uva que se derramó sobre el "
@@ -82,174 +192,76 @@ msgid ""
 "invitandome un café recién hecho."
 msgstr ""
 
-#: class/admin.class.php:39
-msgid "Visualizacion"
-msgstr ""
-
-#: class/admin.class.php:41
-msgid "Usar Ajax"
-msgstr ""
-
-#: class/admin.class.php:42
-msgid "Mostrar Iconos"
-msgstr ""
-
-#: class/admin.class.php:43
-msgid "Mostrar Tamaño de Archivo"
-msgstr ""
-
-#: class/admin.class.php:44
-msgid "Mostrar Fecha de Modificacion"
-msgstr ""
-
-#: class/admin.class.php:45
-msgid "Mostrar Miniaturas"
-msgstr ""
-
-#: class/admin.class.php:46
-msgid "Usar visualizador de archivos Nativo de Dropbox"
-msgstr ""
-
-#: class/admin.class.php:47
-msgid "Mostrar imagenes usando ThickBox"
-msgstr ""
-
-#: class/admin.class.php:48
-msgid "Extensiones adicionales en ThickBox"
-msgstr ""
-
-#: class/admin.class.php:49
-msgid "Altura maxima del contenedor"
-msgstr ""
-
-#: class/admin.class.php:50
-msgid "Mostrar bloque en el editor"
-msgstr ""
-
-#: class/admin.class.php:51
-msgid "Formato de fecha y hora"
-msgstr ""
-
-#: class/admin.class.php:55
-msgid "Vinculacion"
-msgstr ""
-
-#: class/admin.class.php:57
-msgid "Permitir Descarga de Archivos"
-msgstr ""
-
-#: class/admin.class.php:58
-msgid "Permitir Descarga de Carpeta (comprimido)"
-msgstr ""
-
-#: class/admin.class.php:59
-msgid "Permitir Navegacion entre Carpetas"
-msgstr ""
-
-#: class/admin.class.php:60
-msgid "Dejar Link de Carpeta Compartida"
-msgstr ""
-
-#: class/admin.class.php:219
-msgid "Separado por comas"
-msgstr ""
-
-#: class/admin.class.php:234
-msgid "0 para desabilitar y dejar altura automatica"
-msgstr ""
-
-#: class/admin.class.php:249
-msgid ""
-"Permite visualizar un bloque en el editor cuando se visualiza una carpeta "
-"compartida"
-msgstr ""
-
-#: class/admin.class.php:267
-msgid "Documentación sobre formatos de fecha y hora"
-msgstr ""
-
-#: class/tinymce.class.php:36
-msgid "Carpeta Dropbox"
-msgstr ""
-
-#: class/tinymce.class.php:37
-msgid "URL de carpeta"
-msgstr ""
-
-#: class/tinymce.class.php:38
-msgid "Campos Obligatorios"
-msgstr ""
-
-#: dropbox-folder-share.php:190
+#: src/Principal.php:141
 msgid "Error de seguridad"
 msgstr ""
 
-#: dropbox-folder-share.php:349
+#: src/Principal.php:295
 msgid "No encontramos lo que buscas."
 msgstr ""
 
-#: dropbox-folder-share.php:444
+#: src/Principal.php:385
 msgid "Descargar carpeta actual (zip)"
 msgstr ""
 
-#: dropbox-folder-share.php:870 dropbox-folder-share.php:1213
+#: src/Principal.php:861 src/Widget.php:69
 msgid "Tamaño"
 msgstr ""
 
-#: dropbox-folder-share.php:874 dropbox-folder-share.php:1219
+#: src/Principal.php:865 src/Widget.php:75
 msgid "Modificado"
 msgstr ""
 
-#: dropbox-folder-share.php:929
+#: src/Principal.php:930
 msgid "Esta carpeta está vacía"
 msgstr ""
 
-#: dropbox-folder-share.php:957
+#: src/Principal.php:956
 msgid "No encontrado"
 msgstr ""
 
-#: dropbox-folder-share.php:976
+#: src/Principal.php:974
 msgid "Dropbox Folder Share - Configuracion"
 msgstr ""
 
-#: dropbox-folder-share.php:976
+#: src/Principal.php:974
 msgid "Configurar"
 msgstr ""
 
-#: dropbox-folder-share.php:1070
+#: src/Principal.php:1067
 msgid "Dropbox Folder Share ha mejorado!"
 msgstr ""
 
-#: dropbox-folder-share.php:1071
+#: src/Principal.php:1068
 msgid "Seccion en editor."
 msgstr ""
 
-#: dropbox-folder-share.php:1071
+#: src/Principal.php:1068
 msgid "Añadido la posibilidad de Widget"
 msgstr ""
 
-#: dropbox-folder-share.php:1072
+#: src/Principal.php:1069
 #, php-format
 msgid ""
 "Por favor <a href=\"%s\">revisa las configuraciones</a> para asegurarte de "
 "que todo esta bien."
 msgstr ""
 
-#: dropbox-folder-share.php:1076
+#: src/Principal.php:1073
 msgid ""
 "Considera hacer una donacion para ayudarnos con el proyecto. Lo tendremos en "
 "gran valor."
 msgstr ""
 
-#: dropbox-folder-share.php:1098
+#: src/Principal.php:1095
 msgid "Dropbox Folder Share NECESITA TU AYUDA!"
 msgstr ""
 
-#: dropbox-folder-share.php:1099
+#: src/Principal.php:1096
 msgid "Es muy dificil escribir este mensaje, pero es necesario hacerlo."
 msgstr ""
 
-#: dropbox-folder-share.php:1100
+#: src/Principal.php:1097
 msgid ""
 "Dropbox Folder Share lleva siendo actualizada de manera casi continua e "
 "inmediata ya mas de 4 años. Lamentablemente el HOST y DOMINIO estan por "
@@ -258,60 +270,44 @@ msgid ""
 "ustedes a que puedan ayudarme con esto."
 msgstr ""
 
-#: dropbox-folder-share.php:1101
+#: src/Principal.php:1098
 msgid ""
 "Cualquier donacion que puedan hacer sera muy bien recibido y estare muy "
 "agradecido por ello."
 msgstr ""
 
-#: dropbox-folder-share.php:1102
+#: src/Principal.php:1099
 msgid ""
 "No quiero dejar pasar esta oportunidad de dar gracias a los 2 amigos de "
 "FRANCIA que tuvieron a bien donar el año 2014. MUCHAS GRACIAS"
 msgstr ""
 
-#: dropbox-folder-share.php:1113
+#: src/Principal.php:1110
 msgid "Donaciones"
 msgstr ""
 
-#: dropbox-folder-share.php:1197
+#: src/TinyMCE.php:45
+msgid "Carpeta Dropbox"
+msgstr ""
+
+#: src/TinyMCE.php:46
+msgid "URL de carpeta"
+msgstr ""
+
+#: src/TinyMCE.php:47
+msgid "Campos Obligatorios"
+msgstr ""
+
+#: src/Widget.php:53
 msgid "Titulo"
 msgstr ""
 
-#: dropbox-folder-share.php:1202
+#: src/Widget.php:58
 msgid "URL de Dropbox"
 msgstr ""
 
-#: dropbox-folder-share.php:1207
+#: src/Widget.php:63
 msgid "Iconos"
-msgstr ""
-
-#: dropbox-folder-share.php:1323
-msgid "URL de carpeta compartida de dropbox."
-msgstr ""
-
-#: dropbox-folder-share.php:1324
-msgid "URL de Dropbox."
-msgstr ""
-
-#: dropbox-folder-share.php:1330
-msgid "Mostrar iconos."
-msgstr ""
-
-#: dropbox-folder-share.php:1331
-msgid "Ver Iconos."
-msgstr ""
-
-#: dropbox-folder-share.php:1338
-msgid "Mostrar Tamaño."
-msgstr ""
-
-#: dropbox-folder-share.php:1339
-msgid "Ver Tamaño."
-msgstr ""
-
-#: dropbox-folder-share.php:1347
-msgid "Ver Modificado."
 msgstr ""
 
 #. Plugin Name of the plugin/theme

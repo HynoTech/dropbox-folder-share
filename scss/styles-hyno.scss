@@ -125,7 +125,6 @@ $url_0: url(/static/images/icons/video_overlay-vfld7VbHa.png);
   }
 
 
-
   background-color: $white;
   color: $color_azure_radiance_approx;
   width: 98%;
@@ -390,6 +389,15 @@ $url_0: url(/static/images/icons/video_overlay-vfld7VbHa.png);
 }
 
 
+.ekko-lightbox{
+  .modal-dialog{
+    .modal-header{
+      h4{
+        font-size: medium !important;
+      }
+    }
+  }
+}
 
 
 

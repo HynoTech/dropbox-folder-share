@@ -2,7 +2,7 @@
 Contributors: Hyno, antony_salas
 Tags: Dropbox, Folder,Cloud, Folder Share, post, content, contenido, nube
 Requires at least: 3.0
-Tested up to: 4.9.4
+Tested up to: 4.9.8
 Stable tag: trunk
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -64,7 +64,12 @@ Read **[More](http://www.hynotech.com/wp-plugins/dropbox-folder-share/#faq "Drop
 
 == Changelog ==
 
-= 1.8.3 =
+= 1.8.5 =
+* Fix Widget
+* Fix File download option
+* Fix Mobile
+
+= 1.8.x =
 * FIX errors
 
 = 1.8.2 =
@@ -137,6 +142,11 @@ Read **[More](http://www.hynotech.com/wp-plugins/dropbox-folder-share/#faq "Drop
 * Version inicial.
 
 == Upgrade Notice ==
+
+= 1.8.5 =
+* Fix Widget Error.
+* Fix File download option, now we use download icon.
+* Fix Mobile, only use one col ( name )
 
 = 1.8.3 =
 * Works only using AJAX (Remove Use Ajax in configuration page).

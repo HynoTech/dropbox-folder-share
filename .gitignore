@@ -59,3 +59,5 @@ _gsdata_/
 scss/
 vendor
 /vendor/*
+*.gz
+*.zip

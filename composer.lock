@@ -1,7 +1,7 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
     "content-hash": "83de215ad9131c405ffcbde629a7240b",
@@ -150,19 +150,21 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-curl-class/php-curl-class.git",
-                "reference": "53c45a6289ba05f93250ad691b4e5f10a8c45ac6"
+                "reference": "0f790e77b64d3d6547036240f643202b0596f5cc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-curl-class/php-curl-class/zipball/53c45a6289ba05f93250ad691b4e5f10a8c45ac6",
-                "reference": "53c45a6289ba05f93250ad691b4e5f10a8c45ac6",
+                "url": "https://api.github.com/repos/php-curl-class/php-curl-class/zipball/0f790e77b64d3d6547036240f643202b0596f5cc",
+                "reference": "0f790e77b64d3d6547036240f643202b0596f5cc",
                 "shasum": ""
             },
             "require": {
                 "ext-curl": "*",
+                "ext-mbstring": "*",
                 "php": ">=5.3"
             },
             "require-dev": {
+                "ext-gd": "*",
                 "phpunit/phpunit": "*",
                 "squizlabs/php_codesniffer": "*"
             },
@@ -184,35 +186,40 @@
             "description": "PHP Curl Class makes it easy to send HTTP requests and integrate with web APIs.",
             "homepage": "https://github.com/php-curl-class/php-curl-class",
             "keywords": [
+                "API-Client",
                 "api",
                 "class",
                 "client",
                 "curl",
                 "framework",
                 "http",
-                "http client",
+                "http-client",
+                "http-proxy",
                 "json",
                 "php",
+                "php-curl",
+                "php-curl-library",
+                "proxy",
                 "requests",
-                "rest",
                 "restful",
-                "web service",
+                "web-scraper",
+                "web-service",
                 "xml"
             ],
-            "time": "2018-02-14T07:12:12+00:00"
+            "time": "2018-10-02T06:54:52+00:00"
         },
         {
             "name": "symfony/polyfill-mbstring",
-            "version": "v1.7.0",
+            "version": "v1.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-mbstring.git",
-                "reference": "78be803ce01e55d3491c1397cf1c64beb9c1b63b"
+                "reference": "d0cd638f4634c16d8df4508e847f14e9e43168b8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/78be803ce01e55d3491c1397cf1c64beb9c1b63b",
-                "reference": "78be803ce01e55d3491c1397cf1c64beb9c1b63b",
+                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/d0cd638f4634c16d8df4508e847f14e9e43168b8",
+                "reference": "d0cd638f4634c16d8df4508e847f14e9e43168b8",
                 "shasum": ""
             },
             "require": {
@@ -224,7 +231,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.7-dev"
+                    "dev-master": "1.9-dev"
                 }
             },
             "autoload": {
@@ -258,20 +265,20 @@
                 "portable",
                 "shim"
             ],
-            "time": "2018-01-30T19:27:44+00:00"
+            "time": "2018-08-06T14:22:27+00:00"
         },
         {
             "name": "symfony/translation",
-            "version": "v2.8.34",
+            "version": "v2.8.46",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/translation.git",
-                "reference": "72235c1121ae282254e897e342c001f3d4bb7e8d"
+                "reference": "59b4debd89c156fd753343fcc1ca36aa5bc2d0f4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/translation/zipball/72235c1121ae282254e897e342c001f3d4bb7e8d",
-                "reference": "72235c1121ae282254e897e342c001f3d4bb7e8d",
+                "url": "https://api.github.com/repos/symfony/translation/zipball/59b4debd89c156fd753343fcc1ca36aa5bc2d0f4",
+                "reference": "59b4debd89c156fd753343fcc1ca36aa5bc2d0f4",
                 "shasum": ""
             },
             "require": {
@@ -288,7 +295,7 @@
                 "symfony/yaml": "~2.2|~3.0.0"
             },
             "suggest": {
-                "psr/log": "To use logging capability in translator",
+                "psr/log-implementation": "To use logging capability in translator",
                 "symfony/config": "",
                 "symfony/yaml": ""
             },
@@ -322,7 +329,7 @@
             ],
             "description": "Symfony Translation Component",
             "homepage": "https://symfony.com",
-            "time": "2018-01-18T13:56:23+00:00"
+            "time": "2018-09-21T12:46:38+00:00"
         }
     ],
     "packages-dev": [
@@ -332,30 +339,42 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kint-php/kint.git",
-                "reference": "528f9195d44637c83b64d7ed58dcf17e9c1027c5"
+                "reference": "6b4b95f5cd516b9c37c58fbb712b9c5c528752f3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kint-php/kint/zipball/528f9195d44637c83b64d7ed58dcf17e9c1027c5",
-                "reference": "528f9195d44637c83b64d7ed58dcf17e9c1027c5",
+                "url": "https://api.github.com/repos/kint-php/kint/zipball/6b4b95f5cd516b9c37c58fbb712b9c5c528752f3",
+                "reference": "6b4b95f5cd516b9c37c58fbb712b9c5c528752f3",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.1.2"
+                "php": ">=5.3.6"
             },
             "require-dev": {
                 "friendsofphp/php-cs-fixer": "^2.0",
                 "phpunit/phpunit": "^4.0",
-                "symfony/finder": "^2.6"
+                "seld/phar-utils": "^1.0",
+                "symfony/finder": "^2.0 || ^3.0 || ^4.0",
+                "vimeo/psalm": "^2.0"
+            },
+            "suggest": {
+                "ext-ctype": "Simple data type tests",
+                "ext-iconv": "Provides fallback detection for ambiguous legacy string encodings such as the Windows and ISO 8859 code pages",
+                "ext-mbstring": "Provides string encoding detection",
+                "kint-php/kint-js": "Provides a simplified dump to console.log()",
+                "kint-php/kint-twig": "Provides d() and s() functions in twig templates",
+                "symfony/polyfill-ctype": "Replacement for ext-ctype if missing",
+                "symfony/polyfill-iconv": "Replacement for ext-iconv if missing",
+                "symfony/polyfill-mbstring": "Replacement for ext-mbstring if missing"
             },
             "type": "library",
             "autoload": {
                 "files": [
                     "init.php"
                 ],
-                "classmap": [
-                    "src/"
-                ]
+                "psr-4": {
+                    "Kint\\": "src/"
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -382,7 +401,7 @@
                 "kint",
                 "php"
             ],
-            "time": "2018-01-09T18:09:44+00:00"
+            "time": "2018-09-30T08:05:18+00:00"
         }
     ],
     "aliases": [],
