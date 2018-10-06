@@ -1,10 +1,9 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "hash": "b271274d07930450a9bb96b1a8de784f",
     "content-hash": "83de215ad9131c405ffcbde629a7240b",
     "packages": [
         {
@@ -50,7 +49,7 @@
                 "notices",
                 "wordpress"
             ],
-            "time": "2017-12-24 21:40:31"
+            "time": "2017-12-24T21:40:31+00:00"
         },
         {
             "name": "hynotech/usos-generales",
@@ -96,7 +95,7 @@
                 "web service",
                 "xml"
             ],
-            "time": "2018-02-25 06:12:08"
+            "time": "2018-02-25T06:12:08+00:00"
         },
         {
             "name": "nesbot/carbon",
@@ -143,7 +142,7 @@
                 "datetime",
                 "time"
             ],
-            "time": "2015-05-09 03:23:44"
+            "time": "2015-05-09T03:23:44+00:00"
         },
         {
             "name": "php-curl-class/php-curl-class",
@@ -151,12 +150,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-curl-class/php-curl-class.git",
-                "reference": "e08391bb4a3d318e0bf810fbb0a1bd30482a533d"
+                "reference": "0f790e77b64d3d6547036240f643202b0596f5cc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-curl-class/php-curl-class/zipball/e08391bb4a3d318e0bf810fbb0a1bd30482a533d",
-                "reference": "e08391bb4a3d318e0bf810fbb0a1bd30482a533d",
+                "url": "https://api.github.com/repos/php-curl-class/php-curl-class/zipball/0f790e77b64d3d6547036240f643202b0596f5cc",
+                "reference": "0f790e77b64d3d6547036240f643202b0596f5cc",
                 "shasum": ""
             },
             "require": {
@@ -204,11 +203,10 @@
                 "requests",
                 "restful",
                 "web-scraper",
-                "web-scraping ",
                 "web-service",
                 "xml"
             ],
-            "time": "2018-08-06 15:37:15"
+            "time": "2018-10-02T06:54:52+00:00"
         },
         {
             "name": "symfony/polyfill-mbstring",
@@ -267,20 +265,20 @@
                 "portable",
                 "shim"
             ],
-            "time": "2018-08-06 14:22:27"
+            "time": "2018-08-06T14:22:27+00:00"
         },
         {
             "name": "symfony/translation",
-            "version": "v2.8.44",
+            "version": "v2.8.46",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/translation.git",
-                "reference": "12ad0a708ec55fb80cac9e809c5b56ddd5417d6a"
+                "reference": "59b4debd89c156fd753343fcc1ca36aa5bc2d0f4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/translation/zipball/12ad0a708ec55fb80cac9e809c5b56ddd5417d6a",
-                "reference": "12ad0a708ec55fb80cac9e809c5b56ddd5417d6a",
+                "url": "https://api.github.com/repos/symfony/translation/zipball/59b4debd89c156fd753343fcc1ca36aa5bc2d0f4",
+                "reference": "59b4debd89c156fd753343fcc1ca36aa5bc2d0f4",
                 "shasum": ""
             },
             "require": {
@@ -331,10 +329,81 @@
             ],
             "description": "Symfony Translation Component",
             "homepage": "https://symfony.com",
-            "time": "2018-07-26 11:13:39"
+            "time": "2018-09-21T12:46:38+00:00"
         }
     ],
-    "packages-dev": null,
+    "packages-dev": [
+        {
+            "name": "kint-php/kint",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kint-php/kint.git",
+                "reference": "6b4b95f5cd516b9c37c58fbb712b9c5c528752f3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kint-php/kint/zipball/6b4b95f5cd516b9c37c58fbb712b9c5c528752f3",
+                "reference": "6b4b95f5cd516b9c37c58fbb712b9c5c528752f3",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.6"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^2.0",
+                "phpunit/phpunit": "^4.0",
+                "seld/phar-utils": "^1.0",
+                "symfony/finder": "^2.0 || ^3.0 || ^4.0",
+                "vimeo/psalm": "^2.0"
+            },
+            "suggest": {
+                "ext-ctype": "Simple data type tests",
+                "ext-iconv": "Provides fallback detection for ambiguous legacy string encodings such as the Windows and ISO 8859 code pages",
+                "ext-mbstring": "Provides string encoding detection",
+                "kint-php/kint-js": "Provides a simplified dump to console.log()",
+                "kint-php/kint-twig": "Provides d() and s() functions in twig templates",
+                "symfony/polyfill-ctype": "Replacement for ext-ctype if missing",
+                "symfony/polyfill-iconv": "Replacement for ext-iconv if missing",
+                "symfony/polyfill-mbstring": "Replacement for ext-mbstring if missing"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "init.php"
+                ],
+                "psr-4": {
+                    "Kint\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Rokas Šleinius",
+                    "homepage": "https://github.com/raveren"
+                },
+                {
+                    "name": "Jonathan Vollebregt",
+                    "homepage": "https://github.com/jnvsor"
+                },
+                {
+                    "name": "Contributors",
+                    "homepage": "https://github.com/kint-php/kint/graphs/contributors"
+                }
+            ],
+            "description": "Kint - debugging tool for PHP developers",
+            "homepage": "https://kint-php.github.io/kint/",
+            "keywords": [
+                "debug",
+                "kint",
+                "php"
+            ],
+            "time": "2018-09-30T08:05:18+00:00"
+        }
+    ],
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {

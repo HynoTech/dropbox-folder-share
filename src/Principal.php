@@ -12,9 +12,9 @@ namespace HynoTech\DropboxFolderShare;
 Class Principal
 {
 
-    const _VERSION_GENERAL_ = "1.8.3";
-    const _VERSION_JS_ = "1.8";
-    const _VERSION_CSS_ = "1.8";
+    const _VERSION_GENERAL_ = "1.8.5";
+    const _VERSION_JS_ = "1.8.5";
+    const _VERSION_CSS_ = "1.8.5";
     const _VERSION_ADMIN_ = "3.0";
     const _VERSION_CSS_DROPBOX_ = "3.0";
 
@@ -511,25 +511,39 @@ Class Principal
                 }
 
 
-                $seccionesLista = [58.6, 19.5, 21.9];
-
                 $displaySize = "auto";
-                if ($opcion['showSize'] != '1') {
+                $displayChange = "auto";
+                $seccionesLista = [58.6, 19.5, 21.9];
+                if (($opcion['allowDownload'] === '1') || ($opcion['allowDownloadFolder'] === '1')) {
+                    $seccionesLista = [58.6, 16.5, 18.9];
+                }
+                if(wp_is_mobile()){
+                    $seccionesLista = [100, 0, 0];
+                    if (($opcion['allowDownload'] === '1') || ($opcion['allowDownloadFolder'] === '1')) {
+                        $seccionesLista = [94, 0, 0];
+                    }
                     $displaySize = "none";
-                    $seccionesLista[0] += $seccionesLista[1];
-                    $seccionesLista[1] = 0;
+                    $displayChange = "none";
+                }
+                else{
+                    if ($opcion['showSize'] != '1') {
+                        $displaySize = "none";
+                        $seccionesLista[0] += $seccionesLista[1];
+                        $seccionesLista[1] = 0;
+                    }
+
+
+                    if ($opcion['showChange'] != '1') {
+                        $displayChange = "none";
+                        $seccionesLista[0] += $seccionesLista[2];
+                        $seccionesLista[2] = 0;
+                    }
                 }
 
-                $displayChange = "auto";
-                if ($opcion['showChange'] != '1') {
-                    $displayChange = "none";
-                    $seccionesLista[0] += $seccionesLista[2];
-                    $seccionesLista[2] = 0;
-                }
 
                 $html_ol['sl-list-body'] = $domRetorno->createElement('ol');//revisar separacion
                 $html_ol['sl-list-body']->setAttribute('class', 'sl-list-body o-list-ui o-list-ui--dividers');
-                $html_ol['sl-list-body']->setAttribute('style', "max-height:" . (($opcion['defaultHeight'] != '0') ? $opcion['defaultHeight'] : 'auto') . "; overflow:auto;");
+                $html_ol['sl-list-body']->setAttribute('style', "max-height:" . (($opcion['defaultHeight'] != '0') ? $opcion['defaultHeight'] : 'auto') . "; overflow:auto; margin: 0px !important");
                 foreach ($datosCarpetaLocal["carpetas"] as $carpeta) {
                     $folderName = $carpeta->filename;
                     $folderHref = $carpeta->href;
@@ -557,6 +571,7 @@ Class Principal
 
                     $html_li_div_a_div_div2_lista = $domRetorno->createElement('div', $folderName);
                     $html_li_div_a_div_div2_lista->setAttribute('class', 'o-flag__flex');
+                    $html_li_div_a_div_div2_lista->setAttribute('style', 'flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;');
                     //$html_li_div_a_div_div2_lista->setAttribute('style',"display: {$displayIcon} ");
 
                     $html_li_div_a_div_lista = $domRetorno->createElement('div');
@@ -589,11 +604,31 @@ Class Principal
                     $html_li_div3_lista->setAttribute('class', 'sl-list-column sl-list-column--modified');
                     $html_li_div3_lista->setAttribute('style', "width: {$seccionesLista[2]}% !important;; display: {$displayChange} ");
 
+                    $html_li_div4_lista = $domRetorno->createElement('span');
+                    if ($opcion['allowDownloadFolder'] === '1') {
+                        $fileLinkMostrar = $this->downloadLinkGenerator($folderHref);
+                        $lnkOrigDescarga = $fileLinkMostrar;
+
+                        $aDescarga = $domRetorno->createElement('a');
+                        $aDescarga->setAttribute('href', $lnkOrigDescarga);
+                        //$aDescarga->setAttribute('target', '_blank');
+
+                        $html_li_div4_lista = $domRetorno->createElement('i');
+                        $html_li_div4_lista->setAttribute('class', 'fa fa-file-archive-o');
+                        $html_li_div4_lista->setAttribute('style', 'color: #0082E6;');
+                        $aDescarga->appendChild($html_li_div4_lista);
+                        $html_li_div4_lista = $aDescarga;
+                    }
+
+                    //<i class="fas fa-download"></i>
+
+
                     $html_li_lista = $domRetorno->createElement('li');
                     $html_li_lista->setAttribute('class', 'sl-list-row clearfix');
                     $html_li_lista->appendChild($html_li_div_lista);
                     $html_li_lista->appendChild($html_li_div2_lista);
                     $html_li_lista->appendChild($html_li_div3_lista);
+                    $html_li_lista->appendChild($html_li_div4_lista);
 
                     $html_ol['sl-list-body']->appendChild($html_li_lista);
 
@@ -725,6 +760,7 @@ Class Principal
 
                     $html_li_div_a_div_div2_lista = $domRetorno->createElement('div', $file_name);
                     $html_li_div_a_div_div2_lista->setAttribute('class', 'o-flag__flex');
+                    $html_li_div_a_div_div2_lista->setAttribute('style', 'flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;');
 
                     $html_li_div_a_div_lista = $domRetorno->createElement('div');
                     $html_li_div_a_div_lista->setAttribute('class', 'o-flag');
@@ -733,7 +769,6 @@ Class Principal
 
                     $html_li_div_a_lista = $domRetorno->createElement('a');
                     $html_li_div_a_lista->setAttribute('href', $fileLinkMostrar);
-                    $html_li_div_a_lista->setAttribute('data-orighref', $lnkOrigDescarga);
                     //$html_li_div_a_lista->setAttribute('class','sl-file-link '.$classThickBox);
                     $html_li_div_a_lista->setAttribute('class', 'sl-file-link ');
                     $html_li_div_a_lista->setAttribute('title', $file_name);
@@ -768,11 +803,29 @@ Class Principal
                     $html_li_div3_lista->setAttribute('class', 'sl-list-column sl-list-column--modified');
                     $html_li_div3_lista->setAttribute('style', "width: {$seccionesLista[2]}% !important;; display: {$displayChange} ");
 
+                    $html_li_div4_lista = $domRetorno->createElement('span');
+                    if ($opcion['allowDownload'] === '1') {
+                        $fileLinkMostrar = $this->downloadLinkGenerator($file_link);
+                        $lnkOrigDescarga = $fileLinkMostrar;
+
+                        $aDescarga = $domRetorno->createElement('a');
+                        $aDescarga->setAttribute('href', $lnkOrigDescarga);
+                        //$aDescarga->setAttribute('target', '_blank');
+
+                        $html_li_div4_lista = $domRetorno->createElement('i');
+                        $html_li_div4_lista->setAttribute('class', 'fa fa-download');
+                        $html_li_div4_lista->setAttribute('style', 'color: #0082E6;');
+
+                        $aDescarga->appendChild($html_li_div4_lista);
+                        $html_li_div4_lista = $aDescarga;
+                    }
+
                     $html_li_lista = $domRetorno->createElement('li');
                     $html_li_lista->setAttribute('class', 'sl-list-row clearfix');
                     $html_li_lista->appendChild($html_li_div_lista);
                     $html_li_lista->appendChild($html_li_div2_lista);
                     $html_li_lista->appendChild($html_li_div3_lista);
+                    $html_li_lista->appendChild($html_li_div4_lista);
 
                     $domRetorno->appendChild($html_li_lista);
 
@@ -813,14 +866,25 @@ Class Principal
                 $html_div['modified']->setAttribute('class', 'sl-list-column sl-list-column--modified');
                 $html_div['modified']->setAttribute('style', "width: {$seccionesLista[2]}% !important; display: {$displayChange} ");
 
+
+                $html_div['accion'] = $domRetorno->createElement('span');
+                if ($opcion['allowDownload'] === '1') {
+                    $html_div['accion'] = $domRetorno->createElement('div', '');
+                    $html_div['accion']->setAttribute('class', 'sl-list-column');
+                    $html_div['accion']->setAttribute('style', "width: 4% !important; display: {$displayChange} ");
+                }
+
+
                 $html_div['sl-list-row'] = $domRetorno->createElement('div');
                 $html_div['sl-list-row']->setAttribute('class', 'sl-list-row clearfix');
                 $html_div['sl-list-row']->appendChild($html_div['filename']);
                 $html_div['sl-list-row']->appendChild($html_div['filesize']);
                 $html_div['sl-list-row']->appendChild($html_div['modified']);
+                $html_div['sl-list-row']->appendChild($html_div['accion']);
 
                 $html_div['sl-list-header'] = $domRetorno->createElement('div');
                 $html_div['sl-list-header']->setAttribute('class', 'sl-list-header');
+                $html_div['sl-list-header']->setAttribute('style', "border-bottom: solid 1px; ");
                 $html_div['sl-list-header']->appendChild($html_div['sl-list-row']);
 
                 $html_div['sl-list-container'] = $domRetorno->createElement('div');

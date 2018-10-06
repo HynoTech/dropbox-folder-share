@@ -9,7 +9,7 @@
  * Plugin Name: DropBox Folder Share
  * Plugin URI: http://www.hynotech.com/wp-plugins/dropbox-folder-share/
  * Description: Plugin que permitira incluir carpetas de DropBox en nuestras entradas de blog.
- * Version: 1.8.4
+ * Version: 1.8.5
  * Author: Antonio Salas (Hyno)
  * Author URI: http://www.hynotech.com/
  * Twitter: AntonySH_
@@ -46,7 +46,7 @@ $imposter->run();
 */
 
 
-if (!\class_exists("DropboxFolderSharePrincipal")) {
+if (!\class_exists("Principal")) {
 
     $objDropboxFolderSharePrincipal = new Principal();
     //include_once 'src/class/http_build_url.php';

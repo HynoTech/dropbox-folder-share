@@ -25,14 +25,13 @@ class Widget extends \WP_Widget
             'description' => 'Compartir carpeta de dropbox.'
         );
         $this->WP_Widget('DropboxFolderShareWidget', 'Dropbox Folder Share', $options);
-
         add_action('wp_enqueue_scripts', array($this, 'scripts'));
     }
 
     function form($instance) {
         // Construye el formulario de administración
         // Valores por defecto
-        $options = get_option(DropboxFolderSharePrincipal::_OPT_SEETINGS_);
+        $options = get_option(Principal::_OPT_SEETINGS_);
         $defaults = array(
             'titulo' => 'Dropbox Folder Share',
             'link' => '',
@@ -132,7 +131,7 @@ class Widget extends \WP_Widget
 
         if (!self::$did_script && is_active_widget(false, false, $this->id_base, true)) {
 
-            $objDFSPrincipal = new DropboxFolderSharePrincipal;
+            $objDFSPrincipal = new Principal();
             $objDFSPrincipal->incluir_JS_CSS();
             self::$did_script = true;
         }

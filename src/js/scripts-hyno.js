@@ -31,7 +31,7 @@ function loadContenDFS(data, idContent) {
         },
         success:  function (response) {
             //alert(response.html);
-            console.log(response.imgs);
+            //console.log(response.imgs);
             //jQuery('#'+idContent).html(response.html);
             contenedor = jQuery('#'+idContent);
             contenedor.html(response.html);
@@ -80,14 +80,15 @@ jQuery(document).ready(function($) {
 
     });
 
-/*
+
     $(document).on('click', '[data-toggle="lightbox"]', function (event) {
         event.preventDefault();
         $(this).ekkoLightbox();
     });
-    */
+
 
 // delegate calls to data-toggle="lightbox"
+    /*
     $(document).delegate('*[data-toggle="lightbox"]', 'click', function(event) {
         event.preventDefault();
         dataOriginalSRC = $(this).attr('data-orighref')
@@ -97,7 +98,6 @@ jQuery(document).ready(function($) {
                 if(dataOriginalSRC != ""){
                     var html = '<a href="' + dataOriginalSRC + '" target="_blank"><span class="glyphicon glyphicon-save" aria-hidden="true"></span></a>';
                     $(elem.currentTarget).find('.modal-header').prepend(html);
-                    //$(elem.currentTarget).find('.modal-header h4').append(html);
                     $(elem.currentTarget).find('.modal-header:last-child').append(html);
                 }
             },
@@ -108,7 +108,7 @@ jQuery(document).ready(function($) {
             }
         });
     });
-
+*/
 
 
 

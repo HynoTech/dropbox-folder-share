@@ -64,6 +64,11 @@ Read **[More](http://www.hynotech.com/wp-plugins/dropbox-folder-share/#faq "Drop
 
 == Changelog ==
 
+= 1.8.5 =
+* Fix Widget
+* Fix File download option
+* Fix Mobile
+
 = 1.8.x =
 * FIX errors
 
@@ -137,6 +142,11 @@ Read **[More](http://www.hynotech.com/wp-plugins/dropbox-folder-share/#faq "Drop
 * Version inicial.
 
 == Upgrade Notice ==
+
+= 1.8.5 =
+* Fix Widget Error.
+* Fix File download option, now we use download icon.
+* Fix Mobile, only use one col ( name )
 
 = 1.8.3 =
 * Works only using AJAX (Remove Use Ajax in configuration page).

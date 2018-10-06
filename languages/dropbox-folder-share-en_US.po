@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: DropBox Folder Share\n"
-"POT-Creation-Date: 2018-08-07 16:59-0500\n"
-"PO-Revision-Date: 2018-08-07 16:59-0500\n"
+"POT-Creation-Date: 2018-10-06 01:48-0500\n"
+"PO-Revision-Date: 2018-10-06 01:48-0500\n"
 "Last-Translator: Antonio Salas <antony.salas@gmail.com>\n"
 "Language-Team: Antonio Salas <antony.salas@gmail.com>\n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.1.1\n"
+"X-Generator: Poedit 1.8.11\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-WPHeader: dropbox-folder-share.php\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -158,7 +158,7 @@ msgstr "Show file size"
 msgid "Titulo de la seccion (solo para ver en editor)."
 msgstr "Title (only for editor)"
 
-#: src/Admin/admin_page.php:202 src/Principal.php:1014
+#: src/Admin/admin_page.php:202 src/Principal.php:1070
 msgid ""
 "Gracias por Utilizar este plugin. Me gustaria leer sugerencias u opiniones "
 "para que juntos mejoremos esta herramienta, cualquier sugerencia para "
@@ -169,7 +169,7 @@ msgstr ""
 "together we improve this tool, any suggestions to improve the plugin or "
 "report any errors helps us a lot, do not hesitate us know. "
 
-#: src/Admin/admin_page.php:204 src/Principal.php:1015
+#: src/Admin/admin_page.php:204 src/Principal.php:1071
 msgid ""
 "Pueden hacernos llegar sus sugerencias, opiniones y/o criticas a travez del "
 "formulario de contactos de"
@@ -181,7 +181,7 @@ msgstr ""
 msgid "Informacion del Plugin"
 msgstr "Plugin Info"
 
-#: src/Admin/sidebar.php:17 src/Principal.php:812
+#: src/Admin/sidebar.php:17 src/Principal.php:857
 msgid "Nombre"
 msgstr "Name"
 
@@ -200,62 +200,62 @@ msgstr ""
 "crackers and grape juice spilled on the keyboard in the creation of this "
 "plugin. If you like, you could help me inviting me freshly brewed coffee."
 
-#: src/Principal.php:149
+#: src/Principal.php:141
 msgid "Error de seguridad"
 msgstr "Security error"
 
-#: src/Principal.php:303
+#: src/Principal.php:295
 msgid "No encontramos lo que buscas."
 msgstr "Content not found"
 
-#: src/Principal.php:393
+#: src/Principal.php:385
 msgid "Descargar carpeta actual (zip)"
 msgstr "Download current folder (zip)"
 
-#: src/Principal.php:816 src/Widget.php:70
+#: src/Principal.php:861 src/Widget.php:69
 msgid "Tamaño"
 msgstr "Size"
 
-#: src/Principal.php:820 src/Widget.php:76
+#: src/Principal.php:865 src/Widget.php:75
 msgid "Modificado"
 msgstr "Modified"
 
-#: src/Principal.php:874
+#: src/Principal.php:930
 msgid "Esta carpeta está vacía"
 msgstr "This folder is empty"
 
-#: src/Principal.php:900
+#: src/Principal.php:956
 msgid "No encontrado"
 msgstr "Not found"
 
-#: src/Principal.php:918
+#: src/Principal.php:974
 msgid "Dropbox Folder Share - Configuracion"
 msgstr "Dropbox Folder Share - Configuration"
 
-#: src/Principal.php:918
+#: src/Principal.php:974
 msgid "Configurar"
 msgstr "Set"
 
-#: src/Principal.php:1011
+#: src/Principal.php:1067
 msgid "Dropbox Folder Share ha mejorado!"
 msgstr "Dropbox Folder Share has improved"
 
-#: src/Principal.php:1012
+#: src/Principal.php:1068
 msgid "Seccion en editor."
 msgstr "Editor seleccion"
 
-#: src/Principal.php:1012
+#: src/Principal.php:1068
 msgid "Añadido la posibilidad de Widget"
 msgstr "Widget added"
 
-#: src/Principal.php:1013
+#: src/Principal.php:1069
 #, php-format
 msgid ""
 "Por favor <a href=\"%s\">revisa las configuraciones</a> para asegurarte de "
 "que todo esta bien."
 msgstr "Please <a href=\"%s\">review settings</a> to check that all is right"
 
-#: src/Principal.php:1017
+#: src/Principal.php:1073
 msgid ""
 "Considera hacer una donacion para ayudarnos con el proyecto. Lo tendremos en "
 "gran valor."
@@ -263,16 +263,16 @@ msgstr ""
 "Consider making a donation to help us with the project. We will have it in "
 "great value."
 
-#: src/Principal.php:1039
+#: src/Principal.php:1095
 msgid "Dropbox Folder Share NECESITA TU AYUDA!"
 msgstr "Dropbox Folder Share NEED YOUR HELP!"
 
-#: src/Principal.php:1040
+#: src/Principal.php:1096
 msgid "Es muy dificil escribir este mensaje, pero es necesario hacerlo."
 msgstr ""
 "It is very difficult to write this message, but it is necessary to do so."
 
-#: src/Principal.php:1041
+#: src/Principal.php:1097
 msgid ""
 "Dropbox Folder Share lleva siendo actualizada de manera casi continua e "
 "inmediata ya mas de 4 años. Lamentablemente el HOST y DOMINIO estan por "
@@ -286,7 +286,7 @@ msgstr ""
 "can not continue to pay for these services on my own, so I appeal to you to "
 "help me with this."
 
-#: src/Principal.php:1042
+#: src/Principal.php:1098
 msgid ""
 "Cualquier donacion que puedan hacer sera muy bien recibido y estare muy "
 "agradecido por ello."
@@ -294,7 +294,7 @@ msgstr ""
 "Any donations you can make will be very well received and I will be very "
 "grateful for it."
 
-#: src/Principal.php:1043
+#: src/Principal.php:1099
 msgid ""
 "No quiero dejar pasar esta oportunidad de dar gracias a los 2 amigos de "
 "FRANCIA que tuvieron a bien donar el año 2014. MUCHAS GRACIAS"
@@ -302,7 +302,7 @@ msgstr ""
 "I do not want to miss this opportunity to thank the 2 friends of FRANCE who "
 "had to donate the year 2014. THANK YOU"
 
-#: src/Principal.php:1054
+#: src/Principal.php:1110
 msgid "Donaciones"
 msgstr "Donations"
 
@@ -318,15 +318,15 @@ msgstr "Folder URL"
 msgid "Campos Obligatorios"
 msgstr "Required fields"
 
-#: src/Widget.php:54
+#: src/Widget.php:53
 msgid "Titulo"
 msgstr "Title"
 
-#: src/Widget.php:59
+#: src/Widget.php:58
 msgid "URL de Dropbox"
 msgstr "Dropbox URL"
 
-#: src/Widget.php:64
+#: src/Widget.php:63
 msgid "Iconos"
 msgstr "Icons"
 

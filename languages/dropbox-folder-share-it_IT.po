@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: DropBox Folder Share\n"
-"POT-Creation-Date: 2018-08-07 18:01-0500\n"
-"PO-Revision-Date: 2018-08-07 18:01-0500\n"
+"POT-Creation-Date: 2018-10-06 01:48-0500\n"
+"PO-Revision-Date: 2018-10-06 01:48-0500\n"
 "Last-Translator: Antonio Salas <antony.salas@gmail.com>\n"
 "Language-Team: René Querin <querin.rene@gmail.com>\n"
 "Language: it_IT\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.1.1\n"
+"X-Generator: Poedit 1.8.11\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-WPHeader: dropbox-folder-share.php\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -167,7 +167,7 @@ msgstr "Mostra la dimensione del file."
 msgid "Titulo de la seccion (solo para ver en editor)."
 msgstr "Titolo della sezione (solo per l'editor)."
 
-#: src/Admin/admin_page.php:202 src/Principal.php:1006
+#: src/Admin/admin_page.php:202 src/Principal.php:1070
 msgid ""
 "Gracias por Utilizar este plugin. Me gustaria leer sugerencias u opiniones "
 "para que juntos mejoremos esta herramienta, cualquier sugerencia para "
@@ -179,7 +179,7 @@ msgstr ""
 "suggerimenti per migliorare il plug-in o di segnalare eventuali errori ci "
 "aiuta molto, non esitate a farcelo sapere."
 
-#: src/Admin/admin_page.php:204 src/Principal.php:1007
+#: src/Admin/admin_page.php:204 src/Principal.php:1071
 msgid ""
 "Pueden hacernos llegar sus sugerencias, opiniones y/o criticas a travez del "
 "formulario de contactos de"
@@ -189,11 +189,10 @@ msgstr ""
 
 #: src/Admin/sidebar.php:12
 #, fuzzy
-#| msgid "Informacion del Plugin"
 msgid "Informacion del Plugin"
 msgstr "Informazioni Plugin"
 
-#: src/Admin/sidebar.php:17 src/Principal.php:804
+#: src/Admin/sidebar.php:17 src/Principal.php:857
 msgid "Nombre"
 msgstr "Nome"
 
@@ -225,49 +224,49 @@ msgstr "Non troviamo quello che stai cercando."
 msgid "Descargar carpeta actual (zip)"
 msgstr "Scarica cartella corrente (zip)"
 
-#: src/Principal.php:808 src/Widget.php:70
+#: src/Principal.php:861 src/Widget.php:69
 #, fuzzy
 msgid "Tamaño"
 msgstr "dimensione"
 
-#: src/Principal.php:812 src/Widget.php:76
+#: src/Principal.php:865 src/Widget.php:75
 #, fuzzy
 msgid "Modificado"
 msgstr "modificato"
 
-#: src/Principal.php:866
+#: src/Principal.php:930
 #, fuzzy
 msgid "Esta carpeta está vacía"
 msgstr "Questa cartella è vuota"
 
-#: src/Principal.php:892
+#: src/Principal.php:956
 msgid "No encontrado"
 msgstr "Non trovato"
 
-#: src/Principal.php:910
+#: src/Principal.php:974
 msgid "Dropbox Folder Share - Configuracion"
 msgstr "Dropbox Folder Share - Configurazione"
 
-#: src/Principal.php:910
+#: src/Principal.php:974
 msgid "Configurar"
 msgstr "Configura"
 
-#: src/Principal.php:1003
+#: src/Principal.php:1067
 #, fuzzy
 msgid "Dropbox Folder Share ha mejorado!"
 msgstr "Dropbox Folder Share è migliorata!"
 
-#: src/Principal.php:1004
+#: src/Principal.php:1068
 #, fuzzy
 msgid "Seccion en editor."
 msgstr "curatore di sezione."
 
-#: src/Principal.php:1004
+#: src/Principal.php:1068
 #, fuzzy
 msgid "Añadido la posibilidad de Widget"
 msgstr "Aggiunta la possibilità di Widget"
 
-#: src/Principal.php:1005
+#: src/Principal.php:1069
 #, fuzzy, php-format
 msgid ""
 "Por favor <a href=\"%s\">revisa las configuraciones</a> para asegurarte de "
@@ -276,7 +275,7 @@ msgstr ""
 "Si prega di <a href=\" %s \"> Recensioni le impostazioni </a> per "
 "assicurarsi che tutto va bene."
 
-#: src/Principal.php:1009
+#: src/Principal.php:1073
 #, fuzzy
 msgid ""
 "Considera hacer una donacion para ayudarnos con el proyecto. Lo tendremos en "
@@ -284,17 +283,17 @@ msgid ""
 msgstr ""
 "Fare una donazione per aiutare con il progetto. Avremo un grande valore."
 
-#: src/Principal.php:1031
+#: src/Principal.php:1095
 #, fuzzy
 msgid "Dropbox Folder Share NECESITA TU AYUDA!"
 msgstr "Dropbox cartella Condividi bisogno del tuo aiuto!"
 
-#: src/Principal.php:1032
+#: src/Principal.php:1096
 #, fuzzy
 msgid "Es muy dificil escribir este mensaje, pero es necesario hacerlo."
 msgstr "E 'molto difficile scrivere questo messaggio, ma è necessario."
 
-#: src/Principal.php:1033
+#: src/Principal.php:1097
 #, fuzzy
 msgid ""
 "Dropbox Folder Share lleva siendo actualizada de manera casi continua e "
@@ -309,14 +308,14 @@ msgstr ""
 "posso continuare a pagare questi servizi per conto mio quindi mi rivolgo a "
 "voi per me si può aiutare con questo."
 
-#: src/Principal.php:1034
+#: src/Principal.php:1098
 #, fuzzy
 msgid ""
 "Cualquier donacion que puedan hacer sera muy bien recibido y estare muy "
 "agradecido por ello."
 msgstr "Ogni donazione può fare sarà ben accolto ed essere grati per questo."
 
-#: src/Principal.php:1035
+#: src/Principal.php:1099
 #, fuzzy
 msgid ""
 "No quiero dejar pasar esta oportunidad de dar gracias a los 2 amigos de "
@@ -325,7 +324,7 @@ msgstr ""
 "Non voglio perdere questa occasione per ringraziare i 2 amici della Francia "
 "sono stati lieti di donare 2014. GRAZIE"
 
-#: src/Principal.php:1046
+#: src/Principal.php:1110
 #, fuzzy
 msgid "Donaciones"
 msgstr "donazioni"
@@ -342,17 +341,17 @@ msgstr "cartella URL"
 msgid "Campos Obligatorios"
 msgstr "I campi obbligatori"
 
-#: src/Widget.php:54
+#: src/Widget.php:53
 #, fuzzy
 msgid "Titulo"
 msgstr "titolo"
 
-#: src/Widget.php:59
+#: src/Widget.php:58
 #, fuzzy
 msgid "URL de Dropbox"
 msgstr "URL Dropbox"
 
-#: src/Widget.php:64
+#: src/Widget.php:63
 msgid "Iconos"
 msgstr "Icone"
 

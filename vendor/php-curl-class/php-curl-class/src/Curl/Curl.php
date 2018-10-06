@@ -7,7 +7,7 @@ use Curl\Decoder;
 
 class Curl
 {
-    const VERSION = '8.2.0';
+    const VERSION = '8.3.2';
     const DEFAULT_TIMEOUT = 30;
 
     public $curl;
@@ -139,37 +139,49 @@ class Curl
     public function buildPostData($data)
     {
         $binary_data = false;
-        if (is_array($data)) {
-            // Return JSON-encoded string when the request's content-type is JSON.
-            if (isset($this->headers['Content-Type']) &&
-                preg_match($this->jsonPattern, $this->headers['Content-Type'])) {
-                $data = \Curl\json_encode($data);
-            } else {
-                // Manually build a single-dimensional array from a multi-dimensional array as using curl_setopt($ch,
-                // CURLOPT_POSTFIELDS, $data) doesn't correctly handle multi-dimensional arrays when files are
-                // referenced.
-                if (ArrayUtil::is_array_multidim($data)) {
-                    $data = ArrayUtil::array_flatten_multidim($data);
-                }
 
-                // Modify array values to ensure any referenced files are properly handled depending on the support of
-                // the @filename API or CURLFile usage. This also fixes the warning "curl_setopt(): The usage of the
-                // @filename API for file uploading is deprecated. Please use the CURLFile class instead". Ignore
-                // non-file values prefixed with the @ character.
-                foreach ($data as $key => $value) {
-                    if (is_string($value) && strpos($value, '@') === 0 && is_file(substr($value, 1))) {
-                        $binary_data = true;
-                        if (class_exists('CURLFile')) {
-                            $data[$key] = new \CURLFile(substr($value, 1));
-                        }
-                    } elseif ($value instanceof \CURLFile) {
-                        $binary_data = true;
+        // Return JSON-encoded string when the request's content-type is JSON and the data is serializable.
+        if (isset($this->headers['Content-Type']) &&
+            preg_match($this->jsonPattern, $this->headers['Content-Type']) &&
+            (
+                is_array($data) ||
+                (
+                    is_object($data) &&
+                    interface_exists('JsonSerializable', false) &&
+                    $data instanceof \JsonSerializable
+                )
+            )) {
+            $data = \Curl\Encoder::encodeJson($data);
+        } elseif (is_array($data)) {
+            // Manually build a single-dimensional array from a multi-dimensional array as using curl_setopt($ch,
+            // CURLOPT_POSTFIELDS, $data) doesn't correctly handle multi-dimensional arrays when files are
+            // referenced.
+            if (ArrayUtil::is_array_multidim($data)) {
+                $data = ArrayUtil::array_flatten_multidim($data);
+            }
+
+            // Modify array values to ensure any referenced files are properly handled depending on the support of
+            // the @filename API or CURLFile usage. This also fixes the warning "curl_setopt(): The usage of the
+            // @filename API for file uploading is deprecated. Please use the CURLFile class instead". Ignore
+            // non-file values prefixed with the @ character.
+            foreach ($data as $key => $value) {
+                if (is_string($value) && strpos($value, '@') === 0 && is_file(substr($value, 1))) {
+                    $binary_data = true;
+                    if (class_exists('CURLFile')) {
+                        $data[$key] = new \CURLFile(substr($value, 1));
                     }
+                } elseif ($value instanceof \CURLFile) {
+                    $binary_data = true;
                 }
             }
         }
 
-        if (!$binary_data && (is_array($data) || is_object($data))) {
+        if (!$binary_data &&
+            (is_array($data) || is_object($data)) &&
+            (
+                !isset($this->headers['Content-Type']) ||
+                !preg_match('/^multipart\/form-data/', $this->headers['Content-Type'])
+            )) {
             $data = http_build_query($data, '', '&');
         }
 
@@ -1752,35 +1764,4 @@ function createHeaderCallback($header_callback_data) {
         $header_callback_data->rawResponseHeaders .= $header;
         return strlen($header);
     };
-}
-
-/**
- * Json Encode
- *
- * Wrap json_encode() to throw error when the value being encoded fails.
- *
- * @param  $value
- * @param  $options
- * @param  $depth
- *
- * @return string
- * @throws \ErrorException
- */
-function json_encode($value, $options = 0, $depth = 512) {
-    // Make compatible with PHP version both before and after 5.5.0. PHP 5.5.0 added the $depth parameter.
-    $gte_v550 = version_compare(PHP_VERSION, '5.5.0') >= 0;
-    if ($gte_v550) {
-        $value = \json_encode($value, $options, $depth);
-    } else {
-        $value = \json_encode($value, $options);
-    }
-    if (!(json_last_error() === JSON_ERROR_NONE)) {
-        if (function_exists('json_last_error_msg')) {
-            $error_message = 'json_encode error: ' . json_last_error_msg();
-        } else {
-            $error_message = 'json_encode error';
-        }
-        throw new \ErrorException($error_message);
-    }
-    return $value;
 }
