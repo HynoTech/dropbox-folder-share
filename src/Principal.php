@@ -569,7 +569,7 @@ Class Principal
                     $html_li_div_a_div_div_lista->setAttribute('style', "display: {$displayIcon} ");
                     $html_li_div_a_div_div_lista->appendChild($html_li_div_a_div_div_img_lista);
 
-                    $html_li_div_a_div_div2_lista = $domRetorno->createElement('div', htmlentities($folderName));
+                    $html_li_div_a_div_div2_lista = $domRetorno->createElement('div', $folderName);
                     $html_li_div_a_div_div2_lista->setAttribute('class', 'o-flag__flex');
                     $html_li_div_a_div_div2_lista->setAttribute('style', 'flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;');
                     //$html_li_div_a_div_div2_lista->setAttribute('style',"display: {$displayIcon} ");
@@ -758,7 +758,7 @@ Class Principal
                     $html_li_div_a_div_div_lista->setAttribute('style', "display: {$displayIcon} ");
                     $html_li_div_a_div_div_lista->appendChild($html_li_div_a_div_div_img_lista);
 
-                    $html_li_div_a_div_div2_lista = $domRetorno->createElement('div', htmlentities($file_name));
+                    $html_li_div_a_div_div2_lista = $domRetorno->createElement('div', $file_name);
                     $html_li_div_a_div_div2_lista->setAttribute('class', 'o-flag__flex');
                     $html_li_div_a_div_div2_lista->setAttribute('style', 'flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;');
 
