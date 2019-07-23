@@ -1,1 +1,0 @@
-verificar si se tiene habilitado php_openssl.dll en php.ini
