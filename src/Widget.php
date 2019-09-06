@@ -24,7 +24,7 @@ class Widget extends \WP_Widget
             /*'classname' => 'mi-estilo',*/
             'description' => 'Compartir carpeta de dropbox.'
         );
-        $this->WP_Widget('DropboxFolderShareWidget', 'Dropbox Folder Share', $options);
+	parent::__construct('DropboxFolderShareWidget', 'Dropbox Folder Share', $options);
         add_action('wp_enqueue_scripts', array($this, 'scripts'));
     }
 
