@@ -316,7 +316,7 @@ Class Principal
             do {
                 $responseData = $this->fetch_url('https://www.dropbox.com/list_shared_link_folder_entries', false, 'post', $postValues, $cookies);
                 foreach ($responseData->response->entries as $item) {
-
+		    $item->filename = htmlentities($item->filename);
                     if ($item->is_dir) {
                         //CARPETAS
                         $carpetasCarpeta[] = $item;
