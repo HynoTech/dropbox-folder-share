@@ -138,3 +138,5 @@ fabric.properties
 .idea/sonarlint
 
 # End of https://www.gitignore.io/api/linux,angular,composer,phpstorm
+
+*.zip
