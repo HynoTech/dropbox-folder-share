@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "83de215ad9131c405ffcbde629a7240b",
+    "content-hash": "e4d9de7b99c3cfb5e338bb87bb40c563",
     "packages": [
         {
             "name": "askupa-software/amarkal-admin-notification",
@@ -150,12 +150,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-curl-class/php-curl-class.git",
-                "reference": "a418962c4385aba6b97d2d57d65a0d405b514cf7"
+                "reference": "54be433a7299c15b024ba808e10a96c5d5791d99"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-curl-class/php-curl-class/zipball/a418962c4385aba6b97d2d57d65a0d405b514cf7",
-                "reference": "a418962c4385aba6b97d2d57d65a0d405b514cf7",
+                "url": "https://api.github.com/repos/php-curl-class/php-curl-class/zipball/54be433a7299c15b024ba808e10a96c5d5791d99",
+                "reference": "54be433a7299c15b024ba808e10a96c5d5791d99",
                 "shasum": ""
             },
             "require": {
@@ -208,20 +208,20 @@
                 "web-service",
                 "xml"
             ],
-            "time": "2019-08-05T04:18:26+00:00"
+            "time": "2019-11-17T08:37:31+00:00"
         },
         {
             "name": "symfony/polyfill-mbstring",
-            "version": "v1.12.0",
+            "version": "v1.13.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-mbstring.git",
-                "reference": "b42a2f66e8f1b15ccf25652c3424265923eb4f17"
+                "reference": "7b4aab9743c30be783b73de055d24a39cf4b954f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/b42a2f66e8f1b15ccf25652c3424265923eb4f17",
-                "reference": "b42a2f66e8f1b15ccf25652c3424265923eb4f17",
+                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/7b4aab9743c30be783b73de055d24a39cf4b954f",
+                "reference": "7b4aab9743c30be783b73de055d24a39cf4b954f",
                 "shasum": ""
             },
             "require": {
@@ -233,7 +233,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.12-dev"
+                    "dev-master": "1.13-dev"
                 }
             },
             "autoload": {
@@ -267,11 +267,11 @@
                 "portable",
                 "shim"
             ],
-            "time": "2019-08-06T08:03:45+00:00"
+            "time": "2019-11-27T14:18:11+00:00"
         },
         {
             "name": "symfony/translation",
-            "version": "v2.8.50",
+            "version": "v2.8.52",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/translation.git",
@@ -341,12 +341,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kint-php/kint.git",
-                "reference": "7f0fc8f6bc8110e173a73a280e8e25bbc6845346"
+                "reference": "335ac1bcaf04d87df70d8aa51e8887ba2c6d203b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kint-php/kint/zipball/7f0fc8f6bc8110e173a73a280e8e25bbc6845346",
-                "reference": "7f0fc8f6bc8110e173a73a280e8e25bbc6845346",
+                "url": "https://api.github.com/repos/kint-php/kint/zipball/335ac1bcaf04d87df70d8aa51e8887ba2c6d203b",
+                "reference": "335ac1bcaf04d87df70d8aa51e8887ba2c6d203b",
                 "shasum": ""
             },
             "require": {
@@ -403,7 +403,7 @@
                 "kint",
                 "php"
             ],
-            "time": "2019-08-29T21:38:28+00:00"
+            "time": "2019-10-17T18:05:24+00:00"
         }
     ],
     "aliases": [],
