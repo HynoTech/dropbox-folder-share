@@ -1,4 +1,6 @@
+# /usr/local/lib/ruby/gems/2.6.0/bin
 # /usr/local/bin/compass (Mac) - config en Proyecto buscando compass
+# sudo gem install -n /usr/local/bin compass  - es para instalar en mac
 
 require 'compass/import-once/activate'
 # Require any additional compass plugins here.
@@ -25,3 +27,6 @@ javascripts_dir = "src/js"
 # preferred_syntax = :sass
 # and then run:
 # sass-convert -R --from scss --to sass sass scss && rm -rf sass && mv scss sass
+
+asset_cache_buster = :none
+cache = false

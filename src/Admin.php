@@ -403,7 +403,10 @@ class Admin extends Principal
      * @return array
      */
     function wpmm_plugin_info($plugin_slug) {
-        add_filter('extra_plugin_headers', create_function('', 'return array("GitHub URI","Twitter");'));
+        // add_filter('extra_plugin_headers', create_function('', 'return array("GitHub URI","Twitter");'));
+		add_filter('extra_plugin_headers', function() {
+			return array("GitHub URI","Twitter", "Facebook Page", "WhatsAppBusiness");
+		} );
         $plugin_data = get_plugin_data(DROPBOX_FOLDER_SHARE_PLUGIN_PATH."".DROPBOX_FOLDER_SHARE_PLUGIN_NOMBRE.".php");
 
         return $plugin_data;

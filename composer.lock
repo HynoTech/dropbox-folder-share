@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e4d9de7b99c3cfb5e338bb87bb40c563",
+    "content-hash": "c73e08f197f1e351b6562d856d596786",
     "packages": [
         {
             "name": "askupa-software/amarkal-admin-notification",
@@ -57,10 +57,16 @@
             "source": {
                 "type": "git",
                 "url": "https://AntonySalas@bitbucket.org/hynotech/usos-generales.git",
-                "reference": "faea37f260d67a1a710100d2338a2950197e6f8a"
+                "reference": "ddb7a23a0e102cffb7381e2a442d34c0390b71f4"
             },
             "require": {
-                "php": ">=5.3.0"
+                "ext-curl": "*",
+                "ext-json": "*",
+                "php": ">=5.4",
+                "php-curl-class/php-curl-class": "8.6.2"
+            },
+            "require-dev": {
+                "kint-php/kint": "3.3"
             },
             "type": "library",
             "autoload": {
@@ -95,7 +101,7 @@
                 "web service",
                 "xml"
             ],
-            "time": "2018-02-25T06:12:08+00:00"
+            "time": "2020-01-11T16:13:59+00:00"
         },
         {
             "name": "nesbot/carbon",
@@ -146,7 +152,7 @@
         },
         {
             "name": "php-curl-class/php-curl-class",
-            "version": "dev-master",
+            "version": "8.6.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-curl-class/php-curl-class.git",
@@ -205,6 +211,7 @@
                 "requests",
                 "restful",
                 "web-scraper",
+                "web-scraping ",
                 "web-service",
                 "xml"
             ],
@@ -212,16 +219,16 @@
         },
         {
             "name": "symfony/polyfill-mbstring",
-            "version": "v1.13.1",
+            "version": "v1.14.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-mbstring.git",
-                "reference": "7b4aab9743c30be783b73de055d24a39cf4b954f"
+                "reference": "34094cfa9abe1f0f14f48f490772db7a775559f2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/7b4aab9743c30be783b73de055d24a39cf4b954f",
-                "reference": "7b4aab9743c30be783b73de055d24a39cf4b954f",
+                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/34094cfa9abe1f0f14f48f490772db7a775559f2",
+                "reference": "34094cfa9abe1f0f14f48f490772db7a775559f2",
                 "shasum": ""
             },
             "require": {
@@ -233,7 +240,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.13-dev"
+                    "dev-master": "1.14-dev"
                 }
             },
             "autoload": {
@@ -267,7 +274,7 @@
                 "portable",
                 "shim"
             ],
-            "time": "2019-11-27T14:18:11+00:00"
+            "time": "2020-01-13T11:15:53+00:00"
         },
         {
             "name": "symfony/translation",
@@ -341,23 +348,23 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kint-php/kint.git",
-                "reference": "335ac1bcaf04d87df70d8aa51e8887ba2c6d203b"
+                "reference": "b8acac7c9b767d8c9da56db3b8827e9c8a9d6205"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kint-php/kint/zipball/335ac1bcaf04d87df70d8aa51e8887ba2c6d203b",
-                "reference": "335ac1bcaf04d87df70d8aa51e8887ba2c6d203b",
+                "url": "https://api.github.com/repos/kint-php/kint/zipball/b8acac7c9b767d8c9da56db3b8827e9c8a9d6205",
+                "reference": "b8acac7c9b767d8c9da56db3b8827e9c8a9d6205",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.6"
+                "php": ">=5.6"
             },
             "require-dev": {
                 "friendsofphp/php-cs-fixer": "^2.0",
-                "phpunit/phpunit": "^4.0",
+                "phpunit/phpunit": "^5.0",
                 "seld/phar-utils": "^1.0",
-                "symfony/finder": "^2.0 || ^3.0 || ^4.0",
-                "vimeo/psalm": "^3.0"
+                "symfony/finder": "^2.0 || ^3.0 || ^4.0 || ^5.0",
+                "vimeo/psalm": "^3.7"
             },
             "suggest": {
                 "ext-ctype": "Simple data type tests",
@@ -403,7 +410,7 @@
                 "kint",
                 "php"
             ],
-            "time": "2019-10-17T18:05:24+00:00"
+            "time": "2020-02-01T09:28:39+00:00"
         }
     ],
     "aliases": [],
@@ -411,11 +418,12 @@
     "stability-flags": {
         "hynotech/usos-generales": 20,
         "askupa-software/amarkal-admin-notification": 20,
-        "php-curl-class/php-curl-class": 20,
         "kint-php/kint": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
-    "platform": [],
+    "platform": {
+        "php": ">=5.4"
+    },
     "platform-dev": []
 }

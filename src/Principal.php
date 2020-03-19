@@ -12,9 +12,9 @@ namespace HynoTech\DropboxFolderShare;
 Class Principal
 {
 
-    const _VERSION_GENERAL_ = "1.8.5";
-    const _VERSION_JS_ = "1.8.5";
-    const _VERSION_CSS_ = "1.8.5";
+    const _VERSION_GENERAL_ = "1.9";
+    const _VERSION_JS_ = "1.9";
+    const _VERSION_CSS_ = "1.9";
     const _VERSION_ADMIN_ = "3.0";
     const _VERSION_CSS_DROPBOX_ = "3.0";
 
@@ -1096,7 +1096,7 @@ Class Principal
                                     <p class='popular-tags'>" . __('Es muy dificil escribir este mensaje, pero es necesario hacerlo.', 'dropbox-folder-share') . "</p>
                                     <p class='popular-tags'>" . __('Dropbox Folder Share lleva siendo actualizada de manera casi continua e inmediata ya mas de 4 años. Lamentablemente el HOST y DOMINIO estan por caducar y hace falta de sus donaciones para poder pagarlos. Lamentablemente no puedo seguir pagando estos servicios por mi cuenta por lo que recurro a ustedes a que puedan ayudarme con esto.', 'dropbox-folder-share') . " </p>
                                     <p class='popular-tags'>" . __('Cualquier donacion que puedan hacer sera muy bien recibido y estare muy agradecido por ello.', 'dropbox-folder-share') . " </p>
-                                    <p class='popular-tags'>" . __('No quiero dejar pasar esta oportunidad de dar gracias a los 2 amigos de FRANCIA que tuvieron a bien donar el año 2014. MUCHAS GRACIAS', 'dropbox-folder-share') . " </p>
+                                    <!--p class='popular-tags'>" . __('No quiero dejar pasar esta oportunidad de dar gracias a los 2 amigos de FRANCIA que tuvieron a bien donar el año 2014. MUCHAS GRACIAS', 'dropbox-folder-share') . " </p-->
                                     <img align='right' src='" . DROPBOX_FOLDER_SHARE_PLUGIN_URL . 'src/img/AntonySalas_signature.png' . "'>
                                     <br>
                                     <br>
@@ -1143,7 +1143,9 @@ Class Principal
         //ddd("HOLAAAAA");
         //wp_enqueue_script( 'my-notice-update', plugins_url( '/js/notice-update.js', __FILE__ ), array( 'jquery' ), '1.0', true  );
         wp_enqueue_script('DFS-Script-Admin', DROPBOX_FOLDER_SHARE_PLUGIN_URL . 'src/js/scripts-hyno.js', array('jquery'));
-        wp_enqueue_style('DFS-Style-Admin', DROPBOX_FOLDER_SHARE_PLUGIN_URL . 'src/css/styles-hyno-admin.css'); //la ruta de nuestro css
+        wp_enqueue_script('font-awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js');
+        wp_enqueue_style('DFS-Style-Admin', DROPBOX_FOLDER_SHARE_PLUGIN_URL . 'src/css/styles-hyno-admin.css'); //la ruta de nuestro
+		//wp_enqueue_style('font-awesome', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
     }
 
 

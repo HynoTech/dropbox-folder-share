@@ -22,11 +22,10 @@
     "files": ["src/function/http_build_url.php"]
   },
   "require": {
+    "php": ">=5.4",
     "nesbot/carbon": "1.19",
     "hynotech/usos-generales": "dev-master",
-    "askupa-software/amarkal-admin-notification": "dev-master",
-    "php-curl-class/php-curl-class": "dev-master"
-
+    "askupa-software/amarkal-admin-notification": "dev-master"
   },
   "require-dev": {
     "kint-php/kint": "dev-master"

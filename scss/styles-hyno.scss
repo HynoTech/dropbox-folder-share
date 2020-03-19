@@ -5,10 +5,7 @@ $color_tundora_approx: #444;
 $color_silver_approx: #bfbfbf;
 $color_gallery_approx: #eee;
 $color_azure_radiance_approx: #007ee5;
-$color_tapa_approx: #777;
-$color_fuscous_gray_approx: #555;
 $color_spindle_approx: #aeceef;
-$color_botticelli_approx: #ccdbeb;
 $color_athens_gray_approx: #edf1f5;
 $color_curious_blue_approx: #1f8ce6;
 
@@ -27,13 +24,12 @@ $url_1: url(../img/ico-external-link.png);
 $url_2: url(../img/web_sprites-normal.png);
 $url_3: url(../img/icon_dropbox.png);
 
-
 //colors
 $color_waterloo__approx: #7b8994;
 $white: white;
 $color_botticelli_approx: #ccdbeb;
 $color_tapa_approx: #777;
-$color_fuscous_gray_approx: #555;
+$color_fuscous_gray_approx: #737E86;
 $color_mystic_approx: #e2edf5;
 $color_black_haze_approx: #f6f6f6;
 $color_seagull_approx: #79bcea;
@@ -103,13 +99,16 @@ $url_0: url(/static/images/icons/video_overlay-vfld7VbHa.png);
 }
 
 
-@import url(../css/icons.css);
-@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+@import "icons";
+// @import url('https://fonts.googleapis.com/css?family=Open+Sans');
+// @import url('http://fonts.googleapis.com/css?family=Roboto+Slab|Open+Sans:400italic,700italic,400,700');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans|Roboto&display=swap');
 
+$roboto-slab: 'Roboto', sans-serif;
+$open-sans: 'Open Sans', sans-serif;
 
 
 .Hyno_ContenFolder {
-
 
   .DropboxIcon {
     height: 20px;
@@ -125,12 +124,15 @@ $url_0: url(/static/images/icons/video_overlay-vfld7VbHa.png);
   }
 
 
-  background-color: $white;
+  // background-color: $white;
   color: $color_azure_radiance_approx;
   width: 98%;
   margin: auto;
 
-  font-family: "Open Sans","lucida grande","Segoe UI",arial,verdana,"lucida sans unicode",tahoma,sans-serif;
+  align-content: center;
+  align-items: center;
+
+  font-family: $open-sans !important; // "Open Sans","lucida grande","Segoe UI",arial,verdana,"lucida sans unicode",tahoma,sans-serif !important;
   font-weight: normal;
   font-size: 13px;
 
@@ -138,13 +140,20 @@ $url_0: url(/static/images/icons/video_overlay-vfld7VbHa.png);
     color: $color_azure_radiance_approx !important;
   }
 
+  .breadcrumb {
+    li {
+      font-family: $open-sans !important;
+    }
+  }
+
   .breadcrumb > li > i{
     font-size: 21px;
     vertical-align: middle;
   }
   .breadcrumb a:link{
-    text-decoration: none;
+    text-decoration: none !important;
     box-shadow: none !important;
+    color: $color_azure_radiance_approx !important;
   }
 
   .breadcrumb img{
@@ -156,7 +165,7 @@ $url_0: url(/static/images/icons/video_overlay-vfld7VbHa.png);
 
   .breadcrumb > li + li::before{
     content: "\f054";
-    font-family: FontAwesome;
+    font-family: FontAwesome, serif;
     vertical-align: middle;
     font-size: 8px;
   }
@@ -178,9 +187,18 @@ $url_0: url(/static/images/icons/video_overlay-vfld7VbHa.png);
     }
 
     a:link, a:visited{
-      text-decoration:none;
-      border:0;
+      text-decoration:none !important;
+      border:0 !important;
+      color: $color_azure_radiance_approx !important;
     }
+  }
+
+
+  a, a:visited {
+
+    text-decoration: none !important;
+    box-shadow: none !important;
+    color: $color_azure_radiance_approx !important;
   }
 
 
@@ -188,9 +206,9 @@ $url_0: url(/static/images/icons/video_overlay-vfld7VbHa.png);
 
 
 
-
-
   .sl-body {
+
+    font-family: $open-sans !important;
     position: relative;
     &.sl-body--empty-folder {
       text-align: center;
@@ -238,7 +256,7 @@ $url_0: url(/static/images/icons/video_overlay-vfld7VbHa.png);
     .sl-file-link {
       color: $color_steel_gray_approx;
       &:hover {
-        color: $color_science_blue_approx;
+        color: $color_science_blue_approx !important;
       }
     }
     .sl-list-column.sl-list-column--filename {
@@ -273,6 +291,7 @@ $url_0: url(/static/images/icons/video_overlay-vfld7VbHa.png);
     padding: 0px;
     .sl-list-column {
       color: $color_fuscous_gray_approx;
+      font-size: 90%;
     }
     .sl-list-row {
       line-height: 32px;
@@ -330,6 +349,7 @@ $url_0: url(/static/images/icons/video_overlay-vfld7VbHa.png);
     white-space: nowrap;
   }
   .o-flag__flex {
+    font-family: $open-sans !important;
     display: table-cell;
     vertical-align: middle;
     width: 100%;

@@ -9,11 +9,13 @@
  * Plugin Name: DropBox Folder Share
  * Plugin URI: http://www.hynotech.com/wp-plugins/dropbox-folder-share/
  * Description: Plugin que permitira incluir carpetas de DropBox en nuestras entradas de blog.
- * Version: 1.8.5
+ * Version: 1.9
  * Author: Antonio Salas (Hyno)
  * Author URI: http://www.hynotech.com/
  * Twitter: AntonySH_
  * GitHub URI: https://github.com/HynoTech/dropbox-folder-share
+ * Facebook Page: https://www.facebook.com/HynoTech
+ * WhatsAppBusiness: 51940908686
  * Text Domain: dropbox-folder-share
  * Domain Path: /languages
  * License: GPL-2.0+
@@ -37,27 +39,17 @@ define('DROPBOX_FOLDER_SHARE_PLUGIN_NOMBRE',$nombre); //Nombre de la carpeta "dr
 define('DROPBOX_FOLDER_SHARE_PLUGIN_URL',$url); //URL completa dela carpeta actual "http://localhost:8080/wp/wp-content/plugins/dropbox-folder-share/"
 define('DROPBOX_FOLDER_SHARE_PLUGIN_PATH',$url_path); //URL completa dela carpeta actual "d:\Projects\Hosts\wordpress\wp-content\plugins\dropbox-folder-share/"
 
-//echo __DIR__;
-/*
-use TypistTech\Imposter\ImposterFactory;
-
-$imposter = ImposterFactory::forProject(__DIR__);
-$imposter->run();
-*/
-
-
 if (!\class_exists("Principal")) {
 
     $objDropboxFolderSharePrincipal = new Principal();
-    //include_once 'src/class/http_build_url.php';
     if (!class_exists("DFS_TinyMCE")) {
-        //$objDFS_TinyMCE = new \HynoTech\DropboxFolderShare\TinyMCE();
-
         add_filter( "the_posts", array( &$objDropboxFolderSharePrincipal, "dropbox_foldershare_styles_and_scripts" ) );
-        //add_filter("widget_text", array(&$objDropboxFolderSharePrincipal, "dropbox_foldershare_styles_and_scripts"));
     }
 
     $objDropboxFolderShareWidget = new Widget();
+    $objDropboxFolderShareBlock = new Block();
+
+	add_action( 'init', array( &$objDropboxFolderShareBlock, 'registrarBlock' ) );
 
     add_action( 'widgets_init', array( &$objDropboxFolderShareWidget, 'registrarWidget' ) );
     add_action( 'admin_head-widgets.php', array( &$objDropboxFolderShareWidget, 'add_icon_to_custom_widget' ) );
@@ -122,7 +114,6 @@ if (!\class_exists("Principal")) {
 
     $dataShortcode2           = $dataShortcode;
     $dataShortcode2["Nombre"] = "dropbox-foldershare-hyno";
-    //$dataShortcode2['Editor']['ver'] = false;
     $dataShortcode2['Editor']['verBoton'] = false;
 
 
@@ -135,12 +126,7 @@ if (!\class_exists("Principal")) {
         'replace_shortcode'
     ) );
 
-
-    //add_action( 'admin_init', array( &$objDropboxFolderSharePrincipal, 'my_detect_acf' ) );
-
     add_action( 'admin_head', array( &$objDropboxFolderSharePrincipal, 'nota_assets' ) );
-    //amarkal_reset_admin_notification($objDropboxFolderSharePrincipal::_OPT_SEETINGS_. "-nota-nota_actualizacion");
-    //amarkal_reset_admin_notification($objDropboxFolderSharePrincipal::_OPT_SEETINGS_. "-nota-donacion");
 
     amarkal_admin_notification(
         $objDropboxFolderSharePrincipal::_OPT_SEETINGS_ . "-nota-nota_actualizacion",
@@ -150,15 +136,10 @@ if (!\class_exists("Principal")) {
     );
     amarkal_admin_notification(
         $objDropboxFolderSharePrincipal::_OPT_SEETINGS_ . "-nota-donacion",
-        //__('Listen carefully, this is an <strong>warning</strong> message.','slug'),
         $objDropboxFolderSharePrincipal->nota_donacion(),
         'error',
         true
     );
-
-
-    //add_shortcode('dropbox-foldershare-hyno', array(&$objDropboxFolderSharePrincipal, 'replace_shortcode'));
-    //add_shortcode('DFS', array(&$objDropboxFolderSharePrincipal, 'replace_shortcode'));
 
     //AJAX
     add_action( 'wp_ajax_getFolderContent', array(&$objDropboxFolderSharePrincipal, 'ajaxReplaceShortcode') );
