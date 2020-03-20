@@ -19,9 +19,9 @@ class Block
 		// Register JavasScript File build/index.js
 		wp_register_script(
 			'DFS-block',
-			plugins_url( '../build/index.js', __FILE__ ),
+			DROPBOX_FOLDER_SHARE_PLUGIN_URL . 'build/index.js',//plugins_url( '../build/index.js', __FILE__ ),
 			array( 'wp-blocks', 'wp-element', 'wp-editor' ),
-			filemtime( plugin_dir_path( __FILE__ ) . '../build/index.js' )
+			filemtime( DROPBOX_FOLDER_SHARE_PLUGIN_PATH . 'build/index.js' )
 		);
 
 		// Enviar Variables a JS Block
@@ -33,16 +33,16 @@ class Block
 		// Register editor style src/editor.css
 		wp_register_style(
 			'DFS-block-editor-style',
-			plugins_url( 'css/editor.css', __FILE__ ),
+			DROPBOX_FOLDER_SHARE_PLUGIN_URL . 'src/css/editor.css', //plugins_url( 'css/editor.css', __FILE__ ),
 			array( 'wp-edit-blocks' ),
-			filemtime( plugin_dir_path( __FILE__ ) . 'css/editor.css' )
+			filemtime( DROPBOX_FOLDER_SHARE_PLUGIN_PATH . 'src/css/editor.css' )
 		);
 		// Register front end block style src/style.css
 		wp_register_style(
 			'DFS-block-frontend-style',
-			plugins_url( 'css/front.css', __FILE__ ),
+			DROPBOX_FOLDER_SHARE_PLUGIN_URL . 'src/css/front.css', //plugins_url( 'css/front.css', __FILE__ ),
 			array( ),
-			filemtime( plugin_dir_path( __FILE__ ) . 'css/front.css' )
+			filemtime( DROPBOX_FOLDER_SHARE_PLUGIN_PATH . 'src/css/front.css' )
 		);
 		// Register your block
 		register_block_type( 'dropbox-folder-share/block-editor', array(

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c73e08f197f1e351b6562d856d596786",
+    "content-hash": "707b384c48043bf6189691939295e457",
     "packages": [
         {
             "name": "askupa-software/amarkal-admin-notification",
@@ -50,58 +50,6 @@
                 "wordpress"
             ],
             "time": "2017-12-24T21:40:31+00:00"
-        },
-        {
-            "name": "hynotech/usos-generales",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://AntonySalas@bitbucket.org/hynotech/usos-generales.git",
-                "reference": "ddb7a23a0e102cffb7381e2a442d34c0390b71f4"
-            },
-            "require": {
-                "ext-curl": "*",
-                "ext-json": "*",
-                "php": ">=5.4",
-                "php-curl-class/php-curl-class": "8.6.2"
-            },
-            "require-dev": {
-                "kint-php/kint": "3.3"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "HynoTech\\UsosGenerales\\": "src/"
-                }
-            },
-            "license": [
-                "Unlicense"
-            ],
-            "authors": [
-                {
-                    "name": "Antonio Salas H.",
-                    "email": "antony.salas@gmail.com",
-                    "homepage": "https://www.linkedin.com/in/antonysalas/"
-                }
-            ],
-            "description": "Este proyecto es para implementar utilidades comunes para los plugins que se vayan a crear, utilidades que podran ser implementados en los plugis de manera simple y sencilla.",
-            "keywords": [
-                "api",
-                "class",
-                "client",
-                "curl",
-                "framework",
-                "http",
-                "http client",
-                "json",
-                "php",
-                "requests",
-                "rest",
-                "restful",
-                "web service",
-                "xml"
-            ],
-            "time": "2020-01-11T16:13:59+00:00"
         },
         {
             "name": "nesbot/carbon",
@@ -416,14 +364,15 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "hynotech/usos-generales": 20,
         "askupa-software/amarkal-admin-notification": 20,
         "kint-php/kint": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=5.4"
+        "php": ">=5.4",
+        "ext-curl": "*",
+        "ext-json": "*"
     },
     "platform-dev": []
 }

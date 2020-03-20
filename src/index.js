@@ -24,6 +24,7 @@ registerBlockType( 'dropbox-folder-share/block-editor', {
     attributes: {
         url: {
             type: 'string',
+            default: '',
         },
         view_icons: {
             type: 'boolean',
@@ -61,8 +62,9 @@ registerBlockType( 'dropbox-folder-share/block-editor', {
         }
 
         return (
-            <div className="blockContenido">
+            <div className="blockContenidoDFS">
                 <table border={0} cellPadding={10} width="100%">
+                    <tbody>
                     <tr>
                         <td width="60px">
                             <img src={ DFSParams.pluginUrl + 'src/img/TinyMCE_Button.png' } height="32px" />
@@ -73,7 +75,7 @@ registerBlockType( 'dropbox-folder-share/block-editor', {
                             </p>
                             <div className="secUrl">
                                 <label htmlFor="url">URL: </label>
-                                <input type="text" id="url" value={props.attributes.url} onBlur={actualizarUrl}/>
+                                <input type="text" id="url" defaultValue={props.attributes.url} onBlur={actualizarUrl}/>
                             </div>
                             <div className="secOpc">
                                 <label><input type="checkbox" checked={props.attributes.view_icons} onChange={(e) => actualizarOpc('view_icons', e)} /> Ver Iconos </label>
@@ -82,6 +84,7 @@ registerBlockType( 'dropbox-folder-share/block-editor', {
                             </div>
                         </td>
                     </tr>
+                    </tbody>
                 </table>
 
             </div>

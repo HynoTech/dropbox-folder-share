@@ -147,8 +147,4 @@ if (!\class_exists("Principal")) {
 
     add_action( 'wp_ajax_getFolderHeaders', array( &$objDropboxFolderSharePrincipal, 'ajaxGetHeaders' ) );
     add_action( 'wp_ajax_nopriv_getFolderHeaders', array( &$objDropboxFolderSharePrincipal, 'ajaxGetHeaders') );
-
-    add_action( 'wp_ajax_getImgBase64', array( &$objDropboxFolderSharePrincipal, 'ajaxGetImgBase64' ) );
-    add_action( 'wp_ajax_nopriv_getImgBase64', array( &$objDropboxFolderSharePrincipal, 'ajaxGetImgBase64') );
-
 }

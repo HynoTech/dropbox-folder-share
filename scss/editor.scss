@@ -1,6 +1,6 @@
 @import "compass";
 
-.blockContenido {
+.blockContenidoDFS {
   margin: 13px 0;
   padding: 16px;
   background-color: white;
@@ -51,6 +51,15 @@
     color: #72777c;
     height: 32px;
     width: 96%;
+  }
+
+  table {
+    margin: 0 !important;
+    border: none !important;
+  }
+
+  td {
+    border: none !important;
   }
 
 }

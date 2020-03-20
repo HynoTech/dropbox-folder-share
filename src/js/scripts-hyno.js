@@ -37,7 +37,8 @@ function loadContenDFS(data, idContent) {
             contenedor.html(response.html);
 
 
-            jQuery.each(response.imgs,function (i, item) {
+/*            jQuery.each(response.imgs,function (i, item) {
+                console.log(item);
 
                 jQuery.ajax({
                     data:  {
@@ -50,11 +51,13 @@ function loadContenDFS(data, idContent) {
                     url:   objDFS.ajax_url,
                     type:  'post',
                     success:  function (data) {
+                        alert(data);
+                        console.log(data);
                         contenedor.find("#"+item.img_id).attr('class','icon thumbnail-image--loaded');
                         contenedor.find("#"+item.img_id).attr('src',data);
                     }
                 });
-            });
+            });*/
 
         }
     });
