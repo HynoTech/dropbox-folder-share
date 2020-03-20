@@ -42,24 +42,31 @@ Con este Plugin podras:
 ![screenshot-09](Extras/assets/screenshot-9.png 'Bloque de gutenberg insertado y siendo usado')
 
 > Boton en el editor grafico
+
 ![screenshot-01](Extras/assets/screenshot-1.png 'screenshot-01')
 
 > Bloque en el Editor
+
 ![screenshot-02](Extras/assets/screenshot-2.png 'screenshot-02')
 
 > Bloque editable
+
 ![screenshot-03](Extras/assets/screenshot-3.png 'screenshot-03')
 
 > Configuraciones del Widget
+
 ![screenshot-04](Extras/assets/screenshot-4.png 'screenshot-04')
 
 > Popup de insercion de contenido en editor
+
 ![screenshot-05](Extras/assets/screenshot-5.png 'screenshot-05')
 
 > Contenido Publicado
+
 ![screenshot-06](Extras/assets/screenshot-6.png 'screenshot-06')
 
 > Configuraciones
+
 ![screenshot-07](Extras/assets/screenshot-7.png 'screenshot-07')
 
 ## Webs del autor
@@ -76,5 +83,5 @@ Si encuentras util el trabajo que se esta desarrollando y deseas contribuir con 
 
 Dona y apoya al proyecto mediante PAYPAL
 
-[![Donaciones](img/paypal_200x96.png)](http://goo.gl/EeMhVd)
+[![Donaciones](src/img/paypal_200x96.png)](http://goo.gl/EeMhVd)
 

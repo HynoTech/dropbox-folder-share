@@ -1,6 +1,6 @@
 {
   "name": "dropbox-folder-share",
-  "version": "2.0.0",
+  "version": "1.9.0",
   "description": "If you want to share a folder on your Dropbox account along with all the content, then this plugin will do it for you only with Dropbox shared URL.",
   "main": "index.js",
   "scripts": {
@@ -23,12 +23,12 @@
     "nube"
   ],
   "author": "Antony Salas",
-  "license": "GPLv2",
+  "license": "GPL-2.0",
   "bugs": {
     "url": "https://github.com/HynoTech/dropbox-folder-share/issues"
   },
   "homepage": "https://github.com/HynoTech/dropbox-folder-share#readme",
   "devDependencies": {
-    "@wordpress/scripts": "6.1.1"
+    "@wordpress/scripts": "7.1.3"
   }
 }
