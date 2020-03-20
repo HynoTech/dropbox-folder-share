@@ -47,54 +47,6 @@
         ]
     },
     {
-        "name": "hynotech/usos-generales",
-        "version": "dev-master",
-        "version_normalized": "9999999-dev",
-        "source": {
-            "type": "git",
-            "url": "https://AntonySalas@bitbucket.org/hynotech/usos-generales.git",
-            "reference": "faea37f260d67a1a710100d2338a2950197e6f8a"
-        },
-        "require": {
-            "php": ">=5.3.0"
-        },
-        "time": "2018-02-25T06:12:08+00:00",
-        "type": "library",
-        "installation-source": "source",
-        "autoload": {
-            "psr-4": {
-                "HynoTech\\UsosGenerales\\": "src/"
-            }
-        },
-        "license": [
-            "Unlicense"
-        ],
-        "authors": [
-            {
-                "name": "Antonio Salas H.",
-                "email": "antony.salas@gmail.com",
-                "homepage": "https://www.linkedin.com/in/antonysalas/"
-            }
-        ],
-        "description": "Este proyecto es para implementar utilidades comunes para los plugins que se vayan a crear, utilidades que podran ser implementados en los plugis de manera simple y sencilla.",
-        "keywords": [
-            "api",
-            "class",
-            "client",
-            "curl",
-            "framework",
-            "http",
-            "http client",
-            "json",
-            "php",
-            "requests",
-            "rest",
-            "restful",
-            "web service",
-            "xml"
-        ]
-    },
-    {
         "name": "nesbot/carbon",
         "version": "1.19.0",
         "version_normalized": "1.19.0.0",
@@ -145,22 +97,21 @@
     },
     {
         "name": "php-curl-class/php-curl-class",
-        "version": "dev-master",
-        "version_normalized": "9999999-dev",
+        "version": "8.6.2",
+        "version_normalized": "8.6.2.0",
         "source": {
             "type": "git",
             "url": "https://github.com/php-curl-class/php-curl-class.git",
-            "reference": "0f790e77b64d3d6547036240f643202b0596f5cc"
+            "reference": "54be433a7299c15b024ba808e10a96c5d5791d99"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/php-curl-class/php-curl-class/zipball/0f790e77b64d3d6547036240f643202b0596f5cc",
-            "reference": "0f790e77b64d3d6547036240f643202b0596f5cc",
+            "url": "https://api.github.com/repos/php-curl-class/php-curl-class/zipball/54be433a7299c15b024ba808e10a96c5d5791d99",
+            "reference": "54be433a7299c15b024ba808e10a96c5d5791d99",
             "shasum": ""
         },
         "require": {
             "ext-curl": "*",
-            "ext-mbstring": "*",
             "php": ">=5.3"
         },
         "require-dev": {
@@ -168,7 +119,10 @@
             "phpunit/phpunit": "*",
             "squizlabs/php_codesniffer": "*"
         },
-        "time": "2018-10-02T06:54:52+00:00",
+        "suggest": {
+            "ext-mbstring": "*"
+        },
+        "time": "2019-11-17T08:37:31+00:00",
         "type": "library",
         "installation-source": "source",
         "autoload": {
@@ -205,23 +159,24 @@
             "requests",
             "restful",
             "web-scraper",
+            "web-scraping ",
             "web-service",
             "xml"
         ]
     },
     {
         "name": "symfony/polyfill-mbstring",
-        "version": "v1.9.0",
-        "version_normalized": "1.9.0.0",
+        "version": "v1.14.0",
+        "version_normalized": "1.14.0.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/polyfill-mbstring.git",
-            "reference": "d0cd638f4634c16d8df4508e847f14e9e43168b8"
+            "reference": "34094cfa9abe1f0f14f48f490772db7a775559f2"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/d0cd638f4634c16d8df4508e847f14e9e43168b8",
-            "reference": "d0cd638f4634c16d8df4508e847f14e9e43168b8",
+            "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/34094cfa9abe1f0f14f48f490772db7a775559f2",
+            "reference": "34094cfa9abe1f0f14f48f490772db7a775559f2",
             "shasum": ""
         },
         "require": {
@@ -230,11 +185,11 @@
         "suggest": {
             "ext-mbstring": "For best performance"
         },
-        "time": "2018-08-06T14:22:27+00:00",
+        "time": "2020-01-13T11:15:53+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
-                "dev-master": "1.9-dev"
+                "dev-master": "1.14-dev"
             }
         },
         "installation-source": "dist",
@@ -272,17 +227,17 @@
     },
     {
         "name": "symfony/translation",
-        "version": "v2.8.46",
-        "version_normalized": "2.8.46.0",
+        "version": "v2.8.52",
+        "version_normalized": "2.8.52.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/translation.git",
-            "reference": "59b4debd89c156fd753343fcc1ca36aa5bc2d0f4"
+            "reference": "fc58c2a19e56c29f5ba2736ec40d0119a0de2089"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/translation/zipball/59b4debd89c156fd753343fcc1ca36aa5bc2d0f4",
-            "reference": "59b4debd89c156fd753343fcc1ca36aa5bc2d0f4",
+            "url": "https://api.github.com/repos/symfony/translation/zipball/fc58c2a19e56c29f5ba2736ec40d0119a0de2089",
+            "reference": "fc58c2a19e56c29f5ba2736ec40d0119a0de2089",
             "shasum": ""
         },
         "require": {
@@ -303,7 +258,7 @@
             "symfony/config": "",
             "symfony/yaml": ""
         },
-        "time": "2018-09-21T12:46:38+00:00",
+        "time": "2018-11-24T21:16:41+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {

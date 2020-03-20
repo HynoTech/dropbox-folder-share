@@ -1,8 +1,8 @@
 === Dropbox Folder Share ===
 Contributors: Hyno, antony_salas
 Tags: Dropbox, Folder,Cloud, Folder Share, post, content, contenido, nube
-Requires at least: 3.0
-Tested up to: 4.9.8
+Requires at least: 4.0
+Tested up to: 5.3.2
 Stable tag: trunk
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -60,9 +60,15 @@ Read **[More](http://www.hynotech.com/wp-plugins/dropbox-folder-share/#faq "Drop
 4. Editable section
 5. Editor windows
 6. Content published in subfolder
-5. General settings
+7. General settings
+8. Insert Gutenberg Block
+9. Gutenberg Block
 
 == Changelog ==
+
+= 1.9 =
+* Added Gutenberg Block to editor
+* Collect data rebuild
 
 = 1.8.5 =
 * Fix Widget
@@ -142,6 +148,11 @@ Read **[More](http://www.hynotech.com/wp-plugins/dropbox-folder-share/#faq "Drop
 * Version inicial.
 
 == Upgrade Notice ==
+
+= 1.9 =
+* Added Gutenberg Block.
+* Fixed errors.
+* Dropbox Navite Styles.
 
 = 1.8.5 =
 * Fix Widget Error.

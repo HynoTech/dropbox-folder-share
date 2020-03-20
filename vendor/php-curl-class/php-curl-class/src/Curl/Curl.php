@@ -7,7 +7,7 @@ use Curl\Decoder;
 
 class Curl
 {
-    const VERSION = '8.3.2';
+    const VERSION = '8.6.1';
     const DEFAULT_TIMEOUT = 30;
 
     public $curl;
@@ -39,6 +39,7 @@ class Curl
     public $errorCallback = null;
     public $completeCallback = null;
     public $fileHandle = null;
+    public $downloadFileName = null;
 
     public $attempts = 0;
     public $retries = 0;
@@ -156,8 +157,8 @@ class Curl
             // Manually build a single-dimensional array from a multi-dimensional array as using curl_setopt($ch,
             // CURLOPT_POSTFIELDS, $data) doesn't correctly handle multi-dimensional arrays when files are
             // referenced.
-            if (ArrayUtil::is_array_multidim($data)) {
-                $data = ArrayUtil::array_flatten_multidim($data);
+            if (ArrayUtil::isArrayMultidim($data)) {
+                $data = ArrayUtil::arrayFlattenMultidim($data);
             }
 
             // Modify array values to ensure any referenced files are properly handled depending on the support of
@@ -264,7 +265,17 @@ class Curl
 
         $this->setUrl($url, $query_parameters);
         $this->setOpt(CURLOPT_CUSTOMREQUEST, 'DELETE');
-        $this->setOpt(CURLOPT_POSTFIELDS, $this->buildPostData($data));
+
+        // Avoid including a content-length header in DELETE requests unless there is a message body. The following
+        // would include "Content-Length: 0" in the request header:
+        //   curl_setopt($ch, CURLOPT_POSTFIELDS, array());
+        // RFC 2616 4.3 Message Body:
+        //   The presence of a message-body in a request is signaled by the
+        //   inclusion of a Content-Length or Transfer-Encoding header field in
+        //   the request's message-headers.
+        if (!empty($data)) {
+            $this->setOpt(CURLOPT_POSTFIELDS, $this->buildPostData($data));
+        }
         return $this->exec();
     }
 
@@ -279,8 +290,10 @@ class Curl
      */
     public function download($url, $mixed_filename)
     {
+        // Use tmpfile() or php://temp to avoid "Too many open files" error.
         if (is_callable($mixed_filename)) {
             $this->downloadCompleteCallback = $mixed_filename;
+            $this->downloadFileName = null;
             $this->fileHandle = tmpfile();
         } else {
             $filename = $mixed_filename;
@@ -290,16 +303,17 @@ class Curl
             // path. The download request will include header "Range: bytes=$filesize-" which is syntactically valid,
             // but unsatisfiable.
             $download_filename = $filename . '.pccdownload';
+            $this->downloadFileName = $download_filename;
 
-            $mode = 'wb';
             // Attempt to resume download only when a temporary download file exists and is not empty.
-            if (file_exists($download_filename) && $filesize = filesize($download_filename)) {
-                $mode = 'ab';
+            if (is_file($download_filename) && $filesize = filesize($download_filename)) {
                 $first_byte_position = $filesize;
                 $range = $first_byte_position . '-';
                 $this->setOpt(CURLOPT_RANGE, $range);
+                $this->fileHandle = fopen($download_filename, 'ab');
+            } else {
+                $this->fileHandle = fopen($download_filename, 'wb');
             }
-            $this->fileHandle = fopen($download_filename, $mode);
 
             // Move the downloaded temporary file to the destination save path.
             $this->downloadCompleteCallback = function ($instance, $fh) use ($download_filename, $filename) {
@@ -358,7 +372,7 @@ class Curl
             $this->rawResponse = curl_multi_getcontent($ch);
             $this->curlErrorMessage = curl_error($ch);
         }
-        $this->curlError = !($this->curlErrorCode === 0);
+        $this->curlError = $this->curlErrorCode !== 0;
 
         // Transfer the header callback data and release the temporary store to avoid memory leak.
         $this->rawResponseHeaders = $this->headerCallbackData->rawResponseHeaders;
@@ -430,7 +444,7 @@ class Curl
         $this->call($this->completeCallback);
 
         // Close open file handles and reset the curl instance.
-        if (!($this->fileHandle === null)) {
+        if ($this->fileHandle !== null) {
             $this->downloadComplete($this->fileHandle);
         }
     }
@@ -994,7 +1008,7 @@ class Curl
             CURLOPT_RETURNTRANSFER => 'CURLOPT_RETURNTRANSFER',
         );
 
-        if (in_array($option, array_keys($required_options), true) && !($value === true)) {
+        if (in_array($option, array_keys($required_options), true) && $value !== true) {
             trigger_error($required_options[$option] . ' is a required option', E_USER_WARNING);
         }
 
@@ -1057,7 +1071,7 @@ class Curl
      */
     public function setProxyAuth($auth)
     {
-        $this-setOpt(CURLOPT_PROXYAUTH, $auth);
+        $this->setOpt(CURLOPT_PROXYAUTH, $auth);
     }
 
     /**
@@ -1123,8 +1137,13 @@ class Curl
     /**
      * Set Retry
      *
-     * Number of retries to attempt or decider callable. Maximum number of
-     * attempts is $maximum_number_of_retries + 1.
+     * Number of retries to attempt or decider callable.
+     *
+     * When using a number of retries to attempt, the maximum number of attempts
+     * for the request is $maximum_number_of_retries + 1.
+     *
+     * When using a callable decider, the request will be retried until the
+     * function returns a value which evaluates to false.
      *
      * @access public
      * @param  $mixed
@@ -1382,6 +1401,11 @@ class Curl
         return $this->downloadCompleteCallback;
     }
 
+    public function getDownloadFileName()
+    {
+        return $this->downloadFileName;
+    }
+
     public function getSuccessCallback()
     {
         return $this->successCallback;
@@ -1541,7 +1565,9 @@ class Curl
      */
     private function downloadComplete($fh)
     {
-        if (!$this->error && $this->downloadCompleteCallback) {
+        if ($this->error && is_file($this->downloadFileName)) {
+            @unlink($this->downloadFileName);
+        } elseif (!$this->error && $this->downloadCompleteCallback) {
             rewind($fh);
             $this->call($this->downloadCompleteCallback, $fh);
             $this->downloadCompleteCallback = null;

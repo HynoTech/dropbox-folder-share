@@ -129,7 +129,7 @@
 
 
 <div class="wrap">
-    <img src="<?php echo DROPBOX_FOLDER_SHARE_PLUGIN_URL . 'src/img/logo.png'; ?>" />
+	<h2><i class="fab fa-dropbox" style="color: #0082E6;"></i> Dropbox Folder Share</h2>
 
     <?php if (!empty($_POST)) { ?>
         <div class="updated settings-error" id="setting-error-settings_updated">
@@ -138,11 +138,11 @@
     <?php } ?>
 
     <div class="wpmm-wrapper">
-        <div id="content" class="wrapper-cell">
+        <div class="wrapper-cell">
             <div class="nav-tab-wrapper">
-                <a class="nav-tab" href="#configuraciones">Configuraciones</a>
-                <a class="nav-tab" href="#parametros">Parametros</a>
-                <a class="nav-tab" href="#donaciones" style="background-color: darkred; color: white;">Donaciones</a>
+                <a class="nav-tab" href="#configuraciones"><?php _e('Configuraciones', "dropbox-folder-share"); ?></a>
+                <a class="nav-tab" href="#parametros"><?php _e('Parametros', "dropbox-folder-share"); ?></a>
+                <a class="nav-tab" href="#donaciones" style="background-color: darkred; color: white;"><?php _e('Donaciones', "dropbox-folder-share"); ?></a>
             </div>
 
             <div class="tabs-content stuffbox">

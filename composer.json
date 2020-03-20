@@ -1,5 +1,5 @@
 {
-  "name": "HynoTech/dropbox-folder-share",
+  "name": "hynotech/dropbox-folder-share",
   "description": "Compartir Carpetas de Dropbox",
   "minimum-stability": "stable",
   "license": "proprietary",
@@ -9,24 +9,19 @@
       "email": "antony@hynotech.com"
     }
   ],
-  "repositories": [
-    {
-      "type": "git",
-      "url": "https://AntonySalas@bitbucket.org/hynotech/usos-generales.git"
-    }
-  ],
   "autoload" : {
     "psr-4": {
-      "HynoTech\\DropboxFolderShare\\": "src/"
+      "HynoTech\\": "HynoTech/"
     },
     "files": ["src/function/http_build_url.php"]
   },
   "require": {
+    "php": ">=5.4",
     "nesbot/carbon": "1.19",
-    "hynotech/usos-generales": "dev-master",
     "askupa-software/amarkal-admin-notification": "dev-master",
-    "php-curl-class/php-curl-class": "dev-master"
-
+    "php-curl-class/php-curl-class": "8.6.2",
+    "ext-curl": "*",
+    "ext-json": "*"
   },
   "require-dev": {
     "kint-php/kint": "dev-master"

@@ -34,7 +34,7 @@ For latest commit version:
 
 ### Requirements
 
-PHP Curl Class works with PHP 5.3, 5.4, 5.5, 5.6, 7.0, 7.1, 7.2, and HHVM.
+PHP Curl Class works with PHP 5.3, 5.4, 5.5, 5.6, 7.0, 7.1, 7.2, 7.3, and HHVM.
 
 ### Quick Start and Examples
 
@@ -143,7 +143,7 @@ echo $curl->responseHeaders['CoNTeNT-TyPE'] . "\n"; // image/png
 ```
 
 ```php
-// Clean up.
+// Manual clean up.
 $curl->close();
 ```
 
@@ -215,6 +215,7 @@ Curl::getCurl()
 Curl::getCurlErrorCode()
 Curl::getCurlErrorMessage()
 Curl::getDownloadCompleteCallback()
+Curl::getDownloadFileName()
 Curl::getErrorCallback()
 Curl::getErrorCode()
 Curl::getErrorMessage()
@@ -319,6 +320,11 @@ MultiCurl::setJsonDecoder($mixed)
 MultiCurl::setOpt($option, $value)
 MultiCurl::setOpts($options)
 MultiCurl::setPort($port)
+MultiCurl::setProxies($proxies)
+MultiCurl::setProxy($proxy, $port = null, $username = null, $password = null)
+MultiCurl::setProxyAuth($auth)
+MultiCurl::setProxyTunnel($tunnel = true)
+MultiCurl::setProxyType($type)
 MultiCurl::setReferer($referer)
 MultiCurl::setReferrer($referrer)
 MultiCurl::setRetry($mixed)
@@ -329,6 +335,7 @@ MultiCurl::setXmlDecoder($mixed)
 MultiCurl::start()
 MultiCurl::success($callback)
 MultiCurl::unsetHeader($key)
+MultiCurl::unsetProxy()
 MultiCurl::verbose($on = true, $output = STDERR)
 ```
 
@@ -348,6 +355,13 @@ To run tests:
     $ cd php-curl-class/
     $ composer update
     $ ./tests/run.sh
+
+To run select tests:
+
+    $ git clone https://github.com/php-curl-class/php-curl-class.git
+    $ cd php-curl-class/
+    $ composer update
+    $ ./tests/run.sh --filter=keyword
 
 To test all PHP versions in containers:
 

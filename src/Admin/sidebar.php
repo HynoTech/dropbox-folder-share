@@ -23,11 +23,15 @@
                 <li><?php _e('Autor', "dropbox-folder-share"); ?>
                     : <?php echo !empty($plugin_data['AuthorName']) ? $plugin_data['AuthorName'] : ''; ?></li>
                 <li>
-                    Website: <?php echo ! empty( $plugin_data['PluginURI'] ) ? '<a href="' . $plugin_data['PluginURI'] . '" target="_blank">' . $plugin_data['AuthorName'] . '</a>' : ''; ?></li>
+	                <i class="fas fa-paperclip"></i> <?php echo ! empty( $plugin_data['PluginURI'] ) ? '<a href="' . $plugin_data['PluginURI'] . '" target="_blank">' . $plugin_data['AuthorName'] . '</a>' : ''; ?></li>
                 <li>
-                    Twitter: <?php echo ! empty( $plugin_data['Twitter'] ) ? '<a href="http://twitter.com/' . $plugin_data['Twitter'] . '" target="_blank">@' . $plugin_data['Twitter'] . '</a>' : ''; ?></li>
+	                <i class="fab fa-twitter" style="color: #1da1f2;"></i> <?php echo ! empty( $plugin_data['Twitter'] ) ? '<a href="http://twitter.com/' . $plugin_data['Twitter'] . '" target="_blank">@' . $plugin_data['Twitter'] . '</a>' : ''; ?></li>
+	            <li>
+		            <i class="fab fa-whatsapp" style="color: #00e676;"></i> <?php echo ! empty( $plugin_data['Twitter'] ) ? '<a href="https://wa.me/' . $plugin_data['WhatsAppBusiness'] . '" target="_blank">+' . $plugin_data['WhatsAppBusiness'] . '</a>' : ''; ?></li>
                 <li>
-                    GitHub: <?php echo ! empty( $plugin_data['GitHub URI'] ) ? '<a href="' . $plugin_data['GitHub URI'] . '" target="_blank">' . basename( $plugin_data['GitHub URI'] ) . '</a>' : ''; ?></li>
+	                <i class="fab fa-github"></i> <?php echo ! empty( $plugin_data['GitHub URI'] ) ? '<a href="' . $plugin_data['GitHub URI'] . '" target="_blank">' . basename( $plugin_data['GitHub URI'] ) . '</a>' : ''; ?></li>
+                <li>
+	                <i class="fab fa-facebook" style="color: #188bee;"></i> <?php echo ! empty( $plugin_data['Facebook Page'] ) ? '<a href="' . $plugin_data['Facebook Page'] . '" target="_blank">' . basename( $plugin_data['Facebook Page'] ) . '</a>' : ''; ?></li>
             </ul>
         </div>
     </div>

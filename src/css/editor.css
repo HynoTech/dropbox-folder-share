@@ -1,0 +1,74 @@
+/* line 3, ../../scss/editor.scss */
+.blockContenidoDFS {
+  margin: 13px 0;
+  padding: 16px;
+  background-color: white;
+  border: 1px solid #ccdbeb;
+  border-radius: 2px;
+  /*width: 100%;*/
+  display: flex;
+}
+/* line 13, ../../scss/editor.scss */
+.blockContenidoDFS .secUrl {
+  margin-bottom: 10px;
+}
+/* line 15, ../../scss/editor.scss */
+.blockContenidoDFS .secUrl input {
+  width: 90%;
+}
+/* line 19, ../../scss/editor.scss */
+.blockContenidoDFS .secOpc {
+  display: flex;
+}
+/* line 21, ../../scss/editor.scss */
+.blockContenidoDFS .secOpc label {
+  width: 33% !important;
+}
+/* line 26, ../../scss/editor.scss */
+.blockContenidoDFS img {
+  width: 60px;
+}
+/* line 30, ../../scss/editor.scss */
+.blockContenidoDFS .container5 {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+/* line 36, ../../scss/editor.scss */
+.blockContenidoDFS .container5 div {
+  width: 100%;
+}
+/* line 43, ../../scss/editor.scss */
+.blockContenidoDFS .title {
+  font-size: 1.4em;
+  /*margin: 0px 15px 0 0px;*/
+  margin-left: 10px;
+  margin-right: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  /*font-weight: 600;*/
+  color: #72777c;
+  height: 32px;
+  width: 96%;
+}
+/* line 56, ../../scss/editor.scss */
+.blockContenidoDFS table {
+  margin: 0 !important;
+  border: none !important;
+}
+/* line 61, ../../scss/editor.scss */
+.blockContenidoDFS td {
+  border: none !important;
+}
+
+/* line 68, ../../scss/editor.scss */
+.dbfoldershare {
+  margin-left: 10px;
+  color: #a1a1a1;
+  font-size: 0.5em;
+  /*right: 10px;
+  position: absolute;
+  margin-right: 10px*/
+}
+
+/*# sourceMappingURL=editor.css.map */

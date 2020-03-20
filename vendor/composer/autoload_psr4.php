@@ -8,8 +8,7 @@ $baseDir = dirname($vendorDir);
 return array(
     'Symfony\\Polyfill\\Mbstring\\' => array($vendorDir . '/symfony/polyfill-mbstring'),
     'Symfony\\Component\\Translation\\' => array($vendorDir . '/symfony/translation'),
-    'HynoTech\\UsosGenerales\\' => array($vendorDir . '/hynotech/usos-generales/src'),
-    'HynoTech\\DropboxFolderShare\\' => array($baseDir . '/src'),
+    'HynoTech\\' => array($baseDir . '/HynoTech'),
     'Curl\\' => array($vendorDir . '/php-curl-class/php-curl-class/src/Curl'),
     'Amarkal\\Admin\\' => array($vendorDir . '/askupa-software/amarkal-admin-notification'),
 );

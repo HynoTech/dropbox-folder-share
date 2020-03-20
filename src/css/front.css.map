@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": ";AACA,EAAE;EACA,KAAK,EAAE,OAAO;EACd,MAAM,EAAE,OAAO;EACf,SAAS,EAAE,IAAI",
+"sources": ["../../scss/front.scss"],
+"names": [],
+"file": "front.css"
+}
