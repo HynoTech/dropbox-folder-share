@@ -66,6 +66,9 @@ Read **[More](http://www.hynotech.com/wp-plugins/dropbox-folder-share/#faq "Drop
 
 == Changelog ==
 
+= 1.9.x =
+* FIX errors
+
 = 1.9 =
 * Added Gutenberg Block to editor
 * Collect data rebuild
@@ -148,6 +151,9 @@ Read **[More](http://www.hynotech.com/wp-plugins/dropbox-folder-share/#faq "Drop
 * Version inicial.
 
 == Upgrade Notice ==
+
+= 1.9.1 =
+* Fix Dropbox error 404
 
 = 1.9 =
 * Added Gutenberg Block.
