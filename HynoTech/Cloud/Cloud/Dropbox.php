@@ -30,18 +30,15 @@ class Dropbox extends Cloud{
 	}
 	*/
 	function dataContenido($retorno = 'json'){
-		$dataModule[0] = '"props": {';
+		$dataModule[0] = '/app", "props": {';
 		$dataModule[1] = '}, "elem_id":';
 
 		$patronModule = '|' . $dataModule[0] . '(.*?)' . $dataModule[1] . '|is';
 		preg_match_all($patronModule, $this->dataCargado->response, $varTemp2);
 
-		$soloDataModule = str_replace(array('"props": {', '}, "elem_id":'), array('{', '}'), (isset($varTemp2[0][0])) ? $varTemp2[0][0] : '');
+		$soloDataModule = str_replace(array('/app", "props": {', '}, "elem_id":'), array('{', '}'), (isset($varTemp2[0][0])) ? $varTemp2[0][0] : '');
 
-		// $objImportante = json_decode($soloDataModule, true, 512, JSON_THROW_ON_ERROR);
 		$objImportante = json_decode($soloDataModule);
-
-		// d($objImportante);
 
 		$carpetaActual = new Carpeta();
 		$carpetaActual->id = $objImportante->folderData->ns_id;

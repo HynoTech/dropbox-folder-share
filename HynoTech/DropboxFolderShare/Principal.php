@@ -267,560 +267,555 @@ Class Principal
                         ';
 			return json_encode(['html' => $retorno, 'imgs' => []]);
 		}
+
+		$jsonExtensiones = file_get_contents(__DIR__ . '/json/extensiones.json');
+
+		$domRetorno = new \DOMDocument('1.0', 'UTF-8');
+		$datosCarpetaLocal = [
+			"nombre" => $dataCarpeta->nombre,
+			"path" => $dataCarpeta->linkSubPath,
+			"linkKey" => $dataCarpeta->linkKey,
+			"secureHash" => $dataCarpeta->linkSecureHash,
+			"link" => $dataCarpeta->href,
+			"propietario" => $dataCarpeta->propietario,
+			"archivos" => $dataCarpeta->archivos,
+			"carpetas" => $dataCarpeta->subCarpetas,
+		];
+
+
+		$detalleURL = parse_url($datosCarpetaLocal["link"]);
+
+		$html_ol['breadcrumb'] = $domRetorno->createElement('ol');
+		$html_ol['breadcrumb']->setAttribute('class', 'breadcrumb');
+		$html_ol['breadcrumb']->setAttribute('style', 'font-size: 16px; margin:0px;');
+
+
+		$addLIZip = $domRetorno->createElement('li');
+		if ($opcion['allowDownloadFolder'] === '1') {
+
+			$query_params['dl'] = 1;
+			$detalleURL['query'] = http_build_query($query_params);
+
+			$lnkDescarga = http_build_url($link,
+				$detalleURL,
+				HTTP_URL_STRIP_AUTH | HTTP_URL_JOIN_PATH | HTTP_URL_JOIN_QUERY | HTTP_URL_STRIP_FRAGMENT
+			);
+
+
+			$addIMGZip = $domRetorno->createElement('img');
+			$addIMGZip->setAttribute('src', DROPBOX_FOLDER_SHARE_PLUGIN_URL . 'src/img/zip.png');
+			$addIMGZip->setAttribute('title', __('Descargar carpeta actual (zip)', 'dropbox-folder-share'));
+
+			$addAZip = $domRetorno->createElement('a');
+			$addAZip->setAttribute('href', $lnkDescarga);
+			$addAZip->setAttribute('target', "_blank");
+			$addAZip->appendChild($addIMGZip);
+
+			$addLIZip->setAttribute('class', 'pull-right'); //creado fuera del IF
+			$addLIZip->appendChild($addAZip);
+
+		}
+
+
+		//solo entra si existe una barra de titulo, es decir si es sub carpeta
+		if ($titleBar != null) {
+			$titleBar = str_replace('\\"', '"', $titleBar);
+			$titleBar = str_replace("\\'", "'", $titleBar);
+			$titleBar = str_replace("\\\\", "\\", $titleBar);
+
+			$titleBar = $this->limpiahtml($titleBar);
+
+			$doc = new \DOMDocument();
+
+			$doc->loadHTML(mb_convert_encoding($titleBar, 'HTML-ENTITIES', 'UTF-8'));
+
+			$elemLiBreadcrumb = $doc->getElementsByTagName('li');
+
+			$elemOlBreadcrumb = $doc->getElementsByTagName('ol');
+
+			$lnkSup = false;
+			foreach ($elemLiBreadcrumb as $li) {
+
+				if ($li->getAttribute('class') == 'pull-right') {
+					$li->parentNode->removeChild($li);
+				} else {
+					$html_ol['breadcrumb']->appendChild($domRetorno->importNode($li, true));
+					if ($li->getAttribute('data-id') == $datosCarpetaLocal["secureHash"]) {
+						$lnkSup = true;
+						break;
+					}
+				}
+			}
+
+			$elemA_1 = $domRetorno->createElement('a', $datosCarpetaLocal["nombre"]);
+			$elemA_1->setAttribute('href', $link);
+			$elemA_1->setAttribute('onclick', "loadContenDFS('{$data}', '{$id_content}'); varTitulo = 1; return false;");
+			$elemA_1->setAttribute('data-titulo', '1');
+
+			$elemIMG_2 = $domRetorno->createElement('img');
+			$elemIMG_2->setAttribute('width', '12px');
+			$elemIMG_2->setAttribute('src', DROPBOX_FOLDER_SHARE_PLUGIN_URL . '/src/img/ico-external-link.png');
+
+			$elemA_2 = $domRetorno->createElement('a');
+			$elemA_2->setAttribute('href', $link);
+			$elemA_2->setAttribute('target', '_blank');
+			$elemA_2->appendChild($elemIMG_2);
+
+			$elemLi = $domRetorno->createElement('li');
+			$elemLi->setAttribute('data-id', $datosCarpetaLocal["secureHash"]);
+			$elemLi->appendChild($elemA_1);
+			$elemLi->appendChild($elemA_2);
+
+			if (!$lnkSup) {
+				$html_ol['breadcrumb']->appendChild($elemLi);
+			}
+
+			if ($opcion['allowDownloadFolder'] === '1') {
+				$html_ol['breadcrumb']->appendChild($addLIZip);
+			}
+
+		}
+		else {
+			$html_i['fa-dropbox'] = $domRetorno->createElement('i');
+			$html_i['fa-dropbox']->setAttribute('class', 'fa fa-dropbox');
+			$html_i['fa-dropbox']->setAttribute('style', 'color: #0082E6;');
+
+			$html_li[0] = $domRetorno->createElement('li');
+			$html_li[0]->appendChild($html_i['fa-dropbox']);
+
+			$html_a['ajax'] = $domRetorno->createElement('a', $datosCarpetaLocal["nombre"]);
+			$html_a['ajax']->setAttribute('href', $link);
+			$html_a['ajax']->setAttribute('data-titulo', '1');
+			$html_a['ajax']->setAttribute('onclick', "loadContenDFS('{$data}', '{$id_content}'); varTitulo = 1; return false;");
+
+			$html_img['ext_icon'] = $domRetorno->createElement('img');
+			$html_img['ext_icon']->setAttribute('width', '12px');
+			$html_img['ext_icon']->setAttribute('src', DROPBOX_FOLDER_SHARE_PLUGIN_URL . "src/img/ico-external-link.png");
+
+			$html_a['blank'] = $domRetorno->createElement('a');
+			$html_a['blank']->setAttribute('href', $link);
+			$html_a['blank']->setAttribute('target', '_blank');
+			$html_a['blank']->appendChild($html_img['ext_icon']);
+
+			$html_li[1] = $domRetorno->createElement('li');
+			$html_li[1]->setAttribute('data-id', $datosCarpetaLocal["secureHash"]);
+			$html_li[1]->appendChild($html_a['ajax']);
+			$html_li[1]->appendChild($html_a['blank']);
+
+			//$html_ol['breadcrumb'] creado al inicio del if de este else y superior
+			$html_ol['breadcrumb']->appendChild($html_li[0]);
+			$html_ol['breadcrumb']->appendChild($html_li[1]);
+			if ($opcion['allowDownloadFolder'] === '1') {
+				$html_ol['breadcrumb']->appendChild($addLIZip);
+			}
+
+		}
+
+
+		$cantData = count($datosCarpetaLocal["carpetas"]) + count($datosCarpetaLocal["archivos"]);
+
+		if ($cantData > 0) {
+
+
+			if ($opcion['link2Folder'] != '1') {
+
+				$domRetorno->appendChild($html_ol['breadcrumb']);
+
+				$this->EliminarTAG($domRetorno, '//a');
+				$this->EliminarTAG($domRetorno, '//img[@width="12px"]');
+
+			}
+
+
+			$displaySize = "auto";
+			$displayChange = "auto";
+			$seccionesLista = [58.6, 19.5, 21.9];
+			if (($opcion['allowDownload'] === '1') || ($opcion['allowDownloadFolder'] === '1')) {
+				$seccionesLista = [58.6, 16.5, 18.9];
+			}
+			if(wp_is_mobile()){
+				$seccionesLista = [100, 0, 0];
+				if (($opcion['allowDownload'] === '1') || ($opcion['allowDownloadFolder'] === '1')) {
+					$seccionesLista = [94, 0, 0];
+				}
+				$displaySize = "none";
+				$displayChange = "none";
+			}
+			else{
+				if ($opcion['showSize'] != '1') {
+					$displaySize = "none";
+					$seccionesLista[0] += $seccionesLista[1];
+					$seccionesLista[1] = 0;
+				}
+
+
+				if ($opcion['showChange'] != '1') {
+					$displayChange = "none";
+					$seccionesLista[0] += $seccionesLista[2];
+					$seccionesLista[2] = 0;
+				}
+			}
+
+
+			$html_ol['sl-list-body'] = $domRetorno->createElement('ol');//revisar separacion
+			$html_ol['sl-list-body']->setAttribute('class', 'sl-list-body o-list-ui o-list-ui--dividers');
+			$html_ol['sl-list-body']->setAttribute('style', "max-height:" . (($opcion['defaultHeight'] != '0') ? $opcion['defaultHeight'] : 'auto') . "; overflow:auto; margin: 0px !important");
+			foreach ($datosCarpetaLocal["carpetas"] as $carpeta) {
+				$folderName = $carpeta->nombre;
+				$folderHref = $carpeta->href;
+				$opciones_shortcode['link'] = $folderHref;
+
+				$data = json_encode($opciones_shortcode);
+				$data = str_replace("\"", "\\'", $data);
+				$data = 'rev_' . $data;
+
+				$displayIcon = "auto";
+				if ($opcion['showIcons'] != '1') {
+					$displayIcon = "none";
+				}
+
+				$html_li_div_a_div_div_img_lista = $domRetorno->createElement('img');
+				$html_li_div_a_div_div_img_lista->setAttribute('class', 'sprite sprite_web s_web_folder_32 icon');
+				$html_li_div_a_div_div_img_lista->setAttribute('src', DROPBOX_FOLDER_SHARE_PLUGIN_URL . 'src/img/icon_spacer.gif');
+
+				$html_li_div_a_div_div_lista = $domRetorno->createElement('div');
+				$html_li_div_a_div_div_lista->setAttribute('class', 'o-flag__fix');
+				$html_li_div_a_div_div_lista->setAttribute('style', "display: {$displayIcon} ");
+				$html_li_div_a_div_div_lista->appendChild($html_li_div_a_div_div_img_lista);
+
+				$html_li_div_a_div_div2_lista = $domRetorno->createElement('div', $folderName);
+				$html_li_div_a_div_div2_lista->setAttribute('class', 'o-flag__flex');
+				$html_li_div_a_div_div2_lista->setAttribute('style', 'flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;');
+				//$html_li_div_a_div_div2_lista->setAttribute('style',"display: {$displayIcon} ");
+
+				$html_li_div_a_div_lista = $domRetorno->createElement('div');
+				$html_li_div_a_div_lista->setAttribute('class', 'o-flag');
+				$html_li_div_a_div_lista->appendChild($html_li_div_a_div_div_lista);
+				$html_li_div_a_div_lista->appendChild($html_li_div_a_div_div2_lista);
+
+
+				$html_li_div_a_lista = $domRetorno->createElement('a');
+				$html_li_div_a_lista->setAttribute('href', $folderHref);
+				$html_li_div_a_lista->setAttribute('data-titulo', '1');
+				if ($opcion['allowBrowseFolder'] == '1') {
+					$html_li_div_a_lista->setAttribute('onclick', "loadContenDFS('{$data}', '{$id_content}'); varTitulo = 1; return false;");
+				} else {
+					$html_li_div_a_lista->setAttribute('onclick', "return false;");
+				}
+				$html_li_div_a_lista->setAttribute('class', 'sl-file-link');
+				$html_li_div_a_lista->appendChild($html_li_div_a_div_lista);
+
+				$html_li_div_lista = $domRetorno->createElement('div');
+				$html_li_div_lista->setAttribute('class', 'sl-list-column sl-list-column--filename');
+				$html_li_div_lista->setAttribute('style', "width: {$seccionesLista[0]}% !important;");
+				$html_li_div_lista->appendChild($html_li_div_a_lista);
+
+				$html_li_div2_lista = $domRetorno->createElement('div', '--');
+				$html_li_div2_lista->setAttribute('class', 'sl-list-column sl-list-column--filesize');
+				$html_li_div2_lista->setAttribute('style', "width: {$seccionesLista[1]}% !important;; display: {$displaySize} ");
+
+				$html_li_div3_lista = $domRetorno->createElement('div', '--');
+				$html_li_div3_lista->setAttribute('class', 'sl-list-column sl-list-column--modified');
+				$html_li_div3_lista->setAttribute('style', "width: {$seccionesLista[2]}% !important;; display: {$displayChange} ");
+
+				$html_li_div4_lista = $domRetorno->createElement('span');
+				if ($opcion['allowDownloadFolder'] === '1') {
+					$fileLinkMostrar = $this->downloadLinkGenerator($folderHref);
+					$lnkOrigDescarga = $fileLinkMostrar;
+
+					$aDescarga = $domRetorno->createElement('a');
+					$aDescarga->setAttribute('href', $lnkOrigDescarga);
+					//$aDescarga->setAttribute('target', '_blank');
+
+					$html_li_div4_lista = $domRetorno->createElement('i');
+					$html_li_div4_lista->setAttribute('class', 'fa fa-file-archive-o');
+					$html_li_div4_lista->setAttribute('style', 'color: #0082E6;');
+					$aDescarga->appendChild($html_li_div4_lista);
+					$html_li_div4_lista = $aDescarga;
+				}
+
+				//<i class="fas fa-download"></i>
+
+
+				$html_li_lista = $domRetorno->createElement('li');
+				$html_li_lista->setAttribute('class', 'sl-list-row clearfix');
+				$html_li_lista->appendChild($html_li_div_lista);
+				$html_li_lista->appendChild($html_li_div2_lista);
+				$html_li_lista->appendChild($html_li_div3_lista);
+				$html_li_lista->appendChild($html_li_div4_lista);
+
+				$html_ol['sl-list-body']->appendChild($html_li_lista);
+
+			}
+
+
+			$arrayIMG = array();
+
+			foreach ($datosCarpetaLocal["archivos"] as $archivo) {
+
+
+				$file_link = $archivo->href;
+
+				$file_name = $archivo->nombre;
+
+				$bytes = $archivo->peso;
+				$creado = $archivo->fechaCreacion;
+
+				$displayIcon = "auto";
+				if ($opcion['showIcons'] != '1') {
+					$displayIcon = "none";
+				}
+
+				$fileLinkMostrar = $file_link;
+
+				if ($opcion['allowDownload'] === '1') {
+					$fileLinkMostrar = $this->downloadLinkGenerator($file_link);
+				}
+
+				$arrayExtThickbox = explode(",", $opcion['thickboxTypes']);
+				$classThickBox = "";
+				$relThickBox = "";
+
+				$lightbox = false;
+				if (in_array($archivo->extension, $arrayExtThickbox)) {
+					$lightbox = true;
+				}
+				else {
+					if (($opcion['imagesPopup'] === '1') && ($archivo->icono == 'page_white_picture_32'))  {
+						$lightbox = true;
+						$relThickBox = "gal_" . $id_content;
+					}
+				}
+
+				if ($lightbox) {
+					$classThickBox = "lightbox";
+					$dataWidth = "1000";
+
+					if ($opcion['dbNativeViewer'] === '1' && $archivo->previsualizacion !== null) {
+						$fileLinkMostrar = $archivo->previsualizacion;
+					}
+					else {
+						$fileLinkMostrar = $this->downloadLinkGenerator($file_link);
+						$fileLinkMostrar = "https://docs.google.com/viewer?url=" . $fileLinkMostrar . "&embedded=true&KeepThis=true&TB_iframe=true&height=400&width=800";
+					}
+
+				}
+
+				if ($opcion['showThumbnail'] === '1' && $archivo->miniatura != null) {
+					$html_li_div_a_div_div_img_lista = $domRetorno->createElement('img');
+					$html_li_div_a_div_div_img_lista->setAttribute('class', "icon thumbnail-image--loaded");
+					$html_li_div_a_div_div_img_lista->setAttribute('id', $archivo->id);
+					$html_li_div_a_div_div_img_lista->setAttribute('src', $archivo->miniatura . '?size=32x32&size_mode=1');
+				}
+				else {
+					$html_li_div_a_div_div_img_lista = $domRetorno->createElement('img');
+					$html_li_div_a_div_div_img_lista->setAttribute('class', "sprite sprite_web s_web_" . $archivo->icono . " icon");
+					$html_li_div_a_div_div_img_lista->setAttribute('id', $archivo->id);
+					$html_li_div_a_div_div_img_lista->setAttribute('src', DROPBOX_FOLDER_SHARE_PLUGIN_URL . 'src/img/icon_spacer.gif');
+				}
+
+
+				$html_li_div_a_div_div_lista = $domRetorno->createElement('div');
+				$html_li_div_a_div_div_lista->setAttribute('class', 'o-flag__fix');
+				$html_li_div_a_div_div_lista->setAttribute('style', "display: {$displayIcon} ");
+				$html_li_div_a_div_div_lista->appendChild($html_li_div_a_div_div_img_lista);
+
+				$html_li_div_a_div_div2_lista = $domRetorno->createElement('div', $file_name);
+				$html_li_div_a_div_div2_lista->setAttribute('class', 'o-flag__flex');
+				$html_li_div_a_div_div2_lista->setAttribute('style', 'flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;');
+
+				$html_li_div_a_div_lista = $domRetorno->createElement('div');
+				$html_li_div_a_div_lista->setAttribute('class', 'o-flag');
+				$html_li_div_a_div_lista->appendChild($html_li_div_a_div_div_lista);
+				$html_li_div_a_div_lista->appendChild($html_li_div_a_div_div2_lista);
+
+				$html_li_div_a_lista = $domRetorno->createElement('a');
+				$html_li_div_a_lista->setAttribute('href', $fileLinkMostrar);
+				//$html_li_div_a_lista->setAttribute('class','sl-file-link '.$classThickBox);
+				$html_li_div_a_lista->setAttribute('class', 'sl-file-link ');
+				$html_li_div_a_lista->setAttribute('title', $file_name);
+				if ($relThickBox != "") {
+					$html_li_div_a_lista->setAttribute('data-gallery', $relThickBox);
+				}
+				$html_li_div_a_lista->setAttribute('data-title', $file_name);
+				$html_li_div_a_lista->setAttribute('data-toggle', $classThickBox);
+				if (isset($dataWidth)) {
+					$html_li_div_a_lista->setAttribute('data-width', $dataWidth);
+				}
+				//$html_li_div_a_lista->setAttribute('data-remote', $fileLinkMostrar);
+				//$html_li_div_a_lista->setAttribute('rel',$relThickBox);
+				$html_li_div_a_lista->appendChild($html_li_div_a_div_lista);
+
+				$html_li_div_lista = $domRetorno->createElement('div');
+				$html_li_div_lista->setAttribute('class', 'sl-list-column sl-list-column--filename');
+				$html_li_div_lista->setAttribute('style', "width: {$seccionesLista[0]}% !important;");
+				$html_li_div_lista->appendChild($html_li_div_a_lista);
+
+				$html_li_div2_lista = $domRetorno->createElement('div', (($opcion['showSize'] != '1') ? "" : self::formatSizeUnits($bytes)));
+				$html_li_div2_lista->setAttribute('class', 'sl-list-column sl-list-column--filesize');
+				$html_li_div2_lista->setAttribute('style', "width: {$seccionesLista[1]}% !important;; display: {$displaySize} ");
+
+				$strFecha = \Carbon\Carbon::createFromTimestamp($creado)->format(isset($opcion['datetimeFormat']) ? $opcion['datetimeFormat'] : get_option('date_format') . " " . get_option('time_format'));
+				//$strFecha = \Carbon\Carbon::createFromTimestamp($creado)->format(get_option('date_format')." ". get_option('time_format'));
+				if ((\Carbon\Carbon::createFromTimestamp($creado)->diffInDays()) <= 30) {
+					$strFecha = \Carbon\Carbon::createFromTimestamp($creado)->diffForHumans();
+				}
+
+				$html_li_div3_lista = $domRetorno->createElement('div', $strFecha);
+				$html_li_div3_lista->setAttribute('class', 'sl-list-column sl-list-column--modified');
+				$html_li_div3_lista->setAttribute('style', "width: {$seccionesLista[2]}% !important;; display: {$displayChange} ");
+
+				$html_li_div4_lista = $domRetorno->createElement('span');
+				if ($opcion['allowDownload'] === '1') {
+					$fileLinkMostrar = $this->downloadLinkGenerator($file_link);
+					$lnkOrigDescarga = $fileLinkMostrar;
+
+					$aDescarga = $domRetorno->createElement('a');
+					$aDescarga->setAttribute('href', $lnkOrigDescarga);
+					//$aDescarga->setAttribute('target', '_blank');
+
+					$html_li_div4_lista = $domRetorno->createElement('i');
+					$html_li_div4_lista->setAttribute('class', 'fa fa-download');
+					$html_li_div4_lista->setAttribute('style', 'color: #0082E6;');
+
+					$aDescarga->appendChild($html_li_div4_lista);
+					$html_li_div4_lista = $aDescarga;
+				}
+
+				$html_li_lista = $domRetorno->createElement('li');
+				$html_li_lista->setAttribute('class', 'sl-list-row clearfix');
+				$html_li_lista->appendChild($html_li_div_lista);
+				$html_li_lista->appendChild($html_li_div2_lista);
+				$html_li_lista->appendChild($html_li_div3_lista);
+				$html_li_lista->appendChild($html_li_div4_lista);
+
+				$domRetorno->appendChild($html_li_lista);
+
+				//d($domRetorno->saveHTML($html_li_lista));
+
+				$html_ol['sl-list-body']->appendChild($html_li_lista);
+
+			}
+			//d($domRetorno->saveHTML($html_ol_lista));
+			//d($datosCarpetaLocal);
+
+
+			/**
+			 * DATOS NECESARIOS
+			 */
+
+
+			$html_div['Hyno_Breadcrumbs'] = $domRetorno->createElement('div');//content $txtNavegacion
+			$html_div['Hyno_Breadcrumbs']->setAttribute('class', 'row');
+			$html_div['Hyno_Breadcrumbs']->setAttribute('id', "Hyno_Breadcrumbs_{$id_content}");
+			$html_div['Hyno_Breadcrumbs']->appendChild($domRetorno->importNode($html_ol['breadcrumb']));
+
+			$html_div['Hyno_Header'] = $domRetorno->createElement('div');//contenido $txtCarpeta
+			$html_div['Hyno_Header']->setAttribute('class', 'sl-header clearfix');
+			$html_div['Hyno_Header']->setAttribute('id', "Hyno_Header_{$id_content}");
+			//$html_div['Hyno_Header']->appendChild($domRetorno->importNode($elemOlBreadcrumbPrincipal, true));
+
+			//-----bloque grande ---
+			$html_div['filename'] = $domRetorno->createElement('div', __('Nombre', 'dropbox-folder-share'));
+			$html_div['filename']->setAttribute('class', 'sl-list-column sl-list-column--filename');
+			$html_div['filename']->setAttribute('style', "width: {$seccionesLista[0]}% !important;");
+
+			$html_div['filesize'] = $domRetorno->createElement('div', __('Tamaño', 'dropbox-folder-share'));
+			$html_div['filesize']->setAttribute('class', 'sl-list-column sl-list-column--filesize');
+			$html_div['filesize']->setAttribute('style', "width: {$seccionesLista[1]}% !important; display: {$displaySize} ");
+
+			$html_div['modified'] = $domRetorno->createElement('div', __('Modificado', 'dropbox-folder-share'));
+			$html_div['modified']->setAttribute('class', 'sl-list-column sl-list-column--modified');
+			$html_div['modified']->setAttribute('style', "width: {$seccionesLista[2]}% !important; display: {$displayChange} ");
+
+
+			$html_div['accion'] = $domRetorno->createElement('span');
+			if ($opcion['allowDownload'] === '1') {
+				$html_div['accion'] = $domRetorno->createElement('div', '');
+				$html_div['accion']->setAttribute('class', 'sl-list-column');
+				$html_div['accion']->setAttribute('style', "width: 4% !important; display: {$displayChange} ");
+			}
+
+
+			$html_div['sl-list-row'] = $domRetorno->createElement('div');
+			$html_div['sl-list-row']->setAttribute('class', 'sl-list-row clearfix');
+			$html_div['sl-list-row']->appendChild($html_div['filename']);
+			$html_div['sl-list-row']->appendChild($html_div['filesize']);
+			$html_div['sl-list-row']->appendChild($html_div['modified']);
+			$html_div['sl-list-row']->appendChild($html_div['accion']);
+
+			$html_div['sl-list-header'] = $domRetorno->createElement('div');
+			$html_div['sl-list-header']->setAttribute('class', 'sl-list-header');
+			$html_div['sl-list-header']->setAttribute('style', "border-bottom: solid 1px; ");
+			$html_div['sl-list-header']->appendChild($html_div['sl-list-row']);
+
+			$html_div['sl-list-container'] = $domRetorno->createElement('div');
+			$html_div['sl-list-container']->setAttribute('class', 'sl-list-container');
+			$html_div['sl-list-container']->appendChild($html_div['sl-list-header']);
+			$html_div['sl-list-container']->appendChild($html_ol['sl-list-body']);
+
+			$html_div['sl-body'] = $domRetorno->createElement('div');
+			$html_div['sl-body']->setAttribute('class', 'sl-body');
+			$html_div['sl-body']->appendChild($html_div['sl-list-container']);
+			//---------------------------------------------------------
+
+			$html_div['sl-page-body'] = $domRetorno->createElement('div');//content $txtNavegacion
+			$html_div['sl-page-body']->setAttribute('class', 'sl-page-body');
+			$html_div['sl-page-body']->appendChild($html_div['Hyno_Breadcrumbs']);
+			$html_div['sl-page-body']->appendChild($html_div['Hyno_Header']);
+			$html_div['sl-page-body']->appendChild($html_div['sl-body']);
+
+			$html_div['sl-body']->setAttribute('class', 'sl-body');
+
+
+			$html_div['Hyno_ContenFolder'] = $domRetorno->createElement('div');
+			$html_div['Hyno_ContenFolder']->setAttribute('class', 'Hyno_ContenFolder');
+			$html_div['Hyno_ContenFolder']->appendChild($html_div['sl-page-body']);
+
+
+			$retorno = json_encode(['html' => $domRetorno->saveHTML($html_div['Hyno_ContenFolder']), 'imgs' => $arrayIMG]);
+		}
 		else {
 
-			// return $response->dataContenido();
+			$html_div['Hyno_Breadcrumbs'] = $domRetorno->createElement('div');//content $txtNavegacion
+			$html_div['Hyno_Breadcrumbs']->setAttribute('class', 'row');
+			$html_div['Hyno_Breadcrumbs']->setAttribute('id', "Hyno_Breadcrumbs_{$id_content}");
+			$html_div['Hyno_Breadcrumbs']->appendChild($domRetorno->importNode($html_ol['breadcrumb']));
 
-			$jsonExtensiones = file_get_contents(__DIR__ . '/json/extensiones.json');
+			$html_div['Hyno_Header'] = $domRetorno->createElement('div');//contenido $txtCarpeta
+			$html_div['Hyno_Header']->setAttribute('class', 'sl-header clearfix');
+			$html_div['Hyno_Header']->setAttribute('id', "Hyno_Header_{$id_content}");
 
-			$domRetorno = new \DOMDocument('1.0', 'UTF-8');
-			$datosCarpetaLocal = [
-				"nombre" => $dataCarpeta->nombre,
-				"path" => $dataCarpeta->linkSubPath,
-				"linkKey" => $dataCarpeta->linkKey,
-				"secureHash" => $dataCarpeta->linkSecureHash,
-				"link" => $dataCarpeta->href,
-				"propietario" => $dataCarpeta->propietario,
-				"archivos" => $dataCarpeta->archivos,
-				"carpetas" => $dataCarpeta->subCarpetas,
-			];
+			$html_img['sl-empty'] = $domRetorno->createElement('img');
+			$html_img['sl-empty']->setAttribute('class', 'sl-empty-folder-icon');
+			$html_img['sl-empty']->setAttribute('src', DROPBOX_FOLDER_SHARE_PLUGIN_URL . 'src/img/carpeta.png');
 
+			$html_h4['sl-empty'] = $domRetorno->createElement('h4', __("Esta carpeta está vacía", "dropbox-folder-share"));
+			$html_h4['sl-empty']->setAttribute('class', 'sl-empty-folder-message');
 
+			$html_div['sl-body'] = $domRetorno->createElement('div');
+			$html_div['sl-body']->setAttribute('class', 'sl-body sl-body--empty-folder');
+			$html_div['sl-body']->appendChild($html_img['sl-empty']);
+			$html_div['sl-body']->appendChild($html_h4['sl-empty']);
 
-			$detalleURL = parse_url($datosCarpetaLocal["link"]);
+			$html_div['sl-page-body'] = $domRetorno->createElement('div');//content $txtNavegacion
+			$html_div['sl-page-body']->setAttribute('class', 'sl-page-body sl-list-container');
+			$html_div['sl-page-body']->appendChild($html_div['Hyno_Breadcrumbs']);
+			$html_div['sl-page-body']->appendChild($html_div['Hyno_Header']);
+			$html_div['sl-page-body']->appendChild($html_div['sl-body']);
 
-			$html_ol['breadcrumb'] = $domRetorno->createElement('ol');
-			$html_ol['breadcrumb']->setAttribute('class', 'breadcrumb');
-			$html_ol['breadcrumb']->setAttribute('style', 'font-size: 16px; margin:0px;');
+			$html_div['Hyno_ContenFolder'] = $domRetorno->createElement('div');
+			$html_div['Hyno_ContenFolder']->setAttribute('class', 'Hyno_ContenFolder');
+			$html_div['Hyno_ContenFolder']->appendChild($html_div['sl-page-body']);
 
+			$retorno = json_encode(['html' => $domRetorno->saveHTML($html_div['Hyno_ContenFolder']), 'imgs' => []]);
 
-			$addLIZip = $domRetorno->createElement('li');
-			if ($opcion['allowDownloadFolder'] === '1') {
 
-				$query_params['dl'] = 1;
-				$detalleURL['query'] = http_build_query($query_params);
-
-				$lnkDescarga = http_build_url($link,
-					$detalleURL,
-					HTTP_URL_STRIP_AUTH | HTTP_URL_JOIN_PATH | HTTP_URL_JOIN_QUERY | HTTP_URL_STRIP_FRAGMENT
-				);
-
-
-				$addIMGZip = $domRetorno->createElement('img');
-				$addIMGZip->setAttribute('src', DROPBOX_FOLDER_SHARE_PLUGIN_URL . 'src/img/zip.png');
-				$addIMGZip->setAttribute('title', __('Descargar carpeta actual (zip)', 'dropbox-folder-share'));
-
-				$addAZip = $domRetorno->createElement('a');
-				$addAZip->setAttribute('href', $lnkDescarga);
-				$addAZip->setAttribute('target', "_blank");
-				$addAZip->appendChild($addIMGZip);
-
-				$addLIZip->setAttribute('class', 'pull-right'); //creado fuera del IF
-				$addLIZip->appendChild($addAZip);
-
-			}
-
-
-			//solo entra si existe una barra de titulo, es decir si es sub carpeta
-			if ($titleBar != null) {
-				$titleBar = str_replace('\\"', '"', $titleBar);
-				$titleBar = str_replace("\\'", "'", $titleBar);
-				$titleBar = str_replace("\\\\", "\\", $titleBar);
-
-				$titleBar = $this->limpiahtml($titleBar);
-
-				$doc = new \DOMDocument();
-
-				$doc->loadHTML(mb_convert_encoding($titleBar, 'HTML-ENTITIES', 'UTF-8'));
-
-				$elemLiBreadcrumb = $doc->getElementsByTagName('li');
-
-				$elemOlBreadcrumb = $doc->getElementsByTagName('ol');
-
-				$lnkSup = false;
-				foreach ($elemLiBreadcrumb as $li) {
-
-					if ($li->getAttribute('class') == 'pull-right') {
-						$li->parentNode->removeChild($li);
-					} else {
-						$html_ol['breadcrumb']->appendChild($domRetorno->importNode($li, true));
-						if ($li->getAttribute('data-id') == $datosCarpetaLocal["secureHash"]) {
-							$lnkSup = true;
-							break;
-						}
-					}
-				}
-
-				$elemA_1 = $domRetorno->createElement('a', $datosCarpetaLocal["nombre"]);
-				$elemA_1->setAttribute('href', $link);
-				$elemA_1->setAttribute('onclick', "loadContenDFS('{$data}', '{$id_content}'); varTitulo = 1; return false;");
-				$elemA_1->setAttribute('data-titulo', '1');
-
-				$elemIMG_2 = $domRetorno->createElement('img');
-				$elemIMG_2->setAttribute('width', '12px');
-				$elemIMG_2->setAttribute('src', DROPBOX_FOLDER_SHARE_PLUGIN_URL . '/src/img/ico-external-link.png');
-
-				$elemA_2 = $domRetorno->createElement('a');
-				$elemA_2->setAttribute('href', $link);
-				$elemA_2->setAttribute('target', '_blank');
-				$elemA_2->appendChild($elemIMG_2);
-
-				$elemLi = $domRetorno->createElement('li');
-				$elemLi->setAttribute('data-id', $datosCarpetaLocal["secureHash"]);
-				$elemLi->appendChild($elemA_1);
-				$elemLi->appendChild($elemA_2);
-
-				if (!$lnkSup) {
-					$html_ol['breadcrumb']->appendChild($elemLi);
-				}
-
-				if ($opcion['allowDownloadFolder'] === '1') {
-					$html_ol['breadcrumb']->appendChild($addLIZip);
-				}
-
-			}
-			else {
-				$html_i['fa-dropbox'] = $domRetorno->createElement('i');
-				$html_i['fa-dropbox']->setAttribute('class', 'fa fa-dropbox');
-				$html_i['fa-dropbox']->setAttribute('style', 'color: #0082E6;');
-
-				$html_li[0] = $domRetorno->createElement('li');
-				$html_li[0]->appendChild($html_i['fa-dropbox']);
-
-				$html_a['ajax'] = $domRetorno->createElement('a', $datosCarpetaLocal["nombre"]);
-				$html_a['ajax']->setAttribute('href', $link);
-				$html_a['ajax']->setAttribute('data-titulo', '1');
-				$html_a['ajax']->setAttribute('onclick', "loadContenDFS('{$data}', '{$id_content}'); varTitulo = 1; return false;");
-
-				$html_img['ext_icon'] = $domRetorno->createElement('img');
-				$html_img['ext_icon']->setAttribute('width', '12px');
-				$html_img['ext_icon']->setAttribute('src', DROPBOX_FOLDER_SHARE_PLUGIN_URL . "src/img/ico-external-link.png");
-
-				$html_a['blank'] = $domRetorno->createElement('a');
-				$html_a['blank']->setAttribute('href', $link);
-				$html_a['blank']->setAttribute('target', '_blank');
-				$html_a['blank']->appendChild($html_img['ext_icon']);
-
-				$html_li[1] = $domRetorno->createElement('li');
-				$html_li[1]->setAttribute('data-id', $datosCarpetaLocal["secureHash"]);
-				$html_li[1]->appendChild($html_a['ajax']);
-				$html_li[1]->appendChild($html_a['blank']);
-
-				//$html_ol['breadcrumb'] creado al inicio del if de este else y superior
-				$html_ol['breadcrumb']->appendChild($html_li[0]);
-				$html_ol['breadcrumb']->appendChild($html_li[1]);
-				if ($opcion['allowDownloadFolder'] === '1') {
-					$html_ol['breadcrumb']->appendChild($addLIZip);
-				}
-
-			}
-
-
-			$cantData = count($datosCarpetaLocal["carpetas"]) + count($datosCarpetaLocal["archivos"]);
-
-			if ($cantData > 0) {
-
-
-				if ($opcion['link2Folder'] != '1') {
-
-					$domRetorno->appendChild($html_ol['breadcrumb']);
-
-					$this->EliminarTAG($domRetorno, '//a');
-					$this->EliminarTAG($domRetorno, '//img[@width="12px"]');
-
-				}
-
-
-				$displaySize = "auto";
-				$displayChange = "auto";
-				$seccionesLista = [58.6, 19.5, 21.9];
-				if (($opcion['allowDownload'] === '1') || ($opcion['allowDownloadFolder'] === '1')) {
-					$seccionesLista = [58.6, 16.5, 18.9];
-				}
-				if(wp_is_mobile()){
-					$seccionesLista = [100, 0, 0];
-					if (($opcion['allowDownload'] === '1') || ($opcion['allowDownloadFolder'] === '1')) {
-						$seccionesLista = [94, 0, 0];
-					}
-					$displaySize = "none";
-					$displayChange = "none";
-				}
-				else{
-					if ($opcion['showSize'] != '1') {
-						$displaySize = "none";
-						$seccionesLista[0] += $seccionesLista[1];
-						$seccionesLista[1] = 0;
-					}
-
-
-					if ($opcion['showChange'] != '1') {
-						$displayChange = "none";
-						$seccionesLista[0] += $seccionesLista[2];
-						$seccionesLista[2] = 0;
-					}
-				}
-
-
-				$html_ol['sl-list-body'] = $domRetorno->createElement('ol');//revisar separacion
-				$html_ol['sl-list-body']->setAttribute('class', 'sl-list-body o-list-ui o-list-ui--dividers');
-				$html_ol['sl-list-body']->setAttribute('style', "max-height:" . (($opcion['defaultHeight'] != '0') ? $opcion['defaultHeight'] : 'auto') . "; overflow:auto; margin: 0px !important");
-				foreach ($datosCarpetaLocal["carpetas"] as $carpeta) {
-					$folderName = $carpeta->nombre;
-					$folderHref = $carpeta->href;
-					$opciones_shortcode['link'] = $folderHref;
-
-					$data = json_encode($opciones_shortcode);
-					$data = str_replace("\"", "\\'", $data);
-					$data = 'rev_' . $data;
-
-					$displayIcon = "auto";
-					if ($opcion['showIcons'] != '1') {
-						$displayIcon = "none";
-					}
-
-					$html_li_div_a_div_div_img_lista = $domRetorno->createElement('img');
-					$html_li_div_a_div_div_img_lista->setAttribute('class', 'sprite sprite_web s_web_folder_32 icon');
-					$html_li_div_a_div_div_img_lista->setAttribute('src', DROPBOX_FOLDER_SHARE_PLUGIN_URL . 'src/img/icon_spacer.gif');
-
-					$html_li_div_a_div_div_lista = $domRetorno->createElement('div');
-					$html_li_div_a_div_div_lista->setAttribute('class', 'o-flag__fix');
-					$html_li_div_a_div_div_lista->setAttribute('style', "display: {$displayIcon} ");
-					$html_li_div_a_div_div_lista->appendChild($html_li_div_a_div_div_img_lista);
-
-					$html_li_div_a_div_div2_lista = $domRetorno->createElement('div', $folderName);
-					$html_li_div_a_div_div2_lista->setAttribute('class', 'o-flag__flex');
-					$html_li_div_a_div_div2_lista->setAttribute('style', 'flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;');
-					//$html_li_div_a_div_div2_lista->setAttribute('style',"display: {$displayIcon} ");
-
-					$html_li_div_a_div_lista = $domRetorno->createElement('div');
-					$html_li_div_a_div_lista->setAttribute('class', 'o-flag');
-					$html_li_div_a_div_lista->appendChild($html_li_div_a_div_div_lista);
-					$html_li_div_a_div_lista->appendChild($html_li_div_a_div_div2_lista);
-
-
-					$html_li_div_a_lista = $domRetorno->createElement('a');
-					$html_li_div_a_lista->setAttribute('href', $folderHref);
-					$html_li_div_a_lista->setAttribute('data-titulo', '1');
-					if ($opcion['allowBrowseFolder'] == '1') {
-						$html_li_div_a_lista->setAttribute('onclick', "loadContenDFS('{$data}', '{$id_content}'); varTitulo = 1; return false;");
-					} else {
-						$html_li_div_a_lista->setAttribute('onclick', "return false;");
-					}
-					$html_li_div_a_lista->setAttribute('class', 'sl-file-link');
-					$html_li_div_a_lista->appendChild($html_li_div_a_div_lista);
-
-					$html_li_div_lista = $domRetorno->createElement('div');
-					$html_li_div_lista->setAttribute('class', 'sl-list-column sl-list-column--filename');
-					$html_li_div_lista->setAttribute('style', "width: {$seccionesLista[0]}% !important;");
-					$html_li_div_lista->appendChild($html_li_div_a_lista);
-
-					$html_li_div2_lista = $domRetorno->createElement('div', '--');
-					$html_li_div2_lista->setAttribute('class', 'sl-list-column sl-list-column--filesize');
-					$html_li_div2_lista->setAttribute('style', "width: {$seccionesLista[1]}% !important;; display: {$displaySize} ");
-
-					$html_li_div3_lista = $domRetorno->createElement('div', '--');
-					$html_li_div3_lista->setAttribute('class', 'sl-list-column sl-list-column--modified');
-					$html_li_div3_lista->setAttribute('style', "width: {$seccionesLista[2]}% !important;; display: {$displayChange} ");
-
-					$html_li_div4_lista = $domRetorno->createElement('span');
-					if ($opcion['allowDownloadFolder'] === '1') {
-						$fileLinkMostrar = $this->downloadLinkGenerator($folderHref);
-						$lnkOrigDescarga = $fileLinkMostrar;
-
-						$aDescarga = $domRetorno->createElement('a');
-						$aDescarga->setAttribute('href', $lnkOrigDescarga);
-						//$aDescarga->setAttribute('target', '_blank');
-
-						$html_li_div4_lista = $domRetorno->createElement('i');
-						$html_li_div4_lista->setAttribute('class', 'fa fa-file-archive-o');
-						$html_li_div4_lista->setAttribute('style', 'color: #0082E6;');
-						$aDescarga->appendChild($html_li_div4_lista);
-						$html_li_div4_lista = $aDescarga;
-					}
-
-					//<i class="fas fa-download"></i>
-
-
-					$html_li_lista = $domRetorno->createElement('li');
-					$html_li_lista->setAttribute('class', 'sl-list-row clearfix');
-					$html_li_lista->appendChild($html_li_div_lista);
-					$html_li_lista->appendChild($html_li_div2_lista);
-					$html_li_lista->appendChild($html_li_div3_lista);
-					$html_li_lista->appendChild($html_li_div4_lista);
-
-					$html_ol['sl-list-body']->appendChild($html_li_lista);
-
-				}
-
-
-				$arrayIMG = array();
-
-				foreach ($datosCarpetaLocal["archivos"] as $archivo) {
-
-
-					$file_link = $archivo->href;
-
-					$file_name = $archivo->nombre;
-
-					$bytes = $archivo->peso;
-					$creado = $archivo->fechaCreacion;
-
-					$displayIcon = "auto";
-					if ($opcion['showIcons'] != '1') {
-						$displayIcon = "none";
-					}
-
-					$fileLinkMostrar = $file_link;
-
-					if ($opcion['allowDownload'] === '1') {
-						$fileLinkMostrar = $this->downloadLinkGenerator($file_link);
-					}
-
-					$arrayExtThickbox = explode(",", $opcion['thickboxTypes']);
-					$classThickBox = "";
-					$relThickBox = "";
-
-					$lightbox = false;
-					if (in_array($archivo->extension, $arrayExtThickbox)) {
-						$lightbox = true;
-					}
-					else {
-						if (($opcion['imagesPopup'] === '1') && ($archivo->icono == 'page_white_picture_32'))  {
-							$lightbox = true;
-							$relThickBox = "gal_" . $id_content;
-						}
-					}
-
-					if ($lightbox) {
-						$classThickBox = "lightbox";
-						$dataWidth = "1000";
-
-						if ($opcion['dbNativeViewer'] === '1' && $archivo->previsualizacion !== null) {
-							$fileLinkMostrar = $archivo->previsualizacion;
-						}
-						else {
-							$fileLinkMostrar = $this->downloadLinkGenerator($file_link);
-							$fileLinkMostrar = "https://docs.google.com/viewer?url=" . $fileLinkMostrar . "&embedded=true&KeepThis=true&TB_iframe=true&height=400&width=800";
-						}
-
-					}
-
-					if ($opcion['showThumbnail'] === '1' && $archivo->miniatura != null) {
-						$html_li_div_a_div_div_img_lista = $domRetorno->createElement('img');
-						$html_li_div_a_div_div_img_lista->setAttribute('class', "icon thumbnail-image--loaded");
-						$html_li_div_a_div_div_img_lista->setAttribute('id', $archivo->id);
-						$html_li_div_a_div_div_img_lista->setAttribute('src', $archivo->miniatura . '?size=32x32&size_mode=1');
-					}
-					else {
-						$html_li_div_a_div_div_img_lista = $domRetorno->createElement('img');
-						$html_li_div_a_div_div_img_lista->setAttribute('class', "sprite sprite_web s_web_" . $archivo->icono . " icon");
-						$html_li_div_a_div_div_img_lista->setAttribute('id', $archivo->id);
-						$html_li_div_a_div_div_img_lista->setAttribute('src', DROPBOX_FOLDER_SHARE_PLUGIN_URL . 'src/img/icon_spacer.gif');
-					}
-
-
-					$html_li_div_a_div_div_lista = $domRetorno->createElement('div');
-					$html_li_div_a_div_div_lista->setAttribute('class', 'o-flag__fix');
-					$html_li_div_a_div_div_lista->setAttribute('style', "display: {$displayIcon} ");
-					$html_li_div_a_div_div_lista->appendChild($html_li_div_a_div_div_img_lista);
-
-					$html_li_div_a_div_div2_lista = $domRetorno->createElement('div', $file_name);
-					$html_li_div_a_div_div2_lista->setAttribute('class', 'o-flag__flex');
-					$html_li_div_a_div_div2_lista->setAttribute('style', 'flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;');
-
-					$html_li_div_a_div_lista = $domRetorno->createElement('div');
-					$html_li_div_a_div_lista->setAttribute('class', 'o-flag');
-					$html_li_div_a_div_lista->appendChild($html_li_div_a_div_div_lista);
-					$html_li_div_a_div_lista->appendChild($html_li_div_a_div_div2_lista);
-
-					$html_li_div_a_lista = $domRetorno->createElement('a');
-					$html_li_div_a_lista->setAttribute('href', $fileLinkMostrar);
-					//$html_li_div_a_lista->setAttribute('class','sl-file-link '.$classThickBox);
-					$html_li_div_a_lista->setAttribute('class', 'sl-file-link ');
-					$html_li_div_a_lista->setAttribute('title', $file_name);
-					if ($relThickBox != "") {
-						$html_li_div_a_lista->setAttribute('data-gallery', $relThickBox);
-					}
-					$html_li_div_a_lista->setAttribute('data-title', $file_name);
-					$html_li_div_a_lista->setAttribute('data-toggle', $classThickBox);
-					if (isset($dataWidth)) {
-						$html_li_div_a_lista->setAttribute('data-width', $dataWidth);
-					}
-					//$html_li_div_a_lista->setAttribute('data-remote', $fileLinkMostrar);
-					//$html_li_div_a_lista->setAttribute('rel',$relThickBox);
-					$html_li_div_a_lista->appendChild($html_li_div_a_div_lista);
-
-					$html_li_div_lista = $domRetorno->createElement('div');
-					$html_li_div_lista->setAttribute('class', 'sl-list-column sl-list-column--filename');
-					$html_li_div_lista->setAttribute('style', "width: {$seccionesLista[0]}% !important;");
-					$html_li_div_lista->appendChild($html_li_div_a_lista);
-
-					$html_li_div2_lista = $domRetorno->createElement('div', (($opcion['showSize'] != '1') ? "" : self::formatSizeUnits($bytes)));
-					$html_li_div2_lista->setAttribute('class', 'sl-list-column sl-list-column--filesize');
-					$html_li_div2_lista->setAttribute('style', "width: {$seccionesLista[1]}% !important;; display: {$displaySize} ");
-
-					$strFecha = \Carbon\Carbon::createFromTimestamp($creado)->format(isset($opcion['datetimeFormat']) ? $opcion['datetimeFormat'] : get_option('date_format') . " " . get_option('time_format'));
-					//$strFecha = \Carbon\Carbon::createFromTimestamp($creado)->format(get_option('date_format')." ". get_option('time_format'));
-					if ((\Carbon\Carbon::createFromTimestamp($creado)->diffInDays()) <= 30) {
-						$strFecha = \Carbon\Carbon::createFromTimestamp($creado)->diffForHumans();
-					}
-
-					$html_li_div3_lista = $domRetorno->createElement('div', $strFecha);
-					$html_li_div3_lista->setAttribute('class', 'sl-list-column sl-list-column--modified');
-					$html_li_div3_lista->setAttribute('style', "width: {$seccionesLista[2]}% !important;; display: {$displayChange} ");
-
-					$html_li_div4_lista = $domRetorno->createElement('span');
-					if ($opcion['allowDownload'] === '1') {
-						$fileLinkMostrar = $this->downloadLinkGenerator($file_link);
-						$lnkOrigDescarga = $fileLinkMostrar;
-
-						$aDescarga = $domRetorno->createElement('a');
-						$aDescarga->setAttribute('href', $lnkOrigDescarga);
-						//$aDescarga->setAttribute('target', '_blank');
-
-						$html_li_div4_lista = $domRetorno->createElement('i');
-						$html_li_div4_lista->setAttribute('class', 'fa fa-download');
-						$html_li_div4_lista->setAttribute('style', 'color: #0082E6;');
-
-						$aDescarga->appendChild($html_li_div4_lista);
-						$html_li_div4_lista = $aDescarga;
-					}
-
-					$html_li_lista = $domRetorno->createElement('li');
-					$html_li_lista->setAttribute('class', 'sl-list-row clearfix');
-					$html_li_lista->appendChild($html_li_div_lista);
-					$html_li_lista->appendChild($html_li_div2_lista);
-					$html_li_lista->appendChild($html_li_div3_lista);
-					$html_li_lista->appendChild($html_li_div4_lista);
-
-					$domRetorno->appendChild($html_li_lista);
-
-					//d($domRetorno->saveHTML($html_li_lista));
-
-					$html_ol['sl-list-body']->appendChild($html_li_lista);
-
-				}
-				//d($domRetorno->saveHTML($html_ol_lista));
-				//d($datosCarpetaLocal);
-
-
-				/**
-				 * DATOS NECESARIOS
-				 */
-
-
-				$html_div['Hyno_Breadcrumbs'] = $domRetorno->createElement('div');//content $txtNavegacion
-				$html_div['Hyno_Breadcrumbs']->setAttribute('class', 'row');
-				$html_div['Hyno_Breadcrumbs']->setAttribute('id', "Hyno_Breadcrumbs_{$id_content}");
-				$html_div['Hyno_Breadcrumbs']->appendChild($domRetorno->importNode($html_ol['breadcrumb']));
-
-				$html_div['Hyno_Header'] = $domRetorno->createElement('div');//contenido $txtCarpeta
-				$html_div['Hyno_Header']->setAttribute('class', 'sl-header clearfix');
-				$html_div['Hyno_Header']->setAttribute('id', "Hyno_Header_{$id_content}");
-				//$html_div['Hyno_Header']->appendChild($domRetorno->importNode($elemOlBreadcrumbPrincipal, true));
-
-				//-----bloque grande ---
-				$html_div['filename'] = $domRetorno->createElement('div', __('Nombre', 'dropbox-folder-share'));
-				$html_div['filename']->setAttribute('class', 'sl-list-column sl-list-column--filename');
-				$html_div['filename']->setAttribute('style', "width: {$seccionesLista[0]}% !important;");
-
-				$html_div['filesize'] = $domRetorno->createElement('div', __('Tamaño', 'dropbox-folder-share'));
-				$html_div['filesize']->setAttribute('class', 'sl-list-column sl-list-column--filesize');
-				$html_div['filesize']->setAttribute('style', "width: {$seccionesLista[1]}% !important; display: {$displaySize} ");
-
-				$html_div['modified'] = $domRetorno->createElement('div', __('Modificado', 'dropbox-folder-share'));
-				$html_div['modified']->setAttribute('class', 'sl-list-column sl-list-column--modified');
-				$html_div['modified']->setAttribute('style', "width: {$seccionesLista[2]}% !important; display: {$displayChange} ");
-
-
-				$html_div['accion'] = $domRetorno->createElement('span');
-				if ($opcion['allowDownload'] === '1') {
-					$html_div['accion'] = $domRetorno->createElement('div', '');
-					$html_div['accion']->setAttribute('class', 'sl-list-column');
-					$html_div['accion']->setAttribute('style', "width: 4% !important; display: {$displayChange} ");
-				}
-
-
-				$html_div['sl-list-row'] = $domRetorno->createElement('div');
-				$html_div['sl-list-row']->setAttribute('class', 'sl-list-row clearfix');
-				$html_div['sl-list-row']->appendChild($html_div['filename']);
-				$html_div['sl-list-row']->appendChild($html_div['filesize']);
-				$html_div['sl-list-row']->appendChild($html_div['modified']);
-				$html_div['sl-list-row']->appendChild($html_div['accion']);
-
-				$html_div['sl-list-header'] = $domRetorno->createElement('div');
-				$html_div['sl-list-header']->setAttribute('class', 'sl-list-header');
-				$html_div['sl-list-header']->setAttribute('style', "border-bottom: solid 1px; ");
-				$html_div['sl-list-header']->appendChild($html_div['sl-list-row']);
-
-				$html_div['sl-list-container'] = $domRetorno->createElement('div');
-				$html_div['sl-list-container']->setAttribute('class', 'sl-list-container');
-				$html_div['sl-list-container']->appendChild($html_div['sl-list-header']);
-				$html_div['sl-list-container']->appendChild($html_ol['sl-list-body']);
-
-				$html_div['sl-body'] = $domRetorno->createElement('div');
-				$html_div['sl-body']->setAttribute('class', 'sl-body');
-				$html_div['sl-body']->appendChild($html_div['sl-list-container']);
-				//---------------------------------------------------------
-
-				$html_div['sl-page-body'] = $domRetorno->createElement('div');//content $txtNavegacion
-				$html_div['sl-page-body']->setAttribute('class', 'sl-page-body');
-				$html_div['sl-page-body']->appendChild($html_div['Hyno_Breadcrumbs']);
-				$html_div['sl-page-body']->appendChild($html_div['Hyno_Header']);
-				$html_div['sl-page-body']->appendChild($html_div['sl-body']);
-
-				$html_div['sl-body']->setAttribute('class', 'sl-body');
-
-
-				$html_div['Hyno_ContenFolder'] = $domRetorno->createElement('div');
-				$html_div['Hyno_ContenFolder']->setAttribute('class', 'Hyno_ContenFolder');
-				$html_div['Hyno_ContenFolder']->appendChild($html_div['sl-page-body']);
-
-
-				$retorno = json_encode(['html' => $domRetorno->saveHTML($html_div['Hyno_ContenFolder']), 'imgs' => $arrayIMG]);
-			}
-			else {
-
-				$html_div['Hyno_Breadcrumbs'] = $domRetorno->createElement('div');//content $txtNavegacion
-				$html_div['Hyno_Breadcrumbs']->setAttribute('class', 'row');
-				$html_div['Hyno_Breadcrumbs']->setAttribute('id', "Hyno_Breadcrumbs_{$id_content}");
-				$html_div['Hyno_Breadcrumbs']->appendChild($domRetorno->importNode($html_ol['breadcrumb']));
-
-				$html_div['Hyno_Header'] = $domRetorno->createElement('div');//contenido $txtCarpeta
-				$html_div['Hyno_Header']->setAttribute('class', 'sl-header clearfix');
-				$html_div['Hyno_Header']->setAttribute('id', "Hyno_Header_{$id_content}");
-
-				$html_img['sl-empty'] = $domRetorno->createElement('img');
-				$html_img['sl-empty']->setAttribute('class', 'sl-empty-folder-icon');
-				$html_img['sl-empty']->setAttribute('src', DROPBOX_FOLDER_SHARE_PLUGIN_URL . 'src/img/carpeta.png');
-
-				$html_h4['sl-empty'] = $domRetorno->createElement('h4', __("Esta carpeta está vacía", "dropbox-folder-share"));
-				$html_h4['sl-empty']->setAttribute('class', 'sl-empty-folder-message');
-
-				$html_div['sl-body'] = $domRetorno->createElement('div');
-				$html_div['sl-body']->setAttribute('class', 'sl-body sl-body--empty-folder');
-				$html_div['sl-body']->appendChild($html_img['sl-empty']);
-				$html_div['sl-body']->appendChild($html_h4['sl-empty']);
-
-				$html_div['sl-page-body'] = $domRetorno->createElement('div');//content $txtNavegacion
-				$html_div['sl-page-body']->setAttribute('class', 'sl-page-body sl-list-container');
-				$html_div['sl-page-body']->appendChild($html_div['Hyno_Breadcrumbs']);
-				$html_div['sl-page-body']->appendChild($html_div['Hyno_Header']);
-				$html_div['sl-page-body']->appendChild($html_div['sl-body']);
-
-				$html_div['Hyno_ContenFolder'] = $domRetorno->createElement('div');
-				$html_div['Hyno_ContenFolder']->setAttribute('class', 'Hyno_ContenFolder');
-				$html_div['Hyno_ContenFolder']->appendChild($html_div['sl-page-body']);
-
-				$retorno = json_encode(['html' => $domRetorno->saveHTML($html_div['Hyno_ContenFolder']), 'imgs' => []]);
-
-
-			}
-
-
-			return $retorno;
 		}
-    }
+
+
+		return $retorno;
+	}
 
     function downloadLinkGenerator($link, $query_params = array()) {
         if (count($query_params) === 0)

@@ -27,7 +27,6 @@ class FetchCurl {
 	 */
 	public function getContent($url, $headers = false, $tipo = 'get', $data = array(), $cookies =  array(), $otherHeaders = array(), $locale = 'es-ES') {
 		$curl = new Curl();
-
 		$curl->setopt(CURLOPT_RETURNTRANSFER, TRUE);
 		$curl->setopt(CURLOPT_SSL_VERIFYPEER, FALSE);
 
@@ -36,7 +35,8 @@ class FetchCurl {
 			$curl->setopt(CURLOPT_NOBODY, true);
 		}
 		$curl->setopt(CURLOPT_FOLLOWLOCATION, true);
-		$curl->setHeader('Accept-Language', $locale);
+		$curl->setHeader('User-Agent', 'Mozilla/5.0 (Linux; U; Android 4.3; en-us; SM-N900T Build/JSS15J) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30');
+		$curl->setHeader('Accept-Language', $locale . ',en-US;q=0.7,en;q=0.3');
 
 		foreach ($otherHeaders as $head => $value) {
 			$curl->setHeader($head, $value);
@@ -56,10 +56,6 @@ class FetchCurl {
 				$curl->get($url);
 				break;
 		}
-
-		//$fh = fopen('local-copy-of-files.html','w') or die($php_errormsg);
-		//$curl->download($url, 'b.txt');
-		//$curl->getResponseHeaders();
 
 		return $curl;
 

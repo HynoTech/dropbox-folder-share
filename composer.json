@@ -21,7 +21,8 @@
     "askupa-software/amarkal-admin-notification": "dev-master",
     "php-curl-class/php-curl-class": "8.6.2",
     "ext-curl": "*",
-    "ext-json": "*"
+    "ext-json": "*",
+    "ext-http": "*"
   },
   "require-dev": {
     "kint-php/kint": "dev-master"
