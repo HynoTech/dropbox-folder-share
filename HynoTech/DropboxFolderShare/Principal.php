@@ -9,7 +9,7 @@
 namespace HynoTech\DropboxFolderShare;
 
 
-use HynoTech\Cloud\Dropbox;
+use HynoTech\Drives\Cloud\Dropbox;
 
 Class Principal
 {
