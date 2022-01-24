@@ -2,5 +2,5 @@
 	path = HynoTech/UsosGenerales
 	url = https://gitlab.com/hynotech/wordpress/plugins/usos-generales.git
 [submodule "HynoTech/Cloud"]
-	path = HynoTech/Cloud
-	url = git@gitlab.com:hynotech/wordpress/plugins/cloud.git
+	path = HynoTech/Drives
+	url = git@gitlab.com:hynotech/wordpress/plugins/drives.git
