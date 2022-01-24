@@ -17,12 +17,12 @@
   },
   "require": {
     "php": ">=5.4",
+    "symfony/polyfill-mbstring": "1.20.0",
     "nesbot/carbon": "1.19",
     "askupa-software/amarkal-admin-notification": "dev-master",
     "php-curl-class/php-curl-class": "^9.5.1",
     "ext-curl": "*",
-    "ext-json": "*",
-    "ext-http": "*"
+    "ext-json": "*"
   },
   "require-dev": {
     "kint-php/kint": "dev-master"
