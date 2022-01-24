@@ -1,9 +1,9 @@
 # PHP Curl Class: HTTP requests made easy
 
-[![](https://img.shields.io/github/release/php-curl-class/php-curl-class.svg)](https://github.com/php-curl-class/php-curl-class/releases/)
-[![](https://img.shields.io/github/license/php-curl-class/php-curl-class.svg)](https://github.com/php-curl-class/php-curl-class/blob/master/LICENSE)
-[![](https://img.shields.io/travis/php-curl-class/php-curl-class.svg)](https://travis-ci.org/php-curl-class/php-curl-class/)
-[![](https://img.shields.io/packagist/dt/php-curl-class/php-curl-class.svg)](https://github.com/php-curl-class/php-curl-class/releases/)
+[![](https://img.shields.io/github/release/php-curl-class/php-curl-class.svg?style=flat-square&sort=semver)](https://github.com/php-curl-class/php-curl-class/releases/)
+[![](https://img.shields.io/github/license/php-curl-class/php-curl-class.svg?style=flat-square)](https://github.com/php-curl-class/php-curl-class/blob/master/LICENSE)
+[![](https://img.shields.io/github/workflow/status/php-curl-class/php-curl-class/ci?style=flat-square)](https://github.com/php-curl-class/php-curl-class/actions/workflows/ci.yml)
+[![](https://img.shields.io/packagist/dt/php-curl-class/php-curl-class.svg?style=flat-square)](https://github.com/php-curl-class/php-curl-class/releases/)
 
 PHP Curl Class makes it easy to send HTTP requests and integrate with web APIs.
 
@@ -34,7 +34,7 @@ For latest commit version:
 
 ### Requirements
 
-PHP Curl Class works with PHP 5.3, 5.4, 5.5, 5.6, 7.0, 7.1, 7.2, 7.3, and HHVM.
+PHP Curl Class works with PHP 7.0, 7.1, 7.2, 7.3, 7.4, 8.0, and 8.1.
 
 ### Quick Start and Examples
 
@@ -43,7 +43,7 @@ More examples are available under [/examples](https://github.com/php-curl-class/
 ```php
 require __DIR__ . '/vendor/autoload.php';
 
-use \Curl\Curl;
+use Curl\Curl;
 
 $curl = new Curl();
 $curl->get('https://www.example.com/');
@@ -59,17 +59,17 @@ if ($curl->error) {
 ```php
 // https://www.example.com/search?q=keyword
 $curl = new Curl();
-$curl->get('https://www.example.com/search', array(
+$curl->get('https://www.example.com/search', [
     'q' => 'keyword',
-));
+]);
 ```
 
 ```php
 $curl = new Curl();
-$curl->post('https://www.example.com/login/', array(
+$curl->post('https://www.example.com/login/', [
     'username' => 'myusername',
     'password' => 'mypassword',
-));
+]);
 ```
 
 ```php
@@ -94,37 +94,37 @@ var_dump($curl->responseHeaders);
 
 ```php
 $curl = new Curl();
-$curl->setOpt(CURLOPT_FOLLOWLOCATION, true);
+$curl->setFollowLocation();
 $curl->get('https://shortn.example.com/bHbVsP');
 ```
 
 ```php
 $curl = new Curl();
-$curl->put('https://api.example.com/user/', array(
+$curl->put('https://api.example.com/user/', [
     'first_name' => 'Zach',
     'last_name' => 'Borboa',
-));
+]);
 ```
 
 ```php
 $curl = new Curl();
-$curl->patch('https://api.example.com/profile/', array(
+$curl->patch('https://api.example.com/profile/', [
     'image' => '@path/to/file.jpg',
-));
+]);
 ```
 
 ```php
 $curl = new Curl();
-$curl->patch('https://api.example.com/profile/', array(
+$curl->patch('https://api.example.com/profile/', [
     'image' => new CURLFile('path/to/file.jpg'),
-));
+]);
 ```
 
 ```php
 $curl = new Curl();
-$curl->delete('https://api.example.com/user/', array(
+$curl->delete('https://api.example.com/user/', [
     'id' => '1234',
-));
+]);
 ```
 
 ```php
@@ -156,7 +156,7 @@ curl_close($curl->curl);
 ```php
 require __DIR__ . '/vendor/autoload.php';
 
-use \Curl\MultiCurl;
+use Curl\MultiCurl;
 
 // Requests in parallel with callback functions.
 $multi_curl = new MultiCurl();
@@ -175,15 +175,15 @@ $multi_curl->complete(function($instance) {
     echo 'call completed' . "\n";
 });
 
-$multi_curl->addGet('https://www.google.com/search', array(
+$multi_curl->addGet('https://www.google.com/search', [
     'q' => 'hello world',
-));
-$multi_curl->addGet('https://duckduckgo.com/', array(
+]);
+$multi_curl->addGet('https://duckduckgo.com/', [
     'q' => 'hello world',
-));
-$multi_curl->addGet('https://www.bing.com/search', array(
+]);
+$multi_curl->addGet('https://www.bing.com/search', [
     'q' => 'hello world',
-));
+]);
 
 $multi_curl->start(); // Blocks until all items in the queue have been processed.
 ```
@@ -195,18 +195,21 @@ More examples are available under [/examples](https://github.com/php-curl-class/
 Curl::__construct($base_url = null)
 Curl::__destruct()
 Curl::__get($name)
+Curl::_fastDownload($url, $filename, $connections = 4) {
 Curl::attemptRetry()
 Curl::beforeSend($callback)
 Curl::buildPostData($data)
 Curl::call()
 Curl::close()
 Curl::complete($callback)
-Curl::delete($url, $query_parameters = array(), $data = array())
+Curl::delete($url, $query_parameters = [], $data = [])
+Curl::diagnose($return = false)
+Curl::disableTimeout()
 Curl::download($url, $mixed_filename)
 Curl::error($callback)
 Curl::exec($ch = null)
 Curl::execDone()
-Curl::get($url, $data = array())
+Curl::get($url, $data = [])
 Curl::getAttempts()
 Curl::getBeforeSendCallback()
 Curl::getCompleteCallback()
@@ -239,19 +242,21 @@ Curl::getRetryDecider()
 Curl::getSuccessCallback()
 Curl::getUrl()
 Curl::getXmlDecoder()
-Curl::head($url, $data = array())
+Curl::head($url, $data = [])
 Curl::isChildOfMultiCurl()
 Curl::isCurlError()
 Curl::isError()
 Curl::isHttpError()
-Curl::options($url, $data = array())
-Curl::patch($url, $data = array())
+Curl::options($url, $data = [])
+Curl::patch($url, $data = [])
 Curl::post($url, $data = '', $follow_303_with_post = false)
 Curl::progress($callback)
-Curl::put($url, $data = array())
+Curl::put($url, $data = [])
 Curl::removeHeader($key)
 Curl::reset()
-Curl::search($url, $data = array())
+Curl::search($url, $data = [])
+Curl::setAutoReferer($auto_referer = true)
+Curl::setAutoReferrer($auto_referrer = true)
 Curl::setBasicAuthentication($username, $password = '')
 Curl::setConnectTimeout($seconds)
 Curl::setCookie($key, $value)
@@ -265,10 +270,15 @@ Curl::setDefaultTimeout()
 Curl::setDefaultUserAgent()
 Curl::setDefaultXmlDecoder()
 Curl::setDigestAuthentication($username, $password = '')
+Curl::setFile($file)
+Curl::setFollowLocation($follow_location = true)
+Curl::setForbidReuse($forbid_reuse = true)
 Curl::setHeader($key, $value)
 Curl::setHeaders($headers)
+Curl::setInterface($interface)
 Curl::setJsonDecoder($mixed)
 Curl::setMaxFilesize($bytes)
+Curl::setMaximumRedirects($maximum_redirects)
 Curl::setOpt($option, $value)
 Curl::setOpts($options)
 Curl::setPort($port)
@@ -276,9 +286,11 @@ Curl::setProxy($proxy, $port = null, $username = null, $password = null)
 Curl::setProxyAuth($auth)
 Curl::setProxyTunnel($tunnel = true)
 Curl::setProxyType($type)
+Curl::setRange($range)
 Curl::setReferer($referer)
 Curl::setReferrer($referrer)
 Curl::setRetry($mixed)
+Curl::setStop($callback)
 Curl::setTimeout($seconds)
 Curl::setUrl($url, $mixed_data = '')
 Curl::setUserAgent($user_agent)
@@ -286,25 +298,28 @@ Curl::setXmlDecoder($mixed)
 Curl::success($callback)
 Curl::unsetHeader($key)
 Curl::unsetProxy()
-Curl::verbose($on = true, $output = STDERR)
+Curl::verbose($on = true, $output = 'STDERR')
 MultiCurl::__construct($base_url = null)
 MultiCurl::__destruct()
 MultiCurl::addCurl(Curl $curl)
-MultiCurl::addDelete($url, $query_parameters = array(), $data = array())
+MultiCurl::addDelete($url, $query_parameters = [], $data = [])
 MultiCurl::addDownload($url, $mixed_filename)
-MultiCurl::addGet($url, $data = array())
-MultiCurl::addHead($url, $data = array())
-MultiCurl::addOptions($url, $data = array())
-MultiCurl::addPatch($url, $data = array())
+MultiCurl::addGet($url, $data = [])
+MultiCurl::addHead($url, $data = [])
+MultiCurl::addOptions($url, $data = [])
+MultiCurl::addPatch($url, $data = [])
 MultiCurl::addPost($url, $data = '', $follow_303_with_post = false)
-MultiCurl::addPut($url, $data = array())
-MultiCurl::addSearch($url, $data = array())
+MultiCurl::addPut($url, $data = [])
+MultiCurl::addSearch($url, $data = [])
 MultiCurl::beforeSend($callback)
 MultiCurl::close()
 MultiCurl::complete($callback)
+MultiCurl::disableTimeout()
 MultiCurl::error($callback)
 MultiCurl::getOpt($option)
 MultiCurl::removeHeader($key)
+MultiCurl::setAutoReferer($auto_referer = true)
+MultiCurl::setAutoReferrer($auto_referrer = true)
 MultiCurl::setBasicAuthentication($username, $password = '')
 MultiCurl::setConcurrency($concurrency)
 MultiCurl::setConnectTimeout($seconds)
@@ -314,9 +329,14 @@ MultiCurl::setCookieJar($cookie_jar)
 MultiCurl::setCookieString($string)
 MultiCurl::setCookies($cookies)
 MultiCurl::setDigestAuthentication($username, $password = '')
+MultiCurl::setFile($file)
+MultiCurl::setFollowLocation($follow_location = true)
+MultiCurl::setForbidReuse($forbid_reuse = true)
 MultiCurl::setHeader($key, $value)
 MultiCurl::setHeaders($headers)
+MultiCurl::setInterface($interface)
 MultiCurl::setJsonDecoder($mixed)
+MultiCurl::setMaximumRedirects($maximum_redirects)
 MultiCurl::setOpt($option, $value)
 MultiCurl::setOpts($options)
 MultiCurl::setPort($port)
@@ -325,11 +345,13 @@ MultiCurl::setProxy($proxy, $port = null, $username = null, $password = null)
 MultiCurl::setProxyAuth($auth)
 MultiCurl::setProxyTunnel($tunnel = true)
 MultiCurl::setProxyType($type)
+MultiCurl::setRange($range)
+MultiCurl::setRateLimit($rate_limit)
 MultiCurl::setReferer($referer)
 MultiCurl::setReferrer($referrer)
 MultiCurl::setRetry($mixed)
 MultiCurl::setTimeout($seconds)
-MultiCurl::setUrl($url)
+MultiCurl::setUrl($url, $mixed_data = '')
 MultiCurl::setUserAgent($user_agent)
 MultiCurl::setXmlDecoder($mixed)
 MultiCurl::start()

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "707b384c48043bf6189691939295e457",
+    "content-hash": "de0f0089de01cbff96253c095672d6d3",
     "packages": [
         {
             "name": "askupa-software/amarkal-admin-notification",
@@ -23,6 +23,7 @@
             "require": {
                 "php": ">=5.3.0"
             },
+            "default-branch": true,
             "type": "wordpress",
             "autoload": {
                 "psr-4": {
@@ -49,6 +50,10 @@
                 "notices",
                 "wordpress"
             ],
+            "support": {
+                "issues": "https://github.com/amarkal/amarkal-admin-notification/issues",
+                "source": "https://github.com/amarkal/amarkal-admin-notification"
+            },
             "time": "2017-12-24T21:40:31+00:00"
         },
         {
@@ -96,30 +101,36 @@
                 "datetime",
                 "time"
             ],
+            "support": {
+                "issues": "https://github.com/briannesbitt/Carbon/issues",
+                "source": "https://github.com/briannesbitt/Carbon/tree/1.19.0"
+            },
             "time": "2015-05-09T03:23:44+00:00"
         },
         {
             "name": "php-curl-class/php-curl-class",
-            "version": "8.6.2",
+            "version": "9.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-curl-class/php-curl-class.git",
-                "reference": "54be433a7299c15b024ba808e10a96c5d5791d99"
+                "reference": "a0a3f2b10b086038eec98e92b1563b208daea04a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-curl-class/php-curl-class/zipball/54be433a7299c15b024ba808e10a96c5d5791d99",
-                "reference": "54be433a7299c15b024ba808e10a96c5d5791d99",
+                "url": "https://api.github.com/repos/php-curl-class/php-curl-class/zipball/a0a3f2b10b086038eec98e92b1563b208daea04a",
+                "reference": "a0a3f2b10b086038eec98e92b1563b208daea04a",
                 "shasum": ""
             },
             "require": {
                 "ext-curl": "*",
-                "php": ">=5.3"
+                "php": ">=7.0"
             },
             "require-dev": {
                 "ext-gd": "*",
+                "phpcompatibility/php-compatibility": "*",
                 "phpunit/phpunit": "*",
-                "squizlabs/php_codesniffer": "*"
+                "squizlabs/php_codesniffer": "*",
+                "vimeo/psalm": "*"
             },
             "suggest": {
                 "ext-mbstring": "*"
@@ -163,24 +174,28 @@
                 "web-service",
                 "xml"
             ],
-            "time": "2019-11-17T08:37:31+00:00"
+            "support": {
+                "issues": "https://github.com/php-curl-class/php-curl-class/issues",
+                "source": "https://github.com/php-curl-class/php-curl-class/tree/9.5.1"
+            },
+            "time": "2021-12-14T16:26:30+00:00"
         },
         {
             "name": "symfony/polyfill-mbstring",
-            "version": "v1.14.0",
+            "version": "v1.20.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-mbstring.git",
-                "reference": "34094cfa9abe1f0f14f48f490772db7a775559f2"
+                "reference": "39d483bdf39be819deabf04ec872eb0b2410b531"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/34094cfa9abe1f0f14f48f490772db7a775559f2",
-                "reference": "34094cfa9abe1f0f14f48f490772db7a775559f2",
+                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/39d483bdf39be819deabf04ec872eb0b2410b531",
+                "reference": "39d483bdf39be819deabf04ec872eb0b2410b531",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.3"
+                "php": ">=7.1"
             },
             "suggest": {
                 "ext-mbstring": "For best performance"
@@ -188,7 +203,11 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.14-dev"
+                    "dev-main": "1.20-dev"
+                },
+                "thanks": {
+                    "name": "symfony/polyfill",
+                    "url": "https://github.com/symfony/polyfill"
                 }
             },
             "autoload": {
@@ -222,7 +241,24 @@
                 "portable",
                 "shim"
             ],
-            "time": "2020-01-13T11:15:53+00:00"
+            "support": {
+                "source": "https://github.com/symfony/polyfill-mbstring/tree/v1.20.0"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2020-10-23T14:02:19+00:00"
         },
         {
             "name": "symfony/translation",
@@ -286,6 +322,9 @@
             ],
             "description": "Symfony Translation Component",
             "homepage": "https://symfony.com",
+            "support": {
+                "source": "https://github.com/symfony/translation/tree/v2.8.50"
+            },
             "time": "2018-11-24T21:16:41+00:00"
         }
     ],
@@ -296,34 +335,30 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kint-php/kint.git",
-                "reference": "b8acac7c9b767d8c9da56db3b8827e9c8a9d6205"
+                "reference": "9f7a159ac2eb6934001c25d443b6149be5037f2e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kint-php/kint/zipball/b8acac7c9b767d8c9da56db3b8827e9c8a9d6205",
-                "reference": "b8acac7c9b767d8c9da56db3b8827e9c8a9d6205",
+                "url": "https://api.github.com/repos/kint-php/kint/zipball/9f7a159ac2eb6934001c25d443b6149be5037f2e",
+                "reference": "9f7a159ac2eb6934001c25d443b6149be5037f2e",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.6"
             },
             "require-dev": {
-                "friendsofphp/php-cs-fixer": "^2.0",
-                "phpunit/phpunit": "^5.0",
+                "friendsofphp/php-cs-fixer": "^3.0",
+                "phpspec/prophecy-phpunit": "^2",
+                "phpunit/phpunit": "^9.0",
                 "seld/phar-utils": "^1.0",
-                "symfony/finder": "^2.0 || ^3.0 || ^4.0 || ^5.0",
-                "vimeo/psalm": "^3.7"
+                "symfony/finder": "^3.0 || ^4.0 || ^5.0",
+                "vimeo/psalm": "^4.0"
             },
             "suggest": {
-                "ext-ctype": "Simple data type tests",
-                "ext-iconv": "Provides fallback detection for ambiguous legacy string encodings such as the Windows and ISO 8859 code pages",
-                "ext-mbstring": "Provides string encoding detection",
-                "kint-php/kint-js": "Provides a simplified dump to console.log()",
-                "kint-php/kint-twig": "Provides d() and s() functions in twig templates",
-                "symfony/polyfill-ctype": "Replacement for ext-ctype if missing",
-                "symfony/polyfill-iconv": "Replacement for ext-iconv if missing",
-                "symfony/polyfill-mbstring": "Replacement for ext-mbstring if missing"
+                "kint-php/kint-helpers": "Provides extra helper functions",
+                "kint-php/kint-twig": "Provides d() and s() functions in twig templates"
             },
+            "default-branch": true,
             "type": "library",
             "autoload": {
                 "files": [
@@ -343,10 +378,6 @@
                     "homepage": "https://github.com/jnvsor"
                 },
                 {
-                    "name": "Rokas Šleinius",
-                    "homepage": "https://github.com/raveren"
-                },
-                {
                     "name": "Contributors",
                     "homepage": "https://github.com/kint-php/kint/graphs/contributors"
                 }
@@ -358,7 +389,11 @@
                 "kint",
                 "php"
             ],
-            "time": "2020-02-01T09:28:39+00:00"
+            "support": {
+                "issues": "https://github.com/kint-php/kint/issues",
+                "source": "https://github.com/kint-php/kint/tree/master"
+            },
+            "time": "2022-01-16T15:15:48+00:00"
         }
     ],
     "aliases": [],
@@ -374,5 +409,6 @@
         "ext-curl": "*",
         "ext-json": "*"
     },
-    "platform-dev": []
+    "platform-dev": [],
+    "plugin-api-version": "2.1.0"
 }

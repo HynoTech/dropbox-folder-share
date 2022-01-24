@@ -1,12 +1,11 @@
 <?php
 
 
-namespace HynoTech\Cloud;
+namespace HynoTech\Drives\Cloud;
 
 
-use HynoTech\Cloud;
-use HynoTech\Drive\Adicionales\Carpeta;
-use HynoTech\Drive\Adicionales\Archivo;
+use HynoTech\Drives\Adicionales\Archivo;
+use HynoTech\Drives\Adicionales\Carpeta;
 use HynoTech\UsosGenerales\FetchCurl;
 
 class GoogleDrive extends Cloud {

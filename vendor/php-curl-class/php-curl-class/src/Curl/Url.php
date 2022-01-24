@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Curl;
 
@@ -85,23 +85,46 @@ class Url
     }
 
     /**
+     * Build Url
+     *
+     * @access public
+     * @param  $url
+     * @param  $mixed_data
+     *
+     * @return string
+     */
+    public static function buildUrl($url, $mixed_data = '')
+    {
+        $query_string = '';
+        if (!empty($mixed_data)) {
+            $query_mark = strpos($url, '?') > 0 ? '&' : '?';
+            if (is_string($mixed_data)) {
+                $query_string .= $query_mark . $mixed_data;
+            } elseif (is_array($mixed_data)) {
+                $query_string .= $query_mark . http_build_query($mixed_data, '', '&');
+            }
+        }
+        return $url . $query_string;
+    }
+
+    /**
      * Absolutize url.
      *
      * Combine the base and relative url into an absolute url.
      */
     private function absolutizeUrl()
     {
-        $b = $this->parseUrl($this->baseUrl);
+        $b = self::parseUrl($this->baseUrl);
         if (!isset($b['path'])) {
             $b['path'] = '/';
         }
         if ($this->relativeUrl === null) {
             return $this->unparseUrl($b);
         }
-        $r = $this->parseUrl($this->relativeUrl);
+        $r = self::parseUrl($this->relativeUrl);
         $r['authorized'] = isset($r['scheme']) || isset($r['host']) || isset($r['port'])
             || isset($r['user']) || isset($r['pass']);
-        $target = array();
+        $target = [];
         if (isset($r['scheme'])) {
             $target['scheme'] = $r['scheme'];
             $target['host'] = isset($r['host']) ? $r['host'] : null;
@@ -155,7 +178,22 @@ class Url
      *
      * Parse url into components of a URI as specified by RFC 3986.
      */
-    private function parseUrl($url)
+    public static function parseUrl($url)
+    {
+        $parts = parse_url((string) $url);
+        if (isset($parts['path'])) {
+            $parts['path'] = self::percentEncodeChars($parts['path']);
+        }
+        return $parts;
+    }
+
+    /**
+     * Percent-encode characters.
+     *
+     * Percent-encode characters to represent a data octet in a component when
+     * that octet's corresponding character is outside the allowed set.
+     */
+    private static function percentEncodeChars($chars)
     {
         // ALPHA         = A-Z / a-z
         $alpha = 'A-Za-z';
@@ -177,14 +215,14 @@ class Url
         $hexdig .= 'a-f';
 
         $pattern = '/(?:[^' . $unreserved . $sub_delims . preg_quote(':@%/?', '/') . ']++|%(?![' . $hexdig . ']{2}))/';
-        $url = preg_replace_callback(
+        $percent_encoded_chars = preg_replace_callback(
             $pattern,
             function ($matches) {
                 return rawurlencode($matches[0]);
             },
-            $url
+            $chars
         );
-        return parse_url($url);
+        return $percent_encoded_chars;
     }
 
     /**

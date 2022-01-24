@@ -1,12 +1,11 @@
 <?php
 
 
-namespace HynoTech\Cloud;
+namespace HynoTech\Drives\Cloud;
 
 
-use HynoTech\Cloud;
-use HynoTech\Drive\Adicionales\Carpeta;
-use HynoTech\Drive\Adicionales\Archivo;
+use HynoTech\Drives\Adicionales\Archivo;
+use HynoTech\Drives\Adicionales\Carpeta;
 use HynoTech\UsosGenerales\FetchCurl;
 
 class Dropbox extends Cloud{
@@ -30,29 +29,31 @@ class Dropbox extends Cloud{
 	}
 	*/
 	function dataContenido($retorno = 'json'){
-		$dataModule[0] = '/app", "props": {';
-		$dataModule[1] = '}, "elem_id":';
+        $match[0] = 'responseReceived("{';
+        $match[1] = '}")});';
+        $dataModule[0] = str_replace('(', '\(', $match[0]);
+        $dataModule[1] = str_replace(')', '\)', $match[1]);
 
 		$patronModule = '|' . $dataModule[0] . '(.*?)' . $dataModule[1] . '|is';
 		preg_match_all($patronModule, $this->dataCargado->response, $varTemp2);
+		$soloDataModule = str_replace($match, array('{', '}'), (isset($varTemp2[0][0])) ? $varTemp2[0][0] : '');
 
-		$soloDataModule = str_replace(array('/app", "props": {', '}, "elem_id":'), array('{', '}'), (isset($varTemp2[0][0])) ? $varTemp2[0][0] : '');
+        $soloDataModule = str_replace('\"', '"', $soloDataModule);
 
 		$objImportante = json_decode($soloDataModule);
 
 		$carpetaActual = new Carpeta();
-		$carpetaActual->id = $objImportante->folderData->ns_id;
-		$carpetaActual->nombre = $objImportante->folderSharedLinkInfo->displayName;
-		$carpetaActual->href = $objImportante->folderSharedLinkInfo->url;
-		$carpetaActual->linkKey = $objImportante->folderShareToken->linkKey;
-		$carpetaActual->linkSecureHash = $objImportante->folderShareToken->secureHash;
-		$carpetaActual->linkSubPath = $objImportante->folderShareToken->subPath;
-		$carpetaActual->linkType = $objImportante->folderShareToken->linkType;
-		$carpetaActual->propietario = $objImportante->folderSharedLinkInfo->ownerName;
+		$carpetaActual->id = $objImportante->folder->ns_id;
+		$carpetaActual->nombre = $objImportante->folder_shared_link_info->displayName;
+		$carpetaActual->href = $objImportante->folder_shared_link_info->url;
+		$carpetaActual->linkKey = $objImportante->folder_share_token->linkKey;
+		$carpetaActual->linkSecureHash = $objImportante->folder_share_token->secureHash;
+		$carpetaActual->linkSubPath = $objImportante->folder_share_token->subPath;
+		$carpetaActual->linkType = $objImportante->folder_share_token->linkType;
+		$carpetaActual->propietario = $objImportante->folder_shared_link_info->ownerName;
 		$carpetaActual->subCarpetas = [];
 		$carpetaActual->archivos = [];
 		$carpetaActual->dataOriginal = $objImportante;
-
 
 		$cookies = $this->dataCargado->responseCookies;
 		$postValues = [

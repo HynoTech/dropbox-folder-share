@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit12e0553648db36ada3eb710539333660
+class ComposerStaticInit06f4cbb4928214252f18dcc9abe3d188
 {
     public static $files = array (
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
@@ -66,91 +66,16 @@ class ComposerStaticInit12e0553648db36ada3eb710539333660
     );
 
     public static $classMap = array (
-        'Amarkal\\Admin\\Notifications' => __DIR__ . '/..' . '/askupa-software/amarkal-admin-notification/Notifications.php',
-        'Carbon\\Carbon' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Carbon.php',
-        'Carbon\\CarbonInterval' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/CarbonInterval.php',
-        'Curl\\ArrayUtil' => __DIR__ . '/..' . '/php-curl-class/php-curl-class/src/Curl/ArrayUtil.php',
-        'Curl\\CaseInsensitiveArray' => __DIR__ . '/..' . '/php-curl-class/php-curl-class/src/Curl/CaseInsensitiveArray.php',
-        'Curl\\Curl' => __DIR__ . '/..' . '/php-curl-class/php-curl-class/src/Curl/Curl.php',
-        'Curl\\Decoder' => __DIR__ . '/..' . '/php-curl-class/php-curl-class/src/Curl/Decoder.php',
-        'Curl\\Encoder' => __DIR__ . '/..' . '/php-curl-class/php-curl-class/src/Curl/Encoder.php',
-        'Curl\\MultiCurl' => __DIR__ . '/..' . '/php-curl-class/php-curl-class/src/Curl/MultiCurl.php',
-        'Curl\\StringUtil' => __DIR__ . '/..' . '/php-curl-class/php-curl-class/src/Curl/StringUtil.php',
-        'Curl\\Url' => __DIR__ . '/..' . '/php-curl-class/php-curl-class/src/Curl/Url.php',
-        'HynoTech\\Cloud' => __DIR__ . '/../..' . '/HynoTech/Cloud/Cloud.php',
-        'HynoTech\\Cloud\\Dropbox' => __DIR__ . '/../..' . '/HynoTech/Cloud/Cloud/Dropbox.php',
-        'HynoTech\\Cloud\\GoogleDrive' => __DIR__ . '/../..' . '/HynoTech/Cloud/Cloud/GoogleDrive.php',
-        'HynoTech\\Drive\\Adicionales\\Archivo' => __DIR__ . '/../..' . '/HynoTech/Cloud/Adicionales/Archivo.php',
-        'HynoTech\\Drive\\Adicionales\\Carpeta' => __DIR__ . '/../..' . '/HynoTech/Cloud/Adicionales/Carpeta.php',
-        'HynoTech\\DropboxFolderShare\\Admin' => __DIR__ . '/../..' . '/HynoTech/DropboxFolderShare/Admin.php',
-        'HynoTech\\DropboxFolderShare\\Block' => __DIR__ . '/../..' . '/HynoTech/DropboxFolderShare/Block.php',
-        'HynoTech\\DropboxFolderShare\\Principal' => __DIR__ . '/../..' . '/HynoTech/DropboxFolderShare/Principal.php',
-        'HynoTech\\DropboxFolderShare\\TinyMCE' => __DIR__ . '/../..' . '/HynoTech/DropboxFolderShare/TinyMCE.php',
-        'HynoTech\\DropboxFolderShare\\Widget' => __DIR__ . '/../..' . '/HynoTech/DropboxFolderShare/Widget.php',
-        'HynoTech\\UsosGenerales\\FetchCurl' => __DIR__ . '/../..' . '/HynoTech/UsosGenerales/FetchCurl.php',
-        'HynoTech\\UsosGenerales\\TinyMce' => __DIR__ . '/../..' . '/HynoTech/UsosGenerales/TinyMce.php',
-        'Symfony\\Component\\Translation\\Catalogue\\AbstractOperation' => __DIR__ . '/..' . '/symfony/translation/Catalogue/AbstractOperation.php',
-        'Symfony\\Component\\Translation\\Catalogue\\DiffOperation' => __DIR__ . '/..' . '/symfony/translation/Catalogue/DiffOperation.php',
-        'Symfony\\Component\\Translation\\Catalogue\\MergeOperation' => __DIR__ . '/..' . '/symfony/translation/Catalogue/MergeOperation.php',
-        'Symfony\\Component\\Translation\\Catalogue\\OperationInterface' => __DIR__ . '/..' . '/symfony/translation/Catalogue/OperationInterface.php',
-        'Symfony\\Component\\Translation\\Catalogue\\TargetOperation' => __DIR__ . '/..' . '/symfony/translation/Catalogue/TargetOperation.php',
-        'Symfony\\Component\\Translation\\DataCollectorTranslator' => __DIR__ . '/..' . '/symfony/translation/DataCollectorTranslator.php',
-        'Symfony\\Component\\Translation\\DataCollector\\TranslationDataCollector' => __DIR__ . '/..' . '/symfony/translation/DataCollector/TranslationDataCollector.php',
-        'Symfony\\Component\\Translation\\Dumper\\CsvFileDumper' => __DIR__ . '/..' . '/symfony/translation/Dumper/CsvFileDumper.php',
-        'Symfony\\Component\\Translation\\Dumper\\DumperInterface' => __DIR__ . '/..' . '/symfony/translation/Dumper/DumperInterface.php',
-        'Symfony\\Component\\Translation\\Dumper\\FileDumper' => __DIR__ . '/..' . '/symfony/translation/Dumper/FileDumper.php',
-        'Symfony\\Component\\Translation\\Dumper\\IcuResFileDumper' => __DIR__ . '/..' . '/symfony/translation/Dumper/IcuResFileDumper.php',
-        'Symfony\\Component\\Translation\\Dumper\\IniFileDumper' => __DIR__ . '/..' . '/symfony/translation/Dumper/IniFileDumper.php',
-        'Symfony\\Component\\Translation\\Dumper\\JsonFileDumper' => __DIR__ . '/..' . '/symfony/translation/Dumper/JsonFileDumper.php',
-        'Symfony\\Component\\Translation\\Dumper\\MoFileDumper' => __DIR__ . '/..' . '/symfony/translation/Dumper/MoFileDumper.php',
-        'Symfony\\Component\\Translation\\Dumper\\PhpFileDumper' => __DIR__ . '/..' . '/symfony/translation/Dumper/PhpFileDumper.php',
-        'Symfony\\Component\\Translation\\Dumper\\PoFileDumper' => __DIR__ . '/..' . '/symfony/translation/Dumper/PoFileDumper.php',
-        'Symfony\\Component\\Translation\\Dumper\\QtFileDumper' => __DIR__ . '/..' . '/symfony/translation/Dumper/QtFileDumper.php',
-        'Symfony\\Component\\Translation\\Dumper\\XliffFileDumper' => __DIR__ . '/..' . '/symfony/translation/Dumper/XliffFileDumper.php',
-        'Symfony\\Component\\Translation\\Dumper\\YamlFileDumper' => __DIR__ . '/..' . '/symfony/translation/Dumper/YamlFileDumper.php',
-        'Symfony\\Component\\Translation\\Exception\\ExceptionInterface' => __DIR__ . '/..' . '/symfony/translation/Exception/ExceptionInterface.php',
-        'Symfony\\Component\\Translation\\Exception\\InvalidResourceException' => __DIR__ . '/..' . '/symfony/translation/Exception/InvalidResourceException.php',
-        'Symfony\\Component\\Translation\\Exception\\NotFoundResourceException' => __DIR__ . '/..' . '/symfony/translation/Exception/NotFoundResourceException.php',
-        'Symfony\\Component\\Translation\\Extractor\\AbstractFileExtractor' => __DIR__ . '/..' . '/symfony/translation/Extractor/AbstractFileExtractor.php',
-        'Symfony\\Component\\Translation\\Extractor\\ChainExtractor' => __DIR__ . '/..' . '/symfony/translation/Extractor/ChainExtractor.php',
-        'Symfony\\Component\\Translation\\Extractor\\ExtractorInterface' => __DIR__ . '/..' . '/symfony/translation/Extractor/ExtractorInterface.php',
-        'Symfony\\Component\\Translation\\IdentityTranslator' => __DIR__ . '/..' . '/symfony/translation/IdentityTranslator.php',
-        'Symfony\\Component\\Translation\\Interval' => __DIR__ . '/..' . '/symfony/translation/Interval.php',
-        'Symfony\\Component\\Translation\\Loader\\ArrayLoader' => __DIR__ . '/..' . '/symfony/translation/Loader/ArrayLoader.php',
-        'Symfony\\Component\\Translation\\Loader\\CsvFileLoader' => __DIR__ . '/..' . '/symfony/translation/Loader/CsvFileLoader.php',
-        'Symfony\\Component\\Translation\\Loader\\FileLoader' => __DIR__ . '/..' . '/symfony/translation/Loader/FileLoader.php',
-        'Symfony\\Component\\Translation\\Loader\\IcuDatFileLoader' => __DIR__ . '/..' . '/symfony/translation/Loader/IcuDatFileLoader.php',
-        'Symfony\\Component\\Translation\\Loader\\IcuResFileLoader' => __DIR__ . '/..' . '/symfony/translation/Loader/IcuResFileLoader.php',
-        'Symfony\\Component\\Translation\\Loader\\IniFileLoader' => __DIR__ . '/..' . '/symfony/translation/Loader/IniFileLoader.php',
-        'Symfony\\Component\\Translation\\Loader\\JsonFileLoader' => __DIR__ . '/..' . '/symfony/translation/Loader/JsonFileLoader.php',
-        'Symfony\\Component\\Translation\\Loader\\LoaderInterface' => __DIR__ . '/..' . '/symfony/translation/Loader/LoaderInterface.php',
-        'Symfony\\Component\\Translation\\Loader\\MoFileLoader' => __DIR__ . '/..' . '/symfony/translation/Loader/MoFileLoader.php',
-        'Symfony\\Component\\Translation\\Loader\\PhpFileLoader' => __DIR__ . '/..' . '/symfony/translation/Loader/PhpFileLoader.php',
-        'Symfony\\Component\\Translation\\Loader\\PoFileLoader' => __DIR__ . '/..' . '/symfony/translation/Loader/PoFileLoader.php',
-        'Symfony\\Component\\Translation\\Loader\\QtFileLoader' => __DIR__ . '/..' . '/symfony/translation/Loader/QtFileLoader.php',
-        'Symfony\\Component\\Translation\\Loader\\XliffFileLoader' => __DIR__ . '/..' . '/symfony/translation/Loader/XliffFileLoader.php',
-        'Symfony\\Component\\Translation\\Loader\\YamlFileLoader' => __DIR__ . '/..' . '/symfony/translation/Loader/YamlFileLoader.php',
-        'Symfony\\Component\\Translation\\LoggingTranslator' => __DIR__ . '/..' . '/symfony/translation/LoggingTranslator.php',
-        'Symfony\\Component\\Translation\\MessageCatalogue' => __DIR__ . '/..' . '/symfony/translation/MessageCatalogue.php',
-        'Symfony\\Component\\Translation\\MessageCatalogueInterface' => __DIR__ . '/..' . '/symfony/translation/MessageCatalogueInterface.php',
-        'Symfony\\Component\\Translation\\MessageSelector' => __DIR__ . '/..' . '/symfony/translation/MessageSelector.php',
-        'Symfony\\Component\\Translation\\MetadataAwareInterface' => __DIR__ . '/..' . '/symfony/translation/MetadataAwareInterface.php',
-        'Symfony\\Component\\Translation\\PluralizationRules' => __DIR__ . '/..' . '/symfony/translation/PluralizationRules.php',
-        'Symfony\\Component\\Translation\\Translator' => __DIR__ . '/..' . '/symfony/translation/Translator.php',
-        'Symfony\\Component\\Translation\\TranslatorBagInterface' => __DIR__ . '/..' . '/symfony/translation/TranslatorBagInterface.php',
-        'Symfony\\Component\\Translation\\TranslatorInterface' => __DIR__ . '/..' . '/symfony/translation/TranslatorInterface.php',
-        'Symfony\\Component\\Translation\\Util\\ArrayConverter' => __DIR__ . '/..' . '/symfony/translation/Util/ArrayConverter.php',
-        'Symfony\\Component\\Translation\\Writer\\TranslationWriter' => __DIR__ . '/..' . '/symfony/translation/Writer/TranslationWriter.php',
-        'Symfony\\Polyfill\\Mbstring\\Mbstring' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/Mbstring.php',
+        'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit12e0553648db36ada3eb710539333660::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit12e0553648db36ada3eb710539333660::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInit12e0553648db36ada3eb710539333660::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInit12e0553648db36ada3eb710539333660::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit06f4cbb4928214252f18dcc9abe3d188::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit06f4cbb4928214252f18dcc9abe3d188::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit06f4cbb4928214252f18dcc9abe3d188::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInit06f4cbb4928214252f18dcc9abe3d188::$classMap;
 
         }, null, ClassLoader::class);
     }

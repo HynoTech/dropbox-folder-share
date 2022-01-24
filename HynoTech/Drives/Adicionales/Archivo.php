@@ -1,7 +1,7 @@
 <?php
 
 
-namespace HynoTech\Drive\Adicionales;
+namespace HynoTech\Drives\Adicionales;
 
 
 class Archivo {

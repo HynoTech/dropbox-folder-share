@@ -1,7 +1,7 @@
 <?php
 
 
-namespace HynoTech;
+namespace HynoTech\Drives\Cloud;
 
 
 use HynoTech\UsosGenerales\FetchCurl;
@@ -14,7 +14,7 @@ class Cloud {
 		$this->url = $url;
 		$objFetchCurl = new FetchCurl();
 		try {
-			$data = $objFetchCurl->getContent($url);
+			$data = $objFetchCurl->getContent($url, true);
 
 			if (isset($data) && $data->response != ''){
 				$this->dataCargado = $data;

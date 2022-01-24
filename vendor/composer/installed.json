@@ -1,294 +1,342 @@
-[
-    {
-        "name": "askupa-software/amarkal-admin-notification",
-        "version": "dev-master",
-        "version_normalized": "9999999-dev",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/amarkal/amarkal-admin-notification.git",
-            "reference": "c8869f12628a9a57dbc972de64a5f6e0e4cc9fed"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/amarkal/amarkal-admin-notification/zipball/c8869f12628a9a57dbc972de64a5f6e0e4cc9fed",
-            "reference": "c8869f12628a9a57dbc972de64a5f6e0e4cc9fed",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.3.0"
-        },
-        "time": "2017-12-24T21:40:31+00:00",
-        "type": "wordpress",
-        "installation-source": "source",
-        "autoload": {
-            "psr-4": {
-                "Amarkal\\Admin\\": ""
+{
+    "packages": [
+        {
+            "name": "askupa-software/amarkal-admin-notification",
+            "version": "dev-master",
+            "version_normalized": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/amarkal/amarkal-admin-notification.git",
+                "reference": "c8869f12628a9a57dbc972de64a5f6e0e4cc9fed"
             },
-            "files": [
-                "composer.php"
-            ]
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "GPL-3.0"
-        ],
-        "authors": [
-            {
-                "name": "Askupa Software",
-                "email": "hello@askupasoftware.com"
-            }
-        ],
-        "description": "Add static/dismissible admin notifications to WordPress",
-        "homepage": "https://github.com/amarkal/amarkal-admin-notification",
-        "keywords": [
-            "framework",
-            "notices",
-            "wordpress"
-        ]
-    },
-    {
-        "name": "nesbot/carbon",
-        "version": "1.19.0",
-        "version_normalized": "1.19.0.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/briannesbitt/Carbon.git",
-            "reference": "68868e0b02d2d803d0052a59d4e5003cccf87320"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/68868e0b02d2d803d0052a59d4e5003cccf87320",
-            "reference": "68868e0b02d2d803d0052a59d4e5003cccf87320",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.3.0",
-            "symfony/translation": "~2.6"
-        },
-        "require-dev": {
-            "phpunit/phpunit": "~4.0"
-        },
-        "time": "2015-05-09T03:23:44+00:00",
-        "type": "library",
-        "installation-source": "dist",
-        "autoload": {
-            "psr-0": {
-                "Carbon": "src"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Brian Nesbitt",
-                "email": "brian@nesbot.com",
-                "homepage": "http://nesbot.com"
-            }
-        ],
-        "description": "A simple API extension for DateTime.",
-        "homepage": "http://carbon.nesbot.com",
-        "keywords": [
-            "date",
-            "datetime",
-            "time"
-        ]
-    },
-    {
-        "name": "php-curl-class/php-curl-class",
-        "version": "8.6.2",
-        "version_normalized": "8.6.2.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/php-curl-class/php-curl-class.git",
-            "reference": "54be433a7299c15b024ba808e10a96c5d5791d99"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/php-curl-class/php-curl-class/zipball/54be433a7299c15b024ba808e10a96c5d5791d99",
-            "reference": "54be433a7299c15b024ba808e10a96c5d5791d99",
-            "shasum": ""
-        },
-        "require": {
-            "ext-curl": "*",
-            "php": ">=5.3"
-        },
-        "require-dev": {
-            "ext-gd": "*",
-            "phpunit/phpunit": "*",
-            "squizlabs/php_codesniffer": "*"
-        },
-        "suggest": {
-            "ext-mbstring": "*"
-        },
-        "time": "2019-11-17T08:37:31+00:00",
-        "type": "library",
-        "installation-source": "source",
-        "autoload": {
-            "psr-4": {
-                "Curl\\": "src/Curl/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "Unlicense"
-        ],
-        "authors": [
-            {
-                "name": "Zach Borboa"
-            }
-        ],
-        "description": "PHP Curl Class makes it easy to send HTTP requests and integrate with web APIs.",
-        "homepage": "https://github.com/php-curl-class/php-curl-class",
-        "keywords": [
-            "API-Client",
-            "api",
-            "class",
-            "client",
-            "curl",
-            "framework",
-            "http",
-            "http-client",
-            "http-proxy",
-            "json",
-            "php",
-            "php-curl",
-            "php-curl-library",
-            "proxy",
-            "requests",
-            "restful",
-            "web-scraper",
-            "web-scraping ",
-            "web-service",
-            "xml"
-        ]
-    },
-    {
-        "name": "symfony/polyfill-mbstring",
-        "version": "v1.14.0",
-        "version_normalized": "1.14.0.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/symfony/polyfill-mbstring.git",
-            "reference": "34094cfa9abe1f0f14f48f490772db7a775559f2"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/34094cfa9abe1f0f14f48f490772db7a775559f2",
-            "reference": "34094cfa9abe1f0f14f48f490772db7a775559f2",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.3.3"
-        },
-        "suggest": {
-            "ext-mbstring": "For best performance"
-        },
-        "time": "2020-01-13T11:15:53+00:00",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "1.14-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "Symfony\\Polyfill\\Mbstring\\": ""
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/amarkal/amarkal-admin-notification/zipball/c8869f12628a9a57dbc972de64a5f6e0e4cc9fed",
+                "reference": "c8869f12628a9a57dbc972de64a5f6e0e4cc9fed",
+                "shasum": ""
             },
-            "files": [
-                "bootstrap.php"
-            ]
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Nicolas Grekas",
-                "email": "p@tchwork.com"
+            "require": {
+                "php": ">=5.3.0"
             },
-            {
-                "name": "Symfony Community",
-                "homepage": "https://symfony.com/contributors"
-            }
-        ],
-        "description": "Symfony polyfill for the Mbstring extension",
-        "homepage": "https://symfony.com",
-        "keywords": [
-            "compatibility",
-            "mbstring",
-            "polyfill",
-            "portable",
-            "shim"
-        ]
-    },
-    {
-        "name": "symfony/translation",
-        "version": "v2.8.52",
-        "version_normalized": "2.8.52.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/symfony/translation.git",
-            "reference": "fc58c2a19e56c29f5ba2736ec40d0119a0de2089"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/symfony/translation/zipball/fc58c2a19e56c29f5ba2736ec40d0119a0de2089",
-            "reference": "fc58c2a19e56c29f5ba2736ec40d0119a0de2089",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.3.9",
-            "symfony/polyfill-mbstring": "~1.0"
-        },
-        "conflict": {
-            "symfony/config": "<2.7"
-        },
-        "require-dev": {
-            "psr/log": "~1.0",
-            "symfony/config": "~2.8",
-            "symfony/intl": "~2.7.25|^2.8.18|~3.2.5",
-            "symfony/yaml": "~2.2|~3.0.0"
-        },
-        "suggest": {
-            "psr/log-implementation": "To use logging capability in translator",
-            "symfony/config": "",
-            "symfony/yaml": ""
-        },
-        "time": "2018-11-24T21:16:41+00:00",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "2.8-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "Symfony\\Component\\Translation\\": ""
+            "time": "2017-12-24T21:40:31+00:00",
+            "default-branch": true,
+            "type": "wordpress",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "Amarkal\\Admin\\": ""
+                },
+                "files": [
+                    "composer.php"
+                ]
             },
-            "exclude-from-classmap": [
-                "/Tests/"
-            ]
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Fabien Potencier",
-                "email": "fabien@symfony.com"
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0"
+            ],
+            "authors": [
+                {
+                    "name": "Askupa Software",
+                    "email": "hello@askupasoftware.com"
+                }
+            ],
+            "description": "Add static/dismissible admin notifications to WordPress",
+            "homepage": "https://github.com/amarkal/amarkal-admin-notification",
+            "keywords": [
+                "framework",
+                "notices",
+                "wordpress"
+            ],
+            "support": {
+                "issues": "https://github.com/amarkal/amarkal-admin-notification/issues",
+                "source": "https://github.com/amarkal/amarkal-admin-notification"
             },
-            {
-                "name": "Symfony Community",
-                "homepage": "https://symfony.com/contributors"
-            }
-        ],
-        "description": "Symfony Translation Component",
-        "homepage": "https://symfony.com"
-    }
-]
+            "install-path": "../askupa-software/amarkal-admin-notification"
+        },
+        {
+            "name": "nesbot/carbon",
+            "version": "1.19.0",
+            "version_normalized": "1.19.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/briannesbitt/Carbon.git",
+                "reference": "68868e0b02d2d803d0052a59d4e5003cccf87320"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/68868e0b02d2d803d0052a59d4e5003cccf87320",
+                "reference": "68868e0b02d2d803d0052a59d4e5003cccf87320",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0",
+                "symfony/translation": "~2.6"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0"
+            },
+            "time": "2015-05-09T03:23:44+00:00",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-0": {
+                    "Carbon": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Brian Nesbitt",
+                    "email": "brian@nesbot.com",
+                    "homepage": "http://nesbot.com"
+                }
+            ],
+            "description": "A simple API extension for DateTime.",
+            "homepage": "http://carbon.nesbot.com",
+            "keywords": [
+                "date",
+                "datetime",
+                "time"
+            ],
+            "support": {
+                "issues": "https://github.com/briannesbitt/Carbon/issues",
+                "source": "https://github.com/briannesbitt/Carbon/tree/1.19.0"
+            },
+            "install-path": "../nesbot/carbon"
+        },
+        {
+            "name": "php-curl-class/php-curl-class",
+            "version": "9.5.1",
+            "version_normalized": "9.5.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-curl-class/php-curl-class.git",
+                "reference": "a0a3f2b10b086038eec98e92b1563b208daea04a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-curl-class/php-curl-class/zipball/a0a3f2b10b086038eec98e92b1563b208daea04a",
+                "reference": "a0a3f2b10b086038eec98e92b1563b208daea04a",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "php": ">=7.0"
+            },
+            "require-dev": {
+                "ext-gd": "*",
+                "phpcompatibility/php-compatibility": "*",
+                "phpunit/phpunit": "*",
+                "squizlabs/php_codesniffer": "*",
+                "vimeo/psalm": "*"
+            },
+            "suggest": {
+                "ext-mbstring": "*"
+            },
+            "time": "2021-12-14T16:26:30+00:00",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "Curl\\": "src/Curl/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Unlicense"
+            ],
+            "authors": [
+                {
+                    "name": "Zach Borboa"
+                }
+            ],
+            "description": "PHP Curl Class makes it easy to send HTTP requests and integrate with web APIs.",
+            "homepage": "https://github.com/php-curl-class/php-curl-class",
+            "keywords": [
+                "API-Client",
+                "api",
+                "class",
+                "client",
+                "curl",
+                "framework",
+                "http",
+                "http-client",
+                "http-proxy",
+                "json",
+                "php",
+                "php-curl",
+                "php-curl-library",
+                "proxy",
+                "requests",
+                "restful",
+                "web-scraper",
+                "web-scraping ",
+                "web-service",
+                "xml"
+            ],
+            "support": {
+                "issues": "https://github.com/php-curl-class/php-curl-class/issues",
+                "source": "https://github.com/php-curl-class/php-curl-class/tree/9.5.1"
+            },
+            "install-path": "../php-curl-class/php-curl-class"
+        },
+        {
+            "name": "symfony/polyfill-mbstring",
+            "version": "v1.20.0",
+            "version_normalized": "1.20.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/polyfill-mbstring.git",
+                "reference": "39d483bdf39be819deabf04ec872eb0b2410b531"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/39d483bdf39be819deabf04ec872eb0b2410b531",
+                "reference": "39d483bdf39be819deabf04ec872eb0b2410b531",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1"
+            },
+            "suggest": {
+                "ext-mbstring": "For best performance"
+            },
+            "time": "2020-10-23T14:02:19+00:00",
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-main": "1.20-dev"
+                },
+                "thanks": {
+                    "name": "symfony/polyfill",
+                    "url": "https://github.com/symfony/polyfill"
+                }
+            },
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Polyfill\\Mbstring\\": ""
+                },
+                "files": [
+                    "bootstrap.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nicolas Grekas",
+                    "email": "p@tchwork.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony polyfill for the Mbstring extension",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "compatibility",
+                "mbstring",
+                "polyfill",
+                "portable",
+                "shim"
+            ],
+            "support": {
+                "source": "https://github.com/symfony/polyfill-mbstring/tree/v1.20.0"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "install-path": "../symfony/polyfill-mbstring"
+        },
+        {
+            "name": "symfony/translation",
+            "version": "v2.8.52",
+            "version_normalized": "2.8.52.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/translation.git",
+                "reference": "fc58c2a19e56c29f5ba2736ec40d0119a0de2089"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/translation/zipball/fc58c2a19e56c29f5ba2736ec40d0119a0de2089",
+                "reference": "fc58c2a19e56c29f5ba2736ec40d0119a0de2089",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.9",
+                "symfony/polyfill-mbstring": "~1.0"
+            },
+            "conflict": {
+                "symfony/config": "<2.7"
+            },
+            "require-dev": {
+                "psr/log": "~1.0",
+                "symfony/config": "~2.8",
+                "symfony/intl": "~2.7.25|^2.8.18|~3.2.5",
+                "symfony/yaml": "~2.2|~3.0.0"
+            },
+            "suggest": {
+                "psr/log-implementation": "To use logging capability in translator",
+                "symfony/config": "",
+                "symfony/yaml": ""
+            },
+            "time": "2018-11-24T21:16:41+00:00",
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.8-dev"
+                }
+            },
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Translation\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony Translation Component",
+            "homepage": "https://symfony.com",
+            "support": {
+                "source": "https://github.com/symfony/translation/tree/v2.8.50"
+            },
+            "install-path": "../symfony/translation"
+        }
+    ],
+    "dev": false,
+    "dev-package-names": []
+}
