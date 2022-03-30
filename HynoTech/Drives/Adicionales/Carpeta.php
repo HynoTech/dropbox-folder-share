@@ -17,4 +17,12 @@ class Carpeta {
 	public $subCarpetas;
 	public $archivos;
 	public $dataOriginal;
+    public $numSubCarpetas;
+    public $numArchivos;
+	public function numSubCarpetas() {
+        $this->numSubCarpetas = count($this->subCarpetas);
+    }
+	public function numArchivos() {
+        $this->numArchivos = count($this->archivos);
+    }
 }

@@ -39,6 +39,9 @@ class Dropbox extends Cloud{
 		$soloDataModule = str_replace($match, array('{', '}'), (isset($varTemp2[0][0])) ? $varTemp2[0][0] : '');
 
         $soloDataModule = str_replace('\"', '"', $soloDataModule);
+        $re = '/\\\\+"/';
+        $subst = '\'';
+        $soloDataModule = preg_replace($re, $subst, $soloDataModule);
 
 		$objImportante = json_decode($soloDataModule);
 
@@ -53,7 +56,7 @@ class Dropbox extends Cloud{
 		$carpetaActual->propietario = $objImportante->folder_shared_link_info->ownerName;
 		$carpetaActual->subCarpetas = [];
 		$carpetaActual->archivos = [];
-		$carpetaActual->dataOriginal = $objImportante;
+//		$carpetaActual->dataOriginal = $objImportante;
 
 		$cookies = $this->dataCargado->responseCookies;
 		$postValues = [
@@ -79,7 +82,7 @@ class Dropbox extends Cloud{
 							$objItem->id = $item->ns_id;
 							$objItem->nombre = $item->filename;
 							$objItem->href = $item->href;
-							$objItem->dataOriginal = $item;
+							//$objItem->dataOriginal = $item;
 							$carpetaActual->subCarpetas[] = $objItem;
 						} else {
 							//ARCHIVOS
@@ -93,7 +96,7 @@ class Dropbox extends Cloud{
 							$objItem->tipo = $item->preview_type;
 							$objItem->icono = $item->icon;
 							$objItem->previsualizacion = $item->preview->preview_url;
-							$objItem->dataOriginal = $item;
+							//$objItem->dataOriginal = $item;
 							$objItem->extension = pathinfo($item->filename)['extension'];
 							$carpetaActual->archivos[] = $objItem;
 						}
