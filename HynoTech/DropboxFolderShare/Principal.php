@@ -254,11 +254,22 @@ Class Principal
 		$data = str_replace("\"", "\\'", $data);
 		$data = 'rev_' . $data;
 
-		$response = new Dropbox($url_data);
-		// $response = new Dropbox('https://www.dropbox.com/sh/8ifs95x8qgcaf71/AAAUdBHtQXdzkZRYpPsE1x3SMa?dl=0');
-		$dataCarpeta = $response->dataContenido('array');
+        $reintentos = 0;
+        do {
+            $response = new Dropbox($url_data);
+            // $response = new Dropbox('https://www.dropbox.com/sh/8ifs95x8qgcaf71/AAAUdBHtQXdzkZRYpPsE1x3SMa?dl=0');
+            $dataCarpeta = $response->dataContenido('array');
+            $reintentos++;
+        } while (is_null($dataCarpeta->id) && $reintentos < 5);
 
-		if (is_null($dataCarpeta->id)) {
+
+        $dataCarpeta->numSubCarpetas();
+        $dataCarpeta->numArchivos();
+//        echo "<pre>";
+//        print_r($dataCarpeta);
+//        echo "</pre>";
+
+        if (is_null($dataCarpeta->id)) {
 			$retorno = '
                         <div class="err sl-list-container" style="width: 100%; text-align: center;">
                             <img src="' . DROPBOX_FOLDER_SHARE_PLUGIN_URL . '/src/img/error_404.png" alt="" width="30%">
