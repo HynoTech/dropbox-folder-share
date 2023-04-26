@@ -2,7 +2,7 @@
 Contributors: Hyno, antony_salas
 Tags: Dropbox, Folder,Cloud, Folder Share, post, content, contenido, nube
 Requires at least: 4.0
-Tested up to: 5.9
+Tested up to: 6.2
 Stable tag: trunk
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -151,6 +151,9 @@ Read **[More](http://www.hynotech.com/wp-plugins/dropbox-folder-share/#faq "Drop
 * Version inicial.
 
 == Upgrade Notice ==
+
+= 1.9.4 =
+* Fix Dropbox Link ERROR
 
 = 1.9.2 =
 * Fix Dropbox source code
