@@ -152,6 +152,9 @@ Read **[More](http://www.hynotech.com/wp-plugins/dropbox-folder-share/#faq "Drop
 
 == Upgrade Notice ==
 
+= 1.9.4 =
+* Fix Dropbox Link ERROR
+
 = 1.9.2 =
 * Fix Dropbox source code
 
