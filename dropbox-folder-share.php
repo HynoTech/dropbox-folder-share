@@ -9,7 +9,7 @@
  * Plugin Name: DropBox Folder Share
  * Plugin URI: http://www.hynotech.com/wp-plugins/dropbox-folder-share/
  * Description: Plugin que permitira incluir carpetas de DropBox en nuestras entradas de blog.
- * Version: 1.9.4
+ * Version: 1.9.5
  * Author: Antonio Salas (Hyno)
  * Author URI: http://www.hynotech.com/
  * Twitter: AntonySH_
@@ -38,6 +38,16 @@ define('DROPBOX_FOLDER_SHARE_PLUGIN_BASENAME',$basename); //Indica el directorio
 define('DROPBOX_FOLDER_SHARE_PLUGIN_NOMBRE',$nombre); //Nombre de la carpeta "dropbox-folder-share"
 define('DROPBOX_FOLDER_SHARE_PLUGIN_URL',$url); //URL completa dela carpeta actual "http://localhost:8080/wp/wp-content/plugins/dropbox-folder-share/"
 define('DROPBOX_FOLDER_SHARE_PLUGIN_PATH',$url_path); //URL completa dela carpeta actual "d:\Projects\Hosts\wordpress\wp-content\plugins\dropbox-folder-share/"
+define('DROPBOX_FOLDER_SHARE_HTML_DONACIONES','
+<form action="https://www.paypal.com/donate" method="post" target="_blank">
+<input type="hidden" name="business" value="B7W3NF2LGERBW" />
+<input type="hidden" name="no_recurring" value="0" />
+<input type="hidden" name="item_name" value="Dropbox Folder Share" />
+<input type="hidden" name="currency_code" value="USD" />
+<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
+<img alt="" border="0" src="https://www.paypal.com/en_PE/i/scr/pixel.gif" width="1" height="1" />
+</form>
+');
 
 if (!\class_exists("Principal")) {
 

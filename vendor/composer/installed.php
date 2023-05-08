@@ -3,7 +3,7 @@
         'name' => 'hynotech/dropbox-folder-share',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => '340da11daea4a6a048bee92658d3f7392e078179',
+        'reference' => 'fde078fd88fddd98b9ae65fb2099b53c5a44ae58',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -24,7 +24,7 @@
         'hynotech/dropbox-folder-share' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => '340da11daea4a6a048bee92658d3f7392e078179',
+            'reference' => 'fde078fd88fddd98b9ae65fb2099b53c5a44ae58',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
