@@ -29,50 +29,41 @@ class Dropbox extends Cloud{
 	}
 	*/
 	function dataContenido($retorno = 'json'){
-        $match[0] = 'responseReceived("{';
-        $match[1] = '}")});';
-        $dataModule[0] = str_replace('(', '\(', $match[0]);
-        $dataModule[1] = str_replace(')', '\)', $match[1]);
+        $partesURL = explode('/', $this->url);
+        $partesURL2 = explode('?', $partesURL[5] ?? '');
+        $cookies = $this->dataCargado->responseCookies;
 
-		$patronModule = '|' . $dataModule[0] . '(.*?)' . $dataModule[1] . '|is';
-		preg_match_all($patronModule, $this->dataCargado->response, $varTemp2);
-		$soloDataModule = str_replace($match, array('{', '}'), (isset($varTemp2[0][0])) ? $varTemp2[0][0] : '');
+        $objFetchCurl = new FetchCurl();
 
-        $soloDataModule = str_replace('\"', '"', $soloDataModule);
-        $re = '/\\\\+"/';
-        $subst = '\'';
-        $soloDataModule = preg_replace($re, $subst, $soloDataModule);
-
-		$objImportante = json_decode($soloDataModule);
-
-		$carpetaActual = new Carpeta();
-		$carpetaActual->id = $objImportante->folder->ns_id;
-		$carpetaActual->nombre = $objImportante->folder_shared_link_info->displayName;
-		$carpetaActual->href = $objImportante->folder_shared_link_info->url;
-		$carpetaActual->linkKey = $objImportante->folder_share_token->linkKey;
-		$carpetaActual->linkSecureHash = $objImportante->folder_share_token->secureHash;
-		$carpetaActual->linkSubPath = $objImportante->folder_share_token->subPath;
-		$carpetaActual->linkType = $objImportante->folder_share_token->linkType;
-		$carpetaActual->propietario = $objImportante->folder_shared_link_info->ownerName;
-		$carpetaActual->subCarpetas = [];
-		$carpetaActual->archivos = [];
-//		$carpetaActual->dataOriginal = $objImportante;
-
-		$cookies = $this->dataCargado->responseCookies;
-		$postValues = [
-			'is_xhr' => 'true',
-			'link_key' => $carpetaActual->linkKey,
-			'secure_hash' => $carpetaActual->linkSecureHash,
-			'link_type' => $carpetaActual->linkType,
-			'sub_path' => $carpetaActual->linkSubPath,
-			't' => $cookies['t']
-		];
+        $postValues = [
+            'is_xhr' => 'true',
+            'link_key' => $partesURL[4] ?? '',
+            'secure_hash' => $partesURL2[0] ?? '',
+            'link_type' => 's',
+            'sub_path' => '',
+            't' => $cookies['t']
+        ];
 
 		$objFetchCurl = new FetchCurl();
 
 		try {
 			do {
 				$responseData = $objFetchCurl->getContent('https://www.dropbox.com/list_shared_link_folder_entries', false, 'post', $postValues, $cookies);
+                if (!isset($carpetaActual)) {
+                    $objImportante = $responseData->response;
+                    $carpetaActual = new Carpeta();
+                    $carpetaActual->id = $objImportante->folder->ns_id;
+                    $carpetaActual->nombre = $objImportante->folder_shared_link_info->displayName;
+                    $carpetaActual->href = $objImportante->folder_shared_link_info->url;
+                    $carpetaActual->linkKey = $objImportante->folder_share_token->linkKey;
+                    $carpetaActual->linkSecureHash = $objImportante->folder_share_token->secureHash;
+                    $carpetaActual->linkSubPath = $objImportante->folder_share_token->subPath;
+                    $carpetaActual->linkType = $objImportante->folder_share_token->linkType;
+                    $carpetaActual->propietario = $objImportante->folder_shared_link_info->ownerName;
+                    $carpetaActual->subCarpetas = [];
+                    $carpetaActual->archivos = [];
+                }
+
 				if ($responseData !== null) {
 					foreach ($responseData->response->entries as $item) {
 						$item->filename = htmlentities($item->filename);
