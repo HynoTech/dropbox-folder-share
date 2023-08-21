@@ -33,16 +33,21 @@ class Dropbox extends Cloud{
         $partesURL2 = explode('?', $partesURL[5] ?? '');
         $cookies = $this->dataCargado->responseCookies;
 
-        $objFetchCurl = new FetchCurl();
+        $components = parse_url(htmlspecialchars_decode($this->url));
+        parse_str($components['query'], $paramsURL);
+
 
         $postValues = [
             'is_xhr' => 'true',
             'link_key' => $partesURL[4] ?? '',
             'secure_hash' => $partesURL2[0] ?? '',
-            'link_type' => 's',
+//            'link_type' => 's',
+            'link_type' => 'c',
             'sub_path' => '',
             't' => $cookies['t']
         ];
+        $postValues = array_merge($postValues, $paramsURL);
+
 
 		$objFetchCurl = new FetchCurl();
 

@@ -16,7 +16,7 @@
     "files": ["src/function/http_build_url.php"]
   },
   "require": {
-    "php": ">=5.4",
+    "php": ">=7.0",
     "symfony/polyfill-mbstring": "1.20.0",
     "nesbot/carbon": "1.19",
     "askupa-software/amarkal-admin-notification": "dev-master",
