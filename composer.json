@@ -1,6 +1,6 @@
 {
   "name": "hynotech/dropbox-folder-share",
-  "description": "Compartir Carpetas de Dropbox",
+  "description": "Compartir Carpetas de Dropbox.",
   "minimum-stability": "stable",
   "license": "proprietary",
   "authors": [
